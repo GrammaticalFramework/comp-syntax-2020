@@ -31,7 +31,7 @@ The assignments are submitted via Canvas.
 Take a bilingual "corpus" with English and your own language, and annotate with UD. Details to appear later
 
 
-## Chapter 4: phrase structure analysis==
+## Chapter 4: phrase structure analysis
 
 1. Write a set of liberal phrase structure rules for your selected language covering the same structures as the Notes. 
 2. The English grammar gathered from the Notes will appear in this Git directory.
