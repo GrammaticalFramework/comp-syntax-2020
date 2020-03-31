@@ -1,4 +1,4 @@
-# Lab 2: GF Mini Resource Grammar
+# Lab 2: Multilingual generation and translation
 
 This lab corresponds to Chapters 5 to 9 of the Notes, but follows them
 only loosely.
