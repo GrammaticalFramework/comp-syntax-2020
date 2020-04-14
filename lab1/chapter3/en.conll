@@ -1,0 +1,54 @@
+# Who are they?
+1 Who   PRON  0 root
+2 are   AUX   1 cop
+3 they  PRON  2 nsubj
+4 ?     PUNCT 1 punct
+
+# A small town with two minarets glides by.
+1 A         DET   3 det
+2 small     ADJ   3 amod
+3 town      NOUN  0 nsubj
+4 with      ADP   6 case
+5 two       NUM   6 nummod
+6 minarets  NOUN  3 nmod    # I think it should be tagged as VERB
+7 glides    NOUN  0 root
+8 by        ADV   7 advmod  # ?
+9 .         PUNCT 7 punct
+
+# I was just a boy with muddy shoes.
+1 I     PRON  5 nsubj
+2 was   AUX   5 cop
+3 just  ADV   5 advmod
+4 a     DET   5 det
+5 boy   NOUN  0 root
+6 with  ADP   8 case
+7 muddy ADJ   8 amod
+8 shoes NOUN  5 nmod
+9 .     PUNCT 5 punct
+
+# Shenzhen's traffic police have opted for unconventional penalties before.
+1   Shenzhen        PROPN 4   nmod
+2   's              PART  1   case
+3   traffic         NOUN  4   compound
+4   police          NOUN  6   nsubj
+5   have            AUX   7   aux
+6   opted           VERB  0   root
+8   for             ADP   10  case
+9   unconventional  ADJ   10  amod
+10  penalties       NOUN  6   obl
+11  before          ADV   6   advmod
+12  .               PUNCT 6   punct
+
+# The study of volcanoes is called volcanology, sometimes spelled vulcanology.
+1   The         DET   2   det
+2   study       NOUN  6   nsubj
+3   of          ADP   4   case
+4   volcanoes   NOUN  2   nmod  #?
+5   is          AUX   6   aux   #?
+6   called      VERB  0   root
+7   volcanology NOUN  6   nmod  #?
+8   ,           PUNCT           #?
+9   sometimes   ADV   10  advmod
+10  spelled     VERB            #?
+11  vulcanology NOUN
+12  .           PUNCT 6   punct
