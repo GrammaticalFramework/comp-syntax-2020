@@ -28,7 +28,36 @@ The assignments are submitted via Canvas.
 
 ## Chapter 3: UD syntax analysis
 
-Take a bilingual "corpus" with English and your own language, and annotate with UD. Details to appear later
+Take a bilingual corpus with English and your own language, and annotate with UD.
+The UD annotation that you produce manually can be simplified CoNLL, with just the fields
+
+`position word postag head label`
+
+This can be automatically expanded to full CoNLL by adding undescores for the lemma, morphology, and other missing fields, as well as tabs between the fields (if you didn't use tabs already)
+
+`position    word   _    postag   _   _   head   label   _   _`
+
+Example:
+
+`7 world NOUN 4 nmod`
+
+expands to
+
+`7       world   _       NOUN    _       _       4       nmod    _       _`
+
+Once you have full CoNLL, you can use for instance the gfud tool to visualize it.
+
+The corpus is given in the file comp-syntax-corpus-english.txt in this directory.
+Your task is to
+1. write an English CoNLL file analysing this corpus
+2. translate the corpus to your language
+3. write a CoNLL file analysing your translation
+
+
+The corpus is a combination of different sources, including the Parallel UD treebank (PUD).
+If you want to cheat - or just check your own answer - you can look for those sentences in the official PUD.
+
+
 
 
 ## Chapter 4: phrase structure analysis
