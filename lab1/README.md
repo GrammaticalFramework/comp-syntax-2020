@@ -33,7 +33,9 @@ The UD annotation that you produce manually can be simplified CoNLL, with just t
 
 `position word postag head label`
 
-This can be automatically expanded to full CoNLL by adding undescores for the lemma, morphology, and other missing fields, as well as tabs between the fields (if you didn't use tabs already)
+Make sure that each field is exactly one token, so that the whole line has exactly 5 tokens.
+
+This input can be automatically expanded to full CoNLL by adding undescores for the lemma, morphology, and other missing fields, as well as tabs between the fields (if you didn't use tabs already)
 
 `position    word   _    postag   _   _   head   label   _   _`
 
@@ -44,6 +46,8 @@ Example:
 expands to
 
 `7       world   _       NOUN    _       _       4       nmod    _       _`
+
+(Unfortunately, the tabs are not visible in the md output.)
 
 Once you have full CoNLL, you can use for instance the gfud tool to visualize it.
 
@@ -56,6 +60,11 @@ Your task is to
 
 The corpus is a combination of different sources, including the Parallel UD treebank (PUD).
 If you want to cheat - or just check your own answer - you can look for those sentences in the official PUD.
+
+The first 12 sentences are POS-tagged, with each word having the form
+
+`word:<POS>`
+
 
 
 
