@@ -65,6 +65,17 @@ The first 12 sentences are POS-tagged, with each word having the form
 
 `word:<POS>`
 
+Hint: you can initialize the task by converting each word or word:<POS> to a simplified CoNLL line with a dummy head (0) and label (dep), with proper position number of course.
+
+Extra: If you want to see the visual trees, you can build the gfud program from
+
+`https://github.com/GrammaticalFramework/gf-ud`
+
+and issue the command
+
+`cat my-file.conllu | ./gfud conll2pdf`
+
+You will need Haskell and GF libraries to build gfud, and LaTeX to show the pdf.
 
 
 
