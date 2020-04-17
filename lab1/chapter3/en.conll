@@ -98,3 +98,75 @@
 12  in        ADP   13  case
 13  April     PROPN 9   obl
 14  .         PUNCT 3   punct
+
+# It's most obvious when a celebrity's name is initially quite rare.
+1   It        PRON  4   nsubj
+2   's        AUX   4   cop
+3   most      ADV   4   advmod
+4   obvious   ADJ   0   root
+5   when      ADV   13  advmod
+6   a         DET   7   det
+7   celebrity NOUN  9   nmod
+8   's        PART  7   case
+9   name      NOUN  13  nsubj
+10  is        AUX   13  cop
+11  initially ADV   13  advmod
+12  quite     ADV   13  advmod
+13  rare      ADJ   4   advcl
+14  .         PUNCT 4   punct
+
+# This has not stopped investors flocking to put their money in the funds.
+1   This      PRON  4   nsubj
+2   has       AUX   4   aux
+3   not       PART  4   advmod
+4   stopped   VERB  0   root
+5   investors NOUN  4   obj
+6   flocking  VERB  4   xcomp
+7   to        PART  8   mark
+8   put       VERB  6   advcl
+9   their     PRON  10  nmod
+10  money     NOUN  8   obj
+11  in        ADP   13  case
+12  the       DET   13  det
+13  funds     NOUN  8   obl
+14  .         PUNCT 4   punct
+
+# This discordance between economic data and political rhetoric is familiar, or should be.
+1   This        DET   2   det
+2   discordance NOUN  10  nsubj
+3   between     ADP   5   case
+4   economic    ADJ   5   amod
+5   data        NOUN  2   nmod
+6   and         CCONJ 8   cc
+7   political   ADJ   8   amod
+8   rhetoric    NOUN  5   conj
+9   is          AUX   10  cop
+10  familiar    ADJ   0   root
+11  ,           PUNCT 10  punct   # I am not sure why the head is supposed to be 14 instead
+12  or          CCONJ 14  cc
+13  should      AUX   14  aux
+14  be          AUX   10  conj
+15  .           PUNCT 10  punct
+
+The:<DET> feasibility:<NOUN> study:<NOUN> estimates:<VERB> that:<SCONJ> it:<PRON> would:<AUX> take:<VERB> passengers:<NOUN> about:<ADV> four:<NUM> minutes:<NOUN> to:<PART> cross:<VERB> the:<DET> Potomac:<PROPN> River:<PROPN> on:<ADP> the:<DET> gondola:<NOUN> .:<PUNCT>
+1   The         
+2   feasibility
+3   study
+4   estimates
+5   that
+6   it
+7   would
+8   take
+9   passengers
+10  about
+11  four
+12  minutes
+13  to
+15  cross
+16  the
+17  Potomac
+18  River
+19  on
+20  the
+21  gondola
+22  .
