@@ -10,9 +10,9 @@
 3 town      NOUN  0 nsubj
 4 with      ADP   6 case
 5 two       NUM   6 nummod
-6 minarets  NOUN  3 nmod    # I think it should be tagged as VERB
+6 minarets  VERB  3 nmod
 7 glides    NOUN  0 root
-8 by        ADV   7 advmod  # ?
+8 by        ADV   7 advmod
 9 .         PUNCT 7 punct
 
 # I was just a boy with muddy shoes.
@@ -65,7 +65,7 @@
 9   from      ADP   10  case
 10  April     PROPN 3   obl
 11  to        ADP   12  case
-12  June      PROPN 3   obl   # I don't understand why, unlike April, it is marked as nmod in the treebank
+12  June      PROPN 3   obl     # I don't understand why, unlike April, it is marked as nmod in the treebank
 13  .         PUNCT 3   punct
 
 # "Her voice literally went around the world," Leive said.
@@ -148,25 +148,49 @@
 14  be          AUX   10  conj
 15  .           PUNCT 10  punct
 
-The:<DET> feasibility:<NOUN> study:<NOUN> estimates:<VERB> that:<SCONJ> it:<PRON> would:<AUX> take:<VERB> passengers:<NOUN> about:<ADV> four:<NUM> minutes:<NOUN> to:<PART> cross:<VERB> the:<DET> Potomac:<PROPN> River:<PROPN> on:<ADP> the:<DET> gondola:<NOUN> .:<PUNCT>
-1   The         
-2   feasibility
-3   study
-4   estimates
-5   that
-6   it
-7   would
-8   take
-9   passengers
-10  about
-11  four
-12  minutes
-13  to
-15  cross
-16  the
-17  Potomac
-18  River
-19  on
-20  the
-21  gondola
-22  .
+# The feasibility study estimates that it would take passengers about four minutes to cross the Potomac River on the gondola.
+1   The         DET   3   det
+2   feasibility NOUN  3   compound
+3   study       NOUN  4   nsubj
+4   estimates   VERB  0   root
+5   that        SCONJ 8   mark
+6   it          IT    8   expl
+7   would       AUX   8   aux
+8   take        VERB  4   ccomp
+9   passengers  NOUN  8   iobj
+10  about       ADV   11  advmod
+11  four        NUM   12  nummod
+12  minutes     NOUN  8   obj
+13  to          PART  14  mark
+14  cross       VERB  8   csubj
+15  the         DET   17  det
+16  Potomac     PROPN 17  flat      # but the solutions says "compound"
+17  River       PROPN 14  obj
+18  on          ADP   20  case
+19  the         DET   20  det
+20  gondola     NOUN  14  obl
+21  .           PUNCT 4   punct
+
+# he collected cards and traded them with the other boys
+1   he          PRON  2   nsubj
+2   collected   VERB  0   root
+3   cards       NOUN  2   obj
+4   and         CCONJ 5   cc
+5   traded      VERB  2   conj
+6   them        PRON  5   obj
+7   with        ADP   10  case
+8   the         DET   10  det
+9   other       ADJ   10  amod
+10  boys        NOUN  5   obl
+
+# this crime carries a penalty of five years in prison
+1   this    DET   2   det
+2   crime   NOUN  3   nsubj
+3   carries VERB  0   root
+4   a       DET   5   det
+5   penalty NOUN  3   obj
+6   of      ADP   8   case
+7   five    NUM   8   nummod
+8   years   NOUN  5   nmod
+9   in      ADP   10  case
+10  prison  NOUN  8   nmod
