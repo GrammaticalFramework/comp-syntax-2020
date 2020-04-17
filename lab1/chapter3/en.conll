@@ -124,7 +124,7 @@
 6   flocking  VERB  4   xcomp
 7   to        PART  8   mark
 8   put       VERB  6   advcl
-9   their     PRON  10  nmod
+9   their     PRON  10  nmod:poss
 10  money     NOUN  8   obj
 11  in        ADP   13  case
 12  the       DET   13  det
@@ -194,3 +194,75 @@
 8   years   NOUN  5   nmod
 9   in      ADP   10  case
 10  prison  NOUN  8   nmod
+
+# the news was carried to every village in the province
+1   the       DET   2   det
+2   news      NOUN  4   nsubj:pass
+3   was       AUX   4   aux
+4   carried   VERB  0   root
+5   to        ADP   7   case
+6   every     DET   7   det
+7   village   NOUN  4   obl
+8   in        ADP   10  case
+9   the       DET   10  det
+10  province  NOUN  13  nmod
+
+# I carry these thoughts in the back of my head
+1   I         PRON  2   nsubj
+2   carry     VERB  0   root
+3   these     DET   4   det
+4   thoughts  NOUN  2   obj
+5   in        ADP   7   case
+6   the       DET   7   det
+7   back      NOUN  2   obl
+8   of        ADP   10  case
+9   my        PRON  10  nmod:poss
+10  head      NOUN  7   nmod
+
+# Adam would have been carried over into the life eternal
+1   Adam    PROPN 5 nsubj
+2   would   AUX   5 aux
+3   have    AUX   5 aux
+4   been    AUX   5 aux:pass
+5   carried VERB  0 root
+6   over    ADP   5 compound:prt
+7   into    ADP   9 case
+8   the     DET   9 det
+9   life    NOUN  5 obl
+10  eternal ADJ   9 amod
+
+# the casings had rotted away and had to be replaced
+1   the       DET   2   det
+2   casings   NOUN  4   nsubj
+3   had       AUX   4   aux
+4   rotted    VERB  0   root
+5   away      ADP   4   compound:prt
+6   and       CCONJ 7   cc
+7   had       AUX   4   conj
+8   to        PART  10  mark
+9   be        AUX   10  aux:pass
+10  replaced  VERB  7   xcomp
+
+# she was incensed that this chit of a girl should dare to make a fool of her in front of the class # there may be something right but overall this sentence was complicated
+1   she       PRON  3   nsubj
+2   was       AUX   3   cop
+3   incensed  ADJ   0   root
+4   that      SCONJ 11  sconj
+5   this      DET   6   det
+6   chit      NOUN  9   nmod
+7   of        ADP   9   case
+8   a         DET   9   det
+9   girl      NOUN  11  nsubj
+10  should    AUX   11  aux
+11  dare      VERB  3   ccomp
+12  to        PART  13  mark
+13  make      VERB  11  xcomp
+14  a         DET   15  det
+15  fool      NOUN  13  obj
+16  of        ADP   17  case
+17  her       PRON  13  obl
+18  in        ADP   19  case
+19  front     NOUN  13  obl
+20  of        ADP   22  case
+21  the       DET   22  det
+22  class     NOUN  19  nmod
