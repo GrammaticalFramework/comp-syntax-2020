@@ -266,3 +266,119 @@
 20  of        ADP   22  case
 21  the       DET   22  det
 22  class     NOUN  19  nmod
+
+# the landslide he had in the electoral college obscured the narrowness of a victory based on just 43% of the popular vote
+1   the         DET   2   det
+2   landslide   NOUN  9   nsubj
+3   he          PRON  4   nsubj
+4   had         VERB  2   acl:relcl
+5   in          ADP   8   case
+6   the         DET   8   det
+7   electoral   ADJ   8   amod
+8   college     NOUN  4   obl
+9   obscured    VERB  0   root
+10  the         DET   11  det
+11  narrowness  NOUN  9   obj
+12  of          ADP   14  case
+13  a           DET   14  det
+14  victory     NOUN  11  nmod
+15  based       VERB  14  acl
+16  on          ADP   18  case
+17  just        ADV   18  advmod
+18  43%         NUM   15  nummod
+19  of          ADP   22  case
+20  the         DET   22  det
+21  popular     ADJ   22  amod
+22  vote        NOUN  18  nmod
+
+# United States troops now carry atropine and autoinjectors in their first-aid kits to use in case of organophosphate nerve agent poisoning # I'm not even sure I fully understand the meaning of the sentence, by the way
+1   United          PROPN 3   compound
+2   States          PROPN 1   flat
+3   troops          NOUN  5   nsubj
+4   now             ADV   5   advmod
+5   carry           VERB  0   root
+6   atropine        NOUN  5   obj
+7   and             CCONJ 8   cc
+8   autoinjectors   NOUN  6   conj
+9   in              ADP   12  case
+10  their           PRON  12  nmod:poss
+11  first-aid       NOUN  12  compound
+12  kits            NOUN  5   obl
+13  to              PART  14  mark        # assuming that the first-aid kits, and not atropine and autoinjectors are to be used
+14  use             VERB  5   xcomp
+15  in              ADP   16  case
+16  case            NOUN  14  obl
+17  of              ADP   21  case
+18  organophosphate ADJ   20  amod
+19  nerve           ADJ   20  amod
+20  agent           NOUN  21  compound
+21  poisoning       NOUN  17  obl
+
+# he may accomplish by craft in the long run what he cannot do by force and violence in the short one
+1   he          PRON  3   nsubj
+2   may         AUX   3   aux
+3   accomplish  VERB  0   root
+4   by          ADP   5   case
+5   craft       NOUN  3   obl
+6   in          ADP   9   case
+7   the         DET   9   det
+8   long        ADJ   9   amod
+9   run         NOUN  3   obl
+10  what        PRON  3   obj
+11  he          PRON  13  subj
+12  cannot      AUX   13  aux
+13  do          VERB  10  acl:relcl
+14  by          ADP   15  case
+15  force       NOUN  13  obl
+16  and         CCONJ 17  cc
+17  violence    NOUN  15  conj
+18  in          ADP   21  case
+19  the         DET   21  det
+20  short       ADJ   21  amod
+21  one         PRON  13  obl
+
+# it has been said that only a hierarchical society with a leisure class at the top can produce works of art
+1   it            PRON  4   expl
+2   has           AUX   4   aux
+3   been          AUX   4   aux:pass
+4   said          VERB  0   root
+5   that          SCONJ 18  mark
+6   only          ADV   9   advmod
+7   a             DET   9   det
+8   hierarchical  ADJ   9   amod
+9   society       NOUN  18  nsubj
+10  with          ADP   13  case
+11  a             DET   13  det
+12  leisure       NOUN  13  compound
+13  class         NOUN  9   nmod
+14  at            ADP   16  case
+15  the           DET   16  det
+16  top           NOUN  13  nmod
+17  can           AUX   18  aux
+18  produce       VERB  4   csubj
+19  works         NOUN  18  obj
+20  of            ADP   21  case
+21  art           NOUN  19  nmod
+
+# his ingenuous explanation that he would not have burned the church if he had not thought the bishop was in it
+1   his         PRON  3   nmod:poss
+2   ingenuous   ADJ   3   amod
+3   explanation NOUN  0   root        # the absence of a suitable verb makes me think that this might as well be the root
+4   that        SCONJ 9   mark
+5   he          PRON  9   nsubj
+6   would       AUX   9   aux
+7   not         PART  8   advmod
+8   have        AUX   9   aux
+9   burned      VERB  3   acl
+10  the         DET   11  det
+11  church      NOUN  9   obj
+12  if          SCONJ 16  mark
+13  he          PRON  16  nsubj
+14  had         AUX   16  aux
+15  not         PART  16  advmod
+16  thought     VERB  9   advcl
+17  the         DET   18  det
+18  bishop      NOUN  19  nsubj
+19  was         VERB  16  ccomp
+20  in          ADP   21  case
+21  it          PRON  19  obl
