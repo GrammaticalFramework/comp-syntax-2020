@@ -30,8 +30,57 @@
 12  .         PUNCT 5   punct
 
 # La policía de tráfico de Shenzhen ya se ha decantado por multas poco convencionales con anterioridad.
+1   La              DET   2   det
+2   policía         NOUN  10  nsubj
+3   de              ADP   4   case
+4   tráfico         NOUN  2   nmod
+5   de              ADP   6   case
+6   Shenzhen        PROPN 2   nmod
+7   ya              ADV   10  advmod
+8   se              PRON  10  compound:prt  # well, now I know
+9   ha              AUX   10  aux
+10  decantado       VERB  0   root
+11  por             ADP   12  case
+12  multas          NOUN  10  obl
+13  poco            ADV   14  advmod
+14  convencionales  ADJ   12  amod
+15  con             ADP   16  case
+16  anterioridad    NOUN  10  obl
+17  .               PUNCT 10  obl
+
 # El estudio de los volcanes se llama vulcanología, a veces escrito volcanología.
+1   El            DET   2   det
+2   estudio       NOUN  7   nsubj
+3   de            ADP   5   case
+4   los           DET   5   det
+5   volcanes      NOUN  2   nmod
+6   se            PRON  7   compound:prt
+7   llama         VERB  0   root  # in the treebank, the root is "vulcanología" and "llama" is treated as a copula, but I don't know if that's right (I think the typical copulative verbs in Spanish are ser, estar y parecer)
+8   vulcanología  NOUN  7   xcomp
+9   ,             PUNCT 8   punct
+10  a             ADP   13  advmod
+11  veces         NOUN  10  fixed
+12  escrito       VERB  8   acl # same as above
+13  volcanología  NOUN  12  xcomp
+14  .             PUNCT 7   punct
+
 # Se llevó a cabo a poca distancia de la costa mexicana de abril a junio.
+1   Se        PRON  2   compound:prt
+2   llevó     VERB  0   root
+3   a         ADP   4   case
+4   cabo      NOUN  2   obl
+5   a         ADP   7   case
+6   poca      DET   7   det
+7   distancia NOUN  2   obl
+8   de        ADP   10  case
+9   la        DET   10  det
+10  costa     NOUN  7   nmod
+11  mexicana  ADJ   10  amod
+12  de        ADP   13  case
+13  abril     PROPN 2   obl
+14  a         ADP   15  case
+15  junio     PROPN 2   obl
+16  .         PUNCT 2   punct
 
 # "Su voz se escuchó literalmente por todo el mundo," dijo Leive.
 # Un testigo contó a la policía que la víctima había atacado al sospechoso en abril.
@@ -41,11 +90,73 @@
 # El estudio de viabilidad calcula que los pasajeros tardarían unos cuatro minutos en cruzar el río Potomac en la góndola.
 
 # colecionaba tarjetas y las intercambiaba con los otros chicos
+1 colecionaba   VERB  0 root
+2 tarjetas      NOUN  1 obj
+3 y             CCONJ 5 cc
+4 las           PRON  5 obj
+5 intercambiaba VERB  1 conj
+6 con           ADP   9 case
+7 los           DET   9 det
+8 otros         DET   9 det
+9 chicos        NOUN  5 obl
+
 # este delito conlleva una pena de cinco años de prisión
+1   este      DET   2   det
+2   delito    NOUN  3   nsubj
+3   conlleva  VERB  0   root
+4   una       DET   5   det
+5   pena      NOUN  3   obj
+6   de        ADP   8   case
+7   cinco     NUM   8   nummod
+8   años      NOUN  5   nmod
+9   de        ADP   10  case
+10  prisión   NOUN  8   nmod
+
 # la noticia fue llevada a todos los pueblos de la provincia
+1   la        DET   2   det
+2   noticia   NOUN  4   nsubj:pass
+3   fue       AUX   4   aux
+4   llevada   VERB  0   root
+5   a         ADP   8   case
+6   todos     DET   8   det # not sure 8 is the right root, maybe 7?
+7   los       DET   8   det
+8   pueblos   NOUN  4   obl
+9   de        ADP   11  case
+10  la        DET   11  det
+11  provincia NOUN  8   det
+
 # llevo estos pensamientos en el fondo de mi mente
+1   llevo         VERB  0   root
+2   estos         DET   3   det
+3   pensamientos  NOUN  1   obj
+4   en            ADP   6   case
+5   el            DET   6   det
+6   fondo         NOUN  1   obl
+7   de            ADP   10  case
+9   mi            PRON  10  nmod:poss
+10  mente         NOUN  6   nmod
+
 # Adam habría sido llevado a la vida eterna
+1 Adam    PROPN 4 nsubj
+2 habría  AUX   4 aux
+3 sido    AUX   4 aux:pass
+4 llevado VERB  0 root
+5 a       ADP   7 case
+6 la      DET   7 det
+7 vida    NOUN  4 obl
+8 eterna  ADJ   7 amod
+
 # los revestimientos se habían podrido y tuvieron que ser reemplazados
+1   los             DET   2   det
+2   revestimientos  NOUN  5   nsubj
+3   se              PRON  5   compound:prt
+4   habían          AUX   5   aux
+5   podrido         VERB  0   root
+6   y               CCONJ 7   cc
+7   tuvieron        VERB  5   conj
+8   que             ADP   7   fixed
+9   ser             AUX   10  aux:pass
+10  reemplazados    VERB  7   xcomp
 
 # estaba indignada de que esta chica se atrevía a burlarse de ella delante de la clase.
 # la avalancha que tuvo en el colegio electoral oscureció la estrechez de una victoria basada en sólo el 43% del voto popular
