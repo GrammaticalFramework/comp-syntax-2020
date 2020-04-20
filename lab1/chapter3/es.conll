@@ -1,6 +1,34 @@
 # ¿Quiénes son?
+1 ¿       PUNCT 3 punct
+2 Quiénes PRON  3 nsubj
+3 son     AUX   0 root
+4 ?       PUNCT 3 punct
+
 # Una pequeña ciudad con dos minaretes pasa deslizándose.
+1 Una           DET   3 det
+2 pequeña       ADJ   3 amod
+3 ciudad        NOUN  7 nsubj
+4 con           ADP   6 case
+5 dos           NUM   6 nummod
+6 minaretes     NOUN  3 nmod
+7 pasa          VERB  0 root
+8 deslizándose  VERB  7 advcl # in the treebank this is tokenized as deslizándo + se. I understand why but I'm leaving this line as it is because I would never have thought about that
+9 .             PUNCT 7 punct
+
 # Yo era solamente un chico con los zapatos llenos de barro.
+1   Yo        PRON  5   nsubj
+2   era       AUX   5   cop
+3   solamente ADV   5   advmod
+4   un        DET   5   det
+5   chico     NOUN  0   root
+6   con       ADP   8   case
+7   los       DET   8   det
+8   zapatos   NOUN  5   nmod
+9   llenos    ADJ   8   amod
+10  de        ADP   11  case
+11  barro     NOUN  9   nmod
+12  .         PUNCT 5   punct
+
 # La policía de tráfico de Shenzhen ya se ha decantado por multas poco convencionales con anterioridad.
 # El estudio de los volcanes se llama vulcanología, a veces escrito volcanología.
 # Se llevó a cabo a poca distancia de la costa mexicana de abril a junio.
