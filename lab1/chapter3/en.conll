@@ -205,7 +205,7 @@
 7   village   NOUN  4   obl
 8   in        ADP   10  case
 9   the       DET   10  det
-10  province  NOUN  13  nmod
+10  province  NOUN  7   nmod
 
 # I carry these thoughts in the back of my head
 1   I         PRON  2   nsubj
