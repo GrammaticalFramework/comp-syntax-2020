@@ -83,7 +83,40 @@
 16  .         PUNCT 2   punct
 
 # "Su voz se escuchó literalmente por todo el mundo," dijo Leive.
+1   "             PUNCT 5   punct
+2   Su            PRON  3   nmod:poss # I don't know why in the Spanish treebank this is considered a det, unlike in the English one
+3   voz           NOUN  5   nsubj:pass
+4   se            PRON  5   compound:prt
+5   escuchó       VERB  0   root
+6   literalmente  ADV   5   advmod
+7   por           ADP   10  case
+8   todo          DET   9   det
+9   el            DET   10  det # marked as det:predet in the treebank
+10  mundo         NOUN  5   obl
+11  ,             PUNCT 5   punct
+12  "             PUNCT 5   punct
+13  dijo          VERB  5   parataxis
+14  Leive         PROPN 14  nsubj
+15  .             PUNCT 5   punct
+
 # Un testigo contó a la policía que la víctima había atacado al sospechoso en abril.
+1   Un          DET   2   det
+2   testigo     NOUN  3   nsubj
+3   contó       VERB  0   root
+4   a           ADP   6   case
+5   la          DET   6   det
+6   policía     NOUN  3   obl
+7   que         SCONJ 11  mark
+8   la          DET   9   det
+9   víctima     NOUN  11  nsubj
+10  había       AUX   11  aux
+11  atacado     VERB  3   ccomp
+12  al          ADP   13  case  # I should have tokenized it as a + el
+13  sospechoso  NOUN  11  obl
+15  en          ADP   16  case
+16  abril       PROPN 11  obl
+17  .           PUNCT 3   punct
+
 # Es más evidente cuando el nombre de un famoso es bastante raro al principio.
 # Esto no ha impedido que los inversores hayan acudido a depositar su dinero en los fondos.
 # Esta discordancia entre los datos económicos y la retórica política es familiar, o debería serlo.
