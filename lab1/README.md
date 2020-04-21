@@ -82,8 +82,29 @@ You will need Haskell and GF libraries to build gfud, and LaTeX to show the pdf.
 
 ## Chapter 4: phrase structure analysis
 
-1. Write a set of liberal phrase structure rules for your selected language covering the same structures as the Notes. 
-2. The English grammar gathered from the Notes will appear in this Git directory.
+1. Construct phrase structure trees for some of the sentences in the corpus used in Chapter 3, both for English and your chosen language.
 
+2. Test the grammar
+
+https://github.com/GrammaticalFramework/gf-ud/blob/master/grammars/English.dbnf
+
+on last week's corpus, both for English and your own language.
+
+3. Modify the grammar to suit your language and test it on some of the UD treebanks by using `gf-ud eval`.
+
+
+The gf-ud program can be found in executable versions (once gunzipped) in
+
+http://www.grammaticalframework.org/~aarne/software/
+
+The source code of gf-ud can be found in
+
+https://github.com/GrammaticalFramework/gf-ud
+
+It can be built with `make` if you have Haskell and also have built the gf-core libraries:
+
+https://github.com/GrammaticalFramework/gf-core
+
+This will not be needed if you can use one of the ready-made libraries.
 
 
