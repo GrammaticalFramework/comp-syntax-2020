@@ -118,9 +118,84 @@
 17  .           PUNCT 3   punct
 
 # Es más evidente cuando el nombre de un famoso es bastante raro al principio.
+1   Es        AUX   3   cop
+2   más       ADV   3   advmod
+3   evidente  ADJ   0   root
+4   cuando    ADV   12  advmod
+5   el        DET   6   det
+6   nombre    NOUN  12  nsubj
+7   de        ADP   9   case
+8   un        DET   9   det
+9   famoso    NOUN  6   nmod
+10  es        VERB  12  cop
+11  bastante  ADV   12  advmod
+12  raro      ADJ   3   advcl
+13  a         ADP   15  case  # again, now I know
+14  el        DET   15  det
+15  principio NOUN  12  obl
+16  .         PUNCT 3   punct
+
 # Esto no ha impedido que los inversores hayan acudido a depositar su dinero en los fondos.
+1   Esto        DET   4   nsubj
+2   no          ADV   4   advmod
+3   ha          AUX   4   aux
+4   impedido    VERB  0   root
+5   que         SCONJ 9   mark  # why is it marked as an ADP in the treebank, in this case?
+6   los         DET   7   det
+7   inversores  NOUN  9   nsubj
+8   hayan       AUX   9   aux
+9   acudido     VERB  4   ccomp
+10  a           ADP   11  case
+11  depositar   VERB  9   xcomp
+12  su          PRON  13  nmod:poss # same as in "Su voz se escuchó literalmente..."
+13  dinero      NOUN  11  obj
+14  en          ADP   16  case
+15  los         DET   16  det
+16  fondos      NOUN  11  obl
+17  .           PUNCT 4   punct
+
 # Esta discordancia entre los datos económicos y la retórica política es familiar, o debería serlo.
+1   Esta          DET   2   det
+2   discordancia  NOUN  12  nsubj
+3   entre         ADP   5   case
+4   los           DET   5   det
+5   datos         NOUN  2   nmod
+6   económicos    ADJ   5   amod
+7   y             CCONJ 9   cc
+8   la            DET   9   det
+9   retórica      NOUN  5   conj
+10  política      ADJ   9   amod
+11  es            AUX   12  cop
+12  familiar      ADJ   0   root
+13  ,             PUNCT 12  punct # ?
+14  o             CCONJ 16  cc
+15  debería       AUX   16  aux
+16  ser           AUX   17  cop
+17  lo            PRON  12  conj
+17  .             PUNCT 12  punct
+
 # El estudio de viabilidad calcula que los pasajeros tardarían unos cuatro minutos en cruzar el río Potomac en la góndola.
+1   El          DET   2   det
+2   estudio     NOUN  5   nsubj
+3   de          ADP   4   case
+4   viabilidad  NOUN  2   nmod
+5   calcula     VERB  0   root
+6   que         SCONJ 9   mark
+7   los         DET   8   det
+8   pasajeros   NOUN  9   nsubj
+9   tardarían   VERB  5   ccomp
+10  unos        DET   12  det
+11  cuatro      NUM   12  nummod
+12  minutos     NOUN  9   obl
+13  en          ADP   14  case
+14  cruzar      VERB  9   xcomp
+15  el          DET   16  det
+16  río         NOUN  14  obj
+17  Potomac     PROPN 16  flat  # as unclear as its English counterpart
+18  en          ADP   20  case
+19  la          DET   20  det
+20  góndola     NOUN  14  obl
+12  .           PUNCT 5   punct
 
 # colecionaba tarjetas y las intercambiaba con los otros chicos
 1 colecionaba   VERB  0 root
