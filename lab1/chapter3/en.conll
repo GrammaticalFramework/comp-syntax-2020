@@ -312,7 +312,7 @@
 18  organophosphate ADJ   20  amod
 19  nerve           ADJ   20  amod
 20  agent           NOUN  21  compound
-21  poisoning       NOUN  17  obl
+21  poisoning       NOUN  16  nmod
 
 # he may accomplish by craft in the long run what he cannot do by force and violence in the short one
 1   he          PRON  3   nsubj
