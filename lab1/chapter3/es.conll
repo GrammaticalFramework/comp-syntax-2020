@@ -336,6 +336,68 @@
 24  nerviosos         ADJ   23  amod
 25  organofosforados  ADJ   23  amod
 
-#  a largo plazo, podrìa lograr mediante la destreza lo que no puede hacer a corto plazo mediante la fuerza y la violencia
+# a largo plazo, podrìa lograr mediante la destreza lo que no puede hacer a corto plazo mediante la fuerza y la violencia
+1   a         ADP   3   case
+2   largo     ADJ   3   amod
+3   plazo     NOUN  6   obl
+4   ,         PUNCT 6   punct
+5   podrìa    AUX   6   aux
+6   lograr    VERB  0   root
+7   mediante  ADP   9   case
+8   la        DET   9   det
+9   destreza  NOUN  6   obl
+10  lo        PRON  11  det
+11  que       PRON  6   nsubj
+12  no        ADV   13  advmod
+13  puede     AUX   14  aux
+14  hacer     VERB  10  acl:relcl
+15  a         ADP   17  case
+16  corto     ADJ   17  amod
+17  plazo     NOUN  14  obl
+18  mediante  ADP   20  case
+19  la        DET   20  det
+20  fuerza    NOUN  14  obl
+21  y         CCONJ 23  cc
+22  la        DET   23  det
+23  violencia NOUN  20  conj
+
 # ha sido dicho que sólo una sociedad jerárquica dominada por una clase ociosa puede producir obras de arte
+1   ha          AUX   3   aux
+2   sido        AUX   3   aux:pass
+3   dicho       VERB  0   root
+4   que         SCONJ 15  mark
+5   sólo        ADV   7   advmod
+6   una         DET   7   det
+7   sociedad    NOUN  15  nsubj
+8   jerárquica  ADJ   7   amod
+9   dominada    VERB  7   acl:relcl
+10  por         ADP   12  case
+11  una         DET   12  det
+12  clase       NOUN  9   obl
+13  ociosa      ADJ   12  amod
+14  puede       AUX   15  aux
+15  producir    VERB  3   csubj
+16  obras       NOUN  15  obj
+17  de          ADP   18  case
+18  arte        NOUN  16  nmod
+
 # su ingenua explicación de que no habría quemado la iglesia si no hubiera pensado que el obispo estaba allí
+1   su          PRON  3   nmod:poss
+2   ingenua     ADJ   3   amod
+3   explicación NOUN  0   root  # same reasoning as for English
+4   de          ADP   8   case
+5   que         SCONJ 8   mark
+6   no          ADV   8   advmod
+7   habría      AUX   8   aux
+8   quemado     VERB  3   acl
+9   la          DET   10  det
+10  iglesia     NOUN  8   obj
+11  si          SCONJ 14  sconj
+12  no          ADV   14  advmod
+13  hubiera     AUX   14  aux
+14  pensado     VERB  8   advcl
+15  que         SCONJ 18  mark
+16  el          DET   17  det
+17  obispo      NOUN  18  nsubj
+18  estaba      VERB  14  ccomp
+19  allí        ADV   18  advmod
