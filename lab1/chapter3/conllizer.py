@@ -18,7 +18,6 @@ def conllize(line):
     else:
         newline = '\t'.join(line.split()) # substitute spaces with tabs
         newline = newline.split("#", 1)[0][:-1] # remove comments
-        print(tuple(newline.split(sep="\t")))
         (i, word, pos, head, label) = tuple(newline.split(sep="\t"))
         # add missing tokens
         tokens = [i, word, '_', pos, '_', '_', head, label, '_', '_']
