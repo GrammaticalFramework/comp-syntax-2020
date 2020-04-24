@@ -2,11 +2,21 @@ import argparse
 from os.path import isfile, splitext
 
 def conllize(line):
+    '''
+    (Inefficiently) converts a line to its standard conll format (10 tokens)
+    '''
     if line[0] == "#":
-        return line # to be changed
+        return "# text = " + line[2:]
+    elif line == '\n':
+        return line
     else:
         newline = '\t'.join(line.split()) # substitute spaces with tabs
-        newline = newline.split("#", 1)[0] # remove comments
+        newline = newline.split("#", 1)[0][:-1] # remove comments
+        print(tuple(newline.split(sep="\t")))
+        (i, word, pos, head, label) = tuple(newline.split(sep="\t"))
+        # add missing tokens
+        tokens = [i, word, '_', pos, '_', '_', head, label, '_', '_']
+        newline = '\t'.join(tokens)
         newline += "\n"
         return newline
 
