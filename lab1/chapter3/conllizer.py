@@ -1,11 +1,17 @@
 import argparse
 from os.path import isfile, splitext
 
+'''
+A simple script that takes in a "simplified CONLL" file and converts it
+into actual, standard CONLL.
+'''
+
 def conllize(line):
     '''
     (Inefficiently) converts a line to its standard conll format (10 tokens)
     '''
     if line[0] == "#":
+        # assuming one didn't feel like writing "text = "
         return "# text = " + line[2:]
     elif line == '\n':
         return line
