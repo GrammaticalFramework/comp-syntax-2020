@@ -66,15 +66,21 @@ oper
       = \np,v -> PredVP np (UseV v) ;
     mkCl : NP -> V2 -> NP -> Cl
       = \np,v,obj -> PredVP np (ComplV2 v obj) ;
+    mkCl : NP -> VS -> S -> Cl
+      = \np,v,obj -> PredVP np (ComplVS v obj) ;
+    mkCl : NP -> VV -> VP -> Cl
+      = \np,v,obj -> PredVP np (ComplVV v obj) ;
     mkCl : NP -> AP -> Cl
-      = \np,ap -> PredVP np (UseAP ap) ;
+      = \np,ap -> PredVP np (UseComp (CompAP ap)) ;
     mkCl : NP -> A -> Cl
-      = \np,a -> PredVP np (UseAP (PositA a)) ;
+      = \np,a -> PredVP np (UseComp (CompAP (PositA a))) ;
   } ;
 
   mkQCl = overload {
     mkQCl : Cl -> QCl
-      = QuestCl
+      = QuestCl ;
+    mkQCl : IP -> VP -> QCl
+      = QuestVP ;
   } ;
 
   mkVP = overload {
@@ -83,13 +89,13 @@ oper
     mkVP : V2 -> NP -> VP
       = ComplV2 ;
     mkVP : AP -> VP
-      = UseAP ;
+      = \ap -> UseComp (CompAP ap) ;
     mkVP : A -> VP
-      = \a -> UseAP (PositA a) ;
+      = \a -> UseComp (CompAP (PositA a)) ;
     mkVP : NP -> VP
-      = UseNP ;
+      = \np -> UseComp (CompNP np) ;
     mkVP : Adv -> VP
-      = UseAdv ;
+      = \adv -> UseComp (CompAdv adv) ;
     mkVP : VP -> Adv -> VP
       = AdvVP ;
   } ;
