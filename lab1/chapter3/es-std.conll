@@ -1,0 +1,403 @@
+# text = ¿Quiénes son?
+1	¿	_	PUNCT	_	_	3	punc	_	_
+2	Quiénes	_	PRON	_	_	3	nsub	_	_
+3	son	_	AUX	_	_	0	roo	_	_
+4	?	_	PUNCT	_	_	3	punc	_	_
+
+# text = Una pequeña ciudad con dos minaretes pasa deslizándose.
+1	Una	_	DET	_	_	3	de	_	_
+2	pequeña	_	ADJ	_	_	3	amo	_	_
+3	ciudad	_	NOUN	_	_	7	nsub	_	_
+4	con	_	ADP	_	_	6	cas	_	_
+5	dos	_	NUM	_	_	6	nummo	_	_
+6	minaretes	_	NOUN	_	_	3	nmo	_	_
+7	pasa	_	VERB	_	_	0	roo	_	_
+8	deslizándose	_	VERB	_	_	7	advcl	_	_
+9	.	_	PUNCT	_	_	7	punc	_	_
+
+# text = Yo era solamente un chico con los zapatos llenos de barro.
+1	Yo	_	PRON	_	_	5	nsub	_	_
+2	era	_	AUX	_	_	5	co	_	_
+3	solamente	_	ADV	_	_	5	advmo	_	_
+4	un	_	DET	_	_	5	de	_	_
+5	chico	_	NOUN	_	_	0	roo	_	_
+6	con	_	ADP	_	_	8	cas	_	_
+7	los	_	DET	_	_	8	de	_	_
+8	zapatos	_	NOUN	_	_	5	nmo	_	_
+9	llenos	_	ADJ	_	_	8	amo	_	_
+10	de	_	ADP	_	_	11	cas	_	_
+11	barro	_	NOUN	_	_	9	nmo	_	_
+12	.	_	PUNCT	_	_	5	punc	_	_
+
+# text = La policía de tráfico de Shenzhen ya se ha decantado por multas poco convencionales con anterioridad.
+1	La	_	DET	_	_	2	de	_	_
+2	policía	_	NOUN	_	_	10	nsub	_	_
+3	de	_	ADP	_	_	4	cas	_	_
+4	tráfico	_	NOUN	_	_	2	nmo	_	_
+5	de	_	ADP	_	_	6	cas	_	_
+6	Shenzhen	_	PROPN	_	_	2	nmo	_	_
+7	ya	_	ADV	_	_	10	advmo	_	_
+8	se	_	PRON	_	_	10	compound:prt	_	_
+9	ha	_	AUX	_	_	10	au	_	_
+10	decantado	_	VERB	_	_	0	roo	_	_
+11	por	_	ADP	_	_	12	cas	_	_
+12	multas	_	NOUN	_	_	10	ob	_	_
+13	poco	_	ADV	_	_	14	advmo	_	_
+14	convencionales	_	ADJ	_	_	12	amo	_	_
+15	con	_	ADP	_	_	16	cas	_	_
+16	anterioridad	_	NOUN	_	_	10	ob	_	_
+17	.	_	PUNCT	_	_	10	ob	_	_
+
+# text = El estudio de los volcanes se llama vulcanología, a veces escrito volcanología.
+1	El	_	DET	_	_	2	de	_	_
+2	estudio	_	NOUN	_	_	7	nsub	_	_
+3	de	_	ADP	_	_	5	cas	_	_
+4	los	_	DET	_	_	5	de	_	_
+5	volcanes	_	NOUN	_	_	2	nmo	_	_
+6	se	_	PRON	_	_	7	compound:pr	_	_
+7	llama	_	VERB	_	_	0	root	_	_
+8	vulcanología	_	NOUN	_	_	7	xcom	_	_
+9	,	_	PUNCT	_	_	8	punc	_	_
+10	a	_	ADP	_	_	13	advmo	_	_
+11	veces	_	NOUN	_	_	10	fixe	_	_
+12	escrito	_	VERB	_	_	8	acl	_	_
+13	volcanología	_	NOUN	_	_	12	xcom	_	_
+14	.	_	PUNCT	_	_	7	punc	_	_
+
+# text = Se llevó a cabo a poca distancia de la costa mexicana de abril a junio.
+1	Se	_	PRON	_	_	2	compound:pr	_	_
+2	llevó	_	VERB	_	_	0	roo	_	_
+3	a	_	ADP	_	_	4	cas	_	_
+4	cabo	_	NOUN	_	_	2	ob	_	_
+5	a	_	ADP	_	_	7	cas	_	_
+6	poca	_	DET	_	_	7	de	_	_
+7	distancia	_	NOUN	_	_	2	ob	_	_
+8	de	_	ADP	_	_	10	cas	_	_
+9	la	_	DET	_	_	10	de	_	_
+10	costa	_	NOUN	_	_	7	nmo	_	_
+11	mexicana	_	ADJ	_	_	10	amo	_	_
+12	de	_	ADP	_	_	13	cas	_	_
+13	abril	_	PROPN	_	_	2	ob	_	_
+14	a	_	ADP	_	_	15	cas	_	_
+15	junio	_	PROPN	_	_	2	ob	_	_
+16	.	_	PUNCT	_	_	2	punc	_	_
+
+# text = "Su voz se escuchó literalmente por todo el mundo," dijo Leive.
+1	"	_	PUNCT	_	_	5	punc	_	_
+2	Su	_	PRON	_	_	3	nmod:poss	_	_
+3	voz	_	NOUN	_	_	5	nsubj:pas	_	_
+4	se	_	PRON	_	_	5	compound:pr	_	_
+5	escuchó	_	VERB	_	_	0	roo	_	_
+6	literalmente	_	ADV	_	_	5	advmo	_	_
+7	por	_	ADP	_	_	10	cas	_	_
+8	todo	_	DET	_	_	9	de	_	_
+9	el	_	DET	_	_	10	det	_	_
+10	mundo	_	NOUN	_	_	5	ob	_	_
+11	,	_	PUNCT	_	_	5	punc	_	_
+12	"	_	PUNCT	_	_	5	punc	_	_
+13	dijo	_	VERB	_	_	5	parataxi	_	_
+14	Leive	_	PROPN	_	_	14	nsub	_	_
+15	.	_	PUNCT	_	_	5	punc	_	_
+
+# text = Un testigo contó a la policía que la víctima había atacado al sospechoso en abril.
+1	Un	_	DET	_	_	2	de	_	_
+2	testigo	_	NOUN	_	_	3	nsub	_	_
+3	contó	_	VERB	_	_	0	roo	_	_
+4	a	_	ADP	_	_	6	cas	_	_
+5	la	_	DET	_	_	6	de	_	_
+6	policía	_	NOUN	_	_	3	ob	_	_
+7	que	_	SCONJ	_	_	11	mar	_	_
+8	la	_	DET	_	_	9	de	_	_
+9	víctima	_	NOUN	_	_	11	nsub	_	_
+10	había	_	AUX	_	_	11	au	_	_
+11	atacado	_	VERB	_	_	3	ccom	_	_
+12	al	_	ADP	_	_	13	case	_	_
+13	sospechoso	_	NOUN	_	_	11	ob	_	_
+15	en	_	ADP	_	_	16	cas	_	_
+16	abril	_	PROPN	_	_	11	ob	_	_
+17	.	_	PUNCT	_	_	3	punc	_	_
+
+# text = Es más evidente cuando el nombre de un famoso es bastante raro al principio.
+1	Es	_	AUX	_	_	3	co	_	_
+2	más	_	ADV	_	_	3	advmo	_	_
+3	evidente	_	ADJ	_	_	0	roo	_	_
+4	cuando	_	ADV	_	_	12	advmo	_	_
+5	el	_	DET	_	_	6	de	_	_
+6	nombre	_	NOUN	_	_	12	nsub	_	_
+7	de	_	ADP	_	_	9	cas	_	_
+8	un	_	DET	_	_	9	de	_	_
+9	famoso	_	NOUN	_	_	6	nmo	_	_
+10	es	_	VERB	_	_	12	co	_	_
+11	bastante	_	ADV	_	_	12	advmo	_	_
+12	raro	_	ADJ	_	_	3	advc	_	_
+13	a	_	ADP	_	_	15	case	_	_
+14	el	_	DET	_	_	15	de	_	_
+15	principio	_	NOUN	_	_	12	ob	_	_
+16	.	_	PUNCT	_	_	3	punc	_	_
+
+# text = Esto no ha impedido que los inversores hayan acudido a depositar su dinero en los fondos.
+1	Esto	_	DET	_	_	4	nsub	_	_
+2	no	_	ADV	_	_	4	advmo	_	_
+3	ha	_	AUX	_	_	4	au	_	_
+4	impedido	_	VERB	_	_	0	roo	_	_
+5	que	_	SCONJ	_	_	9	mark	_	_
+6	los	_	DET	_	_	7	de	_	_
+7	inversores	_	NOUN	_	_	9	nsub	_	_
+8	hayan	_	AUX	_	_	9	au	_	_
+9	acudido	_	VERB	_	_	4	ccom	_	_
+10	a	_	ADP	_	_	11	cas	_	_
+11	depositar	_	VERB	_	_	9	xcom	_	_
+12	su	_	PRON	_	_	13	nmod:poss	_	_
+13	dinero	_	NOUN	_	_	11	ob	_	_
+14	en	_	ADP	_	_	16	cas	_	_
+15	los	_	DET	_	_	16	de	_	_
+16	fondos	_	NOUN	_	_	11	ob	_	_
+17	.	_	PUNCT	_	_	4	punc	_	_
+
+# text = Esta discordancia entre los datos económicos y la retórica política es familiar, o debería serlo.
+1	Esta	_	DET	_	_	2	de	_	_
+2	discordancia	_	NOUN	_	_	12	nsub	_	_
+3	entre	_	ADP	_	_	5	cas	_	_
+4	los	_	DET	_	_	5	de	_	_
+5	datos	_	NOUN	_	_	2	nmo	_	_
+6	económicos	_	ADJ	_	_	5	amo	_	_
+7	y	_	CCONJ	_	_	9	c	_	_
+8	la	_	DET	_	_	9	de	_	_
+9	retórica	_	NOUN	_	_	5	con	_	_
+10	política	_	ADJ	_	_	9	amo	_	_
+11	es	_	AUX	_	_	12	co	_	_
+12	familiar	_	ADJ	_	_	0	roo	_	_
+13	,	_	PUNCT	_	_	12	punct	_	_
+14	o	_	CCONJ	_	_	16	c	_	_
+15	debería	_	AUX	_	_	16	au	_	_
+16	ser	_	AUX	_	_	17	co	_	_
+17	lo	_	PRON	_	_	12	con	_	_
+17	.	_	PUNCT	_	_	12	punc	_	_
+
+# text = El estudio de viabilidad calcula que los pasajeros tardarían unos cuatro minutos en cruzar el río Potomac en la góndola.
+1	El	_	DET	_	_	2	de	_	_
+2	estudio	_	NOUN	_	_	5	nsub	_	_
+3	de	_	ADP	_	_	4	cas	_	_
+4	viabilidad	_	NOUN	_	_	2	nmo	_	_
+5	calcula	_	VERB	_	_	0	roo	_	_
+6	que	_	SCONJ	_	_	9	mar	_	_
+7	los	_	DET	_	_	8	de	_	_
+8	pasajeros	_	NOUN	_	_	9	nsub	_	_
+9	tardarían	_	VERB	_	_	5	ccom	_	_
+10	unos	_	DET	_	_	12	de	_	_
+11	cuatro	_	NUM	_	_	12	nummo	_	_
+12	minutos	_	NOUN	_	_	9	ob	_	_
+13	en	_	ADP	_	_	14	cas	_	_
+14	cruzar	_	VERB	_	_	9	xcom	_	_
+15	el	_	DET	_	_	16	de	_	_
+16	río	_	NOUN	_	_	14	ob	_	_
+17	Potomac	_	PROPN	_	_	16	flat	_	_
+18	en	_	ADP	_	_	20	cas	_	_
+19	la	_	DET	_	_	20	de	_	_
+20	góndola	_	NOUN	_	_	14	ob	_	_
+12	.	_	PUNCT	_	_	5	punc	_	_
+
+# text = colecionaba tarjetas y las intercambiaba con los otros chicos
+1	colecionaba	_	VERB	_	_	0	roo	_	_
+2	tarjetas	_	NOUN	_	_	1	ob	_	_
+3	y	_	CCONJ	_	_	5	c	_	_
+4	las	_	PRON	_	_	5	ob	_	_
+5	intercambiaba	_	VERB	_	_	1	con	_	_
+6	con	_	ADP	_	_	9	cas	_	_
+7	los	_	DET	_	_	9	de	_	_
+8	otros	_	DET	_	_	9	de	_	_
+9	chicos	_	NOUN	_	_	5	ob	_	_
+
+# text = este delito conlleva una pena de cinco años de prisión
+1	este	_	DET	_	_	2	de	_	_
+2	delito	_	NOUN	_	_	3	nsub	_	_
+3	conlleva	_	VERB	_	_	0	roo	_	_
+4	una	_	DET	_	_	5	de	_	_
+5	pena	_	NOUN	_	_	3	ob	_	_
+6	de	_	ADP	_	_	8	cas	_	_
+7	cinco	_	NUM	_	_	8	nummo	_	_
+8	años	_	NOUN	_	_	5	nmo	_	_
+9	de	_	ADP	_	_	10	cas	_	_
+10	prisión	_	NOUN	_	_	8	nmo	_	_
+
+# text = la noticia fue llevada a todos los pueblos de la provincia
+1	la	_	DET	_	_	2	de	_	_
+2	noticia	_	NOUN	_	_	4	nsubj:pas	_	_
+3	fue	_	AUX	_	_	4	au	_	_
+4	llevada	_	VERB	_	_	0	roo	_	_
+5	a	_	ADP	_	_	8	cas	_	_
+6	todos	_	DET	_	_	8	det	_	_
+7	los	_	DET	_	_	8	de	_	_
+8	pueblos	_	NOUN	_	_	4	ob	_	_
+9	de	_	ADP	_	_	11	cas	_	_
+10	la	_	DET	_	_	11	de	_	_
+11	provincia	_	NOUN	_	_	8	de	_	_
+
+# text = llevo estos pensamientos en el fondo de mi mente
+1	llevo	_	VERB	_	_	0	roo	_	_
+2	estos	_	DET	_	_	3	de	_	_
+3	pensamientos	_	NOUN	_	_	1	ob	_	_
+4	en	_	ADP	_	_	6	cas	_	_
+5	el	_	DET	_	_	6	de	_	_
+6	fondo	_	NOUN	_	_	1	ob	_	_
+7	de	_	ADP	_	_	10	cas	_	_
+9	mi	_	PRON	_	_	10	nmod:pos	_	_
+10	mente	_	NOUN	_	_	6	nmo	_	_
+
+# text = Adam habría sido llevado a la vida eterna
+1	Adam	_	PROPN	_	_	4	nsub	_	_
+2	habría	_	AUX	_	_	4	au	_	_
+3	sido	_	AUX	_	_	4	aux:pas	_	_
+4	llevado	_	VERB	_	_	0	roo	_	_
+5	a	_	ADP	_	_	7	cas	_	_
+6	la	_	DET	_	_	7	de	_	_
+7	vida	_	NOUN	_	_	4	ob	_	_
+8	eterna	_	ADJ	_	_	7	amo	_	_
+
+# text = los revestimientos se habían podrido y tuvieron que ser reemplazados
+1	los	_	DET	_	_	2	de	_	_
+2	revestimientos	_	NOUN	_	_	5	nsub	_	_
+3	se	_	PRON	_	_	5	compound:pr	_	_
+4	habían	_	AUX	_	_	5	au	_	_
+5	podrido	_	VERB	_	_	0	roo	_	_
+6	y	_	CCONJ	_	_	7	c	_	_
+7	tuvieron	_	VERB	_	_	5	con	_	_
+8	que	_	ADP	_	_	7	fixe	_	_
+9	ser	_	AUX	_	_	10	aux:pas	_	_
+10	reemplazados	_	VERB	_	_	7	xcom	_	_
+
+# text = estaba indignada de que esta chica se atrevía a burlarse de ella delante de la clase.
+1	estaba	_	AUX	_	_	2	co	_	_
+2	indignada	_	ADJ	_	_	0	roo	_	_
+3	de	_	ADP	_	_	8	cas	_	_
+4	que	_	ADP	_	_	8	scon	_	_
+5	esta	_	DET	_	_	6	de	_	_
+6	chica	_	NOUN	_	_	8	nsub	_	_
+7	se	_	PRON	_	_	8	compound:pr	_	_
+8	atrevía	_	VERB	_	_	8	ccom	_	_
+9	a	_	PART	_	_	10	mar	_	_
+10	burlarse	_	VERB	_	_	8	xcom	_	_
+11	de	_	ADP	_	_	12	cas	_	_
+12	ella	_	PRON	_	_	10	ob	_	_
+13	delante	_	ADV	_	_	10	advmo	_	_
+14	de	_	ADP	_	_	16	cas	_	_
+15	la	_	DET	_	_	16	de	_	_
+16	clase	_	NOUN	_	_	13	ob	_	_
+
+# text = la avalancha que tuvo en el colegio electoral oscureció la estrechez de una victoria basada en sólo el 43% del voto popular
+1	la	_	DET	_	_	2	de	_	_
+2	avalancha	_	NOUN	_	_	9	nsub	_	_
+3	que	_	PRON	_	_	4	nsub	_	_
+4	tuvo	_	VERB	_	_	2	acl:relc	_	_
+5	en	_	ADP	_	_	7	cas	_	_
+6	el	_	DET	_	_	7	de	_	_
+7	colegio	_	NOUN	_	_	4	ob	_	_
+8	electoral	_	ADJ	_	_	7	amo	_	_
+9	oscureció	_	VERB	_	_	0	roo	_	_
+10	la	_	DET	_	_	11	de	_	_
+11	estrechez	_	NOUN	_	_	9	ob	_	_
+12	de	_	ADP	_	_	14	cas	_	_
+13	una	_	DET	_	_	14	de	_	_
+14	victoria	_	NOUN	_	_	11	nmo	_	_
+15	basada	_	VERB	_	_	14	ac	_	_
+16	en	_	ADP	_	_	19	cas	_	_
+17	sólo	_	ADV	_	_	19	advmo	_	_
+18	el	_	DET	_	_	19	de	_	_
+19	43%	_	NUM	_	_	15	ob	_	_
+20	de	_	ADP	_	_	22	cas	_	_
+21	el	_	DET	_	_	22	de	_	_
+22	voto	_	NOUN	_	_	19	nmo	_	_
+23	popular	_	ADJ	_	_	22	amo	_	_
+
+# text = Las tropas estadounidenses ahora llevan atropina y autoinyectores en sus equipos de primeros auxilios para utilizarlos en caso de intoxicación por agentes nerviosos organofosforados
+1	Las	_	DET	_	_	2	de	_	_
+2	tropas	_	NOUN	_	_	5	nsub	_	_
+3	estadounidenses	_	ADJ	_	_	2	amo	_	_
+4	ahora	_	ADV	_	_	5	advmo	_	_
+5	llevan	_	VERB	_	_	0	roo	_	_
+6	atropina	_	NOUN	_	_	5	ob	_	_
+7	y	_	CCONJ	_	_	8	c	_	_
+8	autoinyectores	_	NOUN	_	_	6	con	_	_
+9	en	_	ADP	_	_	11	cas	_	_
+10	sus	_	PRON	_	_	11	nmod:pos	_	_
+11	equipos	_	NOUN	_	_	5	ob	_	_
+12	de	_	ADP	_	_	14	cas	_	_
+13	primeros	_	ADJ	_	_	14	compound	_	_
+14	auxilios	_	NOUN	_	_	5	ob	_	_
+15	para	_	ADP	_	_	16	mar	_	_
+16	utilizar	_	VERB	_	_	5	xcom	_	_
+17	los	_	DET	_	_	16	ob	_	_
+18	en	_	ADP	_	_	19	cas	_	_
+19	caso	_	NOUN	_	_	16	ob	_	_
+20	de	_	ADP	_	_	21	cas	_	_
+21	intoxicación	_	NOUN	_	_	19	nmo	_	_
+22	por	_	ADP	_	_	23	cas	_	_
+23	agentes	_	NOUN	_	_	21	nmo	_	_
+24	nerviosos	_	ADJ	_	_	23	amo	_	_
+25	organofosforados	_	ADJ	_	_	23	amo	_	_
+
+# text = a largo plazo, podrìa lograr mediante la destreza lo que no puede hacer a corto plazo mediante la fuerza y la violencia
+1	a	_	ADP	_	_	3	cas	_	_
+2	largo	_	ADJ	_	_	3	amo	_	_
+3	plazo	_	NOUN	_	_	6	ob	_	_
+4	,	_	PUNCT	_	_	6	punc	_	_
+5	podrìa	_	AUX	_	_	6	au	_	_
+6	lograr	_	VERB	_	_	0	roo	_	_
+7	mediante	_	ADP	_	_	9	cas	_	_
+8	la	_	DET	_	_	9	de	_	_
+9	destreza	_	NOUN	_	_	6	ob	_	_
+10	lo	_	PRON	_	_	11	de	_	_
+11	que	_	PRON	_	_	6	nsub	_	_
+12	no	_	ADV	_	_	13	advmo	_	_
+13	puede	_	AUX	_	_	14	au	_	_
+14	hacer	_	VERB	_	_	10	acl:relc	_	_
+15	a	_	ADP	_	_	17	cas	_	_
+16	corto	_	ADJ	_	_	17	amo	_	_
+17	plazo	_	NOUN	_	_	14	ob	_	_
+18	mediante	_	ADP	_	_	20	cas	_	_
+19	la	_	DET	_	_	20	de	_	_
+20	fuerza	_	NOUN	_	_	14	ob	_	_
+21	y	_	CCONJ	_	_	23	c	_	_
+22	la	_	DET	_	_	23	de	_	_
+23	violencia	_	NOUN	_	_	20	con	_	_
+
+# text = ha sido dicho que sólo una sociedad jerárquica dominada por una clase ociosa puede producir obras de arte
+1	ha	_	AUX	_	_	3	au	_	_
+2	sido	_	AUX	_	_	3	aux:pas	_	_
+3	dicho	_	VERB	_	_	0	roo	_	_
+4	que	_	SCONJ	_	_	15	mar	_	_
+5	sólo	_	ADV	_	_	7	advmo	_	_
+6	una	_	DET	_	_	7	de	_	_
+7	sociedad	_	NOUN	_	_	15	nsub	_	_
+8	jerárquica	_	ADJ	_	_	7	amo	_	_
+9	dominada	_	VERB	_	_	7	acl:relc	_	_
+10	por	_	ADP	_	_	12	cas	_	_
+11	una	_	DET	_	_	12	de	_	_
+12	clase	_	NOUN	_	_	9	ob	_	_
+13	ociosa	_	ADJ	_	_	12	amo	_	_
+14	puede	_	AUX	_	_	15	au	_	_
+15	producir	_	VERB	_	_	3	csub	_	_
+16	obras	_	NOUN	_	_	15	ob	_	_
+17	de	_	ADP	_	_	18	cas	_	_
+18	arte	_	NOUN	_	_	16	nmo	_	_
+
+# text = su ingenua explicación de que no habría quemado la iglesia si no hubiera pensado que el obispo estaba allí
+1	su	_	PRON	_	_	3	nmod:pos	_	_
+2	ingenua	_	ADJ	_	_	3	amo	_	_
+3	explicación	_	NOUN	_	_	0	root	_	_
+4	de	_	ADP	_	_	8	cas	_	_
+5	que	_	SCONJ	_	_	8	mar	_	_
+6	no	_	ADV	_	_	8	advmo	_	_
+7	habría	_	AUX	_	_	8	au	_	_
+8	quemado	_	VERB	_	_	3	ac	_	_
+9	la	_	DET	_	_	10	de	_	_
+10	iglesia	_	NOUN	_	_	8	ob	_	_
+11	si	_	SCONJ	_	_	14	scon	_	_
+12	no	_	ADV	_	_	14	advmo	_	_
+13	hubiera	_	AUX	_	_	14	au	_	_
+14	pensado	_	VERB	_	_	8	advc	_	_
+15	que	_	SCONJ	_	_	18	mar	_	_
+16	el	_	DET	_	_	17	de	_	_
+17	obispo	_	NOUN	_	_	18	nsub	_	_
+18	estaba	_	VERB	_	_	14	ccom	_	_
+19	allí	_	ADV	_	_	18	advmo	_	_
