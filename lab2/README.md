@@ -4,12 +4,12 @@ This lab corresponds to Chapters 5 to 9 of the Notes, but follows them
 only loosely.
 Therefore we will structure it according to the exercise sessions
 rather than chapters.
-The abstract syntax will be given in this directory.
+The abstract syntax is given in the subdirectory grammars/abstract/
 
 ## Session 5
 
 1. Design a morphology for the main lexical types (N, A, V) with parameters and a couple of paradigms.
-2. Test it by implementing the Mini lexicon.
+2. Test it by implementing the Mini lexicon (grammars/abstract/MiniLexicon.gf)
 
 ## Session 6
 
