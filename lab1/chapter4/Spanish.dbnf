@@ -272,17 +272,17 @@ ListNP_obl ::= ListNP_obl Adv_comma # head conj
 #token AdA muy demasiado genéticamente
 #token AdV definitivamente siempre nunca
 #token Det un una unos unas el la las los cada alguno alguna algunos algunas mucho mucha muchos muchas ningún ninguno ninguna ningunos ningunas
-#token Pron yo tú él ella nosotros nosotras vosotros vosotras ellos ellas  me he she us them
-#token Subj if when although because as
-#token aux can could must will would shall should
-#token Punct . ! ?
+#token Pron yo me tú te él lo ella la nosotros nosotras nos vosotros vosotras os ellos los ellas las
+#token Subj si cuándo although aunque como
+#token aux poder deber necesitar querer saber soler -- haber que, tener que, other verb forms...
+#token Punct . ¡ ! ¿ ?
 #token Punct_appos , :
-#token Conj and or nor
-#token Conj_pre both either neither
-#token IDet which
-#token Pron_poss my your his her its our their
-#token RP that who
-#token Card five
+#token Conj y o ni
+#token Conj_pre ambos ambas o ni
+#token IDet cuál cuáles
+#token Pron_poss mi mis mío míos mía mías tu tus tuyo tuya tuyos tuyas su sus suyo suya suyos suyas nuestro nuestra nuestros nuestras vuestro vuestra vuestros vuestras -- mixed with possessive adjectives
+#token RP que cual cuales cuanto cuantos donde quien quienes cuyo cuyos
+#token Card uno dos tres cuatro cinco -- etc.
 
 -- structural word lexicon: syncategorematic words
 #token cop am is are was were be been being
