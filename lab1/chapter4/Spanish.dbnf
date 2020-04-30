@@ -117,7 +117,7 @@ VP ::= VV VP_to # head xcomp
 VP ::= V2V NP VP # head obj xcomp
 VP ::= V2V NP VP_to # head obj xcomp
 VP ::= VP comma? Adv # head punct advmod
-VP ::= AdV VP # advmod head 
+VP ::= AdV VP # advmod head
 VP ::= VP NP_obl # head obl # 0.001
 VP ::= VS S_direct # head parataxis
 
@@ -266,13 +266,13 @@ ListNP_obl ::= ListNP_obl Adv_comma # head conj
 #pos SYM Symb
 
 -- structural word lexicon: normal categories
-#token Prep at from in of on to with than
-#token IP who whom what
-#token IAdv when where why
-#token AdA very too genetically
-#token AdV definitely always never
-#token Det a an the every some many no
-#token Pron I me you he him she her it we us they them
+#token Prep a ante bajo cabe con contra de desde durante en enter hacia hasta mediante para por según sin so sobre tras versus vía
+#token IP quién qué
+#token IAdv cuando dónde -- "por qué"
+#token AdA muy demasiado genéticamente
+#token AdV definitivamente siempre nunca
+#token Det un una unos unas el la las los cada alguno alguna algunos algunas mucho mucha muchos muchas ningún ninguno ninguna ningunos ningunas
+#token Pron yo tú él ella nosotros nosotras vosotros vosotras ellos ellas  me he she us them
 #token Subj if when although because as
 #token aux can could must will would shall should
 #token Punct . ! ?
@@ -317,8 +317,3 @@ ListNP_obl ::= ListNP_obl Adv_comma # head conj
 #token Adv now today here before there yesterday tomorrow always
 #token Predet probably only
 #token Symb $
-
-
-
-
-
