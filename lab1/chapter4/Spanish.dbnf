@@ -289,27 +289,12 @@ ListNP_obl ::= ListNP_obl Adv_comma # head conj
 #token be_V ser soy eres es somos sois son estar estoy estás está estamos estáis están -- and this is just pres. ind. ...
 #token haber he has ha hay hemos habéis han  -- and this is just pres. ind. ... (also, I'm not including tener because it's not used in that way)
 #token neg no
-#token que que
-#token to que para (i)
+#token that que -- ?
+#token to que --?
 #token if si
 #token comma ,
 #token colon :
 #token quote "
 #token parenth ( ) [ ]
 
--- content word lexicon
-#token PN John Mary
-#token V sleeps sleep slept walk walks walked sing sings sang sung move moves moved happen happens happened leave leaves left run runs ran
-#token V2 sees see saw seen love loves loved look looks give gives gave concern concerns concerned make makes made decide decided
-#token V2 know knows knew known
-#token V3 give gives gave
-#token V2C call calls called consider considers considered
-#token V2V see sees saw consider considers considered stop stops stopped
-#token VS say says said believe believes
-#token VV want wants try tries
-#token A old good curious black best cold modified tired bad large larger
-#token N love sleep loves sleeps man men woman women cat cats doctor beer world elephant room hint hints reason reasons loser losers movie life
-#token N house president moon Earth girl girls wine beer
-#token Adv now today here before there yesterday tomorrow always
-#token Predet probably only
-#token Symb $
+-- content word lexicon (limited to what's also in the corpus, otherwise it would take forever)
