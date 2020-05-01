@@ -1,6 +1,5 @@
 # Part 2
 
-## Method
 A possible approach to test [the given English grammar](https://github.com/harisont/comp-syntax-2020/blob/master/lab1/chapter4/English.dbnf) is to simply run `gf-ud dbnf English.dbnf Utt` on the various sentences.
 However, the CONLL files obtained in this way, like
 
