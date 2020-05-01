@@ -45,6 +45,7 @@ QS ::= neg? have NP? cop VP_pass # advmod aux nsubj:pass aux:pass head
 QS ::= neg? aux NP? have? cop VP_pass # advmod aux nsubj:pass aux:pass aux head
 
 QS ::= IP VP # nsubj head
+QS ::= IP be_V # nsubj head
 QS ::= IP neg? aux have? VP # nsubj advmod aux aux head
 QS ::= IP neg? cop Comp # nsubj advmod cop head
 QS ::= IP neg? aux have? cop Comp # nsubj advmod aux cop head
@@ -85,7 +86,7 @@ S  ::= NP_oblcomma S # nmod head
 
 -- embedded sentences
 SC ::= S_that
-SC ::= QS
+SC ::= QS # # 0.01
 SC ::= VP_to
 
 
@@ -268,7 +269,7 @@ ListNP_obl ::= ListNP_obl Adv_comma # head conj
 #token Card uno dos tres cuatro cinco -- etc.
 
 -- structural word lexicon: syncategorematic words
-#token cop ser soy eres es somos sois son estar estoy estás está estamos estáis están -- and this is just pres. ind. ...
+#token cop ser soy eres es somos sois son estar estoy estás está estamos estáis están era -- and this is just pres. ind. ...
 #token be_V ser soy eres es somos sois son estar estoy estás está estamos estáis están -- and this is just pres. ind. ...
 #token haber he has ha hay hemos habéis han  -- and this is just pres. ind. ... (also, I'm not including tener because it's not used in that way)
 #token neg no

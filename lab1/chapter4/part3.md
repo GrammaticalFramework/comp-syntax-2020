@@ -6,6 +6,7 @@ The approach adopted to adapt [the given English grammar](https://github.com/har
 3. Here, one of the main problems is that, in Spanish, it is harder to distinguish `QS`s from `S`s, because the word order (apart from not being the same as in English) does not change. Another important issue is that the subject of a sentence can be implicit. What I did to adjust the grammar was to:
   - make the subject optional for all `S`s
   - change the rules for `QS`s and `S`s, moving the negation to the beginning of the sentence
+  - cheat a little bit by assigning very low weight to `SC ::= QS`
 
 Other important changes made:
 - structural word lexicon
