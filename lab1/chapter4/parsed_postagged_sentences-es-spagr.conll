@@ -10,7 +10,7 @@
 
 
 # text = Una:<DET> pequeña:<ADJ> ciudad:<NOUN> con:<ADP> dos:<NUM> minaretes:<NOUN> pasa:<VERB> deslizándose:<VERB> .:<PUNCT> 
-# analyses = 1476
+# analyses = 1172
 # parsetree = (Utt (Utt (S (NP (NP (Det Una) (CN (AP (A pequeña)) (CN (N ciudad)))) (NP_obl (Prep con) (NP (Num (Card dos)) (NP (CN (N minaretes)))))) (VP (VS pasa) (S_that (S (VP (V deslizándose))))))) (Punct '.'))
 1	Una	_	DET	_	_	3	det	_	_
 2	pequeña	_	ADJ	_	_	3	amod	_	_
@@ -25,7 +25,7 @@
 
 
 # text = Yo:<PRON> era:<AUX> solamente:<ADV> un:<DET> chico:<NOUN> con:<ADP> los:<DET> zapatos:<NOUN> llenos:<ADJ> de:<ADP> barro:<NOUN> .:<PUNCT> 
-# analyses = 404
+# analyses = 364
 # parsetree = (Utt (Utt (S (NP (Pron Yo)) (cop era) (AdV solamente) (Comp (NP (NP (Det un) (CN (N chico))) (NP_obl (Prep con) (NP (Det los) (CN (CN (N zapatos)) (AP (AP (A llenos)) (NP_obl (Prep de) (NP (CN (N barro)))))))))))) (Punct '.'))
 1	Yo	_	PRON	_	_	5	nsubj	_	_
 2	era	_	cop	_	_	5	cop	_	_
@@ -43,30 +43,30 @@
 
 
 # text = La:<DET> policía:<NOUN> de:<ADP> tráfico:<NOUN> de:<ADP> Shenzhen:<PROPN> ya:<ADV> se:<PRON> ha:<AUX> decantado:<VERB> por:<ADP> multas:<NOUN> poco:<ADV> convencionales:<ADJ> con:<ADP> anterioridad:<NOUN> .:<PUNCT> 
-# analyses = 0
-# parsetree = (Chunks (Comp (Comp (NP (NP (Det La) (CN (N policía))) (NP_obl (Prep de) (NP (NP (CN (N tráfico))) (NP_obl (Prep de) (NP (PN Shenzhen))))))) (Adv ya)) (Comp (NP (Pron se))) (haber ha) (S_front (S (VP (V2 decantado) (NP_obl (Prep por) (NP (CN (CN (N multas)) (AP (AdA poco) (AP (AP (A convencionales)) (NP_obl (Prep con) (NP (CN (N anterioridad))))))))))) (comma '.')))
+# analyses = 648
+# parsetree = (Utt (Utt (NP (NP (Det La) (CN (N policía))) (NP_obl (Prep de) (NP (NP (CN (N tráfico))) (NP_obl (Prep de) (NP (NP (NP (PN Shenzhen)) (SC (S_that (S (NP (Predet ya) (NP (Pron se))) (have ha) (VP (V decantado)))))) (NP_obl (Prep por) (NP (CN (CN (N multas)) (AP (AdA poco) (AP (AP (A convencionales)) (NP_obl (Prep con) (NP (CN (N anterioridad))))))))))))))) (Punct '.'))
 1	La	_	DET	_	_	2	det	_	_
-2	policía	_	NOUN	_	_	10	dep	_	_
+2	policía	_	NOUN	_	_	0	root	_	_
 3	de	_	ADP	_	_	4	case	_	_
 4	tráfico	_	NOUN	_	_	2	nmod	_	_
 5	de	_	ADP	_	_	6	case	_	_
 6	Shenzhen	_	PROPN	_	_	4	nmod	_	_
-7	ya	_	ADV	_	_	2	advmod	_	_
-8	se	_	PRON	_	_	10	dep	_	_
-9	ha	_	haber	_	_	10	dep	_	_
-10	decantado	_	VERB	_	_	0	root	_	_
+7	ya	_	ADV	_	_	8	det:predet	_	_
+8	se	_	PRON	_	_	10	nsubj	_	_
+9	ha	_	have	_	_	10	aux	_	_
+10	decantado	_	VERB	_	_	6	acl	_	_
 11	por	_	ADP	_	_	12	case	_	_
-12	multas	_	NOUN	_	_	10	obl	_	_
+12	multas	_	NOUN	_	_	6	nmod	_	_
 13	poco	_	ADV	_	_	14	advmod	_	_
 14	convencionales	_	ADJ	_	_	12	amod	_	_
 15	con	_	ADP	_	_	16	case	_	_
 16	anterioridad	_	NOUN	_	_	14	nmod	_	_
-17	.	_	PUNCT	_	_	10	punct	_	_
+17	.	_	PUNCT	_	_	2	punct	_	_
 
 
 
 # text = El:<DET> estudio:<NOUN> de:<ADP> los:<DET> volcanes:<NOUN> se:<PRON> llama:<VERB> vulcanología:<NOUN> ,:<PUNCT> a:<ADP> veces:<NOUN> escrito:<VERB> volcanología:<NOUN> .:<PUNCT> 
-# analyses = 1474
+# analyses = 1392
 # parsetree = (Utt (Utt (S (NP (NP (NP (Det El) (CN (N estudio))) (NP_obl (Prep de) (NP (NP (Det los) (CN (N volcanes))) (RS (RP se) (VP (V2 llama) (NP (CN (N vulcanología)))))))) (comma ',') (NP_obl (Prep a) (NP (CN (N veces))))) (VP (V2 escrito) (NP (CN (N volcanología)))))) (Punct '.'))
 1	El	_	DET	_	_	2	det	_	_
 2	estudio	_	NOUN	_	_	12	nsubj	_	_
@@ -129,57 +129,57 @@
 
 
 # text = Un:<DET> testigo:<NOUN> contó:<VERB> a:<ADP> la:<DET> policía:<NOUN> que:<SCONJ> la:<DET> víctima:<NOUN> había:<AUX> atacado:<VERB> al:<ADP> sospechoso:<NOUN> en:<ADP> abril:<PROPN> .:<PUNCT> 
-# analyses = 0
-# parsetree = (Chunks (Comp (NP (NP (NP (Det Un)) (SC (S_that (S (NP (CN (N testigo))) (VP (V contó)))))) (NP_obl (Prep a) (NP (Det la) (CN (N policía)))))) (RP que) (Comp (NP (Det la) (CN (N víctima)))) (Str había) (S_front (S (VP (V2 atacado) (NP_obl (Prep al) (NP (NP (CN (N sospechoso))) (NP_obl (Prep en) (NP (PN abril))))))) (comma '.')))
-1	Un	_	DET	_	_	11	dep	_	_
+# analyses = 6696
+# parsetree = (Utt (Utt (S (NP (Det Un) (CN (N testigo))) (VP (V2 contó) (NP_obl (Prep a) (NP (NP (NP (Det la) (CN (N policía))) (SC (QS (if que) (S (NP (Det la) (CN (N víctima))) (have había) (VP (V atacado)))))) (NP_obl (Prep al) (NP (NP (CN (N sospechoso))) (NP_obl (Prep en) (NP (PN abril)))))))))) (Punct '.'))
+1	Un	_	DET	_	_	2	det	_	_
 2	testigo	_	NOUN	_	_	3	nsubj	_	_
-3	contó	_	VERB	_	_	1	acl	_	_
+3	contó	_	VERB	_	_	0	root	_	_
 4	a	_	ADP	_	_	6	case	_	_
 5	la	_	DET	_	_	6	det	_	_
-6	policía	_	NOUN	_	_	1	nmod	_	_
-7	que	_	PRON	_	_	11	dep	_	_
+6	policía	_	NOUN	_	_	3	obl	_	_
+7	que	_	SCONJ	_	_	11	mark	_	_
 8	la	_	DET	_	_	9	det	_	_
-9	víctima	_	NOUN	_	_	11	dep	_	_
-10	había	_	X	_	_	11	dep	_	_
-11	atacado	_	VERB	_	_	0	root	_	_
+9	víctima	_	NOUN	_	_	11	nsubj	_	_
+10	había	_	have	_	_	11	aux	_	_
+11	atacado	_	VERB	_	_	6	acl	_	_
 12	al	_	ADP	_	_	13	case	_	_
-13	sospechoso	_	NOUN	_	_	11	obl	_	_
+13	sospechoso	_	NOUN	_	_	6	nmod	_	_
 14	en	_	ADP	_	_	15	case	_	_
 15	abril	_	PROPN	_	_	13	nmod	_	_
-16	.	_	PUNCT	_	_	11	punct	_	_
+16	.	_	PUNCT	_	_	3	punct	_	_
 
 
 
 # text = Es:<AUX> más:<ADV> evidente:<ADJ> cuando:<ADV> el:<DET> nombre:<NOUN> de:<ADP> un:<DET> famoso:<NOUN> es:<VERB> bastante:<ADV> raro:<ADJ> a:<ADP> el:<DET> principio:<NOUN> .:<PUNCT> 
 # analyses = 0
-# parsetree = (Chunks (Str Es) (Comp (Comp (AP (AdA más) (AP (A evidente)))) (Adv cuando)) (S_front (S (NP (NP (Det el) (CN (N nombre))) (NP_obl (Prep de) (NP (Det un) (CN (N famoso))))) (VP (V2 es) (NP (CN (AP (AdA bastante) (AP (AP (A raro)) (NP_obl (Prep a) (NP (Det el))))) (CN (N principio)))))) (comma '.')))
-1	Es	_	X	_	_	10	dep	_	_
+# parsetree = (Chunks (Str Es) (Comp (Comp (AP (AdA más) (AP (A evidente)))) (Adv cuando)) (S_front (S (NP (NP (Det el) (CN (N nombre))) (NP_obl (Prep de) (NP (Det un) (CN (N famoso))))) (cop es) (AdV bastante) (Comp (AP (AP (A raro)) (NP_obl (Prep a) (NP (Det el) (CN (N principio))))))) (comma '.')))
+1	Es	_	X	_	_	12	dep	_	_
 2	más	_	ADV	_	_	3	advmod	_	_
-3	evidente	_	ADJ	_	_	10	dep	_	_
+3	evidente	_	ADJ	_	_	12	dep	_	_
 4	cuando	_	ADV	_	_	3	advmod	_	_
 5	el	_	DET	_	_	6	det	_	_
-6	nombre	_	NOUN	_	_	10	nsubj	_	_
+6	nombre	_	NOUN	_	_	12	nsubj	_	_
 7	de	_	ADP	_	_	9	case	_	_
 8	un	_	DET	_	_	9	det	_	_
 9	famoso	_	NOUN	_	_	6	nmod	_	_
-10	es	_	VERB	_	_	0	root	_	_
+10	es	_	cop	_	_	12	cop	_	_
 11	bastante	_	ADV	_	_	12	advmod	_	_
-12	raro	_	ADJ	_	_	15	amod	_	_
-13	a	_	ADP	_	_	14	case	_	_
-14	el	_	DET	_	_	12	nmod	_	_
-15	principio	_	NOUN	_	_	10	obj	_	_
-16	.	_	PUNCT	_	_	10	punct	_	_
+12	raro	_	ADJ	_	_	0	root	_	_
+13	a	_	ADP	_	_	15	case	_	_
+14	el	_	DET	_	_	15	det	_	_
+15	principio	_	NOUN	_	_	12	nmod	_	_
+16	.	_	PUNCT	_	_	12	punct	_	_
 
 
 
 # text = Esto:<DET> no:<ADV> ha:<AUX> impedido:<VERB> que:<SCONJ> los:<DET> inversores:<NOUN> hayan:<AUX> acudido:<VERB> a:<ADP> depositar:<VERB> su:<PRON> dinero:<NOUN> en:<ADP> los:<DET> fondos:<NOUN> .:<PUNCT> 
 # analyses = 0
-# parsetree = (Chunks (Comp (Comp (NP (Det Esto))) (Adv no)) (haber ha) (ListS (S (VP (V impedido)))) (RP que) (Comp (NP (Det los) (CN (N inversores)))) (Str hayan) (VPSlash (VP (V acudido)) (Prep a)) (S_front (S (VP (V2 depositar) (NP (NP (NP_poss (Pron_poss su)) (CN (N dinero))) (NP_obl (Prep en) (NP (Det los) (CN (N fondos))))))) (comma '.')))
+# parsetree = (Chunks (Det Esto) (ListS (S (neg no) (have ha) (VP (V impedido)))) (Subj que) (Comp (NP (Det los) (CN (N inversores)))) (Str hayan) (VPSlash (VP (V acudido)) (Prep a)) (S_front (S (VP (V2 depositar) (NP (NP (NP_poss (Pron_poss su)) (CN (N dinero))) (NP_obl (Prep en) (NP (Det los) (CN (N fondos))))))) (comma '.')))
 1	Esto	_	DET	_	_	11	dep	_	_
-2	no	_	ADV	_	_	1	advmod	_	_
-3	ha	_	haber	_	_	11	dep	_	_
+2	no	_	ADV	_	_	4	advmod	_	_
+3	ha	_	have	_	_	4	aux	_	_
 4	impedido	_	VERB	_	_	11	dep	_	_
-5	que	_	PRON	_	_	11	dep	_	_
+5	que	_	SCONJ	_	_	11	dep	_	_
 6	los	_	DET	_	_	7	det	_	_
 7	inversores	_	NOUN	_	_	11	dep	_	_
 8	hayan	_	X	_	_	11	dep	_	_
@@ -220,34 +220,34 @@
 
 
 # text = El:<DET> estudio:<NOUN> de:<ADP> viabilidad:<NOUN> calcula:<VERB> que:<SCONJ> los:<DET> pasajeros:<NOUN> tardarían:<VERB> unos:<DET> cuatro:<NUM> minutos:<NOUN> en:<ADP> cruzar:<VERB> el:<DET> río:<NOUN> Potomac:<PROPN> en:<ADP> la:<DET> góndola:<NOUN> .:<PUNCT> 
-# analyses = 53232
-# parsetree = (Utt (Utt (S (NP (NP (Det El) (CN (N estudio))) (NP_obl (Prep de) (NP (CN (N viabilidad))))) (VP (VS calcula) (S_that (that que) (S (NP (NP (Det los)) (RS (NP (CN (N pasajeros))) (VPSlash (VP (V3 tardarían) (NP (Det unos)) (NP (Num (Card cuatro)) (NP (CN (N minutos))))) (Prep en)))) (VP (V3 cruzar) (NP (Det el)) (NP (NP (N río) (PN Potomac)) (NP_obl (Prep en) (NP (Det la) (CN (N góndola))))))))))) (Punct '.'))
+# analyses = 0
+# parsetree = (Chunks (Comp (NP (NP (Det El) (CN (N estudio))) (NP_obl (Prep de) (NP (NP (CN (N viabilidad))) (SC (S_that (S (VP (VS calcula) (S_that (that que) (S (NP (Det los) (CN (N pasajeros))) (VP (V tardarían)))))))))))) (Det unos) (Comp (NP (Num (Card cuatro)) (NP (CN (N minutos))))) (Prep en) (S_front (S (VP (V3 cruzar) (NP (Det el) (CN (N río))) (NP (NP (PN Potomac)) (NP_obl (Prep en) (NP (Det la) (CN (N góndola))))))) (comma '.')))
 1	El	_	DET	_	_	2	det	_	_
-2	estudio	_	NOUN	_	_	5	nsubj	_	_
+2	estudio	_	NOUN	_	_	14	dep	_	_
 3	de	_	ADP	_	_	4	case	_	_
 4	viabilidad	_	NOUN	_	_	2	nmod	_	_
-5	calcula	_	VERB	_	_	0	root	_	_
-6	que	_	SCONJ	_	_	14	mark	_	_
-7	los	_	DET	_	_	14	nsubj	_	_
+5	calcula	_	VERB	_	_	4	acl	_	_
+6	que	_	SCONJ	_	_	9	mark	_	_
+7	los	_	DET	_	_	8	det	_	_
 8	pasajeros	_	NOUN	_	_	9	nsubj	_	_
-9	tardarían	_	VERB	_	_	7	acl:relcl	_	_
-10	unos	_	DET	_	_	9	iobj	_	_
+9	tardarían	_	VERB	_	_	5	ccomp	_	_
+10	unos	_	DET	_	_	14	dep	_	_
 11	cuatro	_	NUM	_	_	12	nummod	_	_
-12	minutos	_	NOUN	_	_	9	obj	_	_
-13	en	_	ADP	_	_	9	case	_	_
-14	cruzar	_	VERB	_	_	5	ccomp	_	_
-15	el	_	DET	_	_	14	iobj	_	_
-16	río	_	NOUN	_	_	14	obj	_	_
-17	Potomac	_	PROPN	_	_	16	flat	_	_
+12	minutos	_	NOUN	_	_	14	dep	_	_
+13	en	_	ADP	_	_	14	dep	_	_
+14	cruzar	_	VERB	_	_	0	root	_	_
+15	el	_	DET	_	_	16	det	_	_
+16	río	_	NOUN	_	_	14	iobj	_	_
+17	Potomac	_	PROPN	_	_	14	obj	_	_
 18	en	_	ADP	_	_	20	case	_	_
 19	la	_	DET	_	_	20	det	_	_
-20	góndola	_	NOUN	_	_	16	nmod	_	_
-21	.	_	PUNCT	_	_	5	punct	_	_
+20	góndola	_	NOUN	_	_	17	nmod	_	_
+21	.	_	PUNCT	_	_	14	punct	_	_
 
 
 
 # text = colecionaba:<VERB> tarjetas:<NOUN> y:<CCONJ> las:<PRON> intercambiaba:<VERB> con:<ADP> los:<DET> otros:<DET> chicos:<NOUN> 
-# analyses = 488
+# analyses = 92
 # parsetree = (Utt (S (ListS (S (VP (V2 colecionaba) (NP (CN (N tarjetas)))))) (S_conj (Conj y) (S (NP (Pron las)) (VP (V2 intercambiaba) (NP_obl (Prep con) (NP (Det los) (Det otros) (CN (N chicos)))))))))
 1	colecionaba	_	VERB	_	_	0	root	_	_
 2	tarjetas	_	NOUN	_	_	1	obj	_	_
@@ -262,7 +262,7 @@
 
 
 # text = este:<DET> delito:<NOUN> conlleva:<VERB> una:<DET> pena:<NOUN> de:<ADP> cinco:<NUM> años:<NOUN> de:<ADP> prisión:<NOUN> 
-# analyses = 816
+# analyses = 420
 # parsetree = (Utt (S (NP (Det este) (CN (N delito))) (VP (V2 conlleva) (NP (NP (Det una) (CN (N pena))) (NP_obl (Prep de) (NP (NP (Num (Card cinco)) (NP (CN (N años)))) (NP_obl (Prep de) (NP (CN (N prisión))))))))))
 1	este	_	DET	_	_	2	det	_	_
 2	delito	_	NOUN	_	_	3	nsubj	_	_
@@ -278,7 +278,7 @@
 
 
 # text = la:<DET> noticia:<NOUN> fue:<AUX> llevada:<VERB> a:<ADP> todos:<DET> los:<DET> pueblos:<NOUN> de:<ADP> la:<DET> provincia:<NOUN> 
-# analyses = 82
+# analyses = 176
 # parsetree = (Utt (S (NP (Det la) (CN (N noticia))) (cop fue) (VP_pass (VP_pass (V2 llevada)) (NP_obl (Prep a) (NP (NP (Det todos) (Det los) (CN (N pueblos))) (NP_obl (Prep de) (NP (Det la) (CN (N provincia)))))))))
 1	la	_	DET	_	_	2	det	_	_
 2	noticia	_	NOUN	_	_	4	nsubj:pass	_	_
@@ -295,7 +295,7 @@
 
 
 # text = llevo:<VERB> estos:<DET> pensamientos:<NOUN> en:<ADP> el:<DET> fondo:<NOUN> de:<ADP> mi:<PRON> mente:<NOUN> 
-# analyses = 128
+# analyses = 72
 # parsetree = (Utt (S (VP (V2 llevo) (NP (NP (Det estos) (CN (N pensamientos))) (NP_obl (Prep en) (NP (NP (Det el) (CN (N fondo))) (NP_obl (Prep de) (NP (NP_poss (Pron_poss mi)) (CN (N mente))))))))))
 1	llevo	_	VERB	_	_	0	root	_	_
 2	estos	_	DET	_	_	3	det	_	_
@@ -310,15 +310,15 @@
 
 
 # text = Adam:<PROPN> habría:<AUX> sido:<AUX> llevado:<VERB> a:<ADP> la:<DET> vida:<NOUN> eterna:<ADJ> 
-# analyses = 0
-# parsetree = (Chunks (Comp (NP (PN Adam))) (Str habría) (Str sido) (ListS (S (VP (V2 llevado) (NP_obl (Prep a) (NP (Det la) (CN (CN (N vida)) (AP (A eterna)))))))))
-1	Adam	_	PROPN	_	_	4	dep	_	_
-2	habría	_	X	_	_	4	dep	_	_
-3	sido	_	X	_	_	4	dep	_	_
+# analyses = 34
+# parsetree = (Utt (S (NP (PN Adam)) (have habría) (cop sido) (VP_pass (VP_pass (V2 llevado)) (NP_obl (Prep a) (NP (Det la) (CN (CN (N vida)) (AP (A eterna))))))))
+1	Adam	_	PROPN	_	_	4	nsubj:pass	_	_
+2	habría	_	have	_	_	4	aux	_	_
+3	sido	_	cop	_	_	4	aux:pass	_	_
 4	llevado	_	VERB	_	_	0	root	_	_
 5	a	_	ADP	_	_	7	case	_	_
 6	la	_	DET	_	_	7	det	_	_
-7	vida	_	NOUN	_	_	4	obl	_	_
+7	vida	_	NOUN	_	_	4	nmod	_	_
 8	eterna	_	ADJ	_	_	7	amod	_	_
 
 
@@ -341,63 +341,63 @@
 
 # text = estaba:<AUX> indignada:<ADJ> de:<ADP> que:<ADP> esta:<DET> chica:<NOUN> se:<PRON> atrevía:<VERB> a:<PART> burlarse:<VERB> de:<ADP> ella:<PRON> delante:<ADV> de:<ADP> la:<DET> clase:<NOUN> 
 # analyses = 0
-# parsetree = (Chunks (Str estaba) (A indignada) (Prep de) (Comp (NP_obl (Prep que) (NP (NP (NP (Det esta)) (SC (S_that (S (NP (NP (CN (N chica))) (RS (NP (Pron se)) (VPSlash (VP (V atrevía)) (Prep a)))) (VP (VP (V2 burlarse) (NP_obl (Prep de) (NP (Pron ella)))) (Adv delante)))))) (NP_obl (Prep de) (NP (Det la) (CN (N clase))))))))
-1	estaba	_	X	_	_	5	dep	_	_
-2	indignada	_	ADJ	_	_	5	dep	_	_
-3	de	_	ADP	_	_	5	dep	_	_
-4	que	_	ADP	_	_	5	case	_	_
-5	esta	_	DET	_	_	0	root	_	_
-6	chica	_	NOUN	_	_	10	nsubj	_	_
+# parsetree = (Chunks (Str estaba) (A indignada) (Prep de) (Comp (NP_obl (Prep que) (NP (NP (NP (Det esta) (CN (N chica))) (SC (QS (IP se) (VP (VV atrevía) (VP_to (to a) (VP (VP (V2 burlarse) (NP_obl (Prep de) (NP (Pron ella)))) (Adv delante))))))) (NP_obl (Prep de) (NP (Det la) (CN (N clase))))))))
+1	estaba	_	X	_	_	6	dep	_	_
+2	indignada	_	ADJ	_	_	6	dep	_	_
+3	de	_	ADP	_	_	6	dep	_	_
+4	que	_	ADP	_	_	6	case	_	_
+5	esta	_	DET	_	_	6	det	_	_
+6	chica	_	NOUN	_	_	0	root	_	_
 7	se	_	PRON	_	_	8	nsubj	_	_
-8	atrevía	_	VERB	_	_	6	acl:relcl	_	_
-9	a	_	ADP	_	_	8	case	_	_
-10	burlarse	_	VERB	_	_	5	acl	_	_
+8	atrevía	_	VERB	_	_	6	acl	_	_
+9	a	_	PART	_	_	10	mark	_	_
+10	burlarse	_	VERB	_	_	8	xcomp	_	_
 11	de	_	ADP	_	_	12	case	_	_
 12	ella	_	PRON	_	_	10	obl	_	_
 13	delante	_	ADV	_	_	10	advmod	_	_
 14	de	_	ADP	_	_	16	case	_	_
 15	la	_	DET	_	_	16	det	_	_
-16	clase	_	NOUN	_	_	5	nmod	_	_
+16	clase	_	NOUN	_	_	6	nmod	_	_
 
 
 
 # text = la:<DET> avalancha:<NOUN> que:<PRON> tuvo:<VERB> en:<ADP> el:<DET> colegio:<NOUN> electoral:<ADJ> oscureció:<VERB> la:<DET> estrechez:<NOUN> de:<ADP> una:<DET> victoria:<NOUN> basada:<VERB> en:<ADP> sólo:<ADV> el:<DET> 43%:<NUM> de:<ADP> el:<DET> voto:<NOUN> popular:<ADJ> 
-# analyses = 4791760
-# parsetree = (Utt (S (NP (Det la) (CN (N avalancha))) (VP (VP (NP (Pron que)) (V2 tuvo)) (NP_obl (Prep en) (NP (NP (NP (Det el)) (SC (S_that (S (NP (CN (CN (N colegio)) (AP (A electoral)))) (VP (V3 oscureció) (NP (NP (Det la) (CN (N estrechez))) (NP_obl (Prep de) (NP (NP (NP (Det una)) (SC (S_that (S (NP (CN (N victoria))) (VP (V basada)))))) (NP_obl (Prep en) (NP (Predet sólo) (NP (Det el))))))) (NP (Num (Card '43%')))))))) (NP_obl (Prep de) (NP (Det el) (CN (CN (N voto)) (AP (A popular))))))))))
+# analyses = 0
+# parsetree = (Chunks (Comp (NP (NP (NP (Det la) (CN (N avalancha))) (SC (QS (IP que) (VP (V tuvo))))) (NP_obl (Prep en) (NP (NP (NP (Det el) (CN (CN (N colegio)) (AP (A electoral)))) (SC (S_that (S (VP (V oscureció)))))) (RS (RP la) (NP (NP (CN (N estrechez))) (NP_obl (Prep de) (NP (Det una) (CN (N victoria))))) (VPSlash (VPSlash (VP (V basada)) (Prep en)) (Adv sólo))))))) (Det el) (Comp (NP (NP (Num (Card '43%'))) (NP_obl (Prep de) (NP (Det el) (CN (CN (N voto)) (AP (A popular))))))))
 1	la	_	DET	_	_	2	det	_	_
-2	avalancha	_	NOUN	_	_	4	nsubj	_	_
-3	que	_	PRON	_	_	4	obj	_	_
-4	tuvo	_	VERB	_	_	0	root	_	_
-5	en	_	ADP	_	_	6	case	_	_
-6	el	_	DET	_	_	4	obl	_	_
-7	colegio	_	NOUN	_	_	9	nsubj	_	_
+2	avalancha	_	NOUN	_	_	19	dep	_	_
+3	que	_	PRON	_	_	4	nsubj	_	_
+4	tuvo	_	VERB	_	_	2	acl	_	_
+5	en	_	ADP	_	_	7	case	_	_
+6	el	_	DET	_	_	7	det	_	_
+7	colegio	_	NOUN	_	_	2	nmod	_	_
 8	electoral	_	ADJ	_	_	7	amod	_	_
-9	oscureció	_	VERB	_	_	6	acl	_	_
-10	la	_	DET	_	_	11	det	_	_
-11	estrechez	_	NOUN	_	_	9	iobj	_	_
-12	de	_	ADP	_	_	13	case	_	_
-13	una	_	DET	_	_	11	nmod	_	_
-14	victoria	_	NOUN	_	_	15	nsubj	_	_
-15	basada	_	VERB	_	_	13	acl	_	_
-16	en	_	ADP	_	_	18	case	_	_
-17	sólo	_	ADV	_	_	18	det:predet	_	_
-18	el	_	DET	_	_	13	nmod	_	_
-19	43%	_	NUM	_	_	9	obj	_	_
+9	oscureció	_	VERB	_	_	7	acl	_	_
+10	la	_	PRON	_	_	15	obj	_	_
+11	estrechez	_	NOUN	_	_	15	nsubj	_	_
+12	de	_	ADP	_	_	14	case	_	_
+13	una	_	DET	_	_	14	det	_	_
+14	victoria	_	NOUN	_	_	11	nmod	_	_
+15	basada	_	VERB	_	_	7	acl:relcl	_	_
+16	en	_	ADP	_	_	15	case	_	_
+17	sólo	_	ADV	_	_	15	advmod	_	_
+18	el	_	DET	_	_	19	dep	_	_
+19	43%	_	NUM	_	_	0	root	_	_
 20	de	_	ADP	_	_	22	case	_	_
 21	el	_	DET	_	_	22	det	_	_
-22	voto	_	NOUN	_	_	6	nmod	_	_
+22	voto	_	NOUN	_	_	19	nmod	_	_
 23	popular	_	ADJ	_	_	22	amod	_	_
 
 
 
 # text = Las:<DET> tropas:<NOUN> estadounidenses:<ADJ> ahora:<ADV> llevan:<VERB> atropina:<NOUN> y:<CCONJ> autoinyectores:<NOUN> en:<ADP> sus:<PRON> equipos:<NOUN> de:<ADP> primeros:<ADJ> auxilios:<NOUN> para:<ADP> utilizar:<VERB> los:<DET> en:<ADP> caso:<NOUN> de:<ADP> intoxicación:<NOUN> por:<ADP> agentes:<NOUN> nerviosos:<ADJ> organofosforados:<ADJ> 
-# analyses = 2210
-# parsetree = (Utt (S (NP (NP (Det Las)) (RS (NP (CN (CN (N tropas)) (AP (A estadounidenses)))) (VPSlash (VP (AdV ahora) (VP (V2 llevan) (NP (NP (ListNP (NP (CN (N atropina)))) (NP_conj (Conj y) (NP (CN (N autoinyectores))))) (NP_obl (Prep en) (NP (NP (NP_poss (Pron_poss sus)) (CN (N equipos))) (NP_obl (Prep de) (NP (CN (AP (A primeros)) (CN (N auxilios)))))))))) (Prep para)))) (VP (V2 utilizar) (NP (NP (Det los)) (NP_obl (Prep en) (NP (NP (CN (N caso))) (NP_obl (Prep de) (NP (NP (CN (N intoxicación))) (NP_obl (Prep por) (NP (CN (CN (CN (N agentes)) (AP (A nerviosos))) (AP (A organofosforados)))))))))))))
-1	Las	_	DET	_	_	16	nsubj	_	_
+# analyses = 0
+# parsetree = (Chunks (RS (NP (Det Las) (CN (CN (N tropas)) (AP (A estadounidenses)))) (VPSlash (VP (AdV ahora) (VP (V2 llevan) (NP (NP (ListNP (NP (CN (N atropina)))) (NP_conj (Conj y) (NP (CN (N autoinyectores))))) (NP_obl (Prep en) (NP (NP (NP_poss (Pron_poss sus)) (CN (N equipos))) (NP_obl (Prep de) (NP (CN (AP (A primeros)) (CN (N auxilios)))))))))) (Prep para))) (ListS (S (VP (V utilizar)))) (Det los) (Comp (NP_obl (Prep en) (NP (NP (CN (N caso))) (NP_obl (Prep de) (NP (NP (CN (N intoxicación))) (NP_obl (Prep por) (NP (CN (CN (CN (N agentes)) (AP (A nerviosos))) (AP (A organofosforados)))))))))))
+1	Las	_	DET	_	_	2	det	_	_
 2	tropas	_	NOUN	_	_	5	nsubj	_	_
 3	estadounidenses	_	ADJ	_	_	2	amod	_	_
 4	ahora	_	ADV	_	_	5	advmod	_	_
-5	llevan	_	VERB	_	_	1	acl:relcl	_	_
+5	llevan	_	VERB	_	_	19	dep	_	_
 6	atropina	_	NOUN	_	_	5	obj	_	_
 7	y	_	CCONJ	_	_	8	cc	_	_
 8	autoinyectores	_	NOUN	_	_	6	conj	_	_
@@ -408,10 +408,10 @@
 13	primeros	_	ADJ	_	_	14	amod	_	_
 14	auxilios	_	NOUN	_	_	11	nmod	_	_
 15	para	_	ADP	_	_	5	case	_	_
-16	utilizar	_	VERB	_	_	0	root	_	_
-17	los	_	DET	_	_	16	obj	_	_
+16	utilizar	_	VERB	_	_	19	dep	_	_
+17	los	_	DET	_	_	19	dep	_	_
 18	en	_	ADP	_	_	19	case	_	_
-19	caso	_	NOUN	_	_	17	nmod	_	_
+19	caso	_	NOUN	_	_	0	root	_	_
 20	de	_	ADP	_	_	21	case	_	_
 21	intoxicación	_	NOUN	_	_	19	nmod	_	_
 22	por	_	ADP	_	_	23	case	_	_
@@ -452,14 +452,14 @@
 
 # text = ha:<AUX> sido:<AUX> dicho:<VERB> que:<SCONJ> sólo:<ADV> una:<DET> sociedad:<NOUN> jerárquica:<ADJ> dominada:<VERB> por:<ADP> una:<DET> clase:<NOUN> ociosa:<ADJ> puede:<AUX> producir:<VERB> obras:<NOUN> de:<ADP> arte:<NOUN> 
 # analyses = 0
-# parsetree = (Chunks (haber ha) (Str sido) (ListS (S (VP (VS dicho) (S_that (that que) (S (NP (Predet sólo) (NP (Det una))) (VP (VP (NP (CN (CN (N sociedad)) (AP (A jerárquica)))) (V2 dominada)) (NP_obl (Prep por) (NP (Det una) (CN (CN (N clase)) (AP (A ociosa))))))))))) (Str puede) (ListS (S (VP (V2 producir) (NP (NP (CN (N obras))) (NP_obl (Prep de) (NP (CN (N arte)))))))))
-1	ha	_	haber	_	_	15	dep	_	_
-2	sido	_	X	_	_	15	dep	_	_
-3	dicho	_	VERB	_	_	15	dep	_	_
+# parsetree = (Chunks (ListS (S (have ha) (be_V sido) (SC (S_that (S (VP (VS dicho) (S_that (that que) (S (NP (Predet sólo) (NP (Det una) (CN (CN (N sociedad)) (AP (A jerárquica))))) (VP (V2 dominada) (NP_obl (Prep por) (NP (Det una) (CN (CN (N clase)) (AP (A ociosa)))))))))))))) (Str puede) (ListS (S (VP (V2 producir) (NP (NP (CN (N obras))) (NP_obl (Prep de) (NP (CN (N arte)))))))))
+1	ha	_	have	_	_	2	aux	_	_
+2	sido	_	VERB	_	_	15	dep	_	_
+3	dicho	_	VERB	_	_	2	ccomp	_	_
 4	que	_	SCONJ	_	_	9	mark	_	_
-5	sólo	_	ADV	_	_	6	det:predet	_	_
-6	una	_	DET	_	_	9	nsubj	_	_
-7	sociedad	_	NOUN	_	_	9	obj	_	_
+5	sólo	_	ADV	_	_	7	det:predet	_	_
+6	una	_	DET	_	_	7	det	_	_
+7	sociedad	_	NOUN	_	_	9	nsubj	_	_
 8	jerárquica	_	ADJ	_	_	7	amod	_	_
 9	dominada	_	VERB	_	_	3	ccomp	_	_
 10	por	_	ADP	_	_	12	case	_	_
@@ -476,14 +476,14 @@
 
 # text = su:<PRON> ingenua:<ADJ> explicación:<NOUN> de:<ADP> que:<SCONJ> no:<ADV> habría:<AUX> quemado:<VERB> la:<DET> iglesia:<NOUN> si:<SCONJ> no:<ADV> hubiera:<AUX> pensado:<VERB> que:<SCONJ> el:<DET> obispo:<NOUN> estaba:<VERB> allí:<ADV> 
 # analyses = 0
-# parsetree = (Chunks (Comp (NP (NP_poss (Pron_poss su)) (CN (AP (A ingenua)) (CN (N explicación))))) (Prep de) (RP que) (AdA no) (Str habría) (ListS (S (VP (V2 quemado) (NP (Det la) (CN (N iglesia)))))) (Subj si) (AdA no) (Str hubiera) (ListS (S (VP (VS pensado) (S_that (that que) (S (NP (Det el)) (VP (VP (NP (CN (N obispo))) (V2 estaba)) (Adv allí))))))))
+# parsetree = (Chunks (Comp (NP (NP_poss (Pron_poss su)) (CN (AP (A ingenua)) (CN (N explicación))))) (Prep de) (QS (if que) (S (neg no) (have habría) (VP (V2 quemado) (NP (Det la) (CN (N iglesia)))))) (Subj si) (AdA no) (Str hubiera) (ListS (S (VP (VS pensado) (S_that (that que) (S (NP (Det el) (CN (N obispo))) (VP (VP (V estaba)) (Adv allí))))))))
 1	su	_	PRON	_	_	3	nmod:poss	_	_
 2	ingenua	_	ADJ	_	_	3	amod	_	_
 3	explicación	_	NOUN	_	_	14	dep	_	_
 4	de	_	ADP	_	_	14	dep	_	_
-5	que	_	PRON	_	_	14	dep	_	_
-6	no	_	ADV	_	_	14	dep	_	_
-7	habría	_	X	_	_	14	dep	_	_
+5	que	_	SCONJ	_	_	8	mark	_	_
+6	no	_	ADV	_	_	8	advmod	_	_
+7	habría	_	have	_	_	8	aux	_	_
 8	quemado	_	VERB	_	_	14	dep	_	_
 9	la	_	DET	_	_	10	det	_	_
 10	iglesia	_	NOUN	_	_	8	obj	_	_
@@ -492,8 +492,8 @@
 13	hubiera	_	X	_	_	14	dep	_	_
 14	pensado	_	VERB	_	_	0	root	_	_
 15	que	_	SCONJ	_	_	18	mark	_	_
-16	el	_	DET	_	_	18	nsubj	_	_
-17	obispo	_	NOUN	_	_	18	obj	_	_
+16	el	_	DET	_	_	17	det	_	_
+17	obispo	_	NOUN	_	_	18	nsubj	_	_
 18	estaba	_	VERB	_	_	14	ccomp	_	_
 19	allí	_	ADV	_	_	18	advmod	_	_
 

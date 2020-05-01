@@ -17,7 +17,7 @@ Changes made:
 
 Changes made after looking at sentences I don't have hand-drawn trees to compare to:
 
-- 
+- removed `NP ::= Det # # 0.1` (apparently very useful)
 
 Other changes made not depending on any particular sentence:
 

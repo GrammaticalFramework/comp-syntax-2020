@@ -85,10 +85,9 @@ S  ::= Adv_comma S # advmod head
 S  ::= NP_oblcomma S # nmod head
 
 -- embedded sentences
-SC ::= S_that
 SC ::= QS # # 0.01
 SC ::= VP_to
-
+SC ::= S_that
 
 VP ::= V
 VP ::= aux # # 0.001
@@ -141,7 +140,6 @@ NP_obl ::= Prep NP # case head
 NP ::= PN
 NP ::= Pron
 NP ::= Num # # 0.1
-NP ::= Det # # 0.1
 
 NP ::= Det? Det? CN # det det head
 NP ::= NP comma? NP_obl # head punct nmod
@@ -253,9 +251,9 @@ ListNP_obl ::= ListNP_obl Adv_comma # head conj
 -- structural word lexicon: normal categories
 #token Prep a ante bajo cabe con contra de desde durante en enter hacia hasta mediante para por según sin so sobre tras versus vía
 #token IP quién qué
-#token IAdv cuando dónde -- "por qué"
+#token IAdv cuándo dónde -- "por qué"
 #token AdA muy demasiado genéticamente
-#token AdV definitivamente siempre nunca solamente
+#token AdV definitivamente siempre nunca solamente ya
 #token Det un una unos unas el la las los cada alguno alguna algunos algunas mucho mucha muchos muchas ningún ninguno ninguna ningunos ningunas
 #token Pron yo me tú te él ella se nosotros nosotras nos vosotros vosotras os ellos ellas
 #token Subj si cuándo although aunque como
@@ -266,13 +264,13 @@ ListNP_obl ::= ListNP_obl Adv_comma # head conj
 #token Conj_pre ambos ambas o ni
 #token IDet cuál cuáles
 #token Pron_poss mi mis mío míos mía mías tu tus tuyo tuya tuyos tuyas su sus suyo suya suyos suyas nuestro nuestra nuestros nuestras vuestro vuestra vuestros vuestras -- mixed with possessive adjectives
-#token RP que cual cuales cuanto cuantos donde quien quienes cuyo cuyos
+#token RP cual cuales cuanto cuantos donde quien quienes cuyo cuyos # el que, la que...
 #token Card uno dos tres cuatro cinco -- etc.
 
 -- structural word lexicon: syncategorematic words
-#token cop ser soy eres es somos sois son estar estoy estás está estamos estáis están era fue -- and this is just pres. ind. ...
-#token be_V ser soy eres es somos sois son estar estoy estás está estamos estáis están -- and this is just pres. ind. ...
-#token haber he has ha hay hemos habéis han  -- and this is just pres. ind. ... (also, I'm not including tener because it's not used in that way)
+#token cop ser soy eres es somos sois son estar estoy estás está estamos estáis están era fue sido
+#token be_V ser soy eres es somos sois son estar estoy estás está estamos estáis están era fue sido
+#token have haber he has ha hay hemos habéis han había habría -- and this is just pres. ind. ... (also, I'm not including "tener" because it's not used in that way)
 #token neg no
 #token that que -- ?
 #token to que --?
@@ -282,4 +280,4 @@ ListNP_obl ::= ListNP_obl Adv_comma # head conj
 #token quote "
 #token parenth ( ) [ ]
 
--- content word lexicon (limited to what's also in the corpus, otherwise it would take forever)
+-- content word lexicon
