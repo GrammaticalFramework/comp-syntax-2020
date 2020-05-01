@@ -26,7 +26,7 @@ S ::= NP? neg? cop AdV? VP_pass # nsubj:pass advmod aux:pass advmod head
 S ::= NP? neg? have AdV? cop VP_pass # nsubj:pass advmod aux advmod aux:pass head
 S ::= NP? neg? aux AdV? have? cop VP_pass # nsubj:pass advmod aux advmod aux aux:pass head
 
-S ::= AdV? neg? cop AP # expl advmod cop head
+S ::= AdV? neg? cop AP SC? # expl advmod cop head ccomp
 
 S ::= NP? be_V neg? SC # nsubj head advmod ccomp
 S ::= NP? have neg? be_V SC # nsubj aux advmod head ccomp
@@ -88,6 +88,7 @@ S  ::= NP_oblcomma S # nmod head
 SC ::= QS # # 0.01
 SC ::= VP_to
 SC ::= S_that
+SC ::= Prep S_that # case head
 
 VP ::= V
 VP ::= aux # # 0.001
@@ -264,13 +265,13 @@ ListNP_obl ::= ListNP_obl Adv_comma # head conj
 #token Conj_pre ambos ambas o ni
 #token IDet cuál cuáles
 #token Pron_poss mi mis mío míos mía mías tu tus tuyo tuya tuyos tuyas su sus suyo suya suyos suyas nuestro nuestra nuestros nuestras vuestro vuestra vuestros vuestras -- mixed with possessive adjectives
-#token RP cual cuales cuanto cuantos donde quien quienes cuyo cuyos # el que, la que...
+#token RP cual cuales cuanto cuantos donde quien quienes cuyo cuyos que # el que, la que...
 #token Card uno dos tres cuatro cinco -- etc.
 
 -- structural word lexicon: syncategorematic words
-#token cop ser soy eres es somos sois son estar estoy estás está estamos estáis están era fue sido
-#token be_V ser soy eres es somos sois son estar estoy estás está estamos estáis están era fue sido
-#token have haber he has ha hay hemos habéis han había habría -- and this is just pres. ind. ... (also, I'm not including "tener" because it's not used in that way)
+#token cop ser soy eres es somos sois son estar estoy estás está estamos estáis están era fue sido estaba
+#token be_V ser soy eres es somos sois son estar estoy estás está estamos estáis están era fue sido estaba
+#token have haber he has ha hay hemos habéis han había habían habría -- and this is just pres. ind. ... (also, I'm not including "tener" because it's not used in that way)
 #token neg no
 #token that que -- ?
 #token to que --?
