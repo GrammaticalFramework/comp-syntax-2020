@@ -92,6 +92,7 @@ SC ::= VP_to
 
 VP ::= V
 VP ::= aux # # 0.001
+VP ::= NP V2 # obj head
 VP ::= V2 NP  # head obj
 VP ::= V2 NP_obl # head obl
 VP ::= V3 NP NP # head iobj obj
@@ -142,7 +143,7 @@ NP ::= Pron
 NP ::= Num # # 0.1
 NP ::= Det # # 0.1
 
-NP ::= Det? CN # det head
+NP ::= Det? Det? CN # det det head
 NP ::= NP comma? NP_obl # head punct nmod
 NP ::= Predet NP # det:predet head
 NP ::= NP_poss CN # nmod:poss head
@@ -201,7 +202,7 @@ ListS   ::= ListS S_comma # head conj
 S_conj  ::= comma? Conj S # punct cc head
 S_comma ::= comma S # punct head
 
-NP       ::= Conj_pre? ListNP NP_conj # cc:preconj head conj
+NP       ::= Conj_pre? ListNP NP_conj # cc:preconj head conj # 0.1
 ListNP   ::= NP
 ListNP   ::= ListNP NP_comma # head conj
 NP_conj  ::= comma? Conj NP # punct cc head
@@ -213,7 +214,7 @@ ListAP   ::= ListAP AP_comma # head conj
 AP_conj  ::= comma? Conj AP # punct cc head
 AP_comma ::= comma AP # punct head
 
-VP       ::= Conj_pre? ListVP VP_conj # cc:preconj head conj
+VP       ::= Conj_pre? ListVP VP_conj # cc:preconj head conj # 0.9
 ListVP   ::= VP
 ListVP   ::= ListVP VP_comma # head conj
 VP_conj  ::= comma? Conj VP # punct cc head
@@ -256,7 +257,7 @@ ListNP_obl ::= ListNP_obl Adv_comma # head conj
 #token AdA muy demasiado genéticamente
 #token AdV definitivamente siempre nunca solamente
 #token Det un una unos unas el la las los cada alguno alguna algunos algunas mucho mucha muchos muchas ningún ninguno ninguna ningunos ningunas
-#token Pron yo me tú te él lo ella la nosotros nosotras nos vosotros vosotras os ellos los ellas las
+#token Pron yo me tú te él ella se nosotros nosotras nos vosotros vosotras os ellos ellas
 #token Subj si cuándo although aunque como
 #token aux poder deber necesitar querer saber soler -- haber que, tener que, other verb forms...
 #token Punct . ¡ ! ¿ ?

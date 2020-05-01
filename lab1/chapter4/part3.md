@@ -7,7 +7,11 @@ The approach adopted to adapt [the given English grammar](https://github.com/har
   - make the subject optional for all `S`s
   - change the rules for `QS`s and `S`s, moving the negation to the beginning of the sentence
   - cheat a little bit by assigning very low weight to `SC ::= QS`
-
+4. After these changes, the sentence is not interpreted as an `Imp` any longer, but the parse is still wrong:
+![parse tree][pt.png]
+Changes made:
+  - added an optional additional determiner to `NP ::= Det? CN # det det head` (for "los otros", assuming it is right to consider "otros" a determiner)
+  - changed weights so that VP coordination becomes much more likely than NP coordination (I don't think this is a good idea, but the other things I tried were not helpful)
 Other important changes made:
 - structural word lexicon
 - removed all rules involving "do"
