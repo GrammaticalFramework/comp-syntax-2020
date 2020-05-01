@@ -3,10 +3,11 @@ The approach adopted to adapt [the given English grammar](https://github.com/har
 
 1. Nothing to be fixed excpepts allowing punctuation both at the beginning and end of an utterance (a better solution would be to specif that only the pairs "¿?" and "¡!" are allowed)
 2. This one is not easy to fix, as one of the things I do not understand about the GF RGL is how to deal with adverbial phrases.
-3. Here, one of the main problems is that, in Spanish, it is harder to distinguish `QS`s from `S`s, because the word order does not change. Another important issue is that the subject of a sentence can be implicit. What I did to adjust the grammar was to:
-  - change the rules for `QS`s, moving the negation to the beginning of the sentence
+3. Here, one of the main problems is that, in Spanish, it is harder to distinguish `QS`s from `S`s, because the word order (apart from not being the same as in English) does not change. Another important issue is that the subject of a sentence can be implicit. What I did to adjust the grammar was to:
   - make the subject optional for all `S`s
+  - change the rules for `QS`s and `S`s, moving the negation to the beginning of the sentence
 
 Other important changes made:
 - structural word lexicon
 - removed all rules involving "do"
+- removed all rules involving "there"

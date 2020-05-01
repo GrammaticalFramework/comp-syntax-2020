@@ -15,21 +15,18 @@ Utt ::= Num
 
 -- sentences
 S ::= NP? VP # nsubj head
-S ::= NP? have neg? VP  # nsubj aux advmod head
-S ::= NP? aux neg? have? VP  # nsubj aux advmod aux head
+S ::= NP? neg? have VP  # nsubj advmod aux head
+S ::= NP? neg? aux have? VP  # nsubj advmod aux aux head
 
-S ::= NP? cop AdV? neg? Comp # nsubj cop advmod advmod head
-S ::= NP? have AdV? neg? cop Comp # nsubj aux advmod advmod cop head
-S ::= NP? aux AdV?  neg? have? cop Comp # nsubj aux advmod advmod aux cop head
+S ::= NP? neg? cop AdV? Comp # nsubj advmod cop advmod head
+S ::= NP? neg? have AdV? cop Comp # nsubj advmod aux advmod cop head
+S ::= NP? neg? aux AdV? have? cop Comp # nsubj advmod aux advmod aux cop head
 
-S ::= NP? cop AdV? neg? VP_pass # nsubj:pass aux:pass advmod advmod head
-S ::= NP? have AdV? neg? cop VP_pass # nsubj:pass aux advmod advmod aux:pass head
-S ::= NP? aux AdV? neg? have? cop VP_pass # nsubj:pass aux advmod advmod aux aux:pass head
+S ::= NP? neg? cop AdV? VP_pass # nsubj:pass advmod aux:pass advmod head
+S ::= NP? neg? have AdV? cop VP_pass # nsubj:pass advmod aux advmod aux:pass head
+S ::= NP? neg? aux AdV? have? cop VP_pass # nsubj:pass advmod aux advmod aux aux:pass head
 
-S ::= there be_V AdV? neg? NP? # expl head advmod advmod nsubj
-S ::= there have AdV? neg? be_V neg? NP? # expl aux advmod advmod head nsubj
-S ::= there aux AdV? neg? have? be_V NP? # expl aux advmod advmod aux head nsubj
-S ::= AdV? neg? cop AP # expl cop advmod advmod head
+S ::= AdV? neg? cop AP # expl advmod cop head
 
 S ::= NP? be_V neg? SC # nsubj head advmod ccomp
 S ::= NP? have neg? be_V SC # nsubj aux advmod head ccomp
@@ -244,7 +241,7 @@ ListNP_obl ::= ListNP_obl Adv_comma # head conj
 #pos SCONJ Subj that if
 #pos CCONJ Conj Conj_pre
 #pos DET Det IDet
-#pos PRON Pron IP RP Pron_poss there it
+#pos PRON Pron IP RP Pron_poss
 #pos PART to 's
 #pos PUNCT Punct Punct_appos comma quote colon parenth
 #pos NUM Card Digits Card_one
