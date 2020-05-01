@@ -278,16 +278,16 @@
 
 
 # text = la:<DET> noticia:<NOUN> fue:<AUX> llevada:<VERB> a:<ADP> todos:<DET> los:<DET> pueblos:<NOUN> de:<ADP> la:<DET> provincia:<NOUN> 
-# analyses = 0
-# parsetree = (Chunks (Comp (NP (Det la) (CN (N noticia)))) (Str fue) (ListS (S (VP (V2 llevada) (NP_obl (Prep a) (NP (NP (Det todos) (Det los) (CN (N pueblos))) (NP_obl (Prep de) (NP (Det la) (CN (N provincia))))))))))
+# analyses = 82
+# parsetree = (Utt (S (NP (Det la) (CN (N noticia))) (cop fue) (VP_pass (VP_pass (V2 llevada)) (NP_obl (Prep a) (NP (NP (Det todos) (Det los) (CN (N pueblos))) (NP_obl (Prep de) (NP (Det la) (CN (N provincia)))))))))
 1	la	_	DET	_	_	2	det	_	_
-2	noticia	_	NOUN	_	_	4	dep	_	_
-3	fue	_	X	_	_	4	dep	_	_
+2	noticia	_	NOUN	_	_	4	nsubj:pass	_	_
+3	fue	_	cop	_	_	4	aux:pass	_	_
 4	llevada	_	VERB	_	_	0	root	_	_
 5	a	_	ADP	_	_	8	case	_	_
 6	todos	_	DET	_	_	8	det	_	_
 7	los	_	DET	_	_	8	det	_	_
-8	pueblos	_	NOUN	_	_	4	obl	_	_
+8	pueblos	_	NOUN	_	_	4	nmod	_	_
 9	de	_	ADP	_	_	11	case	_	_
 10	la	_	DET	_	_	11	det	_	_
 11	provincia	_	NOUN	_	_	8	nmod	_	_
