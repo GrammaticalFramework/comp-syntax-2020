@@ -20,8 +20,11 @@ Changes made after looking at sentences I don't have hand-drawn trees to compare
 - removed `NP ::= Det # # 0.1` (apparently very useful)
 - added rule `S ::= AdV? neg? cop AP SC? # expl advmod cop head ccomp`
 
-Other changes made not depending on any particular sentence:
+Other relevant changes made not depending on any particular sentence:
 
 - translated (part of the) lexicon
 - removed all rules involving "do"
 - removed all rules involving "there"
+
+## Results
+With this grammar adapted to Spanish, the `udScore` is (instead of 0.54) 0.67.
