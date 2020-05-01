@@ -21,13 +21,11 @@ concrete MicroLangEng of MicroLang = open MicroResEng, Prelude in {
     V2 = Verb2 ;
     A = Adjective ;
     N = Noun ;
-    PN = {s : Str} ;
     Adv = {s : Str} ;
 
   lin
     UttS s = s ;
     UttNP np = {s = np.s ! Acc} ;
-    UttAdv adv = adv ;
 
     PredVPS np vp = {
       s = np.s ! Nom ++ vp.verb.s ! agr2vform np.a ++ vp.compl
@@ -50,23 +48,12 @@ concrete MicroLangEng of MicroLang = open MicroResEng, Prelude in {
       
     CompAP ap = ap ;
       
-    CompNP np = {
-      s = np.s ! Nom    -- NP complement is in the nominative
-      } ;
-      
-    CompAdv adv = adv ;
- 
     AdvVP vp adv =
       vp ** {compl = vp.compl ++ adv.s} ;
       
     DetCN det cn = {
       s = \\c => det.s ++ cn.s ! det.n ;
       a = Agr det.n ;
-      } ;
-      
-    UsePN pn = {
-      s = \\_ => pn.s ;
-      a = Agr Sg ;
       } ;
       
     UsePron p = p ;
@@ -85,8 +72,6 @@ concrete MicroLangEng of MicroLang = open MicroResEng, Prelude in {
     PositA a = a ;
 
     PrepNP prep np = {s = prep.s ++ np.s ! Acc} ;
-
-    every_Det = {s = "every" ; n = Sg} ;
 
     in_Prep = {s = "in"} ;
     on_Prep = {s = "on"} ;
@@ -156,7 +141,7 @@ lin heavy_A = mkA "heavy" ;
 lin horse_N = mkN "horse" ;
 lin hot_A = mkA "hot" ;
 lin house_N = mkN "house" ;
-lin john_PN = mkPN "John" ;
+-- lin john_PN = mkPN "John" ;
 lin jump_V = mkV "jump" ;
 lin kill_V2 = mkV2 "kill" ;
 -- lin know_VS = mkVS (mkV "know" "knew" "known") ;
@@ -169,7 +154,7 @@ lin music_N = mkN "music" ;
 lin new_A = mkA "new" ;
 lin now_Adv = mkAdv "now" ;
 lin old_A = mkA "old" ;
-lin paris_PN = mkPN "Paris" ;
+-- lin paris_PN = mkPN "Paris" ;
 lin play_V = mkV "play" ;
 lin read_V2 = mkV2 (mkV "read" "read" "read") ;
 lin ready_A = mkA "ready" ;
@@ -209,9 +194,6 @@ oper
     mkN : Str -> Str -> Noun  -- irregular noun, e.g. man-men
       = \sg,pl -> lin N (mkNoun sg pl) ;
     } ;
-
-  mkPN : Str -> PN
-    = \s -> lin PN {s = s} ;
 
   mkA : Str -> A
     = \s -> lin A {s = s} ;

@@ -14,8 +14,8 @@ abstract MicroLang = {
 -- Cat
     S ;      -- declarative sentence                e.g. "she lives here"
     VP ;     -- verb phrase                         e.g. "lives here"
-    Comp ;   -- complement of copula                e.g. "in trouble"
-    AP ;     -- adjectival phrase                   e.g. "very warm"
+    Comp ;   -- complement of copula                e.g. "warm"
+    AP ;     -- adjectival phrase                   e.g. "warm"
     CN ;     -- common noun (without determiner)    e.g. "red house"
     NP ;     -- noun phrase (subject or object)     e.g. "the red house"
     Det ;    -- determiner phrase                   e.g. "those"
@@ -24,15 +24,13 @@ abstract MicroLang = {
     V2 ;     -- two-place verb                      e.g. "love"
     A ;      -- one-place adjective                 e.g. "warm"
     N ;      -- common noun                         e.g. "house"
-    PN ;     -- proper name                         e.g. "Paris"
     Pron ;   -- personal pronoun                    e.g. "she"
     Adv ;    -- adverbial phrase                    e.g. "in the house"
     
   fun
 -- Phrase
-    UttS      : S  -> Utt ;         -- John walks
-    UttNP     : NP -> Utt ;         -- John
-    UttAdv    : Adv -> Utt ;        -- in the house
+    UttS      : S  -> Utt ;         -- he walks
+    UttNP     : NP -> Utt ;         -- he
 
 -- Sentence
     PredVPS   : NP -> VP -> S ;             -- John walks --s shortcut even wrt MiniGrammar
@@ -42,13 +40,10 @@ abstract MicroLang = {
     ComplV2   : V2  -> NP -> VP ;       -- love it ---s
     UseComp   : Comp  -> VP ;           -- be small
     CompAP    : AP  -> Comp ;           -- small
-    CompNP    : NP  -> Comp ;           -- a man
-    CompAdv   : Adv -> Comp ;           -- in the house
     AdvVP     : VP -> Adv -> VP ;       -- sleep here
 
 -- Noun
     DetCN     : Det -> CN -> NP ;       -- the man
-    UsePN     : PN -> NP ;              -- John
     UsePron   : Pron -> NP ;            -- she
     a_Det     : Det ;                   -- indefinite singular ---s
     aPl_Det   : Det ;                   -- indefinite plural   ---s
@@ -64,9 +59,6 @@ abstract MicroLang = {
     PrepNP    : Prep -> NP -> Adv ;     -- in the house
 
 -- Structural
-    
-    every_Det : Det ;
-
     in_Prep   : Prep ;
     on_Prep   : Prep ;
     with_Prep : Prep ;
@@ -128,7 +120,7 @@ fun
   horse_N : N ;
   hot_A : A ;
   house_N : N ;
-  john_PN : PN ;
+--  john_PN : PN ;
   jump_V : V ;
   kill_V2 : V2 ;
 --  know_VS : VS ;
@@ -141,7 +133,7 @@ fun
   new_A : A ;
   now_Adv : Adv ;
   old_A : A ;
-  paris_PN : PN ;
+--  paris_PN : PN ;
   play_V : V ;
   read_V2 : V2 ;
   ready_A : A ;
