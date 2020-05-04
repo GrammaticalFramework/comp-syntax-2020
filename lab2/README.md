@@ -5,6 +5,12 @@ Therefore we will structure it according to the exercise sessions
 rather than chapters.
 The abstract syntax is given in the subdirectory grammars/abstract/
 
+The compulsory lab assignment has two alternatives:
+
+1. Complete MiniLang for your language of choice
+2. Complete MicroLang + application (Doctor) for your language of choice
+
+
 ## Session 5
 
 1. Design a morphology for the main lexical types (N, A, V) with parameters and a couple of paradigms.
