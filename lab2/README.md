@@ -10,6 +10,7 @@ The compulsory lab assignment has two alternatives:
 1. Complete MiniLang for your language of choice
 2. Complete MicroLang + application (Doctor) for your language of choice
 
+If you want to work on the Mini grammar you can ignore everything about the Micro grammar and just work on the corresponding Mini file instead
 
 ## Session 5
 
