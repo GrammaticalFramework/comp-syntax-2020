@@ -16,10 +16,14 @@ The compulsory lab assignment has two alternatives:
 1. Design a morphology for the main lexical types (N, A, V) with parameters and a couple of paradigms.
 2. Test it by implementing the lexicon in the MicroLang module. You need to define lincat N,A,V,V2 as well as the paradigms in MicroResource.
 
+*To deliver*: the lexicon part of files MicroGrammarX.gf and MicroResourceX.gf for your language of choice X. Follow the structure of MicroGrammarEng and MicroResourceEng when preparing these.
+
 ## Session 6
 
 1. Define the linearization types of main phrasal categories - the remaining categories in MicroLang.
 2. Define the rest of the linearization rules in MicroLang.
+
+*To deliver*: MicroLangX and MicroResourceX for your language of choice, with the lexicon part from Session 5 completed with syntax part. 
 
 ## Session 7
 
@@ -27,6 +31,9 @@ The compulsory lab assignment has two alternatives:
 2. Add concrete UD labels.
 3. Generate a synthetic UD treebank.
 
+*To deliver* (but only if you select this assignment): file Mini..X.gf for your language X, together with MiniLangX.labels and a treebank in CoNLL format with 20 trees.
+
+*Deadline*: until the end of the course.
 
 ## Session 8
 
@@ -35,5 +42,6 @@ This can be be done either by using your own MiniResource or the standard resour
 There are two versions of English implementation to support this.
 Your first approximation can be just to copy it and change the words.
 
+*To deliver* (but only if you select this assignment): file DoctorX.gf for your language X.
 
-
+*Deadline*: until the end of the course.
