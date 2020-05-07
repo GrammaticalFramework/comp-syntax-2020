@@ -1,7 +1,7 @@
-resource MiniParadigmsEng = open
+resource MiniParadigmsEsp = open
 
-  MiniGrammarEng,
-  MiniResEng
+  MiniGrammarEsp,
+  MiniResEsp
   
 in {
 

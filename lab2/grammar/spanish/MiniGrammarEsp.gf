@@ -1,5 +1,5 @@
 --# -path=.:../abstract
-concrete MiniGrammarEng of MiniGrammar = open MiniResEng, Prelude in {
+concrete MiniGrammarEsp of MiniGrammar = open MiniResEsp, Prelude in {
 
 
   lincat
@@ -100,7 +100,7 @@ concrete MiniGrammarEng of MiniGrammar = open MiniResEng, Prelude in {
 
     ImpVP vp = {
       s = table {
-        True  => vp.verb.s ! VF Inf ++ vp.compl ;    -- in Eng, imperative = infinitive
+        True  => vp.verb.s ! VF Inf ++ vp.compl ;    -- in Esp, imperative = infinitive
         False => "do not" ++ vp.verb.s ! VF Inf ++ vp.compl
         }
       } ;
