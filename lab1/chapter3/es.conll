@@ -96,7 +96,7 @@
 11  ,             PUNCT 5   punct
 12  "             PUNCT 5   punct
 13  dijo          VERB  5   parataxis
-14  Leive         PROPN 14  nsubj
+14  Leive         PROPN 13  nsubj
 15  .             PUNCT 5   punct
 
 # Un testigo contó a la policía que la víctima había atacado al sospechoso en abril.
@@ -274,7 +274,7 @@
 5   esta      DET   6   det
 6   chica     NOUN  8   nsubj
 7   se        PRON  8   compound:prt
-8   atrevía   VERB  8   ccomp
+8   atrevía   VERB  2   ccomp
 9   a         PART  10  mark
 10  burlarse  VERB  8   xcomp
 11  de        ADP   12  case

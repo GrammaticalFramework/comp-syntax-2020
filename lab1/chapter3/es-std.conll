@@ -96,7 +96,7 @@
 11	,	_	PUNCT	_	_	5	punct	_	_
 12	"	_	PUNCT	_	_	5	punct	_	_
 13	dijo	_	VERB	_	_	5	parataxis	_	_
-14	Leive	_	PROPN	_	_	14	nsubj	_	_
+14	Leive	_	PROPN	_	_	13	nsubj	_	_
 15	.	_	PUNCT	_	_	5	punct	_	_
 
 # text = Un testigo contó a la policía que la víctima había atacado al sospechoso en abril.
@@ -274,7 +274,7 @@
 5	esta	_	DET	_	_	6	det	_	_
 6	chica	_	NOUN	_	_	8	nsubj	_	_
 7	se	_	PRON	_	_	8	compound:prt	_	_
-8	atrevía	_	VERB	_	_	8	ccomp	_	_
+8	atrevía	_	VERB	_	_	2	ccomp	_	_
 9	a	_	PART	_	_	10	mark	_	_
 10	burlarse	_	VERB	_	_	8	xcomp	_	_
 11	de	_	ADP	_	_	12	case	_	_
