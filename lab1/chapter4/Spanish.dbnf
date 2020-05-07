@@ -104,6 +104,7 @@ VP ::= V2V NP VP # head obj xcomp
 VP ::= V2V NP VP_to # head obj xcomp
 VP ::= VP comma? Adv # head punct advmod
 VP ::= AdV VP # advmod head
+VP ::= VP V_part # head amod
 VP ::= VP NP_obl # head obl # 0.001
 VP ::= VS S_direct # head parataxis
 
@@ -282,3 +283,4 @@ ListNP_obl ::= ListNP_obl Adv_comma # head conj
 #token parenth ( ) [ ]
 
 -- content word lexicon
+# token V_part deslizándose
