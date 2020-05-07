@@ -82,6 +82,12 @@ lin travel_V = mkV "viajar" ;
 lin tree_N = mkN "árbol" ;
 lin understand_V2 = mkV2 (mkV "entender") ; -- irregular
 lin wait_V2 = mkV2 "esperar" ;
+lin walk_V = mkV "caminar" ;
+lin warm_A = mkA "cálido" ;
+lin water_N = mkN "agua" ;
+lin white_A = mkA "blanco" ;
+lin wine_N = mkN "vino" ;
+lin woman_N = mkN "mujer" ;
 lin yellow_A = mkA "amarillo" ;
 lin young_A = mkA "joven" ;
 
