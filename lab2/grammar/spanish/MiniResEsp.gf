@@ -2,8 +2,13 @@ resource MiniResEsp = open Prelude in {
 
 param
   Number = Sg | Pl ;
-  Case = Nom | Acc ;
+  Gender = M | F ;  -- should I add N for just a couple pronouns?
+  Degree = Pos | Cmp | Sup | Abs ;
   Person = Per1 | Per2 | Per3 ;
+  Tense = Past | Pres | Futr ;
+  Mood = Ind | Imp | Sub | Cnd ;
+  Aspect = Perf | Imp | Prog ;
+  Voice = Actv | Pass ;
 
   Agreement = Agr Number Person ;
 
