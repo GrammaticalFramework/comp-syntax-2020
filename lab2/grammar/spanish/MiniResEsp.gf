@@ -2,17 +2,18 @@ resource MiniResEsp = open Prelude in {
 
 param
   Number = Sg | Pl ;
-  Gender = M | F ;  -- should I add N for just a couple pronouns?
+  Gender = M | F ;  -- TODO: add N for just a couple pronouns?
   Degree = Pos | Cmp | Sup | Abs ;
+  Case = Nom | Acc ;  -- still here for pronouns (?) and to avoid breaking everything
   Person = Per1 | Per2 | Per3 ;
-  Tense = Past | Pres | Futr ;
-  Mood = Ind | Imp | Sub | Cnd ;
+  Tense = Pastt | Pres | Futr ; -- TODO: change to Past
+  Mood = Ind | Sub | Cnd ;
   Aspect = Perf | Imp | Prog ;
   Voice = Actv | Pass ;
 
-  Agreement = Agr Number Person ;
+  Agreement = Agr Number Person ; -- TODO: add gender
 
-  -- all forms of normal Esp verbs, although not yet used in MiniGrammar
+  -- this will be nested
   VForm = Inf | PresSg3 | Past | PastPart | PresPart ; 
 
 oper
