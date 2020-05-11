@@ -30,7 +30,11 @@ If you want to work on the Mini grammar you can ignore everything about the Micr
 
 1. Complete the rest of the definitions of RGL categories and functions in MiniGrammar.
 2. Add concrete UD labels.
-3. Generate a synthetic UD treebank.
+3. Generate a synthetic UD treebank. The simplest way to do this from the
+GF shell is random generation; change english/MiniLangEng.labels to
+the labels of your own language:
+
+gr -cat=Utt -number=22 -depth=6 | vd -output=conll -abslabels=abstract/MiniLang.labels -cnclabels=english/MiniLangEng.labels
 
 *To deliver* (but only if you select this assignment): file Mini..X.gf for your language X, together with MiniLangX.labels and a treebank in CoNLL format with 20 trees.
 
