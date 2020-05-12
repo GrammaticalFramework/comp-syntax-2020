@@ -1,6 +1,6 @@
-concrete MiniLexiconEsp of MiniLexicon = MiniGrammarEsp **
+concrete MiniLexiconSpa of MiniLexicon = MiniGrammarSpa **
   open
-    MiniParadigmsEsp
+    MiniParadigmsSpa
   in {
 lin already_Adv = mkAdv "ya" ;
 lin animal_N = mkN "animal" ;

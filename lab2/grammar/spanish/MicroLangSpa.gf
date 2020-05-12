@@ -1,5 +1,5 @@
 --# -path=.:../abstract
-concrete MicroLangEsp of MicroLang = open MicroResEsp, Prelude in {
+concrete MicroLangSpa of MicroLang = open MicroResSpa, Prelude in {
 
 -----------------------------------------------------
 ---------------- Grammar part -----------------------
