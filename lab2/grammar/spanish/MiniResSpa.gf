@@ -2,7 +2,7 @@ resource MiniResSpa = open Prelude in {
 
 param
   Number = Sg | Pl ;
-  Gender = M | F ;  -- TODO: add N for just a couple pronouns?
+  Gender = M | F ;
   Degree = Pos | Cmp | Sup | Abs ;
   Case = Nom | Acc ;  -- still here for pronouns (?) and to avoid breaking everything
   Person = Per1 | Per2 | Per3 ;
@@ -17,20 +17,34 @@ param
   VForm = Inf | PresSg3 | Past | PastPart | PresPart ; 
 
 oper
-  Noun : Type = {s : Number => Str} ;
-
-  mkNoun : Str -> Str -> Noun = \sg,pl -> {
-    s = table {Sg => sg ; Pl => pl}
+  -- | NOUNS
+  Noun : Type = {
+    s : Number => Str ; -- inflectional
+    g : Gender -- inherent
     } ;
 
-  regNoun : Str -> Noun = \sg -> mkNoun sg (sg + "s") ;
+  mkNoun : Str -> Str -> Noun = \sg,pl -> {
+    s = table {Sg => sg ; Pl => pl} ;
+    g = getGender sg
+    } ;
 
-  -- smart paradigm
+  -- noun inflection (TODO: recycle for adjectives?)
   smartNoun : Str -> Noun = \sg -> case sg of {
-    _ + ("ay"|"ey"|"oy"|"uy") => regNoun sg ;
-    x + "y"                   => mkNoun sg (x + "ies") ;
-    _ + ("ch"|"sh"|"s"|"o")   => mkNoun sg (sg + "es") ;
-    _                         => regNoun sg
+    faral + "á" => mkNoun sg (faral + "aes") ;
+    pe + "z" => mkNoun sg (pe + "ces") ;
+    x + ("s" | "x") => mkNoun sg sg ;
+    _ + ("a" | "e" | "i" | "o" | "u" | "é") => mkNoun sg (sg + "s") ;
+    _ => mkNoun sg (sg + "es")
+    } ;
+
+  getGender : Str -> Gender = \sg -> case sg of {
+    ("animal" | "bebé" | "pan" | "coche" | "ordenador" | "pez" | "idioma" | "nombre" | "árbol") => M ;
+    ("sangre" | "ciudad" | "nube" | "flor" | "leche" | "mar" | "nave" | "mujer") => F ; 
+    x + ("esa" | "isa" | "ina" | "triz") => F ;
+    (barc + "o") => M ;
+    manzan + "a" => F ;
+    _ => Predef.error ("unknown")
+
     } ;
 
   Adjective : Type = {s : Str} ;
