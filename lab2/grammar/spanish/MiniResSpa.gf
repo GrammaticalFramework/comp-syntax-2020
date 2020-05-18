@@ -3,15 +3,15 @@ resource MiniResSpa = open Prelude in {
 param
   Number = Sg | Pl ;
   Gender = M | F ;
-  Degree = Pos | Cmp | Sup | Abs ;
-  Case = Nom | Acc ;  -- still here for pronouns (?) and to avoid breaking everything
+  Degree = Pos | Sup ; -- other degrees either adv + pos or lexicalized 
+  Case = Nom | Acc ; -- still here for pronouns (?)
   Person = Per1 | Per2 | Per3 ;
   Tense = Pastt | Pres | Futr ; -- TODO: change to Past
   Mood = Ind | Sub | Cnd ;
   Aspect = Perf | Imp | Prog ;
   Voice = Actv | Pass ;
 
-  Agreement = Agr Number Person ; -- TODO: add gender
+  Agreement = Agr Number Gender ; -- used for noun-adj agreement
 
   -- this will be nested
   VForm = Inf | PresSg3 | Past | PastPart | PresPart ; 
@@ -47,7 +47,8 @@ oper
 
     } ;
 
-  Adjective : Type = {s : Str} ;
+  -- | ADJECTIVES
+  Adjective : Type = {s : Agreement => Degree => Str} ;
 
   Verb : Type = {s : VForm => Str} ;
 
