@@ -2,8 +2,8 @@ resource MiniResSpa = open Prelude in {
 
 param
   Number = Sg | Pl ;
-  Gender = M | F ;
-  Degree = Pos | Sup ; -- other degrees either adv + pos or lexicalized 
+  Gender = F | M ;
+  -- Degree = Pos | Sup ; -- maybe another day
   Case = Nom | Acc ; -- still here for pronouns (?)
   Person = Per1 | Per2 | Per3 ;
   Tense = Pastt | Pres | Futr ; -- TODO: change to Past
@@ -44,11 +44,27 @@ oper
     (barc + "o") => M ;
     manzan + "a" => F ;
     _ => Predef.error ("unknown")
-
     } ;
 
   -- | ADJECTIVES
-  Adjective : Type = {s : Agreement => Degree => Str} ;
+  Adjective : Type = {s : Agreement => Str} ;
+
+  mkAdjective: (fsg, fpl, msg, mpl : Str) -> Adjective {
+    s = table {
+      AdjectiveSg F => fsg ;
+      AdjectivePl F => fpl ;
+      AdjectiveSg M => msg ;
+      AdjectivePl M => mpl 
+    }
+  } ;
+
+  smartAdjective : Str -> Adjective = \msg -> case msg of {
+    larg + "o" => 
+      mkAdjective (larg + "a") (larg + "as") msg (larg + "os") ;
+    grand + ("e" | "l" | "r" | "z" | "n") =>
+      mkAdjective msg (grand + "es") msg (grand + "es") ;
+    _ => Predef.error ("unknown")
+  } ;
 
   Verb : Type = {s : VForm => Str} ;
 
