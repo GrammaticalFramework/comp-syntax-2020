@@ -14,7 +14,8 @@ lincat
 lin
   QWhich kind property = mkUtt (mkQS (mkQCl (mkIP whichPl_IDet kind) property)) ;
   QWhether term property = mkUtt (mkQS (mkQCl (mkCl term property))) ;
-
+  QWhat element = mkUtt (mkQS (mkQCl what_IP element)) ;
+  
   TAll kind = mkNP all_Predet (mkNP aPl_Det kind) ;
   TAny kind = mkNP someSg_Det kind ;
   TElement element = element ;
@@ -39,5 +40,6 @@ lin
 
   ESum x y = mkNP the_Det (mkCN (mkN2 (mkN "summa")) (mkNP and_Conj x y)) ;
   EProduct x y = mkNP the_Det (mkCN (mkN2 (mkN "produkt")) (mkNP and_Conj x y)) ;
-
+  EFactorial x = mkNP the_Det (mkCN (mkN2 (mkN "fakultet")) x) ;
+  
 }
