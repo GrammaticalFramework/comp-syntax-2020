@@ -49,13 +49,13 @@ oper
   -- | ADJECTIVES
   Adjective : Type = {s : Agreement => Str} ;
 
-  mkAdjective: (fsg, fpl, msg, mpl : Str) -> Adjective {
+  mkAdjective: (fsg, fpl, msg, mpl : Str) -> Adjective = \fsg, fpl, msg, mpl -> {
     s = table {
-      AdjectiveSg F => fsg ;
-      AdjectivePl F => fpl ;
-      AdjectiveSg M => msg ;
-      AdjectivePl M => mpl 
-    }
+      Agr Sg F => fsg ;
+      Agr Pl F => fpl ;
+      Agr Sg M => msg ;
+      Agr Pl M => mpl 
+    } 
   } ;
 
   smartAdjective : Str -> Adjective = \msg -> case msg of {
