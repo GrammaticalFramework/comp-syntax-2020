@@ -34,7 +34,11 @@ If you want to work on the Mini grammar you can ignore everything about the Micr
 GF shell is random generation; change english/MiniLangEng.labels to
 the labels of your own language:
 
-gr -cat=Utt -number=22 -depth=6 | vd -output=conll -abslabels=abstract/MiniLang.labels -cnclabels=english/MiniLangEng.labels
+gr -cat=Utt -number=22 -depth=6 | vd -output=conll
+-abslabels=abstract/MiniLang.labels -cnclabels=english/MiniLangEng.labels
+
+*Hint*: if your language is already in the standard RGL, you can implement it easily by making a copy of the files in grammar/swedish.
+But use this implementation only as a reference with which to test your own one: your lab submission must not make any use of the RGL modules, except Prelude!
 
 *To deliver* (but only if you select this assignment): file Mini..X.gf for your language X, together with MiniLangX.labels and a treebank in CoNLL format with 20 trees.
 
