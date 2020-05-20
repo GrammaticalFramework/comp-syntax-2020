@@ -17,11 +17,11 @@ def answer(tree):
   fun,args = tree.unpack()
   
   if fun == "QWhich":
-    ans = enumerate(predicate(args[1]))
+    ans = enumerate(lambda x: predicate(args[0])(x) and predicate(args[1])(x))
   elif fun == "QWhether":
     ans = quantifier(args[0])(predicate(args[1]))
   else: # QWhat
-    ans = "soo"
+    ans = value(args[0])
     
   return str(ans)
 
@@ -38,8 +38,21 @@ def predicate(property):
     return lambda x: x % 2 == 0
   elif prop == "POdd":
     return lambda x: x % 2 != 0
+  elif prop == "PSmaller":
+    return lambda x: quantifier(pargs[0])(lambda y: x < y)
+  elif prop == "PGreater":
+    return lambda x: quantifier(pargs[0])(lambda y: x > y)
+  elif prop == "PBetween":
+    return lambda y: quantifier(pargs[0])(lambda x: quantifier(pargs[1])(lambda z: x < y and y < z))
   elif prop == "PPrime":
     return prime
+
+# works also for Kind:
+  elif prop == "KNumber":
+    return lambda x: True
+  elif prop == "KProperty":
+    return lambda x: predicate(pargs[0])(x) and predicate(pargs[1])(x)
+  
   else:
     print("not a valid property",property)
 
@@ -49,18 +62,21 @@ def quantifier(term):
   if fun == "TElement":
     return lambda p: p(value(args[0]))
   elif fun == "TAll":
-    return lambda p: forAll(p)
+    return lambda p: forAll(lambda x: not predicate(args[0])(x) or p(x))
   elif fun == "TAny":
-    return lambda p: forSome(p)
+    return lambda p: forSome(lambda x: predicate(args[0])(x) and p(x))
   else:
     print("not a valid term",term)
 
+# returns int
 def value(element):
   fun,args = element.unpack()
   if fun == "EInteger":
     return int(args[0].unpack())
   elif fun == "ESum":
     return value(args[0]) + value(args[1])
+  elif fun == "EProduct":
+    return value(args[0]) * value(args[1])
   else:
     print("not a valid element",element)
   
