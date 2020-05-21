@@ -19,7 +19,10 @@ lin
     ;
   removeCommand object =
       mkUtt (mkImp (mkVP (mkV2 (mkV (mkV "ta") "bort")) (mkNP the_Det object))) ;
-  undoCommand = mkUtt (mkImp (mkVP (mkV "ångra"))) ;
+  moveCommand object =
+      mkUtt (mkImp (mkVP (mkV2 "flytta") (mkNP the_Det object))) ;
+  moveItCommand = mkUtt (mkImp (mkVP (mkV "flytta"))) ;
+  removeItCommand = mkUtt (mkImp (mkVP (mkV (mkV "ta") "bort"))) ;
       
   shapeObject size colour shape =
     G.AdjCN size (G.AdjCN colour shape ** {isMod = colour.isAdj})

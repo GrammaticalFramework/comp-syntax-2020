@@ -10,9 +10,11 @@ cat
   Size ;
 
 fun
-  drawCommand   : Object -> Command ;
-  removeCommand : Object -> Command ;
-  undoCommand   : Command ;
+  drawCommand     : Object -> Command ;
+  removeCommand   : Object -> Command ;
+  moveCommand     : Object -> Command ;
+  removeItCommand : Command ;
+  moveItCommand   : Command ;
 
   shapeObject : Size -> Colour -> Shape -> Object ;
 

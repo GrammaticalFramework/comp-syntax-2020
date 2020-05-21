@@ -1,3 +1,6 @@
+# drawing figures with natural language commands
+# presupposes 'gf -make DrawEng.gf (DrawSwe.gf ...)'
+
 import pgf
 from graphics import *
 import sys
@@ -7,26 +10,36 @@ from random import randrange
 absmodule = "Draw"
 
 # change this to change input language
-langname = absmodule + "Swe"
+langname = absmodule + "Eng"
+
 
 def execute(command,win):
+  "top level: execute a Command in a window (given in main)"
   fun,args = command.unpack()
 
   if fun == "drawCommand":
     obj = shape(args[0])
     obj.draw(win)
-    return str(args[0]),obj,True
+    return str(args[0]),obj,fun
 
   if fun == "removeCommand":
     key = str(args[0])
-    return key,None,False
+    return key,None,fun
+  
+  if fun == "moveCommand":
+    key = str(args[0])
+    return key,None,fun
     
-  if fun == "undoCommand":
-    key = "undo" ###
-    return key,None,False
+  if fun == "removeItCommand":
+    key = "it" 
+    return key,None,fun
+  
+  if fun == "moveItCommand":
+    key = "it" 
+    return key,None,fun
     
-
 def shape(obj):
+  "draw a Shape of random size and position, possibly with colour and rough size specified"
   x1 = 10 + randrange(0,500,1)
   y1 = 10 + randrange(0,500,1)
   r  = 100 + randrange(0,200,1)
@@ -71,11 +84,15 @@ def shape(obj):
   return shap
 
 def main():
+  "initialize with a window, process Command input line by line; optional language argument"
   win = GraphWin("GF Draw", 1000, 1000)
   shapes = {}
   latest = "undo"
   gr  = pgf.readPGF(absmodule + ".pgf")
-  eng = gr.languages[langname]
+  lang = langname
+  if len(sys.argv) > 1:
+    lang = absmodule + sys.argv[1]
+  eng = gr.languages[lang]
   while True:
     try:
         line = input("")
@@ -87,19 +104,25 @@ def main():
           try:
               px = eng.parse(line)
               p,tree = px.__next__()
-              key,obj,toAdd = execute(tree,win)
-              if toAdd:
+              key,obj,co = execute(tree,win)
+              if co == "drawCommand":
                   shapes[key] = obj
                   latest = key
-              elif key in shapes:
+              elif co == "removeCommand" and key in shapes:
                   shapes[key].undraw()
                   del shapes[key]
-              elif key == "undo":
+              elif co == "moveCommand" and key in shapes:
+                  shapes[key].move(randrange(-300,300,1),randrange(-300,300,1))
+                  latest = key
+              elif key == "it":
                   if latest in shapes:
-                      shapes[latest].undraw()
-                      del shapes[latest]
+                      if co == "removeItCommand":
+                          shapes[latest].undraw()
+                          del shapes[latest]
+                      if co == "moveItCommand":
+                          shapes[latest].move(randrange(-300,300,1),randrange(-300,300,1))
                   else:
-                      print("cannot repeat undo")
+                      print("cannot go back in history")
               else:
                   print("shape does not exist")
               print(shapes)

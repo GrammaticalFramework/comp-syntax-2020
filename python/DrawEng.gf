@@ -18,7 +18,10 @@ lin
     ;
   removeCommand object =
       mkUtt (mkImp (mkVP (mkV2 "remove") (mkNP the_Det object))) ;
-  undoCommand = mkUtt (mkImp (mkVP (mkV "undo"))) ;
+  moveCommand object =
+      mkUtt (mkImp (mkVP (mkV2 "move") (mkNP the_Det object))) ;
+  removeItCommand = mkUtt (mkImp (mkVP (mkV2 "remove") it_NP)) ;
+  moveItCommand = mkUtt (mkImp (mkVP (mkV2 "move") it_NP)) ;
       
   shapeObject size colour shape = mkCN size (mkCN colour shape) ;
 
