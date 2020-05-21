@@ -7,7 +7,7 @@ from random import randrange
 absmodule = "Draw"
 
 # change this to change input language
-langname = absmodule + "Eng"
+langname = absmodule + "Swe"
 
 def execute(command,win):
   fun,args = command.unpack()
@@ -95,8 +95,11 @@ def main():
                   shapes[key].undraw()
                   del shapes[key]
               elif key == "undo":
-                  shapes[latest].undraw()
-                  del shapes[latest]                  
+                  if latest in shapes:
+                      shapes[latest].undraw()
+                      del shapes[latest]
+                  else:
+                      print("cannot repeat undo")
               else:
                   print("shape does not exist")
               print(shapes)
