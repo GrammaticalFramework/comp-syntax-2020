@@ -1,0 +1,4 @@
+Piirrä pieni punainen ympyrä
+Piirrä suuri keltainen neliö
+Siirrä pientä punaista ympyrää
+Poista se

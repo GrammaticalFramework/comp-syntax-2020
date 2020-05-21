@@ -1,7 +1,10 @@
+# translator for arbitrary pgf grammar and language pair, given as arguments
+
 import pgf
 import sys
 
 def trim(s0):
+    "lower-case first word and tokenize" 
     s = s0.strip()
     if not(s):
         return s
@@ -15,6 +18,7 @@ def trim(s0):
     return r
 
 def missing(eng,s):
+  "words in a sentence not found in morphological analysis"
   ws = s.split()
   ms = []
   for w in ws:
@@ -23,6 +27,7 @@ def missing(eng,s):
   return ms
 
 def main():
+  "translation loop, reads stdio line by line"
   if len(sys.argv) < 4:
     print("  usage: python3 translator.py <pgf-file-prefix> <from-lang-suffix> <to-lang-suffix> -debug?")
     print("  e.g. python3 translator.py CSETranslator Eng Swe")

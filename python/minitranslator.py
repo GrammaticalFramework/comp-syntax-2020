@@ -1,3 +1,6 @@
+# minimal translator that reads one line from stdio and translates from Eng to Swe with Minilang
+# presupposes 'make minilang'
+
 import pgf
 
 # change these three to translate with other grammars and languages
