@@ -125,9 +125,10 @@ def main():
                       print("cannot go back in history")
               else:
                   print("shape does not exist")
-              print(shapes)
+           ## print(shapes) ## debugging
           except pgf.ParseError:
               print("# NO PARSE", line)
+  input()
 
 main()
 

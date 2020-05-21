@@ -141,7 +141,7 @@ def main():
   line  = input("")
   parseresult = lang.parse(line)
   prob,tree   = parseresult.__next__()
-  print(tree)
+#  print(tree) ## debugging
   print(answer(tree))
   for r in parseresult: print("WARNING: ambiguous")
   
