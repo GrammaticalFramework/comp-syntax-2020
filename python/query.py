@@ -33,11 +33,13 @@ def predicate(property):
   elif prop == "POr":
     return lambda x: predicate(pargs[0])(x) or predicate(pargs[1])(x)
   elif prop == "PNot":
-    return lambda x: not predicate(pargs[0])
+    return lambda x: not predicate(pargs[0])(x)
   elif prop == "PEven":
     return lambda x: x % 2 == 0
   elif prop == "POdd":
     return lambda x: x % 2 != 0
+  elif prop == "PEqual":
+    return lambda x: quantifier(pargs[0])(lambda y: x == y)
   elif prop == "PSmaller":
     return lambda x: quantifier(pargs[0])(lambda y: x < y)
   elif prop == "PGreater":
@@ -77,6 +79,12 @@ def value(element):
     return value(args[0]) + value(args[1])
   elif fun == "EProduct":
     return value(args[0]) * value(args[1])
+  elif fun == "EMinus":
+    return value(args[0]) - value(args[1])
+  elif fun == "EDivided":
+    return value(args[0]) / value(args[1]) ## // ?
+  elif fun == "EFactorial":
+    return factorial(value(args[0]))
   else:
     print("not a valid element",element)
   
@@ -122,5 +130,6 @@ def main():
   prob,tree   = parseresult.__next__()
   print(tree)
   print(answer(tree))
- 
+  for r in parseresult: print("WARNING: ambiguous")
+  
 main()

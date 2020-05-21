@@ -31,10 +31,10 @@ fun
   EInteger : Int -> Element ;
   PEven, POdd, PPrime : Property ;
   PDivisible : Term -> Property ;
-  PSmaller, PGreater : Term -> Property ;  
+  PSmaller, PGreater, PEqual : Term -> Property ;  
   PBetween : Term -> Term -> Property ;  
 
   EFactorial : Element -> Element ;
-  ESum, EProduct : Element -> Element -> Element ;
+  ESum, EProduct, EMinus, EDivided : Element -> Element -> Element ;
 
 }
