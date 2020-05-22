@@ -6,15 +6,18 @@ param
   -- Degree = Pos | Sup ; -- maybe another day
   Case = Nom | Acc ; -- still here for pronouns (?)
   Person = Per1 | Per2 | Per3 ;
-  Tense = Pastt | Pres | Futr ; -- TODO: change to Past
+  Tense = Past | Pres | Futr ;
   Mood = Ind | Sub | Cnd ;
   Aspect = Perf | Imp | Prog ;
-  Voice = Actv | Pass ;
+  Voice = Actv | Pass ; -- not used so far because passive is periphrastic
+  Polarity = Pos | Neg ; -- only for negative imperative
 
   Agreement = Agr Number Gender ; -- used for noun-adj agreement
 
-  -- this will be nested
-  VForm = Inf | PresSg3 | Past | PastPart | PresPart ; 
+  -- solamente los tiempos simples, voz activa
+  VForm = VFImp VImpForm | VFPers VPersForm ;
+  VImpForm = VInf | VPart Tense Agreement | VGer ;
+  VPersForm = VPers Mood Tense Aspect Voice Number Person Polarity ;
 
 oper
   -- | NOUNS
@@ -49,7 +52,7 @@ oper
   -- | ADJECTIVES
   Adjective : Type = {s : Agreement => Str} ;
 
-  mkAdjective: (fsg, fpl, msg, mpl : Str) -> Adjective = \fsg, fpl, msg, mpl -> {
+  mkAdjective: (_, _, _, _ : Str) -> Adjective = \fsg, fpl, msg, mpl -> {
     s = table {
       Agr Sg F => fsg ;
       Agr Pl F => fpl ;
@@ -66,16 +69,27 @@ oper
     _ => Predef.error ("unknown")
   } ;
 
+  -- | Verbs
   Verb : Type = {s : VForm => Str} ;
 
-  mkVerb : (inf,pres,past,pastpart,prespart : Str) -> Verb
-    = \inf,pres,past,pastpart,prespart -> {
+  mkVerb : (_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_ : Str) -> Verb
+    = \inf,partpresfsg,partpresfpl,partpresmsg,partpresmpl,partpastfsg,partpastfpl,partpastmsg,partpastmpl, ger, indpressg1, indpressg2, indpressg3, indprespl1, indprespl2, indprespl3, indimpfsg1, indimpfsg2, indimpfsg3,indimpfpl1, indimpfpl2, indimpfpl3, indperfsg1, indperfsg2, indperfsg3,indperfpl1, indperfpl2, indperfpl3, indfutrsg1, indfutrsg2, indfutrsg3,indfutrpl1, indfutrpl2, indfutrpl3, subpressg1, subpressg2, subpressg3,subprespl1, subprespl2, subprespl3, subimpfsg1, subimpfsg2, subimpfsg3,subimpfpl1, subimpfpl2, subimpfpl3, subfutrsg1, subfutrsg2, subfutrsg3,subfutrpl1, subfutrpl2, subfutrpl3, imprpossg2, imprpossg3,imprpospl1, imprpospl2, imprpospl3, imprnegsg2, imprnegsg3,imprnegpl1, imprnegpl2, imprnegpl3, condsg1, condsg2, condsg3, condpl1, condpl2, condl3 -> {
     s = table {
-      Inf => inf ;
-      PresSg3 => pres ;
-      Past => past ;
-      PastPart => pastpart ;
-      PresPart => prespart
+      -- | Formas impersonales
+      -- infinitivo
+      VFImp VInf => inf ;
+      -- participios
+      VFImp (VPart Pres (Agr Sg F)) => partpresfsg ;
+      VFImp (VPart Pres (Agr Pl F)) => partpresfpl ;
+      VFImp (VPart Pres (Agr Sg M)) => partpresmsg ;
+      VFImp (VPart Pres (Agr Pl M)) => partpresmpl ;
+      VFImp (VPart Past (Agr Sg F)) => partpastfsg ;
+      VFImp (VPart Past (Agr Pl F)) => partpastfpl ;
+      VFImp (VPart Past (Agr Sg M)) => partpastmsg ;
+      VFImp (VPart Past (Agr Pl M)) => partpastmpl ;
+      -- gerundio
+      VFImp VGer => ger ;
+      _ => inf
       }
     } ;
 
