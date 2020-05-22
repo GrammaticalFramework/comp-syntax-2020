@@ -17,7 +17,7 @@ You don't need Haskell to build these.
 
 A general tutorial on the Python bindings can be found in
 
-http://www.grammaticalframework.org/doc/python-api.html
+http://www.grammaticalframework.org/doc/runtime-api.html#python
 
 A guide to GF for Python programmers can be found in
 
