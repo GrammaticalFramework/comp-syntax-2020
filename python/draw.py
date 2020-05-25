@@ -12,6 +12,8 @@ absmodule = "Draw"
 # change this to change input language
 langname = absmodule + "Eng"
 
+# the size of canvas
+hsize, vsize = 1000,1000
 
 def execute(command,win):
   "top level: execute a Command in a window (given in main)"
@@ -95,10 +97,43 @@ def direction(place):
   else:
     return randrange(-300,300,1),randrange(-300,300,1)
 
+def addRef(ref,obj,refs):
+  "adds a reference and object to the top of the stack"
+  return [(ref,obj)] + refs
+
+def lookupRef(ref,refs):
+  "return the first value and index of ref in a list of pairs refs"
+  i = 0
+  for ro in refs:
+      r,obj = ro
+      if matchRef(ref,r):
+        return r,obj,i
+      else:
+        i = i + 1
+  return None,None,None
+
+def removeRef(ref,refs):
+  "remove the first pair matching ref in refs"
+  r,obj,i = lookupRef(ref,refs)
+  refs.pop(i)
+  return refs
+
+def matchRef(ref,r):
+    if ref == "itObjectRef":
+        return True
+    else:
+        refws = ref.split()
+        rws = r.split()
+        m = True
+        for i in range(1,4):
+          if (refws[i][0:2] != "no") and (refws[i] != rws[i]):
+              return False
+        return m
+
 def main():
   "initialize with a window, process Command input line by line; optional language argument"
-  win = GraphWin("GF Draw", 1000, 1000)
-  shapes = {}
+  win = GraphWin("GF Draw", hsize, vsize)
+  refs = []
   latest = "it"
   gr  = pgf.readPGF(absmodule + ".pgf")
   lang = langname
@@ -117,24 +152,28 @@ def main():
               px = eng.parse(line.lower())
               p,tree = px.__next__()
               key,obj,co = execute(tree,win)
-              if key == "itObjectRef":
-                  key = latest
               if co == "drawCommand":
-                  shapes[key] = obj
-                  latest = key
-              elif co == "removeCommand" and key in shapes:
-                  shapes[key].undraw()
-                  del shapes[key]
-              elif co == "moveCommand" and key in shapes:
+                  refs = addRef(key,obj,refs)
+              elif co == "removeCommand":
+                  ref,sh,i = lookupRef(key,refs)
+                  if sh is None:
+                    print("no such object")
+                  else:
+                    sh.undraw()
+                    refs = removeRef(key,refs)
+              elif co == "moveCommand":
                   x,y = obj
-                  shapes[key].move(x,y)
-                  latest = key
+                  ref,sh,i = lookupRef(key,refs)
+                  if sh is None:
+                    print("no such object")
+                  else:
+                    sh.move(x,y)
+                    refs = [(ref,sh)] + refs[:i] + refs[i+1:]
               else:
-                  print("shape does not exist")
-           ## print(shapes) ## debugging
+                  print("nothing else can be done")
+              print(refs) ## debugging
           except pgf.ParseError:
               print("# NO PARSE", line)
-  input()
 
 main()
 

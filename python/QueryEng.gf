@@ -68,7 +68,7 @@ lin
   ESum x y =
       mkNP the_Det (mkCN (mkN2 (mkN "sum")) (mkNP and_Conj x y))    -- the sum of x and y
     | mkNP (mkConj "+" singular) x y                                -- x + y
-    | parenthNP (mkNP (mkConj "+" singular) x y)                    -- x + y
+    | parenthNP (mkNP (mkConj "+" singular) x y)                    -- ( x + y )
     ;
   EMinus x y =
       mkNP the_Det (mkCN (mkN2 (mkN "difference")) (mkNP and_Conj x y))  -- the difference of x and y

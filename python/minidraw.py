@@ -41,7 +41,7 @@ def main():
   gr  = pgf.readPGF(absmodule + ".pgf")
   eng = gr.languages[langname]
   line = input()
-  px = eng.parse(line)
+  px = eng.parse(line.lower())
   p,tree = px.__next__()
   execute(tree,win)
   input()
