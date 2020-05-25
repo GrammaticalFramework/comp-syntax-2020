@@ -15,6 +15,23 @@ langname = absmodule + "Eng"
 # the size of canvas
 hsize, vsize = 1000,1000
 
+# the mid point of the canvas
+midpoint = (hsize/2,vsize/2)
+
+# unit size granularity
+sizeunit = hsize//10
+
+# big and small size factors
+bigsize = 2
+smallsize = 0.2
+
+# limits of radius and diameter/2
+maxradius = 2 * sizeunit
+minradius = sizeunit
+
+# distance of movement
+distunit = 2*sizeunit
+
 def execute(command,win):
   "top level: execute a Command in a window (given in main)"
   fun,args = command.unpack()
@@ -41,25 +58,21 @@ def reference(objectref):
 
 def shape(obj):
   "draw a Shape of random size and position, possibly with colour and rough size specified"
-  x1 = 10 + randrange(0,500,1)
-  y1 = 10 + randrange(0,500,1)
-  r  = 100 + randrange(0,200,1)
-  x2 = 410 + randrange(0,500,1)
-  y2 = 410 + randrange(0,500,1)
-  
   fun,args = obj.unpack()
 
   sz,xx = args[0].unpack()
   if sz == "big_Size":
-    factor = 2
+    factor = bigsize
   elif sz == "small_Size":
-    factor = 0.2
+    factor = smallsize
   else:
     factor = 1
-  x1 = 100 + randrange(0,500,1)
-  y1 = 100 + randrange(0,500,1)
-  r  = factor * (100 + randrange(100,200,1))
-  d  = factor * (100 + randrange(100,200,1))
+    
+  midx,midy = midpoint
+  x1 = midx + randrange(-midx,midx,1)
+  y1 = midy + randrange(-midx,midy,1)
+  r  = factor * randrange(minradius, maxradius, 1)
+  d  = r
   x2 = x1 + d
   y2 = y1 + d
     
@@ -87,15 +100,15 @@ def shape(obj):
 def direction(place):
   fun,args = place.unpack()
   if fun == "upPlace":
-    return 0,-200
+    return 0,-distunit
   if fun == "downPlace":
-    return 0,200
+    return 0,distunit
   if fun == "leftPlace":
-    return -200,0
+    return -distunit,0
   if fun == "rightPlace":
-    return 200,0
+    return distunit,0
   else:
-    return randrange(-300,300,1),randrange(-300,300,1)
+    return randrange(-2*distunit,2*distunit,1),randrange(-2*distunit,2*distunit,1)
 
 def addRef(ref,obj,refs):
   "adds a reference and object to the top of the stack"
