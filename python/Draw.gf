@@ -5,18 +5,21 @@ flags startcat = Command ;
 cat
   Command ;
   Object ;
+  ObjectRef ;
   Shape ;
   Colour ;
   Size ;
+  Place ;
 
 fun
-  drawCommand     : Object -> Command ;
-  removeCommand   : Object -> Command ;
-  moveCommand     : Object -> Command ;
-  removeItCommand : Command ;
-  moveItCommand   : Command ;
+  drawCommand   : Object -> Command ;
+  removeCommand : ObjectRef -> Command ;
+  moveCommand   : ObjectRef -> Place -> Command ;
 
-  shapeObject : Size -> Colour -> Shape -> Object ;
+  shapeObject  : Size -> Colour -> Shape -> Object ;
+  
+  theObjectRef : Object -> ObjectRef ;
+  itObjectRef  : ObjectRef ;
 
   circle_Shape : Shape ;
   square_Shape : Shape ;
@@ -33,4 +36,12 @@ fun
 
   noColour : Colour ;
 
+  upPlace    : Place ;
+  downPlace  : Place ;
+  leftPlace  : Place ;
+  rightPlace : Place ;
+  midPlace   : Place ;
+  
+  noPlace    : Place ;
+ 
 }

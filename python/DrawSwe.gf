@@ -7,9 +7,11 @@ concrete DrawSwe of Draw =
 lincat
   Command = Utt ;
   Object = CN ;
+  ObjectRef = NP ;
   Shape = CN ;
   Colour = AP ** {isAdj : Bool} ;
   Size = AP ** {isAdj : Bool} ;
+  Place = Adv ;
 
 lin
   drawCommand object =
@@ -18,16 +20,16 @@ lin
     | mkUtt object                                           -- circle
     ;
   removeCommand object =
-      mkUtt (mkImp (mkVP (mkV2 (mkV (mkV "ta") "bort")) (mkNP the_Det object))) ;
-  moveCommand object =
-      mkUtt (mkImp (mkVP (mkV2 "flytta") (mkNP the_Det object))) ;
-  moveItCommand = mkUtt (mkImp (mkVP (mkV "flytta"))) ;
-  removeItCommand = mkUtt (mkImp (mkVP (mkV (mkV "ta") "bort"))) ;
+      mkUtt (mkImp (mkVP (mkV2 (mkV (mkV "ta") "bort")) object)) ;
+  moveCommand object place =
+      mkUtt (mkImp (mkVP (mkVP (mkV2 "flytta") object) place)) ;
       
   shapeObject size colour shape =
     G.AdjCN size (G.AdjCN colour shape ** {isMod = colour.isAdj})
       ** {isMod = orB size.isAdj colour.isAdj} ;
- 
+      
+  theObjectRef object = mkNP the_Det object ;
+  itObjectRef = mkNP (mkPN "den") ; --- it_NP = det ;
 
   circle_Shape = mkCN (mkN "cirkel" "cirkeln" "cirklar" "cirklarna") ;
   square_Shape = mkCN (mkN "kvadrat" "kvadrater") ;
@@ -43,9 +45,16 @@ lin
 
   noColour = emptyAP ;
 
+  upPlace = pmkAdv "upp" ;
+  downPlace = pmkAdv "ner" ;
+  leftPlace = pmkAdv "åt vänster" ;
+  rightPlace = pmkAdv "åt höger" ;
+  midPlace = pmkAdv "till mitten" ;
+  
+  noPlace = pmkAdv "" ;
 oper
   emptyAP : AP ** {isAdj : Bool} = mkAP (invarA "") ** {isAdj = False} ; ---
   mkrAP : A -> AP ** {isAdj : Bool} = \a -> mkAP a ** {isAdj = True} ;
-
+  pmkAdv : Str -> Adv = ParadigmsSwe.mkAdv ;
 }
 

@@ -6,9 +6,11 @@ concrete DrawEng of Draw =
 lincat
   Command = Utt ;
   Object = CN ;
+  ObjectRef = NP ;
   Shape = CN ;
   Colour = AP ;
   Size = AP ;
+  Place = Adv ;
 
 lin
   drawCommand object =
@@ -17,14 +19,15 @@ lin
     | mkUtt object                                           -- circle
     ;
   removeCommand object =
-      mkUtt (mkImp (mkVP (mkV2 "remove") (mkNP the_Det object))) ;
-  moveCommand object =
-      mkUtt (mkImp (mkVP (mkV2 "move") (mkNP the_Det object))) ;
-  removeItCommand = mkUtt (mkImp (mkVP (mkV2 "remove") it_NP)) ;
-  moveItCommand = mkUtt (mkImp (mkVP (mkV2 "move") it_NP)) ;
+      mkUtt (mkImp (mkVP (mkV2 "remove") object)) ; 
+  moveCommand object place =
+      mkUtt (mkImp (mkVP (mkVP (mkV2 "move") object) place)) ;
       
   shapeObject size colour shape = mkCN size (mkCN colour shape) ;
 
+  theObjectRef object = mkNP the_Det object ;
+  itObjectRef = it_NP ;
+  
   circle_Shape = mkCN (mkN "circle") ;
   square_Shape = mkCN (mkN "square") ;
 
@@ -39,4 +42,14 @@ lin
 
   noColour = mkAP (mkA "") ; ---
 
+  upPlace = pmkAdv "up" ;
+  downPlace = pmkAdv "down" ;
+  leftPlace = pmkAdv "left" ;
+  rightPlace = pmkAdv "right" ;
+  midPlace = pmkAdv "to the middle" ;
+  
+  noPlace = pmkAdv "" ;
+
+oper
+  pmkAdv : Str -> Adv = ParadigmsEng.mkAdv ;
 }
