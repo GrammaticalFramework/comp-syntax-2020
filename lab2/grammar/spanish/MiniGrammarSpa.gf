@@ -71,7 +71,7 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
 	    clt.inf ++               -- drink
 	    qcl.compl                -- beer
       } ;
-
+    {-
     PredVP np vp = {
       subj = np.s ! Nom ;
       compl = vp.compl ;
@@ -93,8 +93,9 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
         -- the negation word "not" is put in place in UseCl, UseQCl
       }
     } ;
+    --}
 
-    QuestCl cl = cl ** {isWh = False} ; -- since the parts are the same, we don't need to change anything
+    -- QuestCl cl = cl ** {isWh = False} ; -- since the parts are the same, we don't need to change anything
     
     QuestVP ip vp = PredVP ip vp ** {isWh = True} ; 
 
@@ -137,7 +138,7 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
       } ;
       
     CompAdv adv = adv ;
- 
+    {-
     AdvVP vp adv =
       vp ** {compl = vp.compl ++ adv.s} ;
       
@@ -162,7 +163,7 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
     aPl_Det = {s = "" ; n = Pl} ;
     the_Det = {s = "the" ; n = Sg} ;
     thePl_Det = {s = "the" ; n = Pl} ;
-    
+    --}
     UseN n = n ;
     
     AdjCN ap cn = {
@@ -189,7 +190,7 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
     in_Prep = {s = "in"} ;
     on_Prep = {s = "on"} ;
     with_Prep = {s = "with"} ;
-
+    {-
     i_Pron = {
       s = table {Nom => "I" ; Acc => "me"} ;
       a = Agr Sg P1
@@ -218,11 +219,14 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
       s = table {Nom => "they" ; Acc => "them"} ;
       a = Agr Pl P3
       } ;
-      
+      --}
+
+    {--
     whoSg_IP = {
       s = table {Nom => "who" ; Acc => "whom"} ;
       a = Agr Sg P3
       } ;
+    
 
     where_IAdv = {s = "where"} ;
     why_IAdv = {s = "why"} ;
@@ -230,5 +234,5 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
     have_V2 = mkVerb "have" "has" "had" "had" "having" ** {c = []} ;
 
     want_VV = smartVerb "querer" ;
-    
+    --}
 }
