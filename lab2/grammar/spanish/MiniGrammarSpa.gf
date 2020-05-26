@@ -16,7 +16,7 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
       } ;
     QCl = Cl ** {isWh : Bool} ;
     Imp = {s : Bool => Str} ;
-    VP = {verb : GVerb ; compl : Str} ;
+    VP = {verb : Verb ; compl : Str} ;
     Comp = {s : Str} ;
     AP = Adjective ;
     CN = Noun ;
@@ -106,27 +106,27 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
       } ;
 
     UseV v = {
-      verb = verb2gverb v ;  -- lift ordinary verbs to generalized verbs
+      verb = v ;
       compl = []
       } ;
       
     ComplV2 v2 np = {
-      verb = verb2gverb v2 ;
+      verb = v2 ;
       compl = v2.c ++ np.s ! Acc  -- NP object in the accusative, preposition first
       } ;
       
     ComplVS vs s = {
-      verb = verb2gverb vs ;
+      verb = vs ;
       compl = "that" ++ s.s ;
       } ;
       
     ComplVV vv vp = {
-      verb = verb2gverb vv ;
+      verb = vv ;
       compl = "to" ++ vp.verb.s ! VF Inf ++ vp.compl ;
       } ;
       
     UseComp comp = {
-      verb = be_GVerb ;     -- the verb is the copula "be"
+      verb = smartVerb "ser" ;     -- the verb is the copula "be"
       compl = comp.s
       } ;
       
@@ -229,6 +229,6 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
 
     have_V2 = mkVerb "have" "has" "had" "had" "having" ** {c = []} ;
 
-    want_VV = regVerb "want" ;
+    want_VV = smartVerb "querer" ;
     
 }
