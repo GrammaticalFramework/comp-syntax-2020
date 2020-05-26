@@ -31,7 +31,7 @@ oper
     g = getGender sg
     } ;
 
-  -- noun inflection (TODO: recycle for adjectives?)
+  -- noun inflection
   smartNoun : Str -> Noun = \sg -> case sg of {
     faral + "á" => mkNoun sg (faral + "aes") ;
     pe + "z" => mkNoun sg (pe + "ces") ;
@@ -152,6 +152,19 @@ oper
     } ;
     
     smartVerb : Str -> Verb = \inf -> case inf of {
+      -- irregulares pero poco
+      "romper" => 
+        let orig = conjugEr "romp" 
+        in orig ** { 
+          s = table { 
+            VFImp (VPart Past) => "roto" ;
+            r => orig.s ! r
+          }
+        } ;
+      -- irregulares de verdad
+      -- "venir" => venir ven ;
+      -- auxiliares
+      -- regulares
       cant + "ar" => conjugAr cant ;
       aprend + "er" => conjugEr aprend ;
       sacud + "ir" => conjugIr sacud
@@ -169,4 +182,6 @@ oper
     conjugIr : Str -> Verb = \sacud -> case sacud of {
       _ => mkVerb (sacud + "ir") (sacud + "iente") (sacud + "ido") (sacud + "iendo") (sacud + "o") (sacud + "es") (sacud + "e") (sacud + "imos") (sacud + "ìs") (sacud + "en") (sacud + "ìa") (sacud + "ìas") (sacud + "ìa") (sacud + "ìamos") (sacud + "ìais") (sacud + "ìan") (sacud + "ì") (sacud + "iste") (sacud + "iò") (sacud + "imos") (sacud + "isteis") (sacud + "ieron") (sacud + "iré") (sacud + "iràs") (sacud + "irà") (sacud + "iremos") (sacud + "iréis") (sacud + "iràn") (sacud + "a") (sacud + "as") (sacud + "a") (sacud + "amos") (sacud + "àis") (sacud + "an") (sacud + "iera") (sacud + "ieras") (sacud + "iera") (sacud + "iéramos") (sacud + "ierais") (sacud + "ieran") (sacud + "iere") (sacud + "ieres") (sacud + "iere") (sacud + "iéremos") (sacud + "iereis") (sacud + "ieren") (sacud + "e") (sacud + "amos") (sacud + "id") (sacud + "as") (sacud + "amos") (sacud + "àis") (sacud + "irìa") (sacud + "irìas") (sacud + "irìa") (sacud + "irìamos") (sacud + "irìais") (sacud + "irìan")
     } ;
+
+    -- very irregular verbs
 }
