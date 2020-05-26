@@ -16,14 +16,16 @@ oper
   mkPN : Str -> PN
     = \s -> lin PN {s = s} ;
 
-  mkA : Str -> A
-    = \s -> lin A {s = s} ;
+  mkA = overload {
+    mkA : Str -> Adjective
+      = \a -> lin A (smartAdjective a) ;
+  } ;
 
   mkV = overload {
     mkV : (inf : Str) -> V  -- predictable verb, e.g. play-plays, cry-cries, wash-washes
       = \s -> lin V (smartVerb s) ;
     mkV : (inf,pres,part : Str) -> V  -- irregular verb, e.g. drink-drank-drunk
-      = \inf,pres,part -> lin V (irregVerb inf pres part) ;
+      = \inf,pres,part -> lin V (smartVerb inf) ;
     } ;
 
   mkV2 = overload {
