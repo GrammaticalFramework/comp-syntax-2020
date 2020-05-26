@@ -159,7 +159,7 @@ oper
         in orig ** { 
           s = table { 
             VFImp (VPart Past) => "roto" ;
-            v => orig.s ! v
+            x => orig.s ! x
           }
         } ;
       -- irregulares de verdad
@@ -245,7 +245,7 @@ oper
           VFPers (VPers Cnd Pres Impf Pl P1 _) => "vendrìamos" ;
           VFPers (VPers Cnd Pres Impf Pl P2 _) => "vendrìais" ;
           VFPers (VPers Cnd Pres Impf Pl P3 _) => "vendrìan" ;
-          v => orig.s ! v
+          x => orig.s ! x
         }
       } ;
 
@@ -267,7 +267,7 @@ oper
           VFPers (VPers Imp Pres Impf Sg P2 Pos) => "encuentra" ;
           -- imperativo negativo
           VFPers (VPers Imp Pres Impf Sg P2 Neg) => "encuentres" ;
-          v => orig.s ! v
+          x => orig.s ! x
         }
       } ;
 
@@ -328,7 +328,7 @@ oper
           VFPers (VPers Imp Pres Impf Sg P2 Neg) => "vayas" ;
           VFPers (VPers Imp Pres Impf Pl P1 Neg) => "vayamos" ;
           VFPers (VPers Imp Pres Impf Pl P2 Neg) => "vayáis" ;
-          v => orig.s ! v
+          x => orig.s ! x
         }
       } ;
 
@@ -386,7 +386,7 @@ oper
           VFPers (VPers Cnd Pres Impf Pl P1 _) => "sabrìamos" ;
           VFPers (VPers Cnd Pres Impf Pl P2 _) => "sabrìais" ;
           VFPers (VPers Cnd Pres Impf Pl P3 _) => "sabrìan" ;
-          v => orig.s ! v
+          x => orig.s ! x
         }
       } ;
 
@@ -443,7 +443,68 @@ oper
           VFPers (VPers Cnd Pres Impf Pl P1 _) => "querrìamos" ;
           VFPers (VPers Cnd Pres Impf Pl P2 _) => "querrìais" ;
           VFPers (VPers Cnd Pres Impf Pl P3 _) => "querrìan" ;
-          v => orig.s ! v
+          x => orig.s ! x
+        }
+      } ;
+
+    ver : Str -> Verb = \v -> 
+      let orig = conjugEr v 
+      in orig ** { 
+        s = table {
+          -- participios
+          VFImp (VPart Past) => "visto" ;
+          -- gerundio
+          VFImp VGer => ger ;
+          -- | Formas personales
+          -- indicativo presente
+          VFPers (VPers Ind Pres Impf Sg P1 _) => "veo" ;
+          VFPers (VPers Ind Pres Impf Pl P2 _) => "veis" ;
+          -- indicativo pretérito imperfecto
+          VFPers (VPers Ind Past Impf Sg P1 _) => "veìa" ;
+          VFPers (VPers Ind Past Impf Sg P2 _) => "veìas" ;
+          VFPers (VPers Ind Past Impf Sg P3 _) => "veìa" ;
+          VFPers (VPers Ind Past Impf Pl P1 _) => "veìamos" ;
+          VFPers (VPers Ind Past Impf Pl P2 _) => "veìais" ;
+          VFPers (VPers Ind Past Impf Pl P3 _) => "veìan" ;
+          -- indicativo pretérito indefinido
+          VFPers (VPers Ind Past Perf Sg P1 _) => "vi" ;
+          VFPers (VPers Ind Past Perf Sg P3 _) => "vio" ;
+          -- subjuntivo presente
+          VFPers (VPers Sub Pres Impf Sg P1 _) => "vea" ;
+          VFPers (VPers Sub Pres Impf Sg P2 _) => "veas" ;
+          VFPers (VPers Sub Pres Impf Sg P3 _) => "vea" ;
+          VFPers (VPers Sub Pres Impf Pl P1 _) => "veamos" ;
+          VFPers (VPers Sub Pres Impf Pl P2 _) => "veàis" ;
+          VFPers (VPers Sub Pres Impf Pl P3 _) => "vean" ;
+          -- imperativo positivo
+          VFPers (VPers Imp Pres Impf Pl P1 Pos) => "veamos" ;
+          -- imperativo negativo
+          VFPers (VPers Imp Pres Impf Sg P2 Neg) => "veas" ;
+          VFPers (VPers Imp Pres Impf Pl P1 Neg) => "veamos" ;
+          VFPers (VPers Imp Pres Impf Pl P2 Neg) => "veàis" ;
+          x => orig.s ! x
+        }
+      } ;
+
+    entender : Str -> Verb = \entend -> 
+      let orig = conjugEr entend 
+      in orig ** { 
+        s = table {
+          -- indicativo presente
+          VFPers (VPers Ind Pres Impf Sg P1 _) => "entiendo" ;
+          VFPers (VPers Ind Pres Impf Sg P2 _) => "entiendes" ;
+          VFPers (VPers Ind Pres Impf Sg P3 _) => "entiende" ;
+          VFPers (VPers Ind Pres Impf Pl P3 _) => "entienden" ;
+          -- subjuntivo presente
+          VFPers (VPers Sub Pres Impf Sg P1 _) => "entienda" ;
+          VFPers (VPers Sub Pres Impf Sg P2 _) => "entiendas" ;
+          VFPers (VPers Sub Pres Impf Sg P3 _) => "entienda" ;
+          VFPers (VPers Sub Pres Impf Pl P3 _) => "entiendan" ;
+          -- imperativo positivo
+          VFPers (VPers Imp Pres Impf Sg P2 Pos) => "entiende" ;
+          -- imperativo negativo
+          VFPers (VPers Imp Pres Impf Sg P2 Neg) => "entiendas" ;
+          x => orig.s ! x
         }
       } ;
 }
