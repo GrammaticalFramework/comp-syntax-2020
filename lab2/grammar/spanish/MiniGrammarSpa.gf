@@ -78,16 +78,16 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
       verb = \\plain,isPres => case <vp.verb.isAux, plain, isPres, np.a> of {
 
         -- non-auxiliary verbs, negative/question present: "does (not) drink" 
-        <False,False,True,Agr Sg Per3> => {fin = "does" ; inf = vp.verb.s ! VF Inf} ;
+        <False,False,True,Agr Sg P3> => {fin = "does" ; inf = vp.verb.s ! VF Inf} ;
         <False,False,True,_          > => {fin = "do"   ; inf = vp.verb.s ! VF Inf} ;
 	
         -- non-auxiliary, plain present ; auxiliary, all present: "drinks", "is (not)"
-        <_,_, True, Agr Sg Per1> => {fin = vp.verb.s ! PresSg1    ; inf = []} ;
-        <_,_, True, Agr Sg Per3> => {fin = vp.verb.s ! VF PresSg3 ; inf = []} ;
+        <_,_, True, Agr Sg P1> => {fin = vp.verb.s ! PresSg1    ; inf = []} ;
+        <_,_, True, Agr Sg P3> => {fin = vp.verb.s ! VF PresSg3 ; inf = []} ;
         <_,_, True, _>           => {fin = vp.verb.s ! PresPl     ; inf = []} ;
 
         -- all verbs, past: "has (not) drunk", "has (not) been"
-        <_,_, False,Agr Sg Per3> => {fin = "has"  ; inf = vp.verb.s ! VF PastPart} ;
+        <_,_, False,Agr Sg P3> => {fin = "has"  ; inf = vp.verb.s ! VF PastPart} ;
         <_,_, False,_          > => {fin = "have" ; inf = vp.verb.s ! VF PastPart} 
 
         -- the negation word "not" is put in place in UseCl, UseQCl
@@ -143,19 +143,19 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
       
     DetCN det cn = {
       s = table {c => det.s ++ cn.s ! det.n} ;
-      a = Agr det.n Per3   -- this kind of NP is always third person
+      a = Agr det.n P3   -- this kind of NP is always third person
       } ;
       
     UsePN pn = {
       s = \\_ => pn.s ;
-      a = Agr Sg Per3
+      a = Agr Sg P3
       } ;
       
     UsePron p = p ;  -- Pron is worst-case NP  
       
     MassNP cn = {
       s = \\_ => cn.s ! Sg ;
-      a = Agr Sg Per3
+      a = Agr Sg P3
       } ;
       
     a_Det = {s = pre {"a"|"e"|"i"|"o" => "an" ; _ => "a"} ; n = Sg} ; --- a/an can get wrong
@@ -192,36 +192,36 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
 
     i_Pron = {
       s = table {Nom => "I" ; Acc => "me"} ;
-      a = Agr Sg Per1
+      a = Agr Sg P1
       } ;
     youSg_Pron = {
       s = \\_ => "you" ;
-      a = Agr Sg Per2
+      a = Agr Sg P2
       } ;
     he_Pron = {
       s = table {Nom => "he" ; Acc => "him"} ;
-      a = Agr Sg Per3
+      a = Agr Sg P3
       } ;
     she_Pron = {
       s = table {Nom => "she" ; Acc => "her"} ;
-      a = Agr Sg Per3
+      a = Agr Sg P3
       } ;
     we_Pron = {
       s = table {Nom => "we" ; Acc => "us"} ;
-      a = Agr Pl Per1
+      a = Agr Pl P1
       } ;
     youPl_Pron = {
       s = \\_ => "you" ;
-      a = Agr Pl Per2
+      a = Agr Pl P2
       } ;
     they_Pron = {
       s = table {Nom => "they" ; Acc => "them"} ;
-      a = Agr Pl Per3
+      a = Agr Pl P3
       } ;
       
     whoSg_IP = {
       s = table {Nom => "who" ; Acc => "whom"} ;
-      a = Agr Sg Per3
+      a = Agr Sg P3
       } ;
 
     where_IAdv = {s = "where"} ;
