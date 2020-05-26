@@ -164,6 +164,7 @@ oper
       -- irregulares de verdad
       "venir" => venir "ven" ;
       "encontrar" => encontrar "encontr" ;
+      "ir" => ir "" ;
       -- auxiliares
       -- regulares
       cant + "ar" => conjugAr cant ;
@@ -247,23 +248,84 @@ oper
 
     encontrar : Str -> Verb = \encontr -> 
       let orig = conjugAr encontr 
-        in orig ** { 
-          s = table { 
-            -- indicativo presente
-            VFPers (VPers Ind Pres Impf Sg P1 _) => "encuentro" ;
-            VFPers (VPers Ind Pres Impf Sg P2 _) => "encuentras" ;
-            VFPers (VPers Ind Pres Impf Sg P3 _) => "encuentra" ;
-            VFPers (VPers Ind Pres Impf Pl P3 _) => "encuentran" ;
-            -- subjuntivo presente
-            VFPers (VPers Sub Pres Impf Sg P1 _) => "encuentre" ;
-            VFPers (VPers Sub Pres Impf Sg P2 _) => "encuentres" ;
-            VFPers (VPers Sub Pres Impf Sg P3 _) => "encuentre" ;
-            VFPers (VPers Sub Pres Impf Pl P3 _) => "encuentren" ;
-            -- imperativo positivo
-            VFPers (VPers Imp Pres Impf Sg P2 Pos) => "encuentra" ;
-            -- imperativo negativo
-            VFPers (VPers Imp Pres Impf Sg P2 Neg) => "encuentres" ;
-            v => orig.s ! v
-          }
-        } ;
+      in orig ** { 
+        s = table { 
+          -- indicativo presente
+          VFPers (VPers Ind Pres Impf Sg P1 _) => "encuentro" ;
+          VFPers (VPers Ind Pres Impf Sg P2 _) => "encuentras" ;
+          VFPers (VPers Ind Pres Impf Sg P3 _) => "encuentra" ;
+          VFPers (VPers Ind Pres Impf Pl P3 _) => "encuentran" ;
+          -- subjuntivo presente
+          VFPers (VPers Sub Pres Impf Sg P1 _) => "encuentre" ;
+          VFPers (VPers Sub Pres Impf Sg P2 _) => "encuentres" ;
+          VFPers (VPers Sub Pres Impf Sg P3 _) => "encuentre" ;
+          VFPers (VPers Sub Pres Impf Pl P3 _) => "encuentren" ;
+          -- imperativo positivo
+          VFPers (VPers Imp Pres Impf Sg P2 Pos) => "encuentra" ;
+          -- imperativo negativo
+          VFPers (VPers Imp Pres Impf Sg P2 Neg) => "encuentres" ;
+          v => orig.s ! v
+        }
+      } ;
+
+    ir : Str -> Verb = \ir -> 
+      let orig = conjugIr ir 
+      in orig ** { 
+        s = table {
+          -- participios
+          VFImp (VPart Pres) => "yante" ;
+          -- gerundio
+          VFImp VGer => "yendo" ;
+          -- indicativo presente
+          VFPers (VPers Ind Pres Impf Sg P1 _) => "voy" ;
+          VFPers (VPers Ind Pres Impf Sg P2 _) => "vas" ;
+          VFPers (VPers Ind Pres Impf Sg P3 _) => "va" ;
+          VFPers (VPers Ind Pres Impf Pl P1 _) => "vamos" ;
+          VFPers (VPers Ind Pres Impf Pl P2 _) => "vais" ;
+          VFPers (VPers Ind Pres Impf Pl P3 _) => "van" ;
+          -- indicativo pretérito imperfecto
+          VFPers (VPers Ind Past Impf Sg P1 _) => "iba" ;
+          VFPers (VPers Ind Past Impf Sg P2 _) => "ibas" ;
+          VFPers (VPers Ind Past Impf Sg P3 _) => "iba" ;
+          VFPers (VPers Ind Past Impf Pl P1 _) => "ìbamos" ;
+          VFPers (VPers Ind Past Impf Pl P2 _) => "ibais" ;
+          VFPers (VPers Ind Past Impf Pl P3 _) => "iban" ;
+          -- indicativo pretérito indefinido
+          VFPers (VPers Ind Past Perf Sg P1 _) => "fui" ;
+          VFPers (VPers Ind Past Perf Sg P2 _) => "fuiste" ;
+          VFPers (VPers Ind Past Perf Sg P3 _) => "fui" ;
+          VFPers (VPers Ind Past Perf Pl P1 _) => "fuimos" ;
+          VFPers (VPers Ind Past Perf Pl P2 _) => "fuisteis" ;
+          VFPers (VPers Ind Past Perf Pl P3 _) => "fueron" ;
+          -- subjuntivo presente
+          VFPers (VPers Sub Pres Impf Sg P1 _) => "vaya" ;
+          VFPers (VPers Sub Pres Impf Sg P2 _) => "vayas" ;
+          VFPers (VPers Sub Pres Impf Sg P3 _) => "vaya" ;
+          VFPers (VPers Sub Pres Impf Pl P1 _) => "vayamos" ;
+          VFPers (VPers Sub Pres Impf Pl P2 _) => "vayàis" ;
+          VFPers (VPers Sub Pres Impf Pl P3 _) => "vayan" ;
+          -- subjuntivo pretérito imperfecto
+          VFPers (VPers Sub Past Impf Sg P1 _) => "fuera" ;
+          VFPers (VPers Sub Past Impf Sg P2 _) => "fueras" ;
+          VFPers (VPers Sub Past Impf Sg P3 _) => "fuera" ;
+          VFPers (VPers Sub Past Impf Pl P1 _) => "fuéramos" ;
+          VFPers (VPers Sub Past Impf Pl P2 _) => "fuerais" ;
+          VFPers (VPers Sub Past Impf Pl P3 _) => "fueran" ;
+          -- subjuntivo futuro
+          VFPers (VPers Sub Futr Impf Sg P1 _) => "fuere" ;
+          VFPers (VPers Sub Futr Impf Sg P2 _) => "fueres" ;
+          VFPers (VPers Sub Futr Impf Sg P3 _) => "fuere" ;
+          VFPers (VPers Sub Futr Impf Pl P1 _) => "fuéremos" ;
+          VFPers (VPers Sub Futr Impf Pl P2 _) => "fuereis" ;
+          VFPers (VPers Sub Futr Impf Pl P3 _) => "fueren" ;
+          -- imperativo positivo
+          VFPers (VPers Imp Pres Impf Sg P2 Pos) => "ve" ;
+          VFPers (VPers Imp Pres Impf Pl P1 Pos) => "vamos" ;
+          -- imperativo negativo
+          VFPers (VPers Imp Pres Impf Sg P2 Neg) => "vayas" ;
+          VFPers (VPers Imp Pres Impf Pl P1 Neg) => "vayamos" ;
+          VFPers (VPers Imp Pres Impf Pl P2 Neg) => "vayáis" ;
+          v => orig.s ! v
+        }
+      } ;
 }
