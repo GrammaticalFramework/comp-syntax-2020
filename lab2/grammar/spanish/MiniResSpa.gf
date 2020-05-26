@@ -168,6 +168,8 @@ oper
       "ir" => ir "" ;
       "saber" => saber "sab" ;
       "querer" => querer "quer" ;
+      "ver" => ver "v"
+      "entender" => entender "entend"
       -- auxiliares
       -- regulares
       cant + "ar" => conjugAr cant ;
