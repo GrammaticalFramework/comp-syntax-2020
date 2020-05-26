@@ -46,7 +46,7 @@ oper
     x + ("esa" | "isa" | "ina" | "triz") => F ;
     (barc + "o") => M ;
     manzan + "a" => F ;
-    _ => Predef.error ("unknown")
+    _ => M --Predef.error ("unknown")
     } ;
 
   -- | ADJECTIVES
@@ -148,7 +148,7 @@ oper
       VFPers (VPers Cnd Pres Impf Pl P1 _) => condpl1 ;
       VFPers (VPers Cnd Pres Impf Pl P2 _) => condpl2 ;
       VFPers (VPers Cnd Pres Impf Pl P3 _) => condpl3 ;
-      _ => Predef.error ("I doubt this verb form is supposed to exist")
+      _ => inf --Predef.error ("I doubt this verb form is supposed to exist")
       }
     } ;
     
