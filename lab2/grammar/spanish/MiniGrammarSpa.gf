@@ -78,17 +78,17 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
       verb = \\plain,isPres => case <vp.verb.isAux, plain, isPres, np.a> of {
 
         -- non-auxiliary verbs, negative/question present: "does (not) drink" 
-        <False,False,True,Agr Sg P3> => {fin = "does" ; inf = vp.verb.s ! VF Inf} ;
-        <False,False,True,_          > => {fin = "do"   ; inf = vp.verb.s ! VF Inf} ;
+        <False,False,True,Agr Sg P3> => {fin = "does" ; inf = vp.verb.s ! VFImp VInf} ;
+        <False,False,True,_          > => {fin = "do"   ; inf = vp.verb.s ! VFImp VInf} ;
 	
         -- non-auxiliary, plain present ; auxiliary, all present: "drinks", "is (not)"
-        <_,_, True, Agr Sg P1> => {fin = vp.verb.s ! PresSg1    ; inf = []} ;
-        <_,_, True, Agr Sg P3> => {fin = vp.verb.s ! VF PresSg3 ; inf = []} ;
-        <_,_, True, _>           => {fin = vp.verb.s ! PresPl     ; inf = []} ;
+        <_,_, True, Agr Sg P1> => {fin = vp.verb.s ! VFPers (VPers Ind Pres Impf Sg P1 Pos) ; inf = []} ;
+        <_,_, True, Agr Sg P3> => {fin = vp.verb.s ! VFPers (VPers Ind Pres Impf Sg P3 Pos) ; inf = []} ;
+        <_,_, True, _>           => {fin = vp.verb.s ! VFPers (VPers Ind Pres Impf Pl P3 Pos) ; inf = []} ;
 
         -- all verbs, past: "has (not) drunk", "has (not) been"
-        <_,_, False,Agr Sg P3> => {fin = "has"  ; inf = vp.verb.s ! VF PastPart} ;
-        <_,_, False,_          > => {fin = "have" ; inf = vp.verb.s ! VF PastPart} 
+        <_,_, False,Agr Sg P3> => {fin = "has"  ; inf = vp.verb.s ! VFImp (VPart Past)} ;
+        <_,_, False,_          > => {fin = "have" ; inf = vp.verb.s ! VFImp (VPart Past)} 
 
         -- the negation word "not" is put in place in UseCl, UseQCl
       }
@@ -101,8 +101,8 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
 
     ImpVP vp = {
       s = table {
-        True  => vp.verb.s ! VF Inf ++ vp.compl ;    -- in Spa, imperative = infinitive
-        False => "do not" ++ vp.verb.s ! VF Inf ++ vp.compl
+        True  => vp.verb.s ! VFImp VInf ++ vp.compl ;    -- in Spa, imperative = infinitive
+        False => "do not" ++ vp.verb.s ! VFImp VInf ++ vp.compl
         }
       } ;
 
@@ -123,7 +123,7 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
       
     ComplVV vv vp = {
       verb = vv ;
-      compl = "to" ++ vp.verb.s ! VF Inf ++ vp.compl ;
+      compl = "to" ++ vp.verb.s ! VFImp VInf ++ vp.compl ;
       } ;
       
     UseComp comp = {
@@ -159,7 +159,7 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
       a = Agr Sg P3
       } ;
       
-    a_Det = {s = pre {"a"|"e"|"i"|"o" => "an" ; _ => "a"} ; n = Sg} ; --- a/an can get wrong
+    a_Det = {s = pre {"a"|"e"|"i"|"o" => "an" ; _ => "a"} ; n = Sg} ;
     aPl_Det = {s = "" ; n = Pl} ;
     the_Det = {s = "the" ; n = Sg} ;
     thePl_Det = {s = "the" ; n = Pl} ;
