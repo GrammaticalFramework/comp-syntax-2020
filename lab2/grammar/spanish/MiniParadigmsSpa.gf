@@ -20,13 +20,16 @@ oper
   mkA = overload {
     mkA : Str -> Adjective
       = \a -> lin A (smartAdjective a) ;
+    -- not that I'm aware of the existence of very weird adjectives...
+    mkA : Str -> Str -> Str -> Str -> Adjective
+      = \fsg,fpl,msg,mpl -> lin A (mkAdjective fsg fpl msg mpl) ;
   } ;
 
   mkV = overload {
-    mkV : (inf : Str) -> V  -- predictable verb, e.g. play-plays, cry-cries, wash-washes
-      = \s -> lin V (smartVerb s) ;
-    mkV : (inf,pres,part : Str) -> V  -- irregular verb, e.g. drink-drank-drunk
-      = \inf,pres,part -> lin V (smartVerb inf) ;
+    mkV : (inf : Str) -> V -- regular or anyway manageable verbs
+      = \s -> lin V (smartVerb s) ; -- crazy complicated verbs
+    mkV : (_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_ : Str) -> V  -- irregular verb, e.g. drink-drank-drunk
+      = \inf, partpres, partpast, ger, indpressg1, indpressg2, indpressg3, indprespl1, indprespl2, indprespl3, indimpfsg13, indimpfsg2,indimpfpl1, indimpfpl2, indimpfpl3, indperfsg1, indperfsg2, indperfsg3,indperfpl1, indperfpl2, indperfpl3, indfutrsg1, indfutrsg2, indfutrsg3,indfutrpl1, indfutrpl2, indfutrpl3, subpressg13, subpressg2,subprespl1, subprespl2, subprespl3, subimpfsg13, subimpfsg2, subimpfpl1, subimpfpl2, subimpfpl3, subfutrsg13, subfutrsg2,subfutrpl1, subfutrpl2, subfutrpl3, imprpossg2,imprpospl1, imprpospl2, imprnegsg2, imprnegpl1, imprnegpl2, condsg13, condsg2, condpl1, condpl2, condpl3 -> lin V (smartVerb inf) ;
     } ;
 
   mkV2 = overload {
