@@ -3,19 +3,19 @@ resource MiniResSpa = open Prelude in {
 param
   Number = Sg | Pl ;
   Gender = F | M ;
-  -- Degree = Pos | Sup ; -- maybe another day
-  Case = Nom | Acc ; -- still here for pronouns (?)
+  -- Degree = Pos | Sup ;
+  Case = Nom | Acc ; -- just for pronouns (?)
   Person = P1 | P2 | P3 ;
   Tense = Past | Pres | Futr ;
   Mood = Ind | Sub | Cnd | Imp;
-  Aspect = Perf | Impf | Prog ;
-  Voice = Actv | Pass ; -- not used so far because passive is periphrastic
-  Polarity = Pos | Neg ; -- only for negative imperative
+  Aspect = Perf | Impf ;
+  Voice = Actv | Pass ; -- not in use cause pass is always periphrastic
+  Polarity = Pos | Neg ; -- just for negative imperative
 
   Agreement = Agr Number Gender ; -- used for noun-adj agreement
 
-  -- solamente los tiempos simples, voz activa
-  VForm = VFImp VImpForm | VFPers VPersForm ;
+  -- solamente los tiempos simples
+  VForm = VFImp VImpForm | VFPers VPersForm ; -- a VF is either personal or impresonal
   VImpForm = VInf | VPart Tense | VGer ;
   VPersForm = VPers Mood Tense Aspect Number Person Polarity ;
 
