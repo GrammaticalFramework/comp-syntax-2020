@@ -7,7 +7,7 @@ in {
 
 oper
   mkN = overload {
-    mkN : Str -> Noun   -- predictable noun, e.g. car-cars, boy-boys, fly-flies, bush-bushes
+    mkN : Str -> Noun
       = \n -> lin N (smartNoun n) ;
     mkN : Str -> Str -> Noun  -- irregular noun, e.g. man-men
       = \sg,pl -> lin N (mkNoun sg pl) ;
