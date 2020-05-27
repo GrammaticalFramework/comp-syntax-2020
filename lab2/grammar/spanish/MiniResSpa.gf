@@ -38,15 +38,17 @@ oper
     x + ("s" | "x") => mkNoun sg sg ;
     _ + ("a" | "e" | "i" | "o" | "u" | "é") => mkNoun sg (sg + "s") ;
     _ => mkNoun sg (sg + "es")
+    -- disregarding irregular plurals because they are virtually nonexistent
     } ;
 
   getGender : Str -> Gender = \sg -> case sg of {
-    ("animal" | "bebé" | "pan" | "coche" | "ordenador" | "pez" | "idioma" | "nombre" | "árbol") => M ;
+    -- gender is hardcoded when there is no rule to determine it
+    ("animal" | "bebé" | "pan" | "coche" | "ordenador" | "pez" | "idioma" | "nombre" | "árbol" | "hombre") => M ;
     ("sangre" | "ciudad" | "nube" | "flor" | "leche" | "mar" | "nave" | "mujer") => F ; 
     x + ("esa" | "isa" | "ina" | "triz") => F ;
     (barc + "o") => M ;
     manzan + "a" => F ;
-    _ => M --Predef.error ("unknown")
+    _ => Predef.error ("gender of " ++ sg ++ " is unknown")
     } ;
 
   -- | ADJECTIVES
@@ -64,9 +66,9 @@ oper
   smartAdjective : Str -> Adjective = \msg -> case msg of {
     larg + "o" => 
       mkAdjective (larg + "a") (larg + "as") msg (larg + "os") ;
-    grand + ("e" | "l" | "r" | "z" | "n") =>
-      mkAdjective msg (grand + "es") msg (grand + "es") ;
-    _ => Predef.error ("unknown")
+    x + ("e" | "l" | "r" | "z" | "n") =>
+      mkAdjective msg ((smartNoun msg).s ! Pl) msg ((smartNoun msg).s ! Pl) ;
+    _ => Predef.error ("can't come up with a good idea for " ++ msg)
   } ;
 
   -- | VERBS
