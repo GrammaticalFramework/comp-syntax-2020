@@ -164,7 +164,6 @@ oper
             x => orig.s ! x
           }
         } ;
-      "venir" => venir "ven" ;
       "encontrar" => encontrar "encontr" ;
       "ir" => ir "" ;
       "saber" => saber "sab" ;
@@ -187,72 +186,6 @@ oper
     conjugIr : Str -> Verb = \sacud -> mkVerb (sacud + "ir") (sacud + "iente") (sacud + "ido") (sacud + "iendo") (sacud + "o") (sacud + "es") (sacud + "e") (sacud + "imos") (sacud + "ìs") (sacud + "en") (sacud + "ìa") (sacud + "ìas") (sacud + "ìamos") (sacud + "ìais") (sacud + "ìan") (sacud + "ì") (sacud + "iste") (sacud + "iò") (sacud + "imos") (sacud + "isteis") (sacud + "ieron") (sacud + "iré") (sacud + "iràs") (sacud + "irà") (sacud + "iremos") (sacud + "iréis") (sacud + "iràn") (sacud + "a") (sacud + "as") (sacud + "amos") (sacud + "àis") (sacud + "an") (sacud + "iera") (sacud + "ieras") (sacud + "iéramos") (sacud + "ierais") (sacud + "ieran") (sacud + "iere") (sacud + "ieres") (sacud + "iéremos") (sacud + "iereis") (sacud + "ieren") (sacud + "e") (sacud + "amos") (sacud + "id") (sacud + "as") (sacud + "amos") (sacud + "àis") (sacud + "irìas") (sacud + "irìa") (sacud + "irìamos") (sacud + "irìais") (sacud + "irìan") ;
 
     -- very irregular verbs
-    venir : Str -> Verb = \ven -> 
-      let orig = conjugIr ven 
-      in orig ** { 
-        s = table { 
-          -- participio presente
-          VFImp (VPart Pres) => "viniente" ;
-          -- gerundio
-          VFImp VGer => "viniendo" ;
-          -- indicativo presente
-          VFPers (VPers Ind Pres Impf Sg P1 _) => "vengo" ;
-          VFPers (VPers Ind Pres Impf Sg P2 _) => "vienes" ;
-          VFPers (VPers Ind Pres Impf Sg P3 _) => "viene" ;
-          VFPers (VPers Ind Pres Impf Pl P3 _) => "vienen" ;
-          -- indicativo pretérito indefinido
-          VFPers (VPers Ind Past Perf Sg P1 _) => "vine" ;
-          VFPers (VPers Ind Past Perf Sg P2 _) => "viniste" ;
-          VFPers (VPers Ind Past Perf Sg P3 _) => "vino" ;
-          VFPers (VPers Ind Past Perf Pl P1 _) => "vinimos" ;
-          VFPers (VPers Ind Past Perf Pl P2 _) => "vinisteis" ;
-          VFPers (VPers Ind Past Perf Pl P3 _) => "vinieron" ;
-          -- indicativo futuro
-          VFPers (VPers Ind Futr Impf Sg P1 _) => "vendré" ;
-          VFPers (VPers Ind Futr Impf Sg P2 _) => "vendràs" ;
-          VFPers (VPers Ind Futr Impf Sg P3 _) => "vendrà" ;
-          VFPers (VPers Ind Futr Impf Pl P1 _) => "vendremos" ;
-          VFPers (VPers Ind Futr Impf Pl P2 _) => "vendréis" ;
-          VFPers (VPers Ind Futr Impf Pl P3 _) => "vendràn" ;
-          -- subjuntivo presente
-          VFPers (VPers Sub Pres Impf Sg P1 _) => "venga" ;
-          VFPers (VPers Sub Pres Impf Sg P2 _) => "vengas" ;
-          VFPers (VPers Sub Pres Impf Sg P3 _) => "venga" ;
-          VFPers (VPers Sub Pres Impf Pl P1 _) => "vengamos" ;
-          VFPers (VPers Sub Pres Impf Pl P2 _) => "vengàis" ;
-          VFPers (VPers Sub Pres Impf Pl P3 _) => "vengan" ;
-          -- subjuntivo pretérito imperfecto
-          VFPers (VPers Sub Past Impf Sg P1 _) => "viniera" ;
-          VFPers (VPers Sub Past Impf Sg P2 _) => "vinieras" ;
-          VFPers (VPers Sub Past Impf Sg P3 _) => "viniera" ;
-          VFPers (VPers Sub Past Impf Pl P1 _) => "viniéramos" ;
-          VFPers (VPers Sub Past Impf Pl P2 _) => "vinierais" ;
-          VFPers (VPers Sub Past Impf Pl P3 _) => "vinieran" ;
-          -- subjuntivo futuro
-          VFPers (VPers Sub Futr Impf Sg P1 _) => "viniere" ;
-          VFPers (VPers Sub Futr Impf Sg P2 _) => "vinieres" ;
-          VFPers (VPers Sub Futr Impf Sg P3 _) => "viniere" ;
-          VFPers (VPers Sub Futr Impf Pl P1 _) => "viniéremos" ;
-          VFPers (VPers Sub Futr Impf Pl P2 _) => "viniereis" ;
-          VFPers (VPers Sub Futr Impf Pl P3 _) => "vinieren" ;
-          -- imperativo positivo
-          VFPers (VPers Imp Pres Impf Sg P2 Pos) => "ven" ;
-          VFPers (VPers Imp Pres Impf Pl P1 Pos) => "vengamos" ;
-          -- imperativo negativo
-          VFPers (VPers Imp Pres Impf Sg P2 Neg) => "vengas" ;
-          VFPers (VPers Imp Pres Impf Pl P1 Neg) => "vengamos" ;
-          VFPers (VPers Imp Pres Impf Pl P2 Neg) => "vengàis" ;
-          -- condicional
-          VFPers (VPers Cnd Pres Impf Sg P1 _) => "vendrìa" ;
-          VFPers (VPers Cnd Pres Impf Sg P2 _) => "vendrìas" ;
-          VFPers (VPers Cnd Pres Impf Sg P3 _) => "vendrìa" ;
-          VFPers (VPers Cnd Pres Impf Pl P1 _) => "vendrìamos" ;
-          VFPers (VPers Cnd Pres Impf Pl P2 _) => "vendrìais" ;
-          VFPers (VPers Cnd Pres Impf Pl P3 _) => "vendrìan" ;
-          x => orig.s ! x
-        }
-      } ;
-
     encontrar : Str -> Verb = \encontr -> 
       let orig = conjugAr encontr 
       in orig ** { 
