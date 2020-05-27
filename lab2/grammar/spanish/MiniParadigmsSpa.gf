@@ -9,7 +9,8 @@ oper
   mkN = overload {
     mkN : Str -> Noun
       = \n -> lin N (smartNoun n) ;
-    mkN : Str -> Str -> Noun  -- irregular noun, e.g. man-men
+    -- irregular nouns, e.g. gentilhombre/gentileshombres (very rare) 
+    mkN : Str -> Str -> Noun
       = \sg,pl -> lin N (mkNoun sg pl) ;
     } ;
 
