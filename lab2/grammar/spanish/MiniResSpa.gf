@@ -158,7 +158,6 @@ oper
       -- irregulars (but not enough for me to write all forms in the lexicon)
       "romper" => romper "romp" ;
       "encontrar" => encontrar "encontr" ;
-      "querer" => querer "quer" ;
       "ver" => ver "v" ;
       "entender" => entender "entend" ;
       -- auxiliares
@@ -204,63 +203,6 @@ oper
           VFPers (VPers Imp Pres Impf Sg P2 Pos) => "encuentra" ;
           -- imperativo negativo
           VFPers (VPers Imp Pres Impf Sg P2 Neg) => "encuentres" ;
-          x => orig.s ! x
-        }
-      } ;
-
-    querer : Str -> Verb = \quer -> 
-      let orig = conjugEr quer 
-      in orig ** { 
-        s = table {
-          -- indicativo presente
-          VFPers (VPers Ind Pres Impf Sg P1 _) => "quiero" ;
-          VFPers (VPers Ind Pres Impf Sg P2 _) => "quieres" ;
-          VFPers (VPers Ind Pres Impf Sg P3 _) => "quiere" ;
-          VFPers (VPers Ind Pres Impf Pl P3 _) => "quieren" ;
-          -- indicativo pretérito indefinido
-          VFPers (VPers Ind Past Perf Sg P1 _) => "quise" ;
-          VFPers (VPers Ind Past Perf Sg P2 _) => "quisiste" ;
-          VFPers (VPers Ind Past Perf Sg P3 _) => "quiso" ;
-          VFPers (VPers Ind Past Perf Pl P1 _) => "quisimos" ;
-          VFPers (VPers Ind Past Perf Pl P2 _) => "quisisteis" ;
-          VFPers (VPers Ind Past Perf Pl P3 _) => "quisieron" ;
-          -- indicativo futuro
-          VFPers (VPers Ind Futr Impf Sg P1 _) => "querré" ;
-          VFPers (VPers Ind Futr Impf Sg P2 _) => "querràs" ;
-          VFPers (VPers Ind Futr Impf Sg P3 _) => "querrà" ;
-          VFPers (VPers Ind Futr Impf Pl P1 _) => "querremos" ;
-          VFPers (VPers Ind Futr Impf Pl P2 _) => "querréis" ;
-          VFPers (VPers Ind Futr Impf Pl P3 _) => "querràn" ;
-          -- subjuntivo presente
-          VFPers (VPers Sub Pres Impf Sg P1 _) => "quiera" ;
-          VFPers (VPers Sub Pres Impf Sg P2 _) => "quieras" ;
-          VFPers (VPers Sub Pres Impf Sg P3 _) => "quiera" ;
-          VFPers (VPers Sub Pres Impf Pl P3 _) => "quieran" ;
-          -- subjuntivo pretérito imperfecto
-          VFPers (VPers Sub Past Impf Sg P1 _) => "quisiera" ;
-          VFPers (VPers Sub Past Impf Sg P2 _) => "quisieras" ;
-          VFPers (VPers Sub Past Impf Sg P3 _) => "quisiera" ;
-          VFPers (VPers Sub Past Impf Pl P1 _) => "quisiéramos" ;
-          VFPers (VPers Sub Past Impf Pl P2 _) => "quisierais" ;
-          VFPers (VPers Sub Past Impf Pl P3 _) => "quisieran" ;
-          -- subjuntivo futuro
-          VFPers (VPers Sub Futr Impf Sg P1 _) => "quisiere" ;
-          VFPers (VPers Sub Futr Impf Sg P2 _) => "quisieres" ;
-          VFPers (VPers Sub Futr Impf Sg P3 _) => "quisiere" ;
-          VFPers (VPers Sub Futr Impf Pl P1 _) => "quisiéremos" ;
-          VFPers (VPers Sub Futr Impf Pl P2 _) => "quisiereis" ;
-          VFPers (VPers Sub Futr Impf Pl P3 _) => "quisieren" ;
-          -- imperativo positivo
-          VFPers (VPers Imp Pres Impf Sg P2 Pos) => "quiere" ;
-          -- imperativo negativo
-          VFPers (VPers Imp Pres Impf Sg P2 Neg) => "quieras" ;
-          -- condicional
-          VFPers (VPers Cnd Pres Impf Sg P1 _) => "querrìa" ;
-          VFPers (VPers Cnd Pres Impf Sg P2 _) => "querrìas" ;
-          VFPers (VPers Cnd Pres Impf Sg P3 _) => "querrìa" ;
-          VFPers (VPers Cnd Pres Impf Pl P1 _) => "querrìamos" ;
-          VFPers (VPers Cnd Pres Impf Pl P2 _) => "querrìais" ;
-          VFPers (VPers Cnd Pres Impf Pl P3 _) => "querrìan" ;
           x => orig.s ! x
         }
       } ;
