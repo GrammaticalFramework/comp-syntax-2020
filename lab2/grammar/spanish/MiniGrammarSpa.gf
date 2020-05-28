@@ -25,7 +25,7 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
         Gen => "mìo" ;
         Prep => "mì"
       } ;
-      g = Agr Sg M ; -- TODO: ?
+      a = Agr Sg M ; -- TODO: ?
       p = P1
       } ;
 }
