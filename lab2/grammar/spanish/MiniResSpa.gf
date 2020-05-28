@@ -4,7 +4,7 @@ param
   Number = Sg | Pl ;
   Gender = F | M ;
   -- Degree = Pos | Sup ;
-  Case = Nom | Acc ; -- just for pronouns (?)
+  Case = Nom | Acc | Dat | Gen | Prep ; -- just for pronouns (comitative & reflexive seemed a bit too much)
   Person = P1 | P2 | P3 ;
   Tense = Past | Pres | Futr ;
   Mood = Ind | Sub | Cnd | Imp;
