@@ -15,7 +15,7 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
     } ;
 
   lin
-    --UsePron p = p ; TODO: ?
+    UsePron p = { s = (p.s) ! Nom } ; -- as NP, TODO: check if correct, Eng is very different
     -- TODO: ? gender of we you etc.
     -- TODO: ? gender and number of genitive
     i_Pron = {
@@ -88,7 +88,7 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
 
       they_Pron = {
       s = table {
-        Nom => "ellos" ; -- TODO: gender 
+        Nom => "ellos" ;
         Acc => "los" ;
         Dat => "les" ;
         Gen => "suyo" ; 
