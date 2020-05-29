@@ -12,8 +12,8 @@ param
   Voice = Actv | Pass ; -- not in use cause pass is always periphrastic
   Polarity = Pos | Neg ; -- just for negative imperative
 
-  NAAgreement = NAAgr Number Gender ; -- used for noun-adj agreement
-  NPAgreement = NPAgr Number Person ; -- used for verb-subj (pron) agreement
+  NGAgreement = NGAgr  Number Gender ; -- used e.g. for noun-adj agreement
+  NPAgreement = NPAgr Number Person ; -- used e.g. for verb-subj (pron) agreement
 
   -- solamente los tiempos simples
   VForm = VFImp VImpForm | VFPers VPersForm ; -- a VF is either personal or impersonal
@@ -53,14 +53,14 @@ oper
     } ;
 
   -- | ADJECTIVES
-  Adjective : Type = {s : NAAgreement => Str} ;
+  Adjective : Type = {s : NGAgreement => Str} ;
 
   mkAdjective: (_, _, _, _ : Str) -> Adjective = \fsg, fpl, msg, mpl -> {
     s = table {
-      NAAgr Sg F => fsg ;
-      NAAgr Pl F => fpl ;
-      NAAgr Sg M => msg ;
-      NAAgr Pl M => mpl 
+      NGAgr  Sg F => fsg ;
+      NGAgr  Pl F => fpl ;
+      NGAgr  Sg M => msg ;
+      NGAgr  Pl M => mpl 
     } 
   } ;
 

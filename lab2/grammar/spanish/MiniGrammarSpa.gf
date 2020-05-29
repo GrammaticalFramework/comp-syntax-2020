@@ -1,6 +1,7 @@
 --# -path=.:../abstract
 concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
 
+-- TODO: order
 
   lincat
     V = Verb ;
@@ -16,6 +17,10 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
     Prep = {s : Str} ;
     Adv = {s : Str} ;
     IAdv = {s : Str} ; -- interrogative
+    Det = { -- would have been nicer with NGAgr actually
+      s : Gender => Str ; 
+      n : Number 
+    } ;
 
   lin
     -- | PRONOUNS
@@ -116,4 +121,39 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
 
     where_IAdv = {s = "dònde"} ;
     why_IAdv = {s = "por qué"} ;
+
+    -- | DETERMINERS
+    {-
+    DetCN det cn = {
+      s = table {c => det.s ++ cn.s ! det.n} ;
+      a = Agr det.n Per3 -- TODO:
+      } ;
+    -}
+    
+    a_Det = {
+      s = table {
+        M => "un" ;
+        F => "una" 
+      } ;
+      n = Sg
+    } ;
+
+    aPl_Det = {
+      s = table {
+        M => "unos" ;
+        F => "unas" 
+      } ;
+      n = Pl
+    } ;
+
+    thePl_Det = {
+      s = table {
+        M => "el" ;
+        F => "la" -- even though that's another story for "el agua" y "el aguila"
+      } ;
+      n = Pl
+    } ;
+    
+    every_Det = {s = "cada" ; n = Sg} ;
+
 }
