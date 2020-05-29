@@ -26,78 +26,78 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
         Acc => "me" ;
         Dat => "me" ;
         Gen => "mìo" ;
-        Prep => "mì"
+        Pre => "mì"
       } ;
       a = NPAgr Sg P1 ;
       } ;
 
-      youSg_Pron = {
+    youSg_Pron = {
       s = table {
         Nom => "tù" ; 
         Acc => "te" ;
         Dat => "te" ;
         Gen => "tuyo" ;
-        Prep => "ti"
+        Pre => "ti"
       } ;
       a = NPAgr Sg P2 ;
-      } ;
+    } ;
 
-      he_Pron = {
+    he_Pron = {
       s = table {
         Nom => "él" ; 
         Acc => "lo" ;
         Dat => "le" ;
         Gen => "suyo" ; 
-        Prep => "se"
+        Pre => "se"
       } ;
       a = NPAgr Sg P3
-      } ;
+    } ;
 
-      she_Pron = {
+    she_Pron = {
       s = table {
         Nom => "ella" ; 
         Acc => "la" ;
         Dat => "le" ;
         Gen => "suyo" ; 
-        Prep => "se"
+        Pre => "se"
       } ;
       a = NPAgr Sg P3
-      } ;
+    } ;
 
-      -- it_Pron
+      -- it_Pron missing in AST
 
-      we_Pron = {
+    we_Pron = {
       s = table {
         Nom => "nosotros" ;
         Acc => "nos" ;
         Dat => "nos" ;
         Gen => "nuestro" ;
-        Prep => "nosotros"
+        Pre => "nosotros"
       } ;
       a = NPAgr Pl P1
-      } ;
+    } ;
 
-      youPl_Pron = {
+    youPl_Pron = {
       s = table {
         Nom => "vosotros" ;
         Acc => "vos" ;
         Dat => "vos" ;
         Gen => "vuestro" ; 
-        Prep => "vosotros"
+        Pre => "vosotros"
       } ;
       a = NPAgr Pl P2
-      } ;
+    } ;
 
-      they_Pron = {
+    they_Pron = {
       s = table {
         Nom => "ellos" ;
         Acc => "los" ;
         Dat => "les" ;
         Gen => "suyo" ; 
-        Prep => "se"
+        Pre => "se"
       } ;
       a = NPAgr Pl P3
-      } ;
+    } ;
 
     -- | PREPOSITIONS
     -- TODO: PrepNP prep np = {s = prep.s ++ np.s ! Acc} ;
