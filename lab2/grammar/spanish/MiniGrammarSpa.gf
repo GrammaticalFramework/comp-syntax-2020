@@ -166,10 +166,18 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
       n = Pl
     } ;
 
-    thePl_Det = {
+    the_Det = {
       s = table {
         M => "el" ;
         F => "la" -- even though that's another story for "el agua" y "el aguila"
+      } ;
+      n = Sg
+    } ;
+
+    thePl_Det = {
+      s = table {
+        M => "los" ;
+        F => "las"
       } ;
       n = Pl
     } ;
