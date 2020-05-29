@@ -48,4 +48,7 @@ oper
 
   mkAdv : Str -> Adv
     = \s -> lin Adv {s = s} ;
+
+  mkPrep : Str -> Prep
+    = \s -> lin Prep {s = s} ;
 }

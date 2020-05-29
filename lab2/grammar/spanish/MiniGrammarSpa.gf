@@ -13,9 +13,11 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
       s : Case => Str ; 
       a : NPAgreement ; -- NOTE: it's number-gender
     } ;
+    Prep = {s : Str} ;
 
   lin
-    UsePron p = { s = (p.s) ! Nom } ; -- as NP, TODO: check if correct, Eng is very different
+    -- | PRONOUNS
+    UsePron p = { s = (p.s) ! Nom } ; -- as NP, TODO: check if correct, Eng is UsePron p = p  
     -- TODO: ? gender of we you etc.
     -- TODO: ? gender and number of genitive
     i_Pron = {
@@ -96,4 +98,11 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
       } ;
       a = NPAgr Pl P3
       } ;
+
+    -- | PREPOSITIONS
+    -- TODO: PrepNP prep np = {s = prep.s ++ np.s ! Acc} ;
+
+    in_Prep = {s = "en"} ;
+    on_Prep = {s = "sobre"} ;
+    with_Prep = {s = "con"} ;
 }
