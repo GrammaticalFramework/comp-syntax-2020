@@ -12,12 +12,13 @@ param
   Voice = Actv | Pass ; -- not in use cause pass is always periphrastic
   Polarity = Pos | Neg ; -- just for negative imperative
 
-  Agreement = Agr Number Gender ; -- used for noun-adj agreement
+  NAAgreement = NAAgr Number Gender ; -- used for noun-adj agreement
+  NPAgreement = NPAgr Number Person ; -- used for verb-subj (pron) agreement
 
   -- solamente los tiempos simples
-  VForm = VFImp VImpForm | VFPers VPersForm ; -- a VF is either personal or impresonal
+  VForm = VFImp VImpForm | VFPers VPersForm ; -- a VF is either personal or impersonal
   VImpForm = VInf | VPart Tense | VGer ;
-  VPersForm = VPers Mood Tense Aspect Number Person Polarity ;
+  VPersForm = VPers Mood Tense Aspect NPAgreement Polarity ;
 
 oper
   -- | NOUNS
@@ -52,14 +53,14 @@ oper
     } ;
 
   -- | ADJECTIVES
-  Adjective : Type = {s : Agreement => Str} ;
+  Adjective : Type = {s : NAAgreement => Str} ;
 
   mkAdjective: (_, _, _, _ : Str) -> Adjective = \fsg, fpl, msg, mpl -> {
     s = table {
-      Agr Sg F => fsg ;
-      Agr Pl F => fpl ;
-      Agr Sg M => msg ;
-      Agr Pl M => mpl 
+      NAAgr Sg F => fsg ;
+      NAAgr Pl F => fpl ;
+      NAAgr Sg M => msg ;
+      NAAgr Pl M => mpl 
     } 
   } ;
 
@@ -87,69 +88,69 @@ oper
       VFImp VGer => ger ;
       -- | Formas personales
       -- indicativo presente
-      VFPers (VPers Ind Pres Impf Sg P1 _) => indpressg1 ;
-      VFPers (VPers Ind Pres Impf Sg P2 _) => indpressg2 ;
-      VFPers (VPers Ind Pres Impf Sg P3 _) => indpressg3 ;
-      VFPers (VPers Ind Pres Impf Pl P1 _) => indprespl1 ;
-      VFPers (VPers Ind Pres Impf Pl P2 _) => indprespl2 ;
-      VFPers (VPers Ind Pres Impf Pl P3 _) => indprespl3 ;
+      VFPers (VPers Ind Pres Impf (NPAgr Sg P1) _) => indpressg1 ;
+      VFPers (VPers Ind Pres Impf (NPAgr Sg P2) _) => indpressg2 ;
+      VFPers (VPers Ind Pres Impf (NPAgr Sg P3) _) => indpressg3 ;
+      VFPers (VPers Ind Pres Impf (NPAgr Pl P1) _) => indprespl1 ;
+      VFPers (VPers Ind Pres Impf (NPAgr Pl P2) _) => indprespl2 ;
+      VFPers (VPers Ind Pres Impf (NPAgr Pl P3) _) => indprespl3 ;
       -- indicativo pretérito imperfecto
-      VFPers (VPers Ind Past Impf Sg P1 _) => indimpfsg13 ;
-      VFPers (VPers Ind Past Impf Sg P2 _) => indimpfsg2 ;
-      VFPers (VPers Ind Past Impf Sg P3 _) => indimpfsg13 ;
-      VFPers (VPers Ind Past Impf Pl P1 _) => indimpfpl1 ;
-      VFPers (VPers Ind Past Impf Pl P2 _) => indimpfpl2 ;
-      VFPers (VPers Ind Past Impf Pl P3 _) => indimpfpl3 ;
+      VFPers (VPers Ind Past Impf (NPAgr Sg P1) _) => indimpfsg13 ;
+      VFPers (VPers Ind Past Impf (NPAgr Sg P2) _) => indimpfsg2 ;
+      VFPers (VPers Ind Past Impf (NPAgr Sg P3) _) => indimpfsg13 ;
+      VFPers (VPers Ind Past Impf (NPAgr Pl P1) _) => indimpfpl1 ;
+      VFPers (VPers Ind Past Impf (NPAgr Pl P2) _) => indimpfpl2 ;
+      VFPers (VPers Ind Past Impf (NPAgr Pl P3) _) => indimpfpl3 ;
       -- indicativo pretérito indefinido
-      VFPers (VPers Ind Past Perf Sg P1 _) => indperfsg1 ;
-      VFPers (VPers Ind Past Perf Sg P2 _) => indperfsg2 ;
-      VFPers (VPers Ind Past Perf Sg P3 _) => indperfsg3 ;
-      VFPers (VPers Ind Past Perf Pl P1 _) => indperfpl1 ;
-      VFPers (VPers Ind Past Perf Pl P2 _) => indperfpl2 ;
-      VFPers (VPers Ind Past Perf Pl P3 _) => indperfpl3 ;
+      VFPers (VPers Ind Past Perf (NPAgr Sg P1) _) => indperfsg1 ;
+      VFPers (VPers Ind Past Perf (NPAgr Sg P2) _) => indperfsg2 ;
+      VFPers (VPers Ind Past Perf (NPAgr Sg P3) _) => indperfsg3 ;
+      VFPers (VPers Ind Past Perf (NPAgr Pl P1) _) => indperfpl1 ;
+      VFPers (VPers Ind Past Perf (NPAgr Pl P2) _) => indperfpl2 ;
+      VFPers (VPers Ind Past Perf (NPAgr Pl P3) _) => indperfpl3 ;
       -- indicativo futuro
-      VFPers (VPers Ind Futr Impf Sg P1 _) => indfutrsg1 ;
-      VFPers (VPers Ind Futr Impf Sg P2 _) => indfutrsg2 ;
-      VFPers (VPers Ind Futr Impf Sg P3 _) => indfutrsg3 ;
-      VFPers (VPers Ind Futr Impf Pl P1 _) => indfutrpl1 ;
-      VFPers (VPers Ind Futr Impf Pl P2 _) => indfutrpl2 ;
-      VFPers (VPers Ind Futr Impf Pl P3 _) => indfutrpl3 ;
+      VFPers (VPers Ind Futr Impf (NPAgr Sg P1) _) => indfutrsg1 ;
+      VFPers (VPers Ind Futr Impf (NPAgr Sg P2) _) => indfutrsg2 ;
+      VFPers (VPers Ind Futr Impf (NPAgr Sg P3) _) => indfutrsg3 ;
+      VFPers (VPers Ind Futr Impf (NPAgr Pl P1) _) => indfutrpl1 ;
+      VFPers (VPers Ind Futr Impf (NPAgr Pl P2) _) => indfutrpl2 ;
+      VFPers (VPers Ind Futr Impf (NPAgr Pl P3) _) => indfutrpl3 ;
       -- subjuntivo presente
-      VFPers (VPers Sub Pres Impf Sg P1 _) => subpressg13 ;
-      VFPers (VPers Sub Pres Impf Sg P2 _) => subpressg2 ;
-      VFPers (VPers Sub Pres Impf Sg P3 _) => subpressg13 ;
-      VFPers (VPers Sub Pres Impf Pl P1 _) => subprespl1 ;
-      VFPers (VPers Sub Pres Impf Pl P2 _) => subprespl2 ;
-      VFPers (VPers Sub Pres Impf Pl P3 _) => subprespl3 ;
+      VFPers (VPers Sub Pres Impf (NPAgr Sg P1) _) => subpressg13 ;
+      VFPers (VPers Sub Pres Impf (NPAgr Sg P2) _) => subpressg2 ;
+      VFPers (VPers Sub Pres Impf (NPAgr Sg P3) _) => subpressg13 ;
+      VFPers (VPers Sub Pres Impf (NPAgr Pl P1) _) => subprespl1 ;
+      VFPers (VPers Sub Pres Impf (NPAgr Pl P2) _) => subprespl2 ;
+      VFPers (VPers Sub Pres Impf (NPAgr Pl P3) _) => subprespl3 ;
       -- subjuntivo pretérito imperfecto
-      VFPers (VPers Sub Past Impf Sg P1 _) => subimpfsg13 ;
-      VFPers (VPers Sub Past Impf Sg P2 _) => subimpfsg2 ;
-      VFPers (VPers Sub Past Impf Sg P3 _) => subimpfsg13 ;
-      VFPers (VPers Sub Past Impf Pl P1 _) => subimpfpl1 ;
-      VFPers (VPers Sub Past Impf Pl P2 _) => subimpfpl2 ;
-      VFPers (VPers Sub Past Impf Pl P3 _) => subimpfpl3 ;
+      VFPers (VPers Sub Past Impf (NPAgr Sg P1) _) => subimpfsg13 ;
+      VFPers (VPers Sub Past Impf (NPAgr Sg P2) _) => subimpfsg2 ;
+      VFPers (VPers Sub Past Impf (NPAgr Sg P3) _) => subimpfsg13 ;
+      VFPers (VPers Sub Past Impf (NPAgr Pl P1) _) => subimpfpl1 ;
+      VFPers (VPers Sub Past Impf (NPAgr Pl P2) _) => subimpfpl2 ;
+      VFPers (VPers Sub Past Impf (NPAgr Pl P3) _) => subimpfpl3 ;
       -- subjuntivo futuro
-      VFPers (VPers Sub Futr Impf Sg P1 _) => subfutrsg13 ;
-      VFPers (VPers Sub Futr Impf Sg P2 _) => subfutrsg2 ;
-      VFPers (VPers Sub Futr Impf Sg P3 _) => subfutrsg13 ;
-      VFPers (VPers Sub Futr Impf Pl P1 _) => subfutrpl1 ;
-      VFPers (VPers Sub Futr Impf Pl P2 _) => subfutrpl2 ;
-      VFPers (VPers Sub Futr Impf Pl P3 _) => subfutrpl3 ;
+      VFPers (VPers Sub Futr Impf (NPAgr Sg P1) _) => subfutrsg13 ;
+      VFPers (VPers Sub Futr Impf (NPAgr Sg P2) _) => subfutrsg2 ;
+      VFPers (VPers Sub Futr Impf (NPAgr Sg P3) _) => subfutrsg13 ;
+      VFPers (VPers Sub Futr Impf (NPAgr Pl P1) _) => subfutrpl1 ;
+      VFPers (VPers Sub Futr Impf (NPAgr Pl P2) _) => subfutrpl2 ;
+      VFPers (VPers Sub Futr Impf (NPAgr Pl P3) _) => subfutrpl3 ;
       -- imperativo positivo
-      VFPers (VPers Imp Pres Impf Sg P2 Pos) => imprpossg2 ;
-      VFPers (VPers Imp Pres Impf Pl P1 Pos) => imprpospl1 ;
-      VFPers (VPers Imp Pres Impf Pl P2 Pos) => imprpospl2 ;
+      VFPers (VPers Imp Pres Impf (NPAgr Sg P2) Pos) => imprpossg2 ;
+      VFPers (VPers Imp Pres Impf (NPAgr Pl P1) Pos) => imprpospl1 ;
+      VFPers (VPers Imp Pres Impf (NPAgr Pl P2) Pos) => imprpospl2 ;
       -- imperativo negativo
-      VFPers (VPers Imp Pres Impf Sg P2 Neg) => imprnegsg2 ;
-      VFPers (VPers Imp Pres Impf Pl P1 Neg) => imprnegpl1 ;
-      VFPers (VPers Imp Pres Impf Pl P2 Neg) => imprnegpl2 ;
+      VFPers (VPers Imp Pres Impf (NPAgr Sg P2) Neg) => imprnegsg2 ;
+      VFPers (VPers Imp Pres Impf (NPAgr Pl P1) Neg) => imprnegpl1 ;
+      VFPers (VPers Imp Pres Impf (NPAgr Pl P2) Neg) => imprnegpl2 ;
       -- condicional
-      VFPers (VPers Cnd Pres Impf Sg P1 _) => condsg13 ;
-      VFPers (VPers Cnd Pres Impf Sg P2 _) => condsg2 ;
-      VFPers (VPers Cnd Pres Impf Sg P3 _) => condsg13 ;
-      VFPers (VPers Cnd Pres Impf Pl P1 _) => condpl1 ;
-      VFPers (VPers Cnd Pres Impf Pl P2 _) => condpl2 ;
-      VFPers (VPers Cnd Pres Impf Pl P3 _) => condpl3 ;
+      VFPers (VPers Cnd Pres Impf (NPAgr Sg P1) _) => condsg13 ;
+      VFPers (VPers Cnd Pres Impf (NPAgr Sg P2) _) => condsg2 ;
+      VFPers (VPers Cnd Pres Impf (NPAgr Sg P3) _) => condsg13 ;
+      VFPers (VPers Cnd Pres Impf (NPAgr Pl P1) _) => condpl1 ;
+      VFPers (VPers Cnd Pres Impf (NPAgr Pl P2) _) => condpl2 ;
+      VFPers (VPers Cnd Pres Impf (NPAgr Pl P3) _) => condpl3 ;
       _ => inf --Predef.error ("I doubt this verb form is supposed to exist")
       }
     } ;
@@ -190,19 +191,19 @@ oper
       in orig ** { 
         s = table { 
           -- indicativo presente
-          VFPers (VPers Ind Pres Impf Sg P1 _) => "encuentro" ;
-          VFPers (VPers Ind Pres Impf Sg P2 _) => "encuentras" ;
-          VFPers (VPers Ind Pres Impf Sg P3 _) => "encuentra" ;
-          VFPers (VPers Ind Pres Impf Pl P3 _) => "encuentran" ;
+          VFPers (VPers Ind Pres Impf (NPAgr Sg P1) _) => "encuentro" ;
+          VFPers (VPers Ind Pres Impf (NPAgr Sg P2) _) => "encuentras" ;
+          VFPers (VPers Ind Pres Impf (NPAgr Sg P3) _) => "encuentra" ;
+          VFPers (VPers Ind Pres Impf (NPAgr Pl P3) _) => "encuentran" ;
           -- subjuntivo presente
-          VFPers (VPers Sub Pres Impf Sg P1 _) => "encuentre" ;
-          VFPers (VPers Sub Pres Impf Sg P2 _) => "encuentres" ;
-          VFPers (VPers Sub Pres Impf Sg P3 _) => "encuentre" ;
-          VFPers (VPers Sub Pres Impf Pl P3 _) => "encuentren" ;
+          VFPers (VPers Sub Pres Impf (NPAgr Sg P1) _) => "encuentre" ;
+          VFPers (VPers Sub Pres Impf (NPAgr Sg P2) _) => "encuentres" ;
+          VFPers (VPers Sub Pres Impf (NPAgr Sg P3) _) => "encuentre" ;
+          VFPers (VPers Sub Pres Impf (NPAgr Pl P3) _) => "encuentren" ;
           -- imperativo positivo
-          VFPers (VPers Imp Pres Impf Sg P2 Pos) => "encuentra" ;
+          VFPers (VPers Imp Pres Impf (NPAgr Sg P2) Pos) => "encuentra" ;
           -- imperativo negativo
-          VFPers (VPers Imp Pres Impf Sg P2 Neg) => "encuentres" ;
+          VFPers (VPers Imp Pres Impf (NPAgr Sg P2) Neg) => "encuentres" ;
           x => orig.s ! x
         }
       } ;
@@ -214,31 +215,31 @@ oper
           -- participios
           VFImp (VPart Past) => "visto" ;
           -- indicativo presente
-          VFPers (VPers Ind Pres Impf Sg P1 _) => "veo" ;
-          VFPers (VPers Ind Pres Impf Pl P2 _) => "veis" ;
+          VFPers (VPers Ind Pres Impf (NPAgr Sg P1) _) => "veo" ;
+          VFPers (VPers Ind Pres Impf (NPAgr Pl P2) _) => "veis" ;
           -- indicativo pretérito imperfecto
-          VFPers (VPers Ind Past Impf Sg P1 _) => "veìa" ;
-          VFPers (VPers Ind Past Impf Sg P2 _) => "veìas" ;
-          VFPers (VPers Ind Past Impf Sg P3 _) => "veìa" ;
-          VFPers (VPers Ind Past Impf Pl P1 _) => "veìamos" ;
-          VFPers (VPers Ind Past Impf Pl P2 _) => "veìais" ;
-          VFPers (VPers Ind Past Impf Pl P3 _) => "veìan" ;
+          VFPers (VPers Ind Past Impf (NPAgr Sg P1) _) => "veìa" ;
+          VFPers (VPers Ind Past Impf (NPAgr Sg P2) _) => "veìas" ;
+          VFPers (VPers Ind Past Impf (NPAgr Sg P3) _) => "veìa" ;
+          VFPers (VPers Ind Past Impf (NPAgr Pl P1) _) => "veìamos" ;
+          VFPers (VPers Ind Past Impf (NPAgr Pl P2) _) => "veìais" ;
+          VFPers (VPers Ind Past Impf (NPAgr Pl P3) _) => "veìan" ;
           -- indicativo pretérito indefinido
-          VFPers (VPers Ind Past Perf Sg P1 _) => "vi" ;
-          VFPers (VPers Ind Past Perf Sg P3 _) => "vio" ;
+          VFPers (VPers Ind Past Perf (NPAgr Sg P1) _) => "vi" ;
+          VFPers (VPers Ind Past Perf (NPAgr Sg P3) _) => "vio" ;
           -- subjuntivo presente
-          VFPers (VPers Sub Pres Impf Sg P1 _) => "vea" ;
-          VFPers (VPers Sub Pres Impf Sg P2 _) => "veas" ;
-          VFPers (VPers Sub Pres Impf Sg P3 _) => "vea" ;
-          VFPers (VPers Sub Pres Impf Pl P1 _) => "veamos" ;
-          VFPers (VPers Sub Pres Impf Pl P2 _) => "veàis" ;
-          VFPers (VPers Sub Pres Impf Pl P3 _) => "vean" ;
+          VFPers (VPers Sub Pres Impf (NPAgr Sg P1) _) => "vea" ;
+          VFPers (VPers Sub Pres Impf (NPAgr Sg P2) _) => "veas" ;
+          VFPers (VPers Sub Pres Impf (NPAgr Sg P3) _) => "vea" ;
+          VFPers (VPers Sub Pres Impf (NPAgr Pl P1) _) => "veamos" ;
+          VFPers (VPers Sub Pres Impf (NPAgr Pl P2) _) => "veàis" ;
+          VFPers (VPers Sub Pres Impf (NPAgr Pl P3) _) => "vean" ;
           -- imperativo positivo
-          VFPers (VPers Imp Pres Impf Pl P1 Pos) => "veamos" ;
+          VFPers (VPers Imp Pres Impf (NPAgr Pl P1) Pos) => "veamos" ;
           -- imperativo negativo
-          VFPers (VPers Imp Pres Impf Sg P2 Neg) => "veas" ;
-          VFPers (VPers Imp Pres Impf Pl P1 Neg) => "veamos" ;
-          VFPers (VPers Imp Pres Impf Pl P2 Neg) => "veàis" ;
+          VFPers (VPers Imp Pres Impf (NPAgr Sg P2) Neg) => "veas" ;
+          VFPers (VPers Imp Pres Impf (NPAgr Pl P1) Neg) => "veamos" ;
+          VFPers (VPers Imp Pres Impf (NPAgr Pl P2) Neg) => "veàis" ;
           x => orig.s ! x
         }
       } ;
@@ -248,19 +249,19 @@ oper
       in orig ** { 
         s = table {
           -- indicativo presente
-          VFPers (VPers Ind Pres Impf Sg P1 _) => "entiendo" ;
-          VFPers (VPers Ind Pres Impf Sg P2 _) => "entiendes" ;
-          VFPers (VPers Ind Pres Impf Sg P3 _) => "entiende" ;
-          VFPers (VPers Ind Pres Impf Pl P3 _) => "entienden" ;
+          VFPers (VPers Ind Pres Impf (NPAgr Sg P1) _) => "entiendo" ;
+          VFPers (VPers Ind Pres Impf (NPAgr Sg P2) _) => "entiendes" ;
+          VFPers (VPers Ind Pres Impf (NPAgr Sg P3) _) => "entiende" ;
+          VFPers (VPers Ind Pres Impf (NPAgr Pl P3) _) => "entienden" ;
           -- subjuntivo presente
-          VFPers (VPers Sub Pres Impf Sg P1 _) => "entienda" ;
-          VFPers (VPers Sub Pres Impf Sg P2 _) => "entiendas" ;
-          VFPers (VPers Sub Pres Impf Sg P3 _) => "entienda" ;
-          VFPers (VPers Sub Pres Impf Pl P3 _) => "entiendan" ;
+          VFPers (VPers Sub Pres Impf (NPAgr Sg P1) _) => "entienda" ;
+          VFPers (VPers Sub Pres Impf (NPAgr Sg P2) _) => "entiendas" ;
+          VFPers (VPers Sub Pres Impf (NPAgr Sg P3) _) => "entienda" ;
+          VFPers (VPers Sub Pres Impf (NPAgr Pl P3) _) => "entiendan" ;
           -- imperativo positivo
-          VFPers (VPers Imp Pres Impf Sg P2 Pos) => "entiende" ;
+          VFPers (VPers Imp Pres Impf (NPAgr Sg P2) Pos) => "entiende" ;
           -- imperativo negativo
-          VFPers (VPers Imp Pres Impf Sg P2 Neg) => "entiendas" ;
+          VFPers (VPers Imp Pres Impf (NPAgr Sg P2) Neg) => "entiendas" ;
           x => orig.s ! x
         }
       } ;
@@ -270,60 +271,60 @@ oper
       in orig ** { 
         s = table {
           -- indicativo presente
-          VFPers (VPers Ind Pres Impf Sg P1 _) => "he" ;
-          VFPers (VPers Ind Pres Impf Sg P2 _) => "has" ;
-          VFPers (VPers Ind Pres Impf Sg P3 _) => "ha" ;
-          VFPers (VPers Ind Pres Impf Pl P1 _) => "hemos" ;
-          VFPers (VPers Ind Pres Impf Pl P3 _) => "han" ;
+          VFPers (VPers Ind Pres Impf (NPAgr Sg P1) _) => "he" ;
+          VFPers (VPers Ind Pres Impf (NPAgr Sg P2) _) => "has" ;
+          VFPers (VPers Ind Pres Impf (NPAgr Sg P3) _) => "ha" ;
+          VFPers (VPers Ind Pres Impf (NPAgr Pl P1) _) => "hemos" ;
+          VFPers (VPers Ind Pres Impf (NPAgr Pl P3) _) => "han" ;
           -- indicativo pretérito indefinido
-          VFPers (VPers Ind Past Perf Sg P1 _) => "hube" ;
-          VFPers (VPers Ind Past Perf Sg P2 _) => "hubiste" ;
-          VFPers (VPers Ind Past Perf Sg P3 _) => "hubo" ;
-          VFPers (VPers Ind Past Perf Pl P1 _) => "hubimos" ;
-          VFPers (VPers Ind Past Perf Pl P2 _) => "hubisteis" ;
-          VFPers (VPers Ind Past Perf Pl P3 _) => "hubieron" ;
+          VFPers (VPers Ind Past Perf (NPAgr Sg P1) _) => "hube" ;
+          VFPers (VPers Ind Past Perf (NPAgr Sg P2) _) => "hubiste" ;
+          VFPers (VPers Ind Past Perf (NPAgr Sg P3) _) => "hubo" ;
+          VFPers (VPers Ind Past Perf (NPAgr Pl P1) _) => "hubimos" ;
+          VFPers (VPers Ind Past Perf (NPAgr Pl P2) _) => "hubisteis" ;
+          VFPers (VPers Ind Past Perf (NPAgr Pl P3) _) => "hubieron" ;
           -- indicativo futuro
-          VFPers (VPers Ind Futr Impf Sg P1 _) => "habré" ;
-          VFPers (VPers Ind Futr Impf Sg P2 _) => "habràs" ;
-          VFPers (VPers Ind Futr Impf Sg P3 _) => "habrà" ;
-          VFPers (VPers Ind Futr Impf Pl P1 _) => "habremos" ;
-          VFPers (VPers Ind Futr Impf Pl P2 _) => "habréis" ;
-          VFPers (VPers Ind Futr Impf Pl P3 _) => "habràn" ;
+          VFPers (VPers Ind Futr Impf (NPAgr Sg P1) _) => "habré" ;
+          VFPers (VPers Ind Futr Impf (NPAgr Sg P2) _) => "habràs" ;
+          VFPers (VPers Ind Futr Impf (NPAgr Sg P3) _) => "habrà" ;
+          VFPers (VPers Ind Futr Impf (NPAgr Pl P1) _) => "habremos" ;
+          VFPers (VPers Ind Futr Impf (NPAgr Pl P2) _) => "habréis" ;
+          VFPers (VPers Ind Futr Impf (NPAgr Pl P3) _) => "habràn" ;
           -- subjuntivo presente
-          VFPers (VPers Sub Pres Impf Sg P1 _) => "haya" ;
-          VFPers (VPers Sub Pres Impf Sg P2 _) => "hayas" ;
-          VFPers (VPers Sub Pres Impf Sg P3 _) => "haya" ;
-          VFPers (VPers Sub Pres Impf Pl P1 _) => "hayamos" ;
-          VFPers (VPers Sub Pres Impf Pl P2 _) => "hayàis" ;
-          VFPers (VPers Sub Pres Impf Pl P3 _) => "hayan" ;
+          VFPers (VPers Sub Pres Impf (NPAgr Sg P1) _) => "haya" ;
+          VFPers (VPers Sub Pres Impf (NPAgr Sg P2) _) => "hayas" ;
+          VFPers (VPers Sub Pres Impf (NPAgr Sg P3) _) => "haya" ;
+          VFPers (VPers Sub Pres Impf (NPAgr Pl P1) _) => "hayamos" ;
+          VFPers (VPers Sub Pres Impf (NPAgr Pl P2) _) => "hayàis" ;
+          VFPers (VPers Sub Pres Impf (NPAgr Pl P3) _) => "hayan" ;
           -- subjuntivo pretérito imperfecto
-          VFPers (VPers Sub Past Impf Sg P1 _) => "hubiera" ;
-          VFPers (VPers Sub Past Impf Sg P2 _) => "hubieras" ;
-          VFPers (VPers Sub Past Impf Sg P3 _) => "hubiera" ;
-          VFPers (VPers Sub Past Impf Pl P1 _) => "hubiéramos" ;
-          VFPers (VPers Sub Past Impf Pl P2 _) => "hubiérais" ;
-          VFPers (VPers Sub Past Impf Pl P3 _) => "hubieran" ;
+          VFPers (VPers Sub Past Impf (NPAgr Sg P1) _) => "hubiera" ;
+          VFPers (VPers Sub Past Impf (NPAgr Sg P2) _) => "hubieras" ;
+          VFPers (VPers Sub Past Impf (NPAgr Sg P3) _) => "hubiera" ;
+          VFPers (VPers Sub Past Impf (NPAgr Pl P1) _) => "hubiéramos" ;
+          VFPers (VPers Sub Past Impf (NPAgr Pl P2) _) => "hubiérais" ;
+          VFPers (VPers Sub Past Impf (NPAgr Pl P3) _) => "hubieran" ;
           -- subjuntivo futuro
-          VFPers (VPers Sub Futr Impf Sg P1 _) => "hubiere" ;
-          VFPers (VPers Sub Futr Impf Sg P2 _) => "hubieres" ;
-          VFPers (VPers Sub Futr Impf Sg P3 _) => "hubiere" ;
-          VFPers (VPers Sub Futr Impf Pl P1 _) => "hubiéremos" ;
-          VFPers (VPers Sub Futr Impf Pl P2 _) => "hubiéreis" ;
-          VFPers (VPers Sub Futr Impf Pl P3 _) => "hubieren" ;
+          VFPers (VPers Sub Futr Impf (NPAgr Sg P1) _) => "hubiere" ;
+          VFPers (VPers Sub Futr Impf (NPAgr Sg P2) _) => "hubieres" ;
+          VFPers (VPers Sub Futr Impf (NPAgr Sg P3) _) => "hubiere" ;
+          VFPers (VPers Sub Futr Impf (NPAgr Pl P1) _) => "hubiéremos" ;
+          VFPers (VPers Sub Futr Impf (NPAgr Pl P2) _) => "hubiéreis" ;
+          VFPers (VPers Sub Futr Impf (NPAgr Pl P3) _) => "hubieren" ;
           -- imperativo positivo
-          VFPers (VPers Imp Pres Impf Sg P2 Pos) => "he" ;
-          VFPers (VPers Imp Pres Impf Pl P1 Pos) => "hayamos" ;
+          VFPers (VPers Imp Pres Impf (NPAgr Sg P2) Pos) => "he" ;
+          VFPers (VPers Imp Pres Impf (NPAgr Pl P1) Pos) => "hayamos" ;
           -- imperativo negativo
-          VFPers (VPers Imp Pres Impf Sg P2 Neg) => "hayas" ;
-          VFPers (VPers Imp Pres Impf Pl P1 Neg) => "hayamos" ;
-          VFPers (VPers Imp Pres Impf Pl P2 Neg) => "hayàis" ;
+          VFPers (VPers Imp Pres Impf (NPAgr Sg P2) Neg) => "hayas" ;
+          VFPers (VPers Imp Pres Impf (NPAgr Pl P1) Neg) => "hayamos" ;
+          VFPers (VPers Imp Pres Impf (NPAgr Pl P2) Neg) => "hayàis" ;
           -- condicional
-          VFPers (VPers Cnd Pres Impf Sg P1 _) => "habrìa" ;
-          VFPers (VPers Cnd Pres Impf Sg P2 _) => "habrìas" ;
-          VFPers (VPers Cnd Pres Impf Sg P3 _) => "habrìa" ;
-          VFPers (VPers Cnd Pres Impf Pl P1 _) => "habrìamos" ;
-          VFPers (VPers Cnd Pres Impf Pl P2 _) => "habrìais" ;
-          VFPers (VPers Cnd Pres Impf Pl P3 _) => "habrìan" ;
+          VFPers (VPers Cnd Pres Impf (NPAgr Sg P1) _) => "habrìa" ;
+          VFPers (VPers Cnd Pres Impf (NPAgr Sg P2) _) => "habrìas" ;
+          VFPers (VPers Cnd Pres Impf (NPAgr Sg P3) _) => "habrìa" ;
+          VFPers (VPers Cnd Pres Impf (NPAgr Pl P1) _) => "habrìamos" ;
+          VFPers (VPers Cnd Pres Impf (NPAgr Pl P2) _) => "habrìais" ;
+          VFPers (VPers Cnd Pres Impf (NPAgr Pl P3) _) => "habrìan" ;
           x => orig.s ! x
         }
       } ;
@@ -333,54 +334,54 @@ oper
       in orig ** { 
         s = table {
           -- indicativo presente
-          VFPers (VPers Ind Pres Impf Sg P1 _) => "soy" ;
-          VFPers (VPers Ind Pres Impf Sg P2 _) => "eres" ;
-          VFPers (VPers Ind Pres Impf Sg P3 _) => "es" ;
-          VFPers (VPers Ind Pres Impf Pl P1 _) => "somos" ;
-          VFPers (VPers Ind Pres Impf Pl P2 _) => "sois" ;
-          VFPers (VPers Ind Pres Impf Pl P3 _) => "son" ;
+          VFPers (VPers Ind Pres Impf (NPAgr Sg P1) _) => "soy" ;
+          VFPers (VPers Ind Pres Impf (NPAgr Sg P2) _) => "eres" ;
+          VFPers (VPers Ind Pres Impf (NPAgr Sg P3) _) => "es" ;
+          VFPers (VPers Ind Pres Impf (NPAgr Pl P1) _) => "somos" ;
+          VFPers (VPers Ind Pres Impf (NPAgr Pl P2) _) => "sois" ;
+          VFPers (VPers Ind Pres Impf (NPAgr Pl P3) _) => "son" ;
           -- indicativo pretérito imperfecto
-          VFPers (VPers Ind Past Impf Sg P1 _) => "era" ;
-          VFPers (VPers Ind Past Impf Sg P2 _) => "eras" ;
-          VFPers (VPers Ind Past Impf Sg P3 _) => "era" ;
-          VFPers (VPers Ind Past Impf Pl P1 _) => "éramos" ;
-          VFPers (VPers Ind Past Impf Pl P2 _) => "erais" ;
-          VFPers (VPers Ind Past Impf Pl P3 _) => "eran" ;
+          VFPers (VPers Ind Past Impf (NPAgr Sg P1) _) => "era" ;
+          VFPers (VPers Ind Past Impf (NPAgr Sg P2) _) => "eras" ;
+          VFPers (VPers Ind Past Impf (NPAgr Sg P3) _) => "era" ;
+          VFPers (VPers Ind Past Impf (NPAgr Pl P1) _) => "éramos" ;
+          VFPers (VPers Ind Past Impf (NPAgr Pl P2) _) => "erais" ;
+          VFPers (VPers Ind Past Impf (NPAgr Pl P3) _) => "eran" ;
           -- indicativo pretérito indefinido
-          VFPers (VPers Ind Past Perf Sg P1 _) => "fui" ;
-          VFPers (VPers Ind Past Perf Sg P2 _) => "fuiste" ;
-          VFPers (VPers Ind Past Perf Sg P3 _) => "fue" ;
-          VFPers (VPers Ind Past Perf Pl P1 _) => "fuimos" ;
-          VFPers (VPers Ind Past Perf Pl P2 _) => "fuisteis" ;
-          VFPers (VPers Ind Past Perf Pl P3 _) => "fueron" ;
+          VFPers (VPers Ind Past Perf (NPAgr Sg P1) _) => "fui" ;
+          VFPers (VPers Ind Past Perf (NPAgr Sg P2) _) => "fuiste" ;
+          VFPers (VPers Ind Past Perf (NPAgr Sg P3) _) => "fue" ;
+          VFPers (VPers Ind Past Perf (NPAgr Pl P1) _) => "fuimos" ;
+          VFPers (VPers Ind Past Perf (NPAgr Pl P2) _) => "fuisteis" ;
+          VFPers (VPers Ind Past Perf (NPAgr Pl P3) _) => "fueron" ;
           -- subjuntivo presente
-          VFPers (VPers Sub Pres Impf Sg P1 _) => "sea" ;
-          VFPers (VPers Sub Pres Impf Sg P2 _) => "seas" ;
-          VFPers (VPers Sub Pres Impf Sg P3 _) => "sea" ;
-          VFPers (VPers Sub Pres Impf Pl P1 _) => "seamos" ;
-          VFPers (VPers Sub Pres Impf Pl P2 _) => "seàis" ;
-          VFPers (VPers Sub Pres Impf Pl P3 _) => "sean" ;
+          VFPers (VPers Sub Pres Impf (NPAgr Sg P1) _) => "sea" ;
+          VFPers (VPers Sub Pres Impf (NPAgr Sg P2) _) => "seas" ;
+          VFPers (VPers Sub Pres Impf (NPAgr Sg P3) _) => "sea" ;
+          VFPers (VPers Sub Pres Impf (NPAgr Pl P1) _) => "seamos" ;
+          VFPers (VPers Sub Pres Impf (NPAgr Pl P2) _) => "seàis" ;
+          VFPers (VPers Sub Pres Impf (NPAgr Pl P3) _) => "sean" ;
           -- subjuntivo pretérito imperfecto
-          VFPers (VPers Sub Past Impf Sg P1 _) => "fuera" ;
-          VFPers (VPers Sub Past Impf Sg P2 _) => "fueras" ;
-          VFPers (VPers Sub Past Impf Sg P3 _) => "fuera" ;
-          VFPers (VPers Sub Past Impf Pl P1 _) => "fuéramos" ;
-          VFPers (VPers Sub Past Impf Pl P2 _) => "fuerais" ;
-          VFPers (VPers Sub Past Impf Pl P3 _) => "fueran" ;
+          VFPers (VPers Sub Past Impf (NPAgr Sg P1) _) => "fuera" ;
+          VFPers (VPers Sub Past Impf (NPAgr Sg P2) _) => "fueras" ;
+          VFPers (VPers Sub Past Impf (NPAgr Sg P3) _) => "fuera" ;
+          VFPers (VPers Sub Past Impf (NPAgr Pl P1) _) => "fuéramos" ;
+          VFPers (VPers Sub Past Impf (NPAgr Pl P2) _) => "fuerais" ;
+          VFPers (VPers Sub Past Impf (NPAgr Pl P3) _) => "fueran" ;
           -- subjuntivo futuro
-          VFPers (VPers Sub Futr Impf Sg P1 _) => "fuere" ;
-          VFPers (VPers Sub Futr Impf Sg P2 _) => "fueres" ;
-          VFPers (VPers Sub Futr Impf Sg P3 _) => "fuere" ;
-          VFPers (VPers Sub Futr Impf Pl P1 _) => "fuéramos" ;
-          VFPers (VPers Sub Futr Impf Pl P2 _) => "fuereis" ;
-          VFPers (VPers Sub Futr Impf Pl P3 _) => "fueren" ;
+          VFPers (VPers Sub Futr Impf (NPAgr Sg P1) _) => "fuere" ;
+          VFPers (VPers Sub Futr Impf (NPAgr Sg P2) _) => "fueres" ;
+          VFPers (VPers Sub Futr Impf (NPAgr Sg P3) _) => "fuere" ;
+          VFPers (VPers Sub Futr Impf (NPAgr Pl P1) _) => "fuéramos" ;
+          VFPers (VPers Sub Futr Impf (NPAgr Pl P2) _) => "fuereis" ;
+          VFPers (VPers Sub Futr Impf (NPAgr Pl P3) _) => "fueren" ;
           -- imperativo positivo
-          VFPers (VPers Imp Pres Impf Sg P2 Pos) => "sé" ;
-          VFPers (VPers Imp Pres Impf Pl P1 Pos) => "seamos" ;
+          VFPers (VPers Imp Pres Impf (NPAgr Sg P2) Pos) => "sé" ;
+          VFPers (VPers Imp Pres Impf (NPAgr Pl P1) Pos) => "seamos" ;
           -- imperativo negativo
-          VFPers (VPers Imp Pres Impf Sg P2 Neg) => "seas" ;
-          VFPers (VPers Imp Pres Impf Pl P1 Neg) => "seamos" ;
-          VFPers (VPers Imp Pres Impf Pl P2 Neg) => "seàis" ;
+          VFPers (VPers Imp Pres Impf (NPAgr Sg P2) Neg) => "seas" ;
+          VFPers (VPers Imp Pres Impf (NPAgr Pl P1) Neg) => "seamos" ;
+          VFPers (VPers Imp Pres Impf (NPAgr Pl P2) Neg) => "seàis" ;
           x => orig.s ! x
         }
       } ;

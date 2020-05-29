@@ -11,12 +11,13 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
     N = Noun ;
     Pron = {
       s : Case => Str ; 
-      a : Agreement ; -- NOTE: it's number-gender
-      p : Person ;
+      a : NPAgreement ; -- NOTE: it's number-gender
     } ;
 
   lin
     --UsePron p = p ; TODO: ?
+    -- TODO: ? gender of we you etc.
+    -- TODO: ? gender and number of genitive
     i_Pron = {
       s = table {
         Nom => "yo" ; 
@@ -25,8 +26,7 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
         Gen => "mìo" ;
         Prep => "mì"
       } ;
-      a = Agr Sg M ; -- TODO: ? (genitive sucks)
-      p = P1
+      a = NPAgr Sg P1 ;
       } ;
 
       youSg_Pron = {
@@ -37,8 +37,7 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
         Gen => "tuyo" ;
         Prep => "ti"
       } ;
-      a = Agr Sg M ; -- TODO: ? (genitive sucks)
-      p = P2
+      a = NPAgr Sg P2 ;
       } ;
 
       he_Pron = {
@@ -49,8 +48,7 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
         Gen => "suyo" ; 
         Prep => "se"
       } ;
-      a = Agr Sg M ; -- TODO: ? (genitive sucks)
-      p = P3
+      a = NPAgr Sg P3
       } ;
 
       she_Pron = {
@@ -61,34 +59,31 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
         Gen => "suyo" ; 
         Prep => "se"
       } ;
-      a = Agr Sg M ; -- TODO: ? (genitive sucks)
-      p = P3
+      a = NPAgr Sg P3
       } ;
 
       -- it_Pron
 
       we_Pron = {
       s = table {
-        Nom => "nosotros" ; -- TODO: gender 
+        Nom => "nosotros" ;
         Acc => "nos" ;
         Dat => "nos" ;
         Gen => "nuestro" ;
         Prep => "nosotros"
       } ;
-      a = Agr Pl M ; -- TODO: ? (genitive sucks)
-      p = P1
+      a = NPAgr Pl P1
       } ;
 
       youPl_Pron = {
       s = table {
-        Nom => "vosotros" ; -- TODO: gender 
+        Nom => "vosotros" ;
         Acc => "vos" ;
         Dat => "vos" ;
         Gen => "vuestro" ; 
         Prep => "vosotros"
       } ;
-      a = Agr Pl M ; -- TODO: ? (genitive sucks)
-      p = P2
+      a = NPAgr Pl P2
       } ;
 
       they_Pron = {
@@ -99,7 +94,6 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
         Gen => "suyo" ; 
         Prep => "se"
       } ;
-      a = Agr Pl M ; -- TODO: ? (genitive sucks)
-      p = P3
+      a = NPAgr Pl P3
       } ;
 }
