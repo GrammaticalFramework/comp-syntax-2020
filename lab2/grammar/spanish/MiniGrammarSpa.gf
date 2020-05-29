@@ -14,6 +14,8 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
       a : NPAgreement ; -- NOTE: it's number-gender
     } ;
     Prep = {s : Str} ;
+    Adv = {s : Str} ;
+    IAdv = {s : Str} ; -- interrogative
 
   lin
     -- | PRONOUNS
@@ -105,4 +107,13 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
     in_Prep = {s = "en"} ;
     on_Prep = {s = "sobre"} ;
     with_Prep = {s = "con"} ;
+
+    -- | ADVERBS
+    UttAdv adv = adv ;
+    UttIAdv iadv = iadv ;
+    CompAdv adv = adv ;
+    AdvVP vp adv = vp ** {compl = vp.compl ++ adv.s} ;
+
+    where_IAdv = {s = "dònde"} ;
+    why_IAdv = {s = "por qué"} ;
 }
