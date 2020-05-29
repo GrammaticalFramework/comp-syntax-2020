@@ -11,8 +11,8 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
     A = Adjective ;
     N = Noun ;
     Pron = {
-      s : Case => Str ; 
-      a : NPAgreement ; -- NOTE: it's number-gender
+      s : PronForm => Str ; 
+      a : NPAgreement 
     } ;
     Prep = {s : Str} ;
     Adv = {s : Str} ;
@@ -24,49 +24,60 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
 
   lin
     -- | PRONOUNS
-    UsePron p = { s = (p.s) ! Nom } ; -- as NP, TODO: check if correct, Eng is UsePron p = p  
+    -- UsePron p = { s = (p.s) ! Nom } ; -- as NP, TODO: check if correct, Eng is UsePron p = p  
     -- TODO: ? gender of we you etc.
-    -- TODO: ? gender and number of genitive
     i_Pron = {
       s = table {
-        Nom => "yo" ; 
-        Acc => "me" ;
-        Dat => "me" ;
-        Gen => "mìo" ;
-        Pre => "mì"
+        PForm Nom _ => "yo" ; 
+        PForm Acc _ => "me" ;
+        PForm Dat _ => "me" ;
+        PForm Gen (NGAgr Sg M) => "mìo" ;
+        PForm Gen (NGAgr Sg F) => "mìa" ;
+        PForm Gen (NGAgr Pl M) => "mìos" ;
+        PForm Gen (NGAgr Pl F) => "mìas" ;
+        PForm Pre _ => "mì"
       } ;
       a = NPAgr Sg P1 ;
       } ;
-
+    
     youSg_Pron = {
       s = table {
-        Nom => "tù" ; 
-        Acc => "te" ;
-        Dat => "te" ;
-        Gen => "tuyo" ;
-        Pre => "ti"
+        PForm Nom _ => "tù" ; 
+        PForm Acc _ => "te" ;
+        PForm Dat _ => "te" ;
+        PForm Gen (NGAgr Sg M) => "tuyo" ;
+        PForm Gen (NGAgr Sg F) => "tuya" ;
+        PForm Gen (NGAgr Pl M) => "tuyos" ;
+        PForm Gen (NGAgr Pl F) => "tuyas" ;
+        PForm Pre _ => "ti"
       } ;
       a = NPAgr Sg P2 ;
     } ;
 
     he_Pron = {
       s = table {
-        Nom => "él" ; 
-        Acc => "lo" ;
-        Dat => "le" ;
-        Gen => "suyo" ; 
-        Pre => "se"
+        PForm Nom _ => "él" ; 
+        PForm Acc _ => "lo" ;
+        PForm Dat _ => "le" ;
+        PForm Gen (NGAgr Sg M) => "suyo" ;
+        PForm Gen (NGAgr Sg F) => "suya" ;
+        PForm Gen (NGAgr Pl M) => "suyos" ;
+        PForm Gen (NGAgr Pl F) => "suyas" ;
+        PForm Pre _ => "se"
       } ;
       a = NPAgr Sg P3
     } ;
 
     she_Pron = {
       s = table {
-        Nom => "ella" ; 
-        Acc => "la" ;
-        Dat => "le" ;
-        Gen => "suyo" ; 
-        Pre => "se"
+        PForm Nom _ => "ella" ; 
+        PForm Acc _ => "la" ;
+        PForm Dat _ => "le" ;
+        PForm Gen (NGAgr Sg M) => "suyo" ;
+        PForm Gen (NGAgr Sg F) => "suya" ;
+        PForm Gen (NGAgr Pl M) => "suyos" ;
+        PForm Gen (NGAgr Pl F) => "suyas" ; 
+        PForm Pre _ => "se"
       } ;
       a = NPAgr Sg P3
     } ;
@@ -75,33 +86,42 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
 
     we_Pron = {
       s = table {
-        Nom => "nosotros" ;
-        Acc => "nos" ;
-        Dat => "nos" ;
-        Gen => "nuestro" ;
-        Pre => "nosotros"
+        PForm Nom _ => "nosotros" ;
+        PForm Acc _ => "nos" ;
+        PForm Dat _ => "nos" ;
+        PForm Gen (NGAgr Sg M) => "nuestro" ;
+        PForm Gen (NGAgr Sg F) => "nuestra" ;
+        PForm Gen (NGAgr Pl M) => "nuestros" ;
+        PForm Gen (NGAgr Pl F) => "nuestras" ;
+        PForm Pre _ => "nosotros"
       } ;
       a = NPAgr Pl P1
     } ;
 
     youPl_Pron = {
       s = table {
-        Nom => "vosotros" ;
-        Acc => "vos" ;
-        Dat => "vos" ;
-        Gen => "vuestro" ; 
-        Pre => "vosotros"
+        PForm Nom _ => "vosotros" ;
+        PForm Acc _ => "vos" ;
+        PForm Dat _ => "vos" ;
+        PForm Gen (NGAgr Sg M) => "vuestro" ;
+        PForm Gen (NGAgr Sg F) => "vuestra" ;
+        PForm Gen (NGAgr Pl M) => "vuestros" ;
+        PForm Gen (NGAgr Pl F) => "vuestras" ; 
+        PForm Pre _ => "vosotros"
       } ;
       a = NPAgr Pl P2
     } ;
 
     they_Pron = {
       s = table {
-        Nom => "ellos" ;
-        Acc => "los" ;
-        Dat => "les" ;
-        Gen => "suyo" ; 
-        Pre => "se"
+        PForm Nom _ => "ellos" ;
+        PForm Acc _ => "los" ;
+        PForm Dat _ => "les" ;
+        PForm Gen (NGAgr Sg M) => "suyo" ;
+        PForm Gen (NGAgr Sg F) => "suya" ;
+        PForm Gen (NGAgr Pl M) => "suyos" ;
+        PForm Gen (NGAgr Pl F) => "suyas" ;
+        PForm Pre _ => "se"
       } ;
       a = NPAgr Pl P3
     } ;
@@ -154,6 +174,9 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
       n = Pl
     } ;
     
-    every_Det = {s = "cada" ; n = Sg} ;
+    every_Det = {s = 
+      table {
+        _ => "cada"
+     } ; n = Sg} ;
 
 }

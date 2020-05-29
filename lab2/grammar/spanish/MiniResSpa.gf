@@ -12,13 +12,16 @@ param
   Voice = Actv | Pass ; -- not in use cause pass is always periphrastic
   Polarity = Pos | Neg ; -- just for negative imperative
 
-  NGAgreement = NGAgr  Number Gender ; -- used e.g. for noun-adj agreement
+  NGAgreement = NGAgr Number Gender ; -- used e.g. for noun-adj agreement
   NPAgreement = NPAgr Number Person ; -- used e.g. for verb-subj (pron) agreement
 
   -- solamente los tiempos simples
   VForm = VFImp VImpForm | VFPers VPersForm ; -- a VF is either personal or impersonal
   VImpForm = VInf | VPart Tense | VGer ;
   VPersForm = VPers Mood Tense Aspect NPAgreement Polarity ;
+  
+  -- pronouns forms
+  PronForm = PForm Case NGAgreement ; 
 
 oper
   -- | NOUNS
