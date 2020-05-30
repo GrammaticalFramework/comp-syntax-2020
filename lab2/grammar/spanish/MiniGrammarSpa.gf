@@ -22,6 +22,8 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
       n : Number 
     } ;
     Conj = {s : Str} ;
+    IP = {s : Str ; a : NPAgreement} ;
+
 
   lin
     -- | PRONOUNS
@@ -126,6 +128,13 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
       } ;
       a = NPAgr Pl P3
     } ;
+
+    whoSg_IP = { 
+      s = "quién" ;
+      a = NPAgr Sg Per3
+      } ;
+
+    -- no plural, for some reason
 
     -- | PREPOSITIONS
     -- TODO: PrepNP prep np = {s = prep.s ++ np.s ! Acc} ;
