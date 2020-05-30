@@ -2,25 +2,45 @@
 concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
 
   lincat
-    V = Verb ;
-    V2 = Verb ** {c : Str} ;
-    VS = Verb ;
-    VV = Verb ; ---- only VV to VP
-    A = Adjective ;
-    N = Noun ;
+    Utt = {s : Str} ;
+    Pol  = {s : Str ; p : Bool} ; -- Polarity. s is empty, but needed for parsing
+    Temp = {s : Str ; t : TenseForm} ;
+
+    S  = {s : Str} ;
+    QS = {s : Str} ;
+    -- TODO: adjust to Spanish, does not make any sense
+    Cl = {   -- word order is fixed in S and QS
+      subj : Str ; -- subject (TODO: should be optional)
+      verb : Bool => TenseForm => Str ; -- dep. on Pol,Temp, e.g. "does","sleep"
+      compl : Str -- after verb: complement, adverbs
+    } ;
+    QCl = Cl ** {isWh : Bool} ;
+    Imp = {s : Bool => Str} ; -- imperative (negative or positive)
+    VP = {verb : Verb ; compl : Str} ; -- I don't think I need GVerbs
+    Comp = {s : Str} ;  -- copula complement
+    AP = Adjective ;
+    CN = Noun ; -- common noun
+    NP = {s : Case => Str ; a : NPAgreement} ; -- TODO: is case relevant here?
+    IP = {s : Str ; a : NPAgreement} ;
     Pron = {
       s : PronForm => Str ; 
       a : NPAgreement 
     } ;
-    Prep = {s : Str} ;
-    Adv = {s : Str} ;
-    IAdv = {s : Str} ; -- interrogative
     Det = { -- would have been nicer with NGAgr actually
       s : Gender => Str ; 
       n : Number 
     } ;
     Conj = {s : Str} ;
-    IP = {s : Str ; a : NPAgreement} ;
+    Prep = {s : Str} ;
+    V = Verb ;
+    V2 = Verb2 ;
+    VS = Verb ;
+    VV = Verb ; ---- only VV to VP
+    A = Adjective ;
+    N = Noun ;
+    PN = {s : Str} ; -- proper name
+    Adv = {s : Str} ;
+    IAdv = {s : Str} ; -- interrogative
 
 
   lin
