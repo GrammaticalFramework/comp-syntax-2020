@@ -21,6 +21,7 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
       s : Gender => Str ; 
       n : Number 
     } ;
+    Conj = {s : Str} ;
 
   lin
     -- | PRONOUNS
@@ -182,9 +183,13 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
       n = Pl
     } ;
     
-    every_Det = {s = 
-      table {
+    every_Det = {
+      s = table {
         _ => "cada"
-     } ; n = Sg} ;
+      } ; 
+      n = Sg} ;
+
+    and_Conj = {s = "y"} ;
+    or_Conj = {s = "o"} ;
 
 }
