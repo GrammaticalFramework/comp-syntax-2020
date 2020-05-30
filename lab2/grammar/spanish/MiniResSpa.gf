@@ -20,6 +20,8 @@ param
   VImpForm = VInf | VPart Tense | VGer ;
   VPersForm = VPers Mood Tense Aspect NPAgreement Polarity ;
   
+  TenseForm = Simple | PretPerf | PretPlus | PretAnt | FutComp | Ger ;
+  
   -- pronouns forms
   PronForm = PForm Case NGAgreement ; 
 
