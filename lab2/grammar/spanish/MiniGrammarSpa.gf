@@ -55,11 +55,23 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
     UseCl temp pol cl = 
       let vf = cl.verb ! pol.p ! temp.t in {
       s = pol.s ++ temp.s ++ -- GF hack, they are empty!
-	    cl.subj ++ -- ella
-      negation pol.p ++ -- no
-      vf ++ -- bebe
-	    cl.compl -- cerveza
+	        cl.subj ++ -- ella
+          negation pol.p ++ -- no
+          vf ++ -- bebe
+	        cl.compl -- cerveza
     } ;
+
+    UseQCl temp pol qcl =
+      let
+         isWh = qcl.isWh ; --TODO: remove isWh, no inversion anyway
+         vf = qcl.verb ! andB isWh pol.p ! temp.t ;
+      in {
+        s = pol.s ++ temp.s ++ -- hack again
+            qcl.subj ++ -- quién/ella
+	          negation pol.p ++ -- no
+	          vf ++ -- bebe
+	          qcl.compl -- cerveza
+      } ;
 
     -- | PRONOUNS
     -- UsePron p = { s = (p.s) ! Nom } ; -- as NP, TODO: check if correct, Eng is UsePron p = p  
