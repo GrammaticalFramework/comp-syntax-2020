@@ -389,4 +389,6 @@ oper
         }
       } ;
 
+      negation : Bool -> Str = \b -> case b of {True => [] ; False => "no"} ;
+
 }
