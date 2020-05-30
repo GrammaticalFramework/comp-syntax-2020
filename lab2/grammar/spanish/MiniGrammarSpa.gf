@@ -14,7 +14,7 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
       verb : Bool => TenseForm => Str ; -- dep. on Pol,Temp, e.g. "does","sleep"
       compl : Str -- after verb: complement, adverbs
     } ;
-    QCl = Cl ** {isWh : Bool} ;
+    QCl = Cl ;
     Imp = {s : Bool => Str} ; -- imperative (negative or positive)
     VP = {verb : Verb ; compl : Str} ; -- I don't think I need GVerbs
     Comp = {s : Str} ;  -- copula complement
@@ -62,10 +62,7 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
     } ;
 
     UseQCl temp pol qcl =
-      let
-         isWh = qcl.isWh ; --TODO: remove isWh, no inversion anyway
-         vf = qcl.verb ! andB isWh pol.p ! temp.t ;
-      in {
+      let vf = qcl.verb ! pol.p ! temp.t in {
         s = pol.s ++ temp.s ++ -- hack again
             qcl.subj ++ -- quién/ella
 	          negation pol.p ++ -- no
