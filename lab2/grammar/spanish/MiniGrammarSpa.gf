@@ -51,7 +51,16 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
     UttIAdv iadv = iadv ;
     UttImpSg pol imp = {s = pol.s ++ imp.s ! pol.p} ;
 
-  lin
+    -- | CLAUSES
+    UseCl temp pol cl = 
+      let vf = cl.verb ! pol.p ! temp.t in {
+      s = pol.s ++ temp.s ++ -- GF hack, they are empty!
+	    cl.subj ++ -- ella
+      negation pol.p ++ -- no
+      vf ++ -- bebe
+	    cl.compl -- cerveza
+    } ;
+
     -- | PRONOUNS
     -- UsePron p = { s = (p.s) ! Nom } ; -- as NP, TODO: check if correct, Eng is UsePron p = p  
     -- TODO: ? gender of we you etc.
