@@ -1,8 +1,6 @@
 --# -path=.:../abstract
 concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
 
--- TODO: order
-
   lincat
     V = Verb ;
     V2 = Verb ** {c : Str} ;
@@ -131,7 +129,7 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
 
     whoSg_IP = { 
       s = "quién" ;
-      a = NPAgr Sg Per3
+      a = NPAgr Sg P3
       } ;
 
     -- no plural, for some reason
