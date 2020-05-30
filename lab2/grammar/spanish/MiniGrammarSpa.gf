@@ -42,6 +42,14 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
     Adv = {s : Str} ;
     IAdv = {s : Str} ; -- interrogative
 
+  lin
+    -- | UTTERANCES
+    UttS s = s ;
+    UttQS s = s ;
+    UttNP np = {s = np.s ! Acc} ;
+    UttAdv adv = adv ;
+    UttIAdv iadv = iadv ;
+    UttImpSg pol imp = {s = pol.s ++ imp.s ! pol.p} ;
 
   lin
     -- | PRONOUNS
