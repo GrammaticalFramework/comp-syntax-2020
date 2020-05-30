@@ -78,6 +78,9 @@ oper
   -- | VERBS
   Verb : Type = {s : VForm => Str} ;
 
+  -- two-place verb with "case" as preposition; for transitive verbs, c=[]
+  Verb2 : Type = Verb ** {c : Str} ;
+
   mkVerb : (_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_ : Str) -> Verb
     = \inf, partpres, partpast, ger, indpressg1, indpressg2, indpressg3, indprespl1, indprespl2, indprespl3, indimpfsg13, indimpfsg2,indimpfpl1, indimpfpl2, indimpfpl3, indperfsg1, indperfsg2, indperfsg3,indperfpl1, indperfpl2, indperfpl3, indfutrsg1, indfutrsg2, indfutrsg3,indfutrpl1, indfutrpl2, indfutrpl3, subpressg13, subpressg2,subprespl1, subprespl2, subprespl3, subimpfsg13, subimpfsg2, subimpfpl1, subimpfpl2, subimpfpl3, subfutrsg13, subfutrsg2,subfutrpl1, subfutrpl2, subfutrpl3, imprpossg2,imprpospl1, imprpospl2, imprnegsg2, imprnegpl1, imprnegpl2, condsg13, condsg2, condpl1, condpl2, condpl3 -> {
     s = table {
