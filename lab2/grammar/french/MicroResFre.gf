@@ -7,19 +7,19 @@ param
   Gender = Fem | Masc ;
 
 
-  Agreement = Agr Number Gender ; ---s Person to be added ;
+  --Agreement = Agr Number Gender ; -- no agreement, since that caused problems in adjective agreement
 
   -- all forms of normal Eng verbs, although not yet used in MiniGrammar
 --  VForm = Inf | PresSg3 | Past | PastPart | PresPart ; 
-  VForm = Inf | Sg1 | Sg2 | Sg3 | Pl1 | Pl2 | Pl3 ; -- all in present tense
---  VForm = Inf | Pres Number Person ; -- all in present tense TODO: change VForm to this?
+--  VForm = Inf | Sg1 | Sg2 | Sg3 | Pl1 | Pl2 | Pl3 ; -- all in present tense
+  VForm = Inf | VPres Number Person ; -- all in present tense
 
 oper
   Noun : Type = {s : Number => Str ; g : Gender} ;
 
   mkNoun : Str -> Str -> Noun = \sg,pl -> {
     s = table {Sg => sg ; Pl => pl} ;
-	g = Fem
+	g = getGender sg
     } ;
 
   regNoun : Str -> Noun = \sg -> mkNoun sg (sg + "s") ;
@@ -31,6 +31,13 @@ oper
 	_ + ("s"|"z"|"x")			=> mkNoun sg (sg) ;
     _	                        => regNoun sg	
     } ;
+	
+	getGender: Str -> Gender = \sg -> case sg of {
+	("livre" | "nuage" | "homme" | "fleuve" | "navire" | "arbre") => Masc ;
+	("fleur" | "maison" | "eau")								  => Fem ;
+	x + ("l" | "é" | "o" | "eau" | "g" | "t" | "r" | "n" | "x")   => Masc ;
+	x + ("e") 													  => Fem
+	} ;
 
 --  Adj : Type = {s : Agreement => Str} ;
 --  mkAdj : (_, _, _, _ : Str) -> Adj = \mascsg, femsg, mascpl, fempl -> {
@@ -52,7 +59,6 @@ Adj : Type = {s : Gender => Number => Str} ;
   --smart paradigm
   smartAdj : Str -> Adj = \mascsg -> case mascsg of {
   	gran + "d"					=> regAdj mascsg ;
-	--gran + "d"					=> mkAdj mascsg (mascsg + "de") (mascsg + "ds") (mascsg + "des") ;
 	roug + "e"					=> mkAdj mascsg mascsg (roug + "es") (roug + "es") ;
 	b + "on"					=> mkAdj mascsg (b + "onne") (b + "ons") (b + "onnes") ;
 	anci + "en"					=> mkAdj mascsg (anci + "enne") (anci + "ens") (anci + "ennes") ;
@@ -60,7 +66,7 @@ Adj : Type = {s : Gender => Number => Str} ;
 	_	                        => regAdj mascsg
   } ;	
   
-  irregAdj : (mascsg,femsg,mascpl,fempl : Str) -> Adj = 
+  irregAdj : (mascsg,femsg,mascpl,fempl : Str) -> Adj =   --not very frequent, just for blanc
     \mascsg, femsg, mascpl, fempl ->
       let adj = smartAdj mascsg
 	  in mkAdj mascsg femsg mascpl fempl ;
@@ -72,30 +78,27 @@ Adj : Type = {s : Gender => Number => Str} ;
     = \inf,sg1,sg2,sg3,pl1, pl2, pl3 -> {
     s = table {
       Inf => inf ;
-      Sg1 => sg1 ;
-      Sg2 => sg2 ;
-      Sg3 => sg3 ;
-	  Pl1 => pl1 ;
-	  Pl2 => pl2 ;
-	  Pl3 => pl3 
+      VPres Sg Per1 => sg1 ;
+      VPres Sg Per2 => sg2 ;
+      VPres Sg Per3 => sg3 ;
+	  VPres Pl Per1 => pl1 ;
+	  VPres Pl Per2 => pl2 ;
+	  VPres Pl Per3 => pl3 
       }
     } ;
 
 --  regVerb : (inf : Str) -> Verb = \inf ->
   --  mkVerb inf (inf + "s") (inf + "ed") (inf + "ed") (inf + "ing") ;
 
-  -- regular verbs with predictable variations
+  -- regular verbs with predictable variations  - could make individual functions for verb groups, but are there advantages apart from readability?
   smartVerb : Str -> Verb = \inf -> case inf of {
-     saut  +  "er" =>  mkVerb inf (saut + "e") (saut + "es") (saut + "e") (saut + "ons") (saut + "ez") (saut + "ent") ;
-	 cour + "ir" 	=> mkVerb inf (cour + "s") (cour + "s") (cour + "t") (cour + "ons") (cour + "ez") (cour + "ent") ;
+     saut  +  "er"  	=>  mkVerb inf (saut + "e") (saut + "es") (saut + "e") (saut + "ons") (saut + "ez") (saut + "ent") ;
+	 cour + "ir" 		=> mkVerb inf (cour + "s") (cour + "s") (cour + "t") (cour + "ons") (cour + "ez") (cour + "ent") ;
 	 comp + "rendre"	=> mkVerb inf (comp + "rends") (comp + "rends") (comp + "rend") (comp + "renons") (comp + "renez") (comp + "rennent") ;
-	 attend + "re"	=> mkVerb inf (attend + "s") (attend + "s") (attend + "") (attend + "ons") (attend + "ez") (attend + "ent")
- --    pl  +  ("a"|"e"|"i"|"o"|"u") + "y" => regVerb inf ;
-   --  cr  +  "y" =>  mkVerb inf (cr + "ies") (cr + "ied") (cr + "ied") (inf + "ing") ;
-  --   _ => regVerb inf 
+	 attend + "re"		=> mkVerb inf (attend + "s") (attend + "s") (attend + "") (attend + "ons") (attend + "ez") (attend + "ent")
      } ;
 
-  -- normal irregular verbs e.g. drink,drank,drunk
+  -- irregular verbs  - maybe find a way to generalize these a bit more?
   irregVerb : (inf,sg1,sg2,sg3,pl1,pl2,pl3 : Str) -> Verb =
     \inf,sg1,sg2,sg3,pl1,pl2,pl3 ->
       let verb = smartVerb inf
@@ -103,16 +106,14 @@ Adj : Type = {s : Gender => Number => Str} ;
 	  in mkVerb inf sg1 sg2 sg3 pl1 pl2 pl3 ;
 
   -- two-place verb with "case" as preposition; for transitive verbs, c=[]
-  Verb2 : Type = Verb ** {c : Str} ;
+  Verb2 : Type = Verb ** {c : Gender => Number => Str} ;
 
 be_Verb : Verb = mkVerb "être" "suis" "es" "est" "sommes" "êtes" "sont" ; ---s to be generalized
 
 
----s a very simplified verb agreement function for Micro
-  agr2vform : Agreement -> VForm = \a -> case a of {
-    Agr Sg Fem => Sg3 ;
-	Agr Sg Masc => Sg3 ;
-    Agr Pl Fem => Pl3 ;
-	Agr Pl Masc => Pl3 
+---s a very simplified verb agreement function for Micro  -- changed from agreement to just number, since only that is needed?
+  agr2vform : Number -> VForm = \a -> case a of {
+    Sg => VPres Sg Per3 ;
+    Pl => VPres Pl Per3 
     } ;
 	}
