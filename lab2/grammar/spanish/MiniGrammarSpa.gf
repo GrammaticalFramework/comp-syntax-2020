@@ -43,7 +43,6 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
     IAdv = {s : Str} ; -- interrogative
 
   lin
-    -- | UTTERANCES
     UttS s = s ;
     UttQS s = s ;
     UttNP np = {s = np.s ! Acc} ;
@@ -51,7 +50,6 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
     UttIAdv iadv = iadv ;
     UttImpSg pol imp = {s = pol.s ++ imp.s ! pol.p} ;
 
-    -- | CLAUSES
     UseCl temp pol cl = 
       let vf = cl.verb ! pol.p ! temp.t in {
       s = pol.s ++ temp.s ++ -- GF hack, they are empty!
@@ -70,8 +68,150 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
 	          qcl.compl -- cerveza
       } ;
 
-    -- | PRONOUNS
-    -- UsePron p = { s = (p.s) ! Nom } ; -- as NP, TODO: check if correct, Eng is UsePron p = p  
+    QuestCl cl = cl ;
+
+    {-
+    PredVP np vp = {
+      subj = np.s ! Nom ;
+      compl = vp.compl ;
+      verb = vp.verb.s ;
+    } ;
+    -}
+
+    -- QuestVP ip vp = PredVP ip vp ; 
+    {-
+    ImpVP vp = {
+      s = table {
+        True  => vp.verb.s ! VForm Inf ++ vp.compl ;    -- in Eng, imperative = infinitive
+        False => "do not" ++ vp.verb.s ! VF Inf ++ vp.compl
+      }
+    } ;
+    -}
+
+    UseV v = {
+      verb = v ;
+      compl = []
+    } ;
+
+    ComplV2 v2 np = {
+      verb = v2 ;
+      compl = v2.c ++ np.s ! Acc
+    } ;
+
+    ComplVS vs s = {
+      verb = vs ;
+      compl = "que" ++ s.s ;
+    } ;
+
+    ComplVV vv vp = {
+      verb = vv ;
+      compl = vp.verb.s ! VFImp VInf ++ vp.compl ;
+      } ;
+
+    UseComp comp = {
+      verb = ser "s" ; -- copula TODO: change implementation of ser
+      compl = comp.s
+    } ;    
+
+    -- CompAP ap = ap ; -- TODO: agreement as a lambda...?
+
+    CompNP np = {
+      s = np.s ! Nom
+    } ;
+
+    CompAdv adv = adv ;
+
+    AdvVP vp adv = vp ** {compl = vp.compl ++ adv.s} ;
+
+    -- common noun with det
+    DetCN det cn = {
+      s = table {c => det.s ! cn.g ++ cn.s ! det.n} ;
+      a = NPAgr det.n P3
+    } ;
+
+    -- proper noun
+    UsePN pn = {
+      s = \\_ => pn.s ;
+      a = NPAgr Sg P3
+    } ;
+
+    --UsePron p = { s = p.s ! (PForm Nom (NGAgr Sg M)) } ;
+
+    MassNP cn = {
+      s = \\_ => cn.s ! Sg ;
+      a = NPAgr Sg P3
+    } ;
+
+    a_Det = {
+      s = table {
+        M => "un" ;
+        F => "una" 
+      } ;
+      n = Sg
+    } ;
+
+    aPl_Det = {
+      s = table {
+        M => "unos" ;
+        F => "unas" 
+      } ;
+      n = Pl
+    } ;
+
+    the_Det = {
+      s = table {
+        M => "el" ;
+        F => "la" -- even though that's another story for "el agua" y "el aguila"
+      } ;
+      n = Sg
+    } ;
+
+    thePl_Det = {
+      s = table {
+        M => "los" ;
+        F => "las"
+      } ;
+      n = Pl
+    } ;
+
+    UseN n = n ;
+
+    {-
+    AdjCN ap cn = {
+      s = table {n => cn.s ! n ++ ap.s ! (NGAgr Sg M) }
+    } ;
+    -}
+
+    PositA a = a;
+
+    PrepNP prep np = {s = prep.s ++ np.s ! Acc} ;
+
+    CoordS conj a b = {s = a.s ++ conj.s ++ b.s} ;
+
+    PPos  = {s = [] ; p = True} ;
+    PNeg  = {s = [] ; p = False} ;
+
+    TSim  = {s = []    ; t = Simple} ;
+    TPPref  = {s = []    ; t = PretPerf} ;
+    TPPlus  = {s = []    ; t = PretPlus} ;
+    TPAnt  = {s = []    ; t = PretAnt} ;
+    TFComp  = {s = []    ; t = FutComp} ;
+    TGer  = {s = []    ; t = Ger} ;
+
+    and_Conj = {s = "y"} ;
+    or_Conj = {s = "o"} ;
+
+    every_Det = {
+      s = table {
+        _ => "cada"
+      } ; 
+      n = Sg
+    } ;
+
+    in_Prep = {s = "en"} ;
+    on_Prep = {s = "sobre"} ;
+    with_Prep = {s = "con"} ;
+
     -- TODO: ? gender of we you etc.
     i_Pron = {
       s = table {
@@ -180,73 +320,10 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
 
     -- no plural, for some reason
 
-    -- | PREPOSITIONS
-    -- TODO: PrepNP prep np = {s = prep.s ++ np.s ! Acc} ;
-
-    in_Prep = {s = "en"} ;
-    on_Prep = {s = "sobre"} ;
-    with_Prep = {s = "con"} ;
-
-    -- | ADVERBS
-    UttAdv adv = adv ;
-    UttIAdv iadv = iadv ;
-    CompAdv adv = adv ;
-    AdvVP vp adv = vp ** {compl = vp.compl ++ adv.s} ;
-
     where_IAdv = {s = "dònde"} ;
     why_IAdv = {s = "por qué"} ;
-
-    -- | DETERMINERS
-    {-
-    DetCN det cn = {
-      s = table {c => det.s ++ cn.s ! det.n} ;
-      a = Agr det.n Per3 -- TODO:
-      } ;
-    -}
-    
-    a_Det = {
-      s = table {
-        M => "un" ;
-        F => "una" 
-      } ;
-      n = Sg
-    } ;
-
-    aPl_Det = {
-      s = table {
-        M => "unos" ;
-        F => "unas" 
-      } ;
-      n = Pl
-    } ;
-
-    the_Det = {
-      s = table {
-        M => "el" ;
-        F => "la" -- even though that's another story for "el agua" y "el aguila"
-      } ;
-      n = Sg
-    } ;
-
-    thePl_Det = {
-      s = table {
-        M => "los" ;
-        F => "las"
-      } ;
-      n = Pl
-    } ;
-    
-    every_Det = {
-      s = table {
-        _ => "cada"
-      } ; 
-      n = Sg} ;
-
-    and_Conj = {s = "y"} ;
-    or_Conj = {s = "o"} ;
 
     have_V2 = smartVerb "haber" ** {c = []} ;
 
     want_VV = mkVerb "querer" "queriente" "querido" "queriendo" "quiero" "quieres" "quiere" "queremos" "queréis" "quieren" "querìa" "querìas" "querìamos" "querìais" "querìan" "quise" "quisiste" "quiso" "quisimos" "quisisteis" "quisieron" "querré" "querràs" "querrà" "querremos" "querréis" "querràn" "quiera" "quieras" "queremos" "queràis" "quieran" "quisiera" "quisieras" "quisiéramos" "quisierais" "quisieran" "quisiere" "quisieres" "quisiéremos" "quisiereis" "quisieren" "quiere" "queramos" "quered" "quieras" "queramos" "queràis" "querrìa" "querrìas" "querrìamos" "querrìais" "querrìan" ;
-
 }
