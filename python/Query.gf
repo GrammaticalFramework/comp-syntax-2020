@@ -12,6 +12,7 @@ cat
 fun
   QWhich   : Kind -> Property -> Query ;     -- which numbers are prime
   QWhether : Term -> Property -> Query ;     -- is any number prime
+  QWhat    : Element          -> Query ;     -- what is the factorial of 10
 
   TAll : Kind -> Term ;                      -- all numbers
   TAny : Kind -> Term ;                      -- any number
@@ -30,9 +31,10 @@ fun
   EInteger : Int -> Element ;
   PEven, POdd, PPrime : Property ;
   PDivisible : Term -> Property ;
-  PSmaller, PGreater : Term -> Property ;  
+  PSmaller, PGreater, PEqual : Term -> Property ;  
   PBetween : Term -> Term -> Property ;  
 
-  ESum, EProduct : Element -> Element -> Element ;
+  EFactorial : Element -> Element ;
+  ESum, EProduct, EMinus, EDivided : Element -> Element -> Element ;
 
 }
