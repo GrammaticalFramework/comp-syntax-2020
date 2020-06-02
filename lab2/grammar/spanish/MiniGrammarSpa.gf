@@ -135,8 +135,13 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
       a = NPAgr Sg P3
     } ;
 
-    --UsePron p = { s = p.s ! (PForm Nom (NGAgr Sg M)) } ;
-
+    UsePron p = {
+      s = table {
+        c => (p.s) ! (PForm c (NGAgr Sg M)) -- NGAgr is arbitrary (only important for genitive)
+      } ;
+      a = p.a 
+    } ;
+   
     MassNP cn = {
       s = \\_ => cn.s ! Sg ;
       a = NPAgr Sg P3
@@ -192,7 +197,7 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
     PNeg  = {s = [] ; p = False} ;
 
     TSim  = {s = []    ; t = Simple} ;
-    TPPref  = {s = []    ; t = PretPerf} ;
+    TPPerf  = {s = []    ; t = PretPerf} ;
     TPPlus  = {s = []    ; t = PretPlus} ;
     TPAnt  = {s = []    ; t = PretAnt} ;
     TFComp  = {s = []    ; t = FutComp} ;
