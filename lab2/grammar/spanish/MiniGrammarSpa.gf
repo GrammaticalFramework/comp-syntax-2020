@@ -3,15 +3,15 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
 
   lincat
     Utt = {s : Str} ;
-    Pol  = {s : Str ; p : Bool} ; -- Polarity. s is empty, but needed for parsing
-    Temp = {s : Str ; t : TenseForm} ;
+    Pol  = {s : Str ; isPos : Bool} ; 
+    Temp = {s : Str ; isPres : Bool} ; 
 
     S  = {s : Str} ;
     QS = {s : Str} ;
     -- TODO: adjust to Spanish, does not make any sense
     Cl = {   -- word order is fixed in S and QS
       subj : Str ; -- subject (TODO: should be optional)
-      verb : Bool => TenseForm => Str ; -- dep. on Pol,Temp, e.g. "does","sleep"
+      verb : Bool => Bool => Str ; -- depends on Pol and Temp
       compl : Str -- after verb: complement, adverbs
     } ;
     QCl = Cl ;
@@ -48,22 +48,22 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
     UttNP np = {s = np.s ! Acc} ;
     UttAdv adv = adv ;
     UttIAdv iadv = iadv ;
-    UttImpSg pol imp = {s = pol.s ++ imp.s ! pol.p} ;
+    UttImpSg pol imp = {s = pol.s ++ imp.s ! pol.isPos} ;
 
     UseCl temp pol cl = 
-      let vf = cl.verb ! pol.p ! temp.t in {
+      let vf = cl.verb ! pol.isPos ! temp.isPres in {
       s = pol.s ++ temp.s ++ -- GF hack, they are empty!
 	        cl.subj ++ -- ella
-          negation pol.p ++ -- no
+          negation pol.isPos ++ -- no
           vf ++ -- bebe
 	        cl.compl -- cerveza
     } ;
 
     UseQCl temp pol qcl =
-      let vf = qcl.verb ! pol.p ! temp.t in {
+      let vf = qcl.verb ! pol.isPos ! temp.isPres in {
         s = pol.s ++ temp.s ++ -- hack again
             qcl.subj ++ -- quién/ella
-	          negation pol.p ++ -- no
+	          negation pol.isPos ++ -- no
 	          vf ++ -- bebe
 	          qcl.compl -- cerveza
       } ;
@@ -105,7 +105,7 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
 
     ComplVV vv vp = {
       verb = vv ;
-      compl = vp.verb.s ! VFImp VInf ++ vp.compl ;
+      compl = vp.verb.s ! VInf ++ vp.compl ;
       } ;
     {-
     UseComp comp = {
@@ -194,15 +194,11 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
 
     CoordS conj a b = {s = a.s ++ conj.s ++ b.s} ;
 
-    PPos  = {s = [] ; p = True} ;
-    PNeg  = {s = [] ; p = False} ;
+    PPos  = {s = [] ; isPos = True} ;
+    PNeg  = {s = [] ; isPos = False} ;
 
-    TSim  = {s = []    ; t = Simple} ;
-    TPPerf  = {s = []    ; t = PretPerf} ;
-    TPPlus  = {s = []    ; t = PretPlus} ;
-    TPAnt  = {s = []    ; t = PretAnt} ;
-    TFComp  = {s = []    ; t = FutComp} ;
-    TGer  = {s = []    ; t = Ger} ;
+    TSim  = {s = [] ; isPres = True} ;
+    TAnt  = {s = [] ; isPres = False} ;
 
     and_Conj = {s = "y"} ;
     or_Conj = {s = "o"} ;
@@ -331,5 +327,5 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
 
     have_V2 = smartVerb "haber" ** {c = []} ;
 
-    want_VV = mkVerb "querer" "queriente" "querido" "queriendo" "quiero" "quieres" "quiere" "queremos" "queréis" "quieren" "querìa" "querìas" "querìamos" "querìais" "querìan" "quise" "quisiste" "quiso" "quisimos" "quisisteis" "quisieron" "querré" "querràs" "querrà" "querremos" "querréis" "querràn" "quiera" "quieras" "queremos" "queràis" "quieran" "quisiera" "quisieras" "quisiéramos" "quisierais" "quisieran" "quisiere" "quisieres" "quisiéremos" "quisiereis" "quisieren" "quiere" "queramos" "quered" "quieras" "queramos" "queràis" "querrìa" "querrìas" "querrìamos" "querrìais" "querrìan" ;
+    want_VV = mkVerb "querer" "querido" "quiero" "quieres" "quiere" "queremos" "queréis" "quieren" "quiere" "queramos" "quered" "quieras" "queramos" "queràis" ;
 }
