@@ -48,7 +48,7 @@ oper
     mkAdj sg (sg + "e") (sg + "s") (sg + "es") False ;
 
   smartAdj : Str -> Adjective = \sg -> case sg of {
-    x + "n"			=> mkAdj sg (x + "nne") (x + "ns") (x + "nnes") False ;
+    x + "on"			=> mkAdj sg (x + "onne") (x + "ons") (x + "onnes") False ;
     x + "e"			=> mkAdj sg (x + "e") (x + "es") (x + "es") False ;
     x + "ieux"			=> mkAdj sg (x + "ielle") (x + "ieux") (x + "ieilles") False ;
     x + "eux"			=> mkAdj sg (x + "euse") (x + "eux") (x + "euses") False ;

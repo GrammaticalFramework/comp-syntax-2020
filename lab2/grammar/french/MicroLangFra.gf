@@ -9,7 +9,7 @@ concrete MicroLangFra of MicroLang = open MicroResFra, Prelude in {
     Utt = {s : Str} ;
     
     S  = {s : Str} ;
-    VP = {verb : Verb ; compl : Gender => Number => Str; isPron : Bool} ; ---s special case of Mini
+    VP = {verb : Verb ; compl : Gender => Number => Str; isPron : Bool; adv: Str} ; ---s special case of Mini
     NP = {s : Case => Str ; n : Number; p : Person ; g : Gender; isPron : Bool};
     Comp, AP, A = Adjective ;
     Pron = {s : Case => Str ; n : Number ; p : Person ; g : Gender} ;
@@ -26,33 +26,36 @@ concrete MicroLangFra of MicroLang = open MicroResFra, Prelude in {
 
     PredVPS np vp = {
       s = case vp.isPron of {
-        True => np.s ! Nom ++ vp.compl ! np.g ! np.n ++ vp.verb.s ! np.p ! np.n ;
-        False => np.s ! Nom ++ vp.verb.s ! np.p ! np.n ++ vp.compl ! np.g ! np.n
+        True => np.s ! Nom ++ vp.compl ! np.g ! np.n ++ vp.verb.s ! np.p ! np.n ++ vp.adv ;
+        False => np.s ! Nom ++ vp.verb.s ! np.p ! np.n ++ vp.compl ! np.g ! np.n ++ vp.adv
         }
       } ;
   
     UseV v = {
       verb = v ;
       compl = \\g,n => [] ;
-      isPron = False
+      isPron = False ;
+      adv = []
       } ;
       
     ComplV2 v2 np = {
       verb = v2 ;
       compl = \\g,n => v2.c ! g ! n ++ np.s ! Acc ; -- NP object in the accusative, preposition first
-      isPron = np.isPron
+      isPron = np.isPron ;
+      adv = []
       } ;
          
     UseComp comp = {
       compl = \\g,n => comp.s ! g ! n ;
       verb = be_Verb ;     -- the verb is the copula "be"
-      isPron = False
+      isPron = False ;
+      adv = []
       } ;
  
     CompAP ap = ap ;
-      
+
     AdvVP vp adv =
-      vp ** {compl = \\g,n => vp.compl ! g ! n ++ adv.s} ;
+      vp ** {adv = adv.s} ;
       
     DetCN det cn = {
       s = \\c => det.s ! cn.g ++ cn.s ! det.n ;
@@ -164,10 +167,8 @@ lin heavy_A = mkA "lourd" ;
 lin horse_N = mkN "cheval" ;  --m
 lin hot_A = mkA "chaud" ;
 lin house_N = mkN "maison" ;  --f
--- lin john_PN = mkPN "John" ;
 lin jump_V = mkV "bondir" "bondis" "bondissons" "bondis" "bondissez" "bondit" "bondissent" ;
 lin kill_V2 = mkV2 "tuer" ;
--- lin know_VS = mkVS (mkV "know" "knew" "known") ;
 lin language_N = mkN "langue" ;  --f
 lin live_V = mkV "vivre" ;
 lin love_V2 = mkV2 (mkV "aimer") ;
@@ -177,7 +178,6 @@ lin music_N = mkN "musique" ;  --f
 lin new_A = mkA "nouveau" True ;
 lin now_Adv = mkAdv "maintenant" ;
 lin old_A = mkA "vieux" True ;
--- lin paris_PN = mkPN "Paris" ;
 lin play_V = mkV "jouer" ;
 lin read_V2 = mkV2 (mkV "lire") ;
 lin ready_A = mkA "prêt" ;
