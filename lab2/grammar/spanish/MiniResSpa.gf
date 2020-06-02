@@ -62,10 +62,10 @@ oper
 
   mkAdjective: (_, _, _, _ : Str) -> Adjective = \fsg, fpl, msg, mpl -> {
     s = table {
-      NGAgr  Sg F => fsg ;
-      NGAgr  Pl F => fpl ;
-      NGAgr  Sg M => msg ;
-      NGAgr  Pl M => mpl 
+      NGAgr Sg F => fsg ;
+      NGAgr Pl F => fpl ;
+      NGAgr Sg M => msg ;
+      NGAgr Pl M => mpl 
     } 
   } ;
 

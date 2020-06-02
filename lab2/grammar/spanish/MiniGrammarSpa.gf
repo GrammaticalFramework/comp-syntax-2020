@@ -17,10 +17,10 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
     QCl = Cl ;
     Imp = {s : Bool => Str} ; -- imperative (negative or positive)
     VP = {verb : Verb ; compl : Str} ; -- I don't think I need GVerbs
-    Comp = {s : Str} ;  -- copula complement
+    Comp = {s : NGAgreement => Str} ;  -- copula complement
     AP = Adjective ;
     CN = Noun ; -- common noun
-    NP = {s : Case => Str ; a : NPAgreement} ; -- TODO: is case relevant here?
+    NP = {s : Case => Str ; a : NPAgreement} ;
     IP = {s : Str ; a : NPAgreement} ;
     Pron = {
       s : PronForm => Str ; 
@@ -107,19 +107,20 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
       verb = vv ;
       compl = vp.verb.s ! VFImp VInf ++ vp.compl ;
       } ;
-
+    {-
     UseComp comp = {
-      verb = ser "s" ; -- copula TODO: change implementation of ser
-      compl = comp.s
-    } ;    
+      verb = ser "s" ; -- copula TODO: change implementation of ser, add estar
+      compl = comp.s ! NGAgr (Pl F)
+    } ;   
+    -} 
 
-    -- CompAP ap = ap ; -- TODO: agreement as a lambda...?
+    CompAP ap = ap ;
 
     CompNP np = {
-      s = np.s ! Nom
+      s = \\_ => np.s ! Nom
     } ;
 
-    CompAdv adv = adv ;
+    CompAdv adv = { s = \\_ => adv.s } ;
 
     AdvVP vp adv = vp ** {compl = vp.compl ++ adv.s} ;
 
