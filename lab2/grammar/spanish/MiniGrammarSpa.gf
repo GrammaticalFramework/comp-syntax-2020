@@ -70,13 +70,19 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
 
     QuestCl cl = cl ;
 
-    {-
     PredVP np vp = {
       subj = np.s ! Nom ;
       compl = vp.compl ;
-      verb = vp.verb.s ;
+      verb = \\isPos,isPres => case <isPos, isPres, np.a> of {
+        <True,True, NPAgr Sg P1> => vp.verb.s ! (VPres (NPAgr Sg P1)) ;
+        <True,True, NPAgr Sg P2> => vp.verb.s ! (VPres (NPAgr Sg P1)) ;
+        <True,True, NPAgr Sg P3> => vp.verb.s ! (VPres (NPAgr Sg P1)) ;
+        <True,True, NPAgr Pl P1> => vp.verb.s ! (VPres (NPAgr Sg P1)) ;
+        <True,True, NPAgr Pl P2> => vp.verb.s ! (VPres (NPAgr Sg P1)) ;
+        <True,True, NPAgr Pl P3> => vp.verb.s ! (VPres (NPAgr Sg P1)) ;
+        <_,_,_> => "¡Hasta pronto!" 
+      }
     } ;
-    -}
 
     -- QuestVP ip vp = PredVP ip vp ; 
 
