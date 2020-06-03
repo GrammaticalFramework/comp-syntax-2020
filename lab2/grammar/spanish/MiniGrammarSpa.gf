@@ -79,14 +79,11 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
     -}
 
     -- QuestVP ip vp = PredVP ip vp ; 
-    {-
+
     ImpVP vp = {
-      s = table {
-        True  => vp.verb.s ! VForm Inf ++ vp.compl ;    -- in Eng, imperative = infinitive
-        False => "do not" ++ vp.verb.s ! VF Inf ++ vp.compl
-      }
+      -- agreement is hardcoded because the only sentences we can form seem to be singular and, I assume, second person
+      s = \\pol => negation pol ++ (vp.verb.s ! (VImp (NPAgr Sg P2) (polarity pol))) ++ vp.compl
     } ;
-    -}
 
     UseV v = {
       verb = v ;
