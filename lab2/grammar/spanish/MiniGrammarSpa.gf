@@ -182,11 +182,11 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
 
     UseN n = n ;
 
-    {-
     AdjCN ap cn = {
-      s = table {n => cn.s ! n ++ ap.s ! (NGAgr Sg M) }
+      -- TODO: attributive form
+      s = \\n => (cn.s ! n) ++ (ap.s ! (NGAgr n (cn.g))) ;
+      g = cn.g
     } ;
-    -}
 
     PositA a = a;
 
