@@ -21,7 +21,7 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
     AP = Adjective ;
     CN = Noun ; -- common noun
     NP = {s : Case => Str ; a : NPAgreement} ;
-    IP = {s : Str ; a : NPAgreement} ;
+    IP = {s : Case => Str ; a : NPAgreement} ;
     Pron = {
       s : PronForm => Str ; 
       a : NPAgreement 
@@ -80,7 +80,7 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
       }
     } ;
 
-    -- QuestVP ip vp = PredVP ip vp ; 
+    QuestVP ip vp = PredVP ip vp ; 
 
     ImpVP vp = {
       -- agreement is hardcoded because the only sentences we can form seem to be singular and, I assume, second person
@@ -315,7 +315,7 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
     } ;
 
     whoSg_IP = { 
-      s = "quién" ;
+      s = table { _ => "quién"} ; -- case does not matter
       a = NPAgr Sg P3
       } ;
 
