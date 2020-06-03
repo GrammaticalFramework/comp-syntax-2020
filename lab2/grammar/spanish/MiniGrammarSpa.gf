@@ -15,7 +15,7 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
       compl : Str -- after verb: complement, adverbs
     } ;
     QCl = Cl ;
-    Imp = {s : Bool => Str} ; -- imperative (negative or positive)
+    Imp = {s : Bool => Str} ; -- imperative (depends on Pol)
     VP = {verb : Verb ; compl : Str} ; -- I don't think I need GVerbs
     Comp = {s : NGAgreement => Str} ;  -- copula complement
     AP = Adjective ;
@@ -73,14 +73,10 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
     PredVP np vp = {
       subj = np.s ! Nom ;
       compl = vp.compl ;
-      verb = \\isPos,isPres => case <isPos, isPres, np.a> of {
-        <True,True, NPAgr Sg P1> => vp.verb.s ! (VPres (NPAgr Sg P1)) ;
-        <True,True, NPAgr Sg P2> => vp.verb.s ! (VPres (NPAgr Sg P1)) ;
-        <True,True, NPAgr Sg P3> => vp.verb.s ! (VPres (NPAgr Sg P1)) ;
-        <True,True, NPAgr Pl P1> => vp.verb.s ! (VPres (NPAgr Sg P1)) ;
-        <True,True, NPAgr Pl P2> => vp.verb.s ! (VPres (NPAgr Sg P1)) ;
-        <True,True, NPAgr Pl P3> => vp.verb.s ! (VPres (NPAgr Sg P1)) ;
-        <_,_,_> => "¡Hasta pronto!" 
+      verb = \\_,isPres => case isPres of {
+        True => vp.verb.s ! (VPres np.a) ;
+        -- TODO:: make agreement non-arbitrary or, if it's never needed, remove NGAgr from here and anywhere else
+        False => ((smartVerb "haber").s ! (VPres np.a)) ++ (vp.verb.s ! (VPartPast (NGAgr Sg M)))
       }
     } ;
 
