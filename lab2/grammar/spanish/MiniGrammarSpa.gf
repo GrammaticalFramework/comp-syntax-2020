@@ -16,7 +16,7 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
     } ;
     QCl = Cl ;
     Imp = {s : Bool => Str} ; -- imperative (depends on Pol)
-    VP = {verb : Verb ; compl : Str} ; -- I don't think I need GVerbs
+    VP = {verb : Verb ; compl : NGAgreement => Str} ; -- I don't think I need GVerbs
     Comp = {s : NGAgreement => Str} ;  -- copula complement
     AP = Adjective ;
     CN = Noun ; -- common noun
@@ -59,6 +59,7 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
 	        cl.compl -- cerveza
     } ;
 
+    -- TODO: simplify, it's the same as UseCl
     UseQCl temp pol qcl =
       let vf = qcl.verb ! pol.isPos ! temp.isPres in {
         s = pol.s ++ temp.s ++ -- hack again
@@ -89,22 +90,22 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
 
     UseV v = {
       verb = v ;
-      compl = []
+      compl = \\_ => []
     } ;
 
     ComplV2 v2 np = {
       verb = v2 ;
-      compl = v2.c ++ np.s ! Acc
+      compl = \\_ => v2.c ++ np.s ! Acc
     } ;
 
     ComplVS vs s = {
       verb = vs ;
-      compl = "que" ++ s.s ;
+      compl = \\_ => "que" ++ s.s ;
     } ;
 
     ComplVV vv vp = {
       verb = vv ;
-      compl = vp.verb.s ! VInf ++ vp.compl ;
+      compl = \\agr => vp.verb.s ! VInf ++ vp.compl ! agr ;
       } ;
     
     UseComp comp = {
@@ -120,7 +121,7 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
 
     CompAdv adv = { s = \\_ => adv.s } ;
 
-    AdvVP vp adv = vp ** {compl = vp.compl ++ adv.s} ;
+    AdvVP vp adv = vp ** {compl = \\agr => vp.compl ! agr ++ adv.s} ;
 
     -- common noun with det
     DetCN det cn = {
