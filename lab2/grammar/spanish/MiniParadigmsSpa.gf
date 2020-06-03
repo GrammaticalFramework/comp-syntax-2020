@@ -15,7 +15,7 @@ oper
     } ;
 
   mkPN : Str -> PN
-    = \s -> lin PN {s = s} ;
+    = \s -> lin PN (smartNoun s) ;
 
   mkA = overload {
     mkA : Str -> Adjective

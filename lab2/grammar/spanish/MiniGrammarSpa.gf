@@ -20,11 +20,12 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
     Comp = {s : NGAgreement => Str} ;  -- copula complement
     AP = Adjective ;
     CN = Noun ; -- common noun
-    NP = {s : Case => Str ; a : NPAgreement} ;
-    IP = {s : Case => Str ; a : NPAgreement} ;
+    NP = {s : Case => Str ; a : NPAgreement; g : Gender} ;
+    IP = {s : Case => Str ; a : NPAgreement; g: Gender} ;
     Pron = {
       s : PronForm => Str ; 
-      a : NPAgreement 
+      a : NPAgreement ;
+      g : Gender
     } ;
     Det = { -- would have been nicer with NGAgr actually
       s : Gender => Str ; 
@@ -38,7 +39,7 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
     VV = Verb ; ---- only VV to VP
     A = Adjective ;
     N = Noun ;
-    PN = {s : Str} ; -- proper name
+    PN = Noun ; -- proper name
     Adv = {s : Str} ;
     IAdv = {s : Str} ; -- interrogative
 
@@ -71,21 +72,25 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
 
     QuestCl cl = cl ;
 
-    PredVP np vp = {
-      subj = np.s ! Nom ;
-      compl = vp.compl ;
-      verb = \\_,isPres => case isPres of {
-        True => vp.verb.s ! (VPres np.a) ;
-        -- TODO:: make agreement non-arbitrary or, if it's never needed, remove NGAgr from here and anywhere else
-        False => ((smartVerb "haber").s ! (VPres np.a)) ++ (vp.verb.s ! (VPartPast (NGAgr Sg M)))
-      }
-    } ;
+    PredVP np vp = 
+      let 
+        n = extractNumber np.a ;
+        g = np.g 
+      in {
+        subj = np.s ! Nom ;
+        compl = vp.compl ! (NGAgr n g) ;
+        verb = \\_,isPres => case isPres of {
+          True => vp.verb.s ! (VPres np.a) ;
+          -- TODO:: make agreement non-arbitrary or, if it's never needed, remove   NGAgr from here and anywhere else
+          False => ((smartVerb "haber").s ! (VPres np.a)) ++ (vp.verb.s !     (VPartPast (NGAgr Sg M)))
+        } 
+      }  ;
 
     QuestVP ip vp = PredVP ip vp ; 
 
     ImpVP vp = {
-      -- agreement is hardcoded because the only sentences we can form seem to be singular and, I assume, second person
-      s = \\pol => negation pol ++ (vp.verb.s ! (VImp (NPAgr Sg P2) (polarity pol))) ++ vp.compl
+      -- agreement is hardcoded (twice) because the only sentences we can form seem to be singular and, I assume, second person; gender is irrelevant here
+      s = \\pol => negation pol ++ (vp.verb.s ! (VImp (NPAgr Sg P2) (polarity pol))) ++ vp.compl ! (NGAgr Sg M)
     } ;
 
     UseV v = {
@@ -126,25 +131,29 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
     -- common noun with det
     DetCN det cn = {
       s = table {c => det.s ! cn.g ++ cn.s ! det.n} ;
-      a = NPAgr det.n P3
+      a = NPAgr det.n P3 ;
+      g = cn.g
     } ;
 
     -- proper noun
     UsePN pn = {
-      s = \\_ => pn.s ;
-      a = NPAgr Sg P3
+      s = \\_ => pn.s ! Sg ;
+      a = NPAgr Sg P3 ;
+      g = pn.g
     } ;
 
     UsePron p = {
       s = table {
         c => (p.s) ! (PForm c (NGAgr Sg M)) -- NGAgr is arbitrary (only important for genitive)
       } ;
-      a = p.a 
+      a = p.a ;
+      g = p.g
     } ;
    
     MassNP cn = {
       s = \\_ => cn.s ! Sg ;
-      a = NPAgr Sg P3
+      a = NPAgr Sg P3 ;
+      g = cn.g
     } ;
 
     a_Det = {
@@ -226,6 +235,7 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
         PForm Pre _ => "mì"
       } ;
       a = NPAgr Sg P1 ;
+      g = M  -- well not really but there is no way to know ?
       } ;
     
     youSg_Pron = {
@@ -240,6 +250,7 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
         PForm Pre _ => "ti"
       } ;
       a = NPAgr Sg P2 ;
+      g = M -- well not really but there is no way to know ?
     } ;
 
     he_Pron = {
@@ -253,7 +264,8 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
         PForm Gen (NGAgr Pl F) => "suyas" ;
         PForm Pre _ => "se"
       } ;
-      a = NPAgr Sg P3
+      a = NPAgr Sg P3 ;
+      g = M 
     } ;
 
     she_Pron = {
@@ -267,7 +279,8 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
         PForm Gen (NGAgr Pl F) => "suyas" ; 
         PForm Pre _ => "se"
       } ;
-      a = NPAgr Sg P3
+      a = NPAgr Sg P3 ;
+      g = F
     } ;
 
       -- it_Pron missing in AST
@@ -283,7 +296,8 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
         PForm Gen (NGAgr Pl F) => "nuestras" ;
         PForm Pre _ => "nosotros"
       } ;
-      a = NPAgr Pl P1
+      a = NPAgr Pl P1 ;
+      g = M  -- well not really but there is no way to know ?
     } ;
 
     youPl_Pron = {
@@ -297,7 +311,8 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
         PForm Gen (NGAgr Pl F) => "vuestras" ; 
         PForm Pre _ => "vosotros"
       } ;
-      a = NPAgr Pl P2
+      a = NPAgr Pl P2 ;
+      g = M  -- well not really but there is no way to know ?
     } ;
 
     they_Pron = {
@@ -311,12 +326,14 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
         PForm Gen (NGAgr Pl F) => "suyas" ;
         PForm Pre _ => "se"
       } ;
-      a = NPAgr Pl P3
+      a = NPAgr Pl P3 ;
+      g = M  -- well not really but there is no way to know ?
     } ;
 
     whoSg_IP = { 
       s = table { _ => "quién"} ; -- case does not matter
-      a = NPAgr Sg P3
+      a = NPAgr Sg P3 ;
+      g = M -- again completely arbitrary
       } ;
 
     -- no plural, for some reason

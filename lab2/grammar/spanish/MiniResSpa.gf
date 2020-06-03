@@ -49,8 +49,8 @@ oper
 
   getGender : Str -> Gender = \sg -> case sg of {
     -- gender is hardcoded when there is no rule to determine it
-    ("animal" | "bebé" | "pan" | "coche" | "ordenador" | "pez" | "idioma" | "nombre" | "árbol" | "hombre") => M ;
-    ("sangre" | "ciudad" | "nube" | "flor" | "leche" | "mar" | "nave" | "mujer") => F ; 
+    ("animal" | "bebé" | "pan" | "coche" | "ordenador" | "pez" | "idioma" | "nombre" | "árbol" | "hombre" | "Juan") => M ;
+    ("sangre" | "ciudad" | "nube" | "flor" | "leche" | "mar" | "nave" | "mujer" | "París") => F ; 
     x + ("esa" | "isa" | "ina" | "triz") => F ;
     (barc + "o") => M ;
     manzan + "a" => F ;
@@ -227,4 +227,9 @@ oper
         True => Pos ; 
         False => Neg
       };
+
+      -- apparently let (NPAgr n _) = agr is a syntax error and I found no smart way to do this, one day I will read this code and laugh
+      extractNumber : NPAgreement -> Number = \npa -> case npa of {
+        (NPAgr n _) => n
+      } ;
 }
