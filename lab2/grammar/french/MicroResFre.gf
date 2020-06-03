@@ -2,9 +2,10 @@ resource MicroResFre = open Prelude in {
 
 param
   Number = Sg | Pl ;
-  Case = Nom | Acc ;
+  Case = Nom | Nom_s | Acc ;
   Person = Per1 | Per2 | Per3 ;
   Gender = Fem | Masc ;
+ 
 
 
   --Agreement = Agr Number Gender ; -- no agreement, since that caused problems in adjective agreement
@@ -28,7 +29,8 @@ oper
   smartNoun : Str -> Noun = \sg -> case sg of {
 	_ + "au"				    => mkNoun sg (sg + "x") ;
 	anim + "al"					=> mkNoun sg (anim + "aux") ;
-	_ + ("s"|"z"|"x")			=> mkNoun sg (sg) ;
+	_ + ("s"|"z"|"x")			=> mkNoun sg sg ;
+	"lait"|"vin"|"sang"         => mkNoun sg sg ;  -- uncountable nouns (still problematic because of det though)
     _	                        => regNoun sg	
     } ;
 	
@@ -47,29 +49,31 @@ oper
 --			   Agr Pl Fem  => fempl}
 --  } ;
 
-Adj : Type = {s : Gender => Number => Str} ;
-  mkAdj : (_, _, _, _ : Str) -> Adj = \mascsg, femsg, mascpl, fempl -> {
+
+Adj : Type = {s : Gender => Number => Str ; isPre : Bool} ;
+  mkAdj : (_, _, _, _ : Str) -> Bool -> Adj = \mascsg, femsg, mascpl, fempl, pos -> {
     s = table { Masc => table { Sg => mascsg ; Pl => mascpl} ; Fem => table { Sg => femsg ; Pl => fempl }
-  }
+  } ; isPre = pos
 } ;
   
-  regAdj : Str -> Adj = \mascsg -> mkAdj mascsg (mascsg + "e") (mascsg + "s") (mascsg + "es") ;
+  regAdj : Str -> Adj = \mascsg -> mkAdj mascsg (mascsg + "e") (mascsg + "s") (mascsg + "es") True ;
 
   
   --smart paradigm
   smartAdj : Str -> Adj = \mascsg -> case mascsg of {
   	gran + "d"					=> regAdj mascsg ;
-	roug + "e"					=> mkAdj mascsg mascsg (roug + "es") (roug + "es") ;
-	b + "on"					=> mkAdj mascsg (b + "onne") (b + "ons") (b + "onnes") ;
-	anci + "en"					=> mkAdj mascsg (anci + "enne") (anci + "ens") (anci + "ennes") ;
-	nouv + "eau"				=> mkAdj mascsg (nouv + "elle") (nouv + "eaux") (nouv + "elles") ;
+	roug + "e"					=> mkAdj mascsg mascsg (roug + "es") (roug + "es") True ;
+	mauvai + "s"				=> mkAdj mascsg (mauvai + "se") mascsg (mauvai + "ses") True;
+	b + "on"					=> mkAdj mascsg (b + "onne") (b + "ons") (b + "onnes") True ;
+	anci + "en"					=> mkAdj mascsg (anci + "enne") (anci + "ens") (anci + "ennes") True ;
+	nouv + "eau"				=> mkAdj mascsg (nouv + "elle") (nouv + "eaux") (nouv + "elles") True ;
 	_	                        => regAdj mascsg
   } ;	
   
   irregAdj : (mascsg,femsg,mascpl,fempl : Str) -> Adj =   --not very frequent, just for blanc
     \mascsg, femsg, mascpl, fempl ->
       let adj = smartAdj mascsg
-	  in mkAdj mascsg femsg mascpl fempl ;
+	  in mkAdj mascsg femsg mascpl fempl True;
 
 
   Verb : Type = {s : VForm => Str} ;
@@ -101,8 +105,7 @@ Adj : Type = {s : Gender => Number => Str} ;
   -- irregular verbs  - maybe find a way to generalize these a bit more?
   irregVerb : (inf,sg1,sg2,sg3,pl1,pl2,pl3 : Str) -> Verb =
     \inf,sg1,sg2,sg3,pl1,pl2,pl3 ->
-      let verb = smartVerb inf
-      --in mkVerb inf (verb.s ! PresSg3) past pastpart (verb.s ! PresPart) ;   
+      let verb = smartVerb inf 
 	  in mkVerb inf sg1 sg2 sg3 pl1 pl2 pl3 ;
 
   -- two-place verb with "case" as preposition; for transitive verbs, c=[]

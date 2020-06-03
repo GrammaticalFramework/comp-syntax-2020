@@ -9,11 +9,11 @@ concrete MicroLangFre of MicroLang = open MicroResFre, Prelude in {
     Utt = {s : Str} ;
     
     S  = {s : Str} ;
-    VP = {verb : Verb ; compl : Gender => Number => Str} ; ---s special case of Mini
+    VP = {verb : Verb ; compl : Gender => Number => Str ; isPron : Bool ; adv : Str } ; ---s special case of Mini
     Comp = Adj ;
 	AP = Adj ;
     CN = Noun ;
-    NP = {s : Case => Str ; n : Number; g : Gender} ;
+    NP = {s : Case => Str ; n : Number; g : Gender ; isPron : Bool } ;
     Pron = {s : Case => Str ; n : Number ; g : Gender} ;
     Det = {s : Gender => Str ; n : Number} ;
     Prep = {s : Str} ;
@@ -27,74 +27,88 @@ concrete MicroLangFre of MicroLang = open MicroResFre, Prelude in {
     UttS s = s ;
     UttNP np = {s = np.s ! Acc} ;
 
-    PredVPS np vp = {
-      s = np.s ! Nom ++ vp.verb.s ! agr2vform np.n ++ vp.compl ! np.g ! np.n
-      } ;
+	PredVPS np vp = {
+	s = np.s ! Nom ++
+	case vp.isPron of {
+	  True => vp.compl ! np.g ! np.n ++ vp.verb.s ! agr2vform np.n ++ vp.adv;
+	  False => vp.verb.s ! agr2vform np.n ++ vp.compl ! np.g ! np.n ++ vp.adv
+	}
+	};
       
     UseV v = {
       verb = v ;
       compl = \\g, n => [] ;
+	  isPron = False ; 
+	  adv = []
       } ;
       
     ComplV2 v2 np = {
       verb = v2 ;
-      compl = \\g, n => v2.c ! g ! n ++ np.s ! Acc  -- NP object in the accusative, preposition first  -- use !g !n for something?
-      } ;
+      compl = \\g, n => v2.c ! g ! n ++ np.s ! Acc ; -- NP object in the accusative, preposition first  
+      isPron = np.isPron ;
+	  adv = []
+	  } ;
       
     UseComp comp = {
       verb = be_Verb ;     -- the verb is the copula "be"
       compl = \\g,n => comp.s ! g ! n ;
+	  isPron = False ;
+	  adv = []
       } ;
       
     CompAP ap = ap ;
       
     AdvVP vp adv =
-      vp ** {compl = \\g, n => vp.compl ! g ! n ++ adv.s} ;
+	  vp ** {adv = adv.s} ;
       
     DetCN det cn = {
       s = \\c => det.s ! cn.g ++ cn.s ! det.n ;
       n = det.n ;
 	  g = cn.g ;
+	  isPron = False
       } ;
       
-    UsePron p = p ;
+    UsePron p = { s = p.s ; isPron = True ; g = p.g ; n = p.n } ;
             
     a_Det = {s = table {Fem => "une" ; Masc => "un"} ; n = Sg} ; -- only masculine for now, feminine is une
     aPl_Det = {s = table {Fem|Masc => "des"} ; n = Pl} ;
-    the_Det = {s = table {Fem => pre {"a"|"e"|"i"|"o" => "l'" ; _ => "la" } ; 
-						  Masc => pre {"a"|"e"|"i"|"o" => "l'" ; _ => "le" } }; 
+    the_Det = {s = table {Fem => pre {"a"|"e"|"i"|"o"|"u"|"ha"|"he"|"hi"|"ho"|"hu" => "l'" ; _ => "la" } ; 
+						  Masc => pre {"a"|"e"|"i"|"o"|"u"|"ha"|"he"|"hi"|"ho"|"hu" => "l'" ; _ => "le" } }; 
 						  n = Sg} ; 
     thePl_Det = {s = table {Fem|Masc => "les"} ; n = Pl} ;
     
     UseN n = n ;
 	
-	  
 	AdjCN ap cn = {
-	  s = \\n => ap.s ! cn.g ! n ++ cn.s ! n ; g = cn.g
-	  } ;
+	s = case ap.isPre of {
+	True => \\n => cn.s ! n ++ ap.s ! cn.g ! n ;
+	False => \\n => ap.s ! cn.g ! n ++ cn.s ! n } ;
+	g = cn.g ;
+	} ;
 	  
 
     PositA a = a ;  -- original english one
 
-    PrepNP prep np = {s = prep.s ++ np.s ! Acc} ;
+    PrepNP prep np = {s = prep.s ++ np.s ! Nom_s} ;
 
     in_Prep = {s = "dans"} ;
     on_Prep = {s = "sur"} ;
     with_Prep = {s = "avec"} ;
 
     he_Pron = {
-      s = table {Nom => "il" ; Acc => "le"} ;
+      s = table {Nom => "il" ; Nom_s => "lui" ; Acc => pre {"a"|"e"|"i"|"o"|"u"|"ha"|"he"|"hi"|"ho"|"hu" => "l'" ; _ => "le" }} ;
       n = Sg ;
 	  g = Masc ;
       } ;
     she_Pron = {
-      s = table {Nom => "elle" ; Acc => "la"} ;
+      s = table {Nom => "elle" ; Nom_s => "elle" ; Acc => pre {"a"|"e"|"i"|"o"|"u"|"ha"|"he"|"hi"|"ho"|"hu" => "l'" ; _ => "la" }} ;
       n = Sg ; 
 	  g = Fem ;
       } ;
     they_Pron = {  -- only masculine for now, feminine is elles
       s = table {Nom => "ils" ; 
-	  		     Acc => "les"} ;
+	  		     Nom_s => "eux" ;
+				 Acc => "les" } ;
       n = Pl ;
 	  g = Masc ;
       } ;
@@ -107,9 +121,9 @@ lin already_Adv = mkAdv "déjà" ;
 lin animal_N = mkN "animal" ;
 lin apple_N = mkN "pomme" ;
 lin baby_N = mkN "bébé" ;
-lin bad_A = mkA "mauvais" ;
+lin bad_A = mkA "mauvais" False ;
 lin beer_N = mkN "bière" ;
-lin big_A = mkA "grand" ;
+lin big_A = mkA "grand" False;
 lin bike_N = mkN "vélo" ;
 lin bird_N = mkN "oiseau" ;
 lin black_A = mkA "noir" ;
@@ -142,7 +156,7 @@ lin fish_N = mkN "poisson" ;
 lin flower_N = mkN "fleur" ;
 lin friend_N = mkN "amie" ; --only female version for now, male would be ami
 lin girl_N = mkN "fille" ;
-lin good_A = mkA "bon" ;
+lin good_A = mkA "bon" False ;
 lin go_V = mkV "aller" "vais" "vas" "va" "allons" "allez" "vont" ;
 lin grammar_N = mkN "grammaire" ;
 lin green_A = mkA "vert" ;
@@ -160,7 +174,7 @@ lin love_V2 = mkV2 (mkV "aimer") ;
 lin man_N = mkN "homme" ;
 lin milk_N = mkN "lait" ;
 lin music_N = mkN "musique" ;
-lin new_A = mkA "nouveau" ;  -- does adj rule for this make sense?
+lin new_A = mkA "nouveau" False ;  
 lin now_Adv = mkAdv "maintenant" ;
 lin old_A = mkA "ancien" ;
 -- lin paris_PN = mkPN "Paris" ;
@@ -174,7 +188,7 @@ lin sea_N = mkN "océan" ;
 lin see_V2 = mkV2 (mkV "voir" "vois" "vois" "voit" "voyons" "voyez" "voient") ;
 lin ship_N = mkN "navire" ;
 lin sleep_V = mkV "dormir" "dors" "dors" "dort" "dormons" "dormez" "dorment";
-lin small_A = mkA "petit" ;
+lin small_A = mkA "petit" False ;
 lin star_N = mkN "étoile" ;
 lin swim_V = mkV "nager" "nage" "nages" "nage" "nageons" "nagez" "nagent" ;
 lin teach_V2 = mkV2 (mkV "enseigner") ;
@@ -182,9 +196,9 @@ lin train_N = mkN "train" ;
 lin travel_V = mkV "voyager" "voyage" "voyages" "voyage" "voyageons" "voyagez" "voyagent" ;
 lin tree_N = mkN "arbre" ;
 lin understand_V2 = mkV2 (mkV "comprendre") ;
-lin wait_V2 = mkV2 "attendre" "pour" ;  -- not sure how to translate this, sometimes pour, que, /?
+lin wait_V2 = mkV2 "attendre" ; -- doesnt take preposition in French
 lin walk_V = mkV "marcher" ;
-lin warm_A = mkA "chaud" ;   -- problem that hot and warm same word?
+lin warm_A = mkA "chaud" ;  
 lin water_N = mkN "eau" ;
 lin white_A = mkA "blanc" "blanche" "blancs" "blanches" ;
 lin wine_N = mkN "vin" ;
@@ -209,8 +223,10 @@ oper
   mkA = overload {
     mkA : Str -> A  -- regular adjectives
 	= \s -> lin A (smartAdj s) ;
+	mkA : Str -> Bool -> A = \s,p -> lin A (smartAdj s ** { isPre = p }) ;
 	mkA : (mascsg,femsg,mascpl,fempl : Str) -> A -- irregular adjectives
 	= \mascsg,femsg,mascpl,fempl -> lin A (irregAdj mascsg femsg mascpl fempl) ;
+	mkA : (mascsg,femsg,mascpl,fempl : Str) -> Bool -> A = \mascsg,femsg,mascpl,fempl,p -> lin A (irregAdj mascsg femsg mascpl fempl ** { isPre = p })
 } ; 
 
   mkV = overload {
