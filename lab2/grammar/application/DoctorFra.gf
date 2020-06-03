@@ -6,7 +6,8 @@ concrete DoctorFra of Doctor =
   open
     SyntaxFre,
     ParadigmsFre,
-    Prelude
+    Prelude,
+    StructuralFre
   in {
 
 -- application using your own Mini* modules
@@ -31,8 +32,8 @@ lin
   pastQuestionPhrase fact = let p : Utt = mkUtt (mkQS anteriorAnt (mkQCl fact)) in p ** {s = p.s ++ SOFT_BIND ++ "?"} ;
 
 
-  impPosPhrase action = mkUtt politeImp (mkImp action) ;
-  impNegPhrase action = mkUtt politeImp negativePol (mkImp action) ;
+  impPosPhrase action = mkUtt (mkImp action) ;
+  impNegPhrase action = mkUtt negativePol (mkImp action) ;
 
   actionFact person action = mkCl person action ;
   propertyFact person property = mkCl person property ;
@@ -107,8 +108,8 @@ oper
 
   go_V = mkV "aller" "vais" "allons" "vont" "alla" "ira" "allé" ;
   stay_V = mkV "rester" ;
-  --need_V2 = mkV2 (mkV "avoir" "besoin") ; --how?
-  need_V2 = mkV2 (mkV "nécessiter") ;
+  need_V2 = mkV2 (mkV (mkV have_V2) "besoin d'") ;
+  --need_V2 = mkV2 (mkV "nécessiter") ;
   take_V2 = mkV2 (mkV "prendre") ;
   put_V2 = mkV2 (mkV "mettre") ;
   vaccinate_V2 = mkV2 (mkV "vacciner") ;
