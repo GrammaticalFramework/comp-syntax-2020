@@ -70,7 +70,7 @@ concrete MicroLangFre of MicroLang = open MicroResFre, Prelude in {
       
     UsePron p = { s = p.s ; isPron = True ; g = p.g ; n = p.n } ;
             
-    a_Det = {s = table {Fem => "une" ; Masc => "un"} ; n = Sg} ; -- only masculine for now, feminine is une
+    a_Det = {s = table {Fem => "une" ; Masc => "un"} ; n = Sg} ; 
     aPl_Det = {s = table {Fem|Masc => "des"} ; n = Pl} ;
     the_Det = {s = table {Fem => pre {"a"|"e"|"i"|"o"|"u"|"ha"|"he"|"hi"|"ho"|"hu" => "l'" ; _ => "la" } ; 
 						  Masc => pre {"a"|"e"|"i"|"o"|"u"|"ha"|"he"|"hi"|"ho"|"hu" => "l'" ; _ => "le" } }; 
@@ -149,7 +149,7 @@ lin cow_N = mkN "vache" ;
 lin dirty_A = mkA "sale" ;
 lin dog_N = mkN "chien" ;
 lin drink_V2 = mkV2 (mkV "boire" "bois" "bois" "boit" "buvons" "buvez" "boivent") ;
-lin eat_V2 = mkV2 (mkV "manger" "mange" "manges" "mange" "mangeons" "mangez" "mangent") ;
+lin eat_V2 = mkV2 (mkV "manger") ;
 lin find_V2 = mkV2 (mkV "trouver") ;
 lin fire_N = mkN "feux" ;
 lin fish_N = mkN "poisson" ;
@@ -190,10 +190,10 @@ lin ship_N = mkN "navire" ;
 lin sleep_V = mkV "dormir" "dors" "dors" "dort" "dormons" "dormez" "dorment";
 lin small_A = mkA "petit" False ;
 lin star_N = mkN "étoile" ;
-lin swim_V = mkV "nager" "nage" "nages" "nage" "nageons" "nagez" "nagent" ;
+lin swim_V = mkV "nager" ;
 lin teach_V2 = mkV2 (mkV "enseigner") ;
 lin train_N = mkN "train" ;
-lin travel_V = mkV "voyager" "voyage" "voyages" "voyage" "voyageons" "voyagez" "voyagent" ;
+lin travel_V = mkV "voyager" ;
 lin tree_N = mkN "arbre" ;
 lin understand_V2 = mkV2 (mkV "comprendre") ;
 lin wait_V2 = mkV2 "attendre" ; -- doesnt take preposition in French

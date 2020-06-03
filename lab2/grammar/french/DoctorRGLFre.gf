@@ -75,9 +75,9 @@ lin
   schoolPlace = {at = pAdv "à l'école" ; to = pAdv "à l'école"} ;
   workPlace = {at = pAdv "au travail" ; to = pAdv "au travail"} ;
 
-  doctorProfession = mkCN (mkN "médecin") ;  -- only masculine here, but actually same form for feminine
-  nurseProfession = mkCN (mkN "infirmière") ; -- feminine form, masculine would be infirmier
-  interpreterProfession = mkCN (mkN "interprète") ; -- only masculine here, but actually same form for feminine
+  doctorProfession = mkCN (mkN "médecin") ;  
+  nurseProfession = mkCN (mkN "infirmière") ; 
+  interpreterProfession = mkCN (mkN "interprète") ; 
 
   bePregnantProperty = mkVP (mkA "enceint") ;
   beIllProperty = mkVP (mkA "malade") ;
@@ -89,7 +89,7 @@ lin
 
   feverIllness = mkNP (mkN "fièvre") ;
   fluIllness = mkNP a_Det (mkN "grippe") ;
-  headacheIllness = mkNP a_Det (mkN "mal à la tête") ; --causes problems with determiners, shouldnt be an NP in French but VP (haveFeverProperty)...
+  headacheIllness = mkNP a_Det (mkN "mal à la tête") ; 
   diarrheaIllness = mkNP (mkN "diarrhée") ;
   heartDiseaseIllness = mkNP a_Det (mkN "maladie cardiaque") ;
   lungDiseaseIllness = mkNP a_Det (mkN "maladie pulmonaire") ;

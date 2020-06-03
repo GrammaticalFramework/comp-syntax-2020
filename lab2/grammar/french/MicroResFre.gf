@@ -6,13 +6,6 @@ param
   Person = Per1 | Per2 | Per3 ;
   Gender = Fem | Masc ;
  
-
-
-  --Agreement = Agr Number Gender ; -- no agreement, since that caused problems in adjective agreement
-
-  -- all forms of normal Eng verbs, although not yet used in MiniGrammar
---  VForm = Inf | PresSg3 | Past | PastPart | PresPart ; 
---  VForm = Inf | Sg1 | Sg2 | Sg3 | Pl1 | Pl2 | Pl3 ; -- all in present tense
   VForm = Inf | VPres Number Person ; -- all in present tense
 
 oper
@@ -30,7 +23,7 @@ oper
 	_ + "au"				    => mkNoun sg (sg + "x") ;
 	anim + "al"					=> mkNoun sg (anim + "aux") ;
 	_ + ("s"|"z"|"x")			=> mkNoun sg sg ;
-	"lait"|"vin"|"sang"         => mkNoun sg sg ;  -- uncountable nouns (still problematic because of det though)
+	"lait"|"vin"|"sang"         => mkNoun sg sg ;  -- uncountable nouns
     _	                        => regNoun sg	
     } ;
 	
@@ -40,14 +33,6 @@ oper
 	x + ("l" | "é" | "o" | "eau" | "g" | "t" | "r" | "n" | "x")   => Masc ;
 	x + ("e") 													  => Fem
 	} ;
-
---  Adj : Type = {s : Agreement => Str} ;
---  mkAdj : (_, _, _, _ : Str) -> Adj = \mascsg, femsg, mascpl, fempl -> {
---    s = table {Agr Sg Masc => mascsg ; 
---			   Agr Sg Fem  => femsg ; 
---			   Agr Pl Masc => mascpl ; 
---			   Agr Pl Fem  => fempl}
---  } ;
 
 
 Adj : Type = {s : Gender => Number => Str ; isPre : Bool} ;
@@ -70,7 +55,7 @@ Adj : Type = {s : Gender => Number => Str ; isPre : Bool} ;
 	_	                        => regAdj mascsg
   } ;	
   
-  irregAdj : (mascsg,femsg,mascpl,fempl : Str) -> Adj =   --not very frequent, just for blanc
+  irregAdj : (mascsg,femsg,mascpl,fempl : Str) -> Adj =   --not very frequent
     \mascsg, femsg, mascpl, fempl ->
       let adj = smartAdj mascsg
 	  in mkAdj mascsg femsg mascpl fempl True;
@@ -91,18 +76,16 @@ Adj : Type = {s : Gender => Number => Str ; isPre : Bool} ;
       }
     } ;
 
---  regVerb : (inf : Str) -> Verb = \inf ->
-  --  mkVerb inf (inf + "s") (inf + "ed") (inf + "ed") (inf + "ing") ;
 
-  -- regular verbs with predictable variations  - could make individual functions for verb groups, but are there advantages apart from readability?
   smartVerb : Str -> Verb = \inf -> case inf of {
      saut  +  "er"  	=>  mkVerb inf (saut + "e") (saut + "es") (saut + "e") (saut + "ons") (saut + "ez") (saut + "ent") ;
+	 man + "ger"		=>  mkVerb inf (man + "ge") (man + "ges") (man + "ge") (man + "geons") (man + "gez") (man + "gent") ;
 	 cour + "ir" 		=> mkVerb inf (cour + "s") (cour + "s") (cour + "t") (cour + "ons") (cour + "ez") (cour + "ent") ;
 	 comp + "rendre"	=> mkVerb inf (comp + "rends") (comp + "rends") (comp + "rend") (comp + "renons") (comp + "renez") (comp + "rennent") ;
 	 attend + "re"		=> mkVerb inf (attend + "s") (attend + "s") (attend + "") (attend + "ons") (attend + "ez") (attend + "ent")
      } ;
 
-  -- irregular verbs  - maybe find a way to generalize these a bit more?
+  -- irregular verbs  
   irregVerb : (inf,sg1,sg2,sg3,pl1,pl2,pl3 : Str) -> Verb =
     \inf,sg1,sg2,sg3,pl1,pl2,pl3 ->
       let verb = smartVerb inf 
@@ -114,7 +97,7 @@ Adj : Type = {s : Gender => Number => Str ; isPre : Bool} ;
 be_Verb : Verb = mkVerb "être" "suis" "es" "est" "sommes" "êtes" "sont" ; ---s to be generalized
 
 
----s a very simplified verb agreement function for Micro  -- changed from agreement to just number, since only that is needed?
+---s a very simplified verb agreement function for Micro  
   agr2vform : Number -> VForm = \a -> case a of {
     Sg => VPres Sg Per3 ;
     Pl => VPres Pl Per3 
