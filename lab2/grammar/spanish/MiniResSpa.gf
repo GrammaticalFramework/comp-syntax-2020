@@ -135,7 +135,7 @@ oper
       let orig = conjugEr "romp" 
         in orig ** { 
           s = table { 
-            VPartPast _ => "roto" ; -- TODO: fix gender
+            VPartPast _ => "roto" ;
             x => orig.s ! x
           }
         } ;
@@ -158,7 +158,7 @@ oper
       let orig = conjugEr v 
       in orig ** { 
         s = table {
-          VPartPast _ => "visto" ; -- TODO: fix gender
+          VPartPast _ => "visto" ;
           VPres (NPAgr Sg P1) => "veo" ;
           VPres (NPAgr Pl P2) => "veis" ;
           VImp (NPAgr Pl P1) Pos => "veamos" ;

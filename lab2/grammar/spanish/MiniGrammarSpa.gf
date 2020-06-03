@@ -8,9 +8,8 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
 
     S  = {s : Str} ;
     QS = {s : Str} ;
-    -- TODO: adjust to Spanish, does not make any sense
     Cl = {   -- word order is fixed in S and QS
-      subj : Str ; -- subject (TODO: should be optional)
+      subj : Str ; -- subject (should be optional)
       verb : Bool => Bool => Str ; -- depends on Pol and Temp
       compl : Str -- after verb: complement, adverbs
     } ;
@@ -60,7 +59,6 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
 	        cl.compl -- cerveza
     } ;
 
-    -- TODO: simplify, it's the same as UseCl
     UseQCl temp pol qcl =
       let vf = qcl.verb ! pol.isPos ! temp.isPres in {
         s = pol.s ++ temp.s ++ -- hack again
@@ -81,7 +79,6 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
         compl = vp.compl ! (NGAgr n g) ;
         verb = \\_,isPres => case isPres of {
           True => vp.verb.s ! (VPres np.a) ;
-          -- TODO:: make agreement non-arbitrary or, if it's never needed, remove   NGAgr from here and anywhere else
           False => ((smartVerb "haber").s ! (VPres np.a)) ++ (vp.verb.s !     (VPartPast (NGAgr Sg M)))
         } 
       }  ;
@@ -114,7 +111,7 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
       } ;
     
     UseComp comp = {
-      verb = ser "s" ; -- copula TODO: change implementation of ser, add estar
+      verb = ser "s" ;
       compl = comp.s -- ! (NGAgr Pl F)
     } ;   
 
@@ -191,7 +188,6 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
     UseN n = n ;
 
     AdjCN ap cn = {
-      -- TODO: attributive form
       s = \\n => (cn.s ! n) ++ (ap.s ! (NGAgr n (cn.g))) ;
       g = cn.g
     } ;
@@ -222,7 +218,6 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
     on_Prep = {s = "sobre"} ;
     with_Prep = {s = "con"} ;
 
-    -- TODO: ? gender of we you etc.
     i_Pron = {
       s = table {
         PForm Nom _ => "yo" ; 
