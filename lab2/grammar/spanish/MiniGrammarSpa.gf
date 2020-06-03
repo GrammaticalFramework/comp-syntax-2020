@@ -106,12 +106,11 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
       verb = vv ;
       compl = vp.verb.s ! VInf ++ vp.compl ;
       } ;
-    {-
+    
     UseComp comp = {
       verb = ser "s" ; -- copula TODO: change implementation of ser, add estar
-      compl = comp.s ! NGAgr (Pl F)
+      compl = comp.s -- ! (NGAgr Pl F)
     } ;   
-    -} 
 
     CompAP ap = ap ;
 
