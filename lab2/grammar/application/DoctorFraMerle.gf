@@ -2,7 +2,7 @@
 
 -- model implementation using Mini RGL
 
-concrete DoctorFra of Doctor =
+concrete DoctorFraMerle of Doctor =
   open
     SyntaxFre,
     ParadigmsFre,
@@ -70,7 +70,7 @@ lin
   eatAction = mkVP (mkV "manger") ;
   drinkAction = mkVP (mkV "boire" "bois" "buvons" "boivent" "but" "boira" "bu") ;
   smokeAction = mkVP (mkV "fumer") ;
-  measureTemperatureAction = mkVP (mkV2 (mkV "mesurer")) (mkNP the_Det (mkN "temperatur du corps")) ;
+  measureTemperatureAction = mkVP (mkV2 (mkV "mesurer")) (mkNP the_Det (mkN "temperatur du corps" feminine)) ;
   measureBloodPressureAction = mkVP (mkV2 (mkV "mesurer")) (mkNP the_Det (mkN "tension artérielle")) ;
 
   --these are identical for 'at' and 'to' in French
@@ -84,17 +84,17 @@ lin
   interpreterProfession = mkCN (mkN "interprète") ;
 
   bePregnantProperty = mkVP (mkA "enceinte") ;
-  beIllProperty = mkVP (mkA "mauvais") ;
+  beIllProperty = mkVP (mkA "malade") ;
   beWellProperty = mkVP (mkA "bien" "bien" "bien" "bien") ;
   beDeadProperty = mkVP (mkA "mort") ;
   haveAllergiesProperty = mkVP have_V2 (mkNP aPl_Det (mkN "allergie")) ;
   havePainsProperty = mkVP have_V2 (mkNP aPl_Det (mkN "douleur")) ;
   haveChildrenProperty = mkVP have_V2 (mkNP aPl_Det (mkN "enfant")) ;
 
-  feverIllness = mkNP a_Det (mkN "fièvre") ;
-  fluIllness = mkNP the_Det (mkN "grippe") ;
+  feverIllness = mkNP (mkN "fièvre") ;
+  fluIllness = mkNP a_Det (mkN "grippe") ;
   headacheIllness = mkNP a_Det (mkN "mal de crâne") ;
-  diarrheaIllness = mkNP a_Det (mkN "diarrhée") ;
+  diarrheaIllness = mkNP (mkN "diarrhée") ;
   heartDiseaseIllness = mkNP a_Det (mkN "cardiopathie") ;
   lungDiseaseIllness = mkNP a_Det (mkN "maladie pulmonaire") ;
   hypertensionIllness = mkNP (mkN "hypertension") ;
@@ -106,12 +106,12 @@ lin
 oper
   pAdv : Str -> Adv = ParadigmsFre.mkAdv ;
 
-  go_V = mkV "aller" "vais" "allons" "vont" "alla" "ira" "allé" ;
-  stay_V = mkV "rester" ;
+  go_V = etreV (mkV "aller" "vais" "allons" "vont" "alla" "ira" "allé") ;
+  stay_V = etreV (mkV "rester") ;
   need_V2 = mkV2 (mkV (mkV have_V2) "besoin d'") ;
   --need_V2 = mkV2 (mkV "nécessiter") ;
-  take_V2 = mkV2 (mkV "prendre") ;
-  put_V2 = mkV2 (mkV "mettre") ;
+  take_V2 = mkV2 (mkV "prendre" "prends" "prenons" "prennent" "prit" "prendra" "pris") ;
+  put_V2 = mkV2 (mkV "mettre" "mets" "mettons" "mettent" "mit" "mettra" "mis") ;
   vaccinate_V2 = mkV2 (mkV "vacciner") ;
   examine_V2 = mkV2 (mkV "examiner") ;
 

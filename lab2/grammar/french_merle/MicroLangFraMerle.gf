@@ -1,5 +1,5 @@
 --# -path=.:../abstract
-concrete MicroLangFra of MicroLang = open MicroResFra, Prelude in {
+concrete MicroLangFraMerle of MicroLang = open MicroResFraMerle, Prelude in {
 
 -----------------------------------------------------
 ---------------- Grammar part -----------------------
