@@ -1,4 +1,4 @@
-concrete DoctorRGLFre of Doctor =
+concrete DoctorRGLFreJulia of Doctor =
   open
     SyntaxFre,
     ParadigmsFre,
