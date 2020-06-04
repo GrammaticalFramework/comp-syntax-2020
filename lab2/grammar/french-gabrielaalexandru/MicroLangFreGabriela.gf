@@ -1,5 +1,5 @@
 --# -path=.:../abstract
-concrete MicroLangFre of MicroLang = open MicroResFre, Prelude in {
+concrete MicroLangFreGabriela of MicroLang = open MicroResFreGabriela, Prelude in {
 
 -----------------------------------------------------
 ---------------- Grammar part -----------------------
@@ -62,8 +62,8 @@ concrete MicroLangFre of MicroLang = open MicroResFre, Prelude in {
       } ;
                   
     a_Det = {s = "un" ; num = Sg ; gen = M} ;
-    aPl_Det = {s = "des" ; num = Sg ; gen = F | M} ;
-    the_Det = {s = "la" ; num = Pl ; gen = F} ;
+    aPl_Det = {s = "des" ; num = Pl ; gen = F | M} ;
+    the_Det = {s = "la" ; num = Sg ; gen = F} ;
     thePl_Det = {s = "les" ; num = Pl ; gen = M | F} ;
   
     UsePron p = p ;
@@ -179,7 +179,7 @@ lin red_A = mkA "rouge" ;
 lin river_N = mkN "rivière" ;
 lin run_V = mkV "courir" ;
 lin sea_N = mkN "mer" ;
-lin see_V2 = mkV2 (mkV "voir" "vois" "voit" "voyons" "voyez" "voient") ;
+lin see_V2 = mkV2 (mkV "voir" "vois" "vois" "voit" "voyons" "voyez" "voient") ;
 lin ship_N = mkN "navire" ;
 lin sleep_V = mkV "dormir" "dors" "dors" "dort" "dormons" "dormez" "dorment" ;
 lin small_A = mkA "petit" ;

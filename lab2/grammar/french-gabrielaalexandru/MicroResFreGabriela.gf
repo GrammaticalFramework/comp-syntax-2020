@@ -1,4 +1,4 @@
-resource MicroResFr = open Prelude in {
+resource MicroResFreGabriela = open Prelude in {
 
 param
   Number = Sg | Pl ;
@@ -93,8 +93,8 @@ oper
  
   Verb : Type = {s : VForm => Str} ;
 
-  mkVerb : (vinf,p1sg,p1pl,p2sg,p2pl,p3sg,p3pl : Str) -> Verb
-    = \vinf,p1sg,p1pl,p2sg,p2pl,p3sg,p3pl -> {
+  mkVerb : (vinf,p1sg,p2sg,p3sg,p1pl,p2pl,p3pl : Str) -> Verb
+    = \vinf,p1sg,p2sg,p3sg,p1pl,p2pl,p3pl -> {
     s = table {
       VInf => vinf ;
       VPres P1 Sg => p1sg ;
@@ -108,34 +108,28 @@ oper
   
   -- verbs ending in -ger that need an extra "e" for the 1st Person pl
 
-  ger_Verb : Str -> Verb = \manger ->
-     let mange = init manger
-     in
-     mkVerb manger mange (mange + "ons") (mange + "s") (mange + "z") mange (mange + "nt") ;
+  ger_Verb : Str -> Verb = \man ->
+     mkVerb (man + "ger") (man + "ge") (man + "ges") (man + "ge") (man + "geons") (man + "gez") (man + "gent");
 
 
-  er_Verb : Str -> Verb = \aimer ->
-     let aim = init aimer
-     in
-     mkVerb aimer aim (aim + "ons") (aim + "s") (aim + "z") aim (aim + "nt")  ;
+  er_Verb : Str -> Verb = \aim ->
+     mkVerb (aim + "er") (aim + "e") (aim + "es") (aim + "e") (aim + "ons")  (aim + "ez") (aim + "ent")  ;
 
 
   ir_Verb : Str -> Verb = \cour ->
-     mkVerb cour (cour + "s") (cour + "ons") (cour + "s") (cour + "ez") (cour + "t") (cour + "ent") ;
+     mkVerb (cour + "ir") (cour + "s") (cour + "s") (cour + "t") (cour + "ons") (cour + "ez") (cour + "ent") ;
 
 
-  re_Verb : Str -> Verb = \attendre ->
-     let attend = init attendre
-     in
-     mkVerb attendre (attend + "ds") (attend + "dons") (attend + "ds") (attend + "dez") (attend + "d") (attend + "dent") ;
+  re_Verb : Str -> Verb = \attend ->
+     mkVerb (attend + "re") (attend + "s") (attend + "s") (attend + "") (attend + "ons") (attend + "ez") (attend + "ent") ;
 
 
    -- regular verbs with predictable variations
   smartVerb : Str -> Verb = \v -> case v of {
-     v + "re"	=> re_Verb v ;
      v + "ir" => ir_Verb v ;
+     v + "ger" => ger_Verb v ;
      v + "er" => er_Verb v ;
-     _ + "g" + "er" => ger_Verb v
+     v + "re"	=> re_Verb v
      } ;
 
   -- some irregular verbs e.g. acheter achète achètes
@@ -148,15 +142,9 @@ oper
 
   be_Verb : Verb = mkVerb "être" "suis" "es" "est" "sommes" "êtes" "sont" ; ---s to be generalized
 
-  Determiner : Type = {s : Str ; n : Number ; gen : Gender} ;
-
-  mkDet : Str -> Number -> Gender -> Determiner ;
-  mkDet   str   num        gen     =  {s=str ; n = num ; gen = gen} ;
-
-
  ---s a very simplified verb agreement function for Micro
   agr2vform : Number -> VForm = \a -> case a of {
     Sg => VPres P3 Sg ;
-    Pl => VPres P3 Pl     
+    Pl => VPres P3 Pl   
     } ;
 }
