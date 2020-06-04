@@ -1,10 +1,15 @@
 resource MiniResSpa = open Prelude in {
 
 param
+  {-
+  Note: things commented out testify my initial, wrong assumptions on the 
+  amount of things to cover.
+  -}
   Number = Sg | Pl ;
   Gender = F | M ;
   -- Degree = Pos | Sup ;
-  Case = Nom | Acc | Dat | Gen | Pre ; -- just for pronouns (comitative & reflexive seemed a bit too much)
+  -- just for pronouns (and there's actually more cases...)
+  Case = Nom | Acc | Dat | Gen | Pre ; 
   Person = P1 | P2 | P3 ;
   -- Tense = Past | Pres | Futr ;
   -- Mood = Ind | Imp; -- | Sub | Cnd 
@@ -14,7 +19,6 @@ param
   NGAgreement = NGAgr Number Gender ; -- used e.g. for noun-adj agreement
   NPAgreement = NPAgr Number Person ; -- used e.g. for verb-subj (pron) agreement
 
-  -- what I had done initially
   {-
   VForm = VFImp VImpForm | VFPers VPersForm ; -- a VF is either personal or impersonal
   VImpForm = VInf | VPart Tense | VGer ;
@@ -80,7 +84,6 @@ oper
   -- | VERBS
   Verb : Type = {s : VForm => Str} ;
 
-  -- two-place verb with "case" as preposition; for transitive verbs, c=[]
   Verb2 : Type = Verb ** {c : Str} ;
 
   mkVerb : (_,_,_,_,_,_,_,_,_,_,_,_,_,_ : Str) -> Verb
@@ -106,6 +109,7 @@ oper
       }
     } ;
     
+    -- not very smart actually
     smartVerb : Str -> Verb = \inf -> case inf of {
       -- irregulars (but not enough for me to write all forms in the lexicon)
       "romper" => romper "romp" ;
@@ -218,6 +222,7 @@ oper
         }
       } ;
 
+      -- | More or less useful helper functions
       negation : Bool -> Str = \b -> case b of {True => [] ; False => "no"} ;
 
       polarity : Bool -> Polarity = \b -> case b of {

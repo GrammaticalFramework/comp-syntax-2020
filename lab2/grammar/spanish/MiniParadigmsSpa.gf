@@ -27,7 +27,7 @@ oper
   } ;
 
   mkV = overload {
-    mkV : (inf : Str) -> V -- regular or anyway manageable verbs
+    mkV : (inf : Str) -> V -- regular verbs
       = \s -> lin V (smartVerb s) ; 
     mkV : (_,_,_,_,_,_,_,_,_,_,_,_,_,_ : Str) -> V  -- crazy complicated verbs
       = \inf, partpastsgm, pressg1, pressg2, pressg3, prespl1, prespl2, prespl3, imprpossg2, imprpospl1, imprpospl2, imprnegsg2, imprnegpl1, imprnegpl2 -> lin V (mkVerb inf partpastsgm pressg1 pressg2 pressg3 prespl1 prespl2 prespl3 imprpossg2 imprpospl1 imprpospl2 imprnegsg2 imprnegpl1 imprnegpl2) ;

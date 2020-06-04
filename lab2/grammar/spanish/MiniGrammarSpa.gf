@@ -8,14 +8,14 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
 
     S  = {s : Str} ;
     QS = {s : Str} ;
-    Cl = {   -- word order is fixed in S and QS
-      subj : Str ; -- subject (should be optional!)
+    Cl = { -- word order is set in S and QS
+      subj : Str ; -- NOTE: subject should be optional!
       verb : Bool => Bool => Str ; -- depends on Pol and Temp
-      compl : { s : Str ; isPron : Bool } ; -- after verb: complement, adverbs
+      compl : { s : Str ; isPron : Bool } ;
       adv : Adv
     } ;
     QCl = Cl ;
-    Imp = {s : Bool => Str} ; -- imperative (depends on Pol)
+    Imp = {s : Bool => Str} ; -- depends on Pol
     VP = {verb : Verb ; compl : NGAgreement => Str ; isPron : Bool ; adv : Adv } ;
     Comp = {s : NGAgreement => Str; isPron : Bool} ;  -- copula complement
     AP = Adjective ;
@@ -27,7 +27,8 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
       a : NPAgreement ;
       g : Gender
     } ;
-    Det = { -- would have been nicer with NGAgr actually
+    Det = { 
+      -- should be NGAgr but there was some reason for it not to be
       s : Gender => Str ; 
       n : Number 
     } ;
@@ -36,12 +37,12 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
     V = Verb ;
     V2 = Verb2 ;
     VS = Verb ;
-    VV = Verb ; ---- only VV to VP
+    VV = Verb ; 
     A = Adjective ;
     N = Noun ;
-    PN = Noun ; -- proper name
-    -- NOTE: isFinal is there because different adjectives have different
-    -- positions. In reality, it is even more complicated than in this grammar.
+    PN = Noun ; 
+    -- NOTE: isFinal is due to the fact that different adverbs occupy different
+    -- positions. Reality is more complicated than this anyway
     Adv = {s : Str ; isFinal : Bool} ; 
     IAdv = {s : Str} ; -- interrogative
 
@@ -68,11 +69,14 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
         }
       } ;
 
-    -- added ¿? just to visually distinguish questions
+    {- 
+    NOTE: added ¿? just to visually distinguish questions during testing, since
+    word order does not change
+    -}
     UseQCl temp pol qcl = 
       {s = "¿" ++ (UseCl temp pol qcl).s ++ "?"} ;
 
-    -- NOTE: there is a warning but everything seems to work
+    -- there is a warning but everything seems to work
     QuestCl cl = cl ;
 
     PredVP np vp = 
@@ -95,9 +99,11 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
     QuestVP ip vp = PredVP ip vp ; 
 
     ImpVP vp = {
-      -- NOTE: agreement is hardcoded (twice) because the only sentences we can 
-      -- form seem to be singular and, I assume, second person, while gender is 
-      -- irrelevant here
+      {-
+      NOTE: agreement is hardcoded (twice) because 
+      - the only sentences we can form seem to be singular and, I assume, second person
+      - gender is irrelevant here 
+      -}
       s = \\pol => let 
         most = negation pol ++
                -- TODO: remove space between the two tokens whenever vp.isPron
@@ -125,7 +131,10 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
       compl = \\_ => case pron of {
         {-
         NOTE: I think this is valid in general, but at least it is for sure for
-        the only V2 with indirect object we have in the vocabulary, "matar"
+        the only V2 with indirect object we have in the vocabulary, "matar".
+        Example:
+        - "yo mato a Juan" = "I kill John"
+        - "yo lo mato" = "I kill him"
         -}
         True => np.s ! Acc ;
         False => v2.c ++ np.s ! Acc 
@@ -190,7 +199,6 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
         isFinal = adv.isFinal
       }} ;
 
-    -- common noun with det
     DetCN det cn = {
       s = table {c => det.s ! cn.g ++ cn.s ! det.n} ;
       a = NPAgr det.n P3 ;
@@ -198,7 +206,6 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
       isPron = False
     } ;
 
-    -- proper noun
     UsePN pn = {
       s = \\_ => pn.s ! Sg ;
       a = NPAgr Sg P3 ;
@@ -208,7 +215,8 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
 
     UsePron p = {
       s = table {
-        c => (p.s) ! (PForm c (NGAgr Sg M)) -- NGAgr is arbitrary (only important for genitive)
+        -- NGAgr is arbitrary (only important for genitive... whatever!)
+        c => (p.s) ! (PForm c (NGAgr Sg M)) 
       } ;
       a = p.a ;
       g = p.g ;
@@ -241,7 +249,7 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
     the_Det = {
       s = table {
         M => "el" ;
-        F => "la" -- even though that's another story for "el agua" y "el aguila"
+        F => "la" -- even though that's another story for "el agua" y "el aguila" (their gender is feminine but their article is masculine)
       } ;
       n = Sg
     } ;
@@ -307,7 +315,7 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
         PForm Pre _ => "mì"
       } ;
       a = NPAgr Sg P1 ;
-      g = M  -- well not really but there is no way to know ?
+      g = M  -- not really, but there is no way to know
       } ;
     
     youSg_Pron = {
@@ -322,7 +330,7 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
         PForm Pre _ => "ti"
       } ;
       a = NPAgr Sg P2 ;
-      g = M -- well not really but there is no way to know ?
+      g = M -- not really, but there is no way to know
     } ;
 
     he_Pron = {
@@ -337,7 +345,7 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
         PForm Pre _ => "se"
       } ;
       a = NPAgr Sg P3 ;
-      g = M 
+      g = M -- not really, but there is no way to know
     } ;
 
     she_Pron = {
@@ -352,10 +360,10 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
         PForm Pre _ => "se"
       } ;
       a = NPAgr Sg P3 ;
-      g = F
+      g = F -- not really, but there is no way to know
     } ;
 
-      -- it_Pron missing in AST
+    -- it_Pron missing in AST :(
 
     we_Pron = {
       s = table {
@@ -369,7 +377,7 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
         PForm Pre _ => "nosotros"
       } ;
       a = NPAgr Pl P1 ;
-      g = M  -- well not really but there is no way to know ?
+      g = M  -- missing "nosotras"
     } ;
 
     youPl_Pron = {
@@ -384,7 +392,7 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
         PForm Pre _ => "vosotros"
       } ;
       a = NPAgr Pl P2 ;
-      g = M  -- well not really but there is no way to know ?
+      g = M  -- missing "vosotras"
     } ;
 
     they_Pron = {
@@ -399,14 +407,14 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
         PForm Pre _ => "se"
       } ;
       a = NPAgr Pl P3 ;
-      g = M  -- well not really but there is no way to know ?
+      g = M  -- missing "ellas"
     } ;
 
     whoSg_IP = { 
       s = table { _ => "quién"} ; -- case does not matter
       a = NPAgr Sg P3 ;
-      g = M ; -- again completely arbitrary
-      isPron = True -- well technically
+      g = M ; -- not really, but there is no way to know
+      isPron = True 
       } ;
 
     -- no plural, for some reason
