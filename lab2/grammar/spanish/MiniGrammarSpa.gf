@@ -168,7 +168,7 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
       compl = \\agr => vp.verb.s ! VInf ++ vp.compl ! agr ;
       isPron = False ;
       adv = lin Adv {
-        s = [] ;
+        s = vp.adv.s ;
         isFinal = False
       }
     } ;
@@ -267,6 +267,11 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
       n = Pl
     } ;
 
+    {-
+    NOTE: one way this grammar is overgenerating is that it accepts/generates
+    sentences like "Yo veo gato", while a determiner would be necessary when 
+    the noun is singular. As this also happens in the English, I will not fix it.
+    -}
     UseN n = n ;
 
     {- 

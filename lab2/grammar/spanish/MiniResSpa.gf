@@ -59,6 +59,7 @@ oper
     } ;
 
   -- | ADJECTIVES
+  -- no attributive form
   Adjective : Type = {s : NGAgreement => Str} ;
 
   mkAdjective: (_, _, _, _ : Str) -> Adjective = \fsg, fpl, msg, mpl -> {
