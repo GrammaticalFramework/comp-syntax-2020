@@ -11,11 +11,12 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
     Cl = {   -- word order is fixed in S and QS
       subj : Str ; -- subject (should be optional!)
       verb : Bool => Bool => Str ; -- depends on Pol and Temp
-      compl : { s : Str ; isPron : Bool } -- after verb: complement, adverbs
+      compl : { s : Str ; isPron : Bool } ; -- after verb: complement, adverbs
+      adv : Str
     } ;
     QCl = Cl ;
     Imp = {s : Bool => Str} ; -- imperative (depends on Pol)
-    VP = {verb : Verb ; compl : NGAgreement => Str ; isPron : Bool } ;
+    VP = {verb : Verb ; compl : NGAgreement => Str ; isPron : Bool ; adv : Str } ;
     Comp = {s : NGAgreement => Str; isPron : Bool} ;  -- copula complement
     AP = Adjective ;
     CN = Noun ; -- common noun
@@ -58,11 +59,13 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
         s = case comp.isPron of {
             True => pol.s ++ temp.s ++ -- hack again
                     cl.subj ++ -- quién/ella
+                    cl.adv ++
 	                  negation pol.isPos ++ -- no
                     comp.s ++ -- la
 	                  vf ; -- bebe
             False => pol.s ++ temp.s ++ -- hack again
                      cl.subj ++ -- quién/ella
+                     cl.adv ++
 	                   negation pol.isPos ++ -- no
 	                   vf ++ -- bebe
 	                   comp.s -- cerveza
@@ -89,7 +92,8 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
         verb = \\_,isPres => case isPres of {
           True => vp.verb.s ! (VPres np.a) ;
           False => ((smartVerb "haber").s ! (VPres np.a)) ++ (vp.verb.s ! VPartPast)
-        } 
+        } ;
+        adv = vp.adv
       }  ;
 
     QuestVP ip vp = PredVP ip vp ; 
@@ -109,7 +113,8 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
     UseV v = {
       verb = v ;
       compl = \\_ => [] ;
-      isPron = False
+      isPron = False ;
+      adv = []
     } ;
 
     ComplV2 v2 np = let pron = np.isPron in {
@@ -122,13 +127,15 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
         True => np.s ! Acc ;
         False => v2.c ++ np.s ! Acc 
       } ;
-      isPron = pron
+      isPron = pron ;
+      adv = []
     } ;
 
     ComplVS vs s = {
       verb = vs ;
       compl = \\_ => "que" ++ s.s ;
       isPron = False ;
+      adv = []
     } ;
 
     ComplVV vv vp = {
@@ -136,13 +143,15 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
       -- TODO: remove space between the two tokens whenever vp.isPron
       -- (problem: unsupported token gluing)
       compl = \\agr => vp.verb.s ! VInf ++ vp.compl ! agr ;
-      isPron = False  
+      isPron = False ;
+      adv = []
     } ;
     
     UseComp comp = {
       verb = ser "s" ;
       compl = comp.s ;
-      isPron = False 
+      isPron = False ;
+      adv = []
     } ;   
 
     CompAP ap = {
@@ -160,8 +169,7 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
       isPron = False
     } ;
 
-    AdvVP vp adv = vp ** {compl = \\agr => vp.compl ! agr ++ adv.s} ;
-
+    AdvVP vp adv = vp ** {adv = adv.s} ;
     -- common noun with det
     DetCN det cn = {
       s = table {c => det.s ! cn.g ++ cn.s ! det.n} ;
