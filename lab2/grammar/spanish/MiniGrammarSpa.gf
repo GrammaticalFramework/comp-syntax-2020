@@ -11,16 +11,16 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
     Cl = {   -- word order is fixed in S and QS
       subj : Str ; -- subject (should be optional)
       verb : Bool => Bool => Str ; -- depends on Pol and Temp
-      compl : Str -- after verb: complement, adverbs
+      compl : { s : Str ; isPron : Bool } -- after verb: complement, adverbs
     } ;
     QCl = Cl ;
     Imp = {s : Bool => Str} ; -- imperative (depends on Pol)
-    VP = {verb : Verb ; compl : NGAgreement => Str} ;
-    Comp = {s : NGAgreement => Str} ;  -- copula complement
+    VP = {verb : Verb ; compl : NGAgreement => Str ; isPron : Bool } ;
+    Comp = {s : NGAgreement => Str; isPron : Bool} ;  -- copula complement
     AP = Adjective ;
     CN = Noun ; -- common noun
-    NP = {s : Case => Str ; a : NPAgreement; g : Gender} ;
-    IP = {s : Case => Str ; a : NPAgreement; g : Gender} ;
+    NP = {s : Case => Str ; a : NPAgreement; g : Gender ; isPron : Bool } ;
+    IP = {s : Case => Str ; a : NPAgreement; g : Gender ; isPron : Bool } ;
     Pron = {
       s : PronForm => Str ; 
       a : NPAgreement ;
@@ -51,22 +51,25 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
     UttImpSg pol imp = {s = pol.s ++ imp.s ! pol.isPos} ;
 
     UseCl temp pol cl = 
-      let vf = cl.verb ! pol.isPos ! temp.isPres in {
-      s = pol.s ++ temp.s ++ -- GF hack, they are empty!
-	        cl.subj ++ -- ella
-          negation pol.isPos ++ -- no
-          vf ++ -- bebe
-	        cl.compl -- cerveza
-    } ;
-
-    UseQCl temp pol qcl =
-      let vf = qcl.verb ! pol.isPos ! temp.isPres in {
-        s = pol.s ++ temp.s ++ -- hack again
-            qcl.subj ++ -- quién/ella
-	          negation pol.isPos ++ -- no
-	          vf ++ -- bebe
-	          qcl.compl -- cerveza
+      let 
+        vf = cl.verb ! pol.isPos ! temp.isPres ;
+        comp = cl.compl
+      in {
+        s = case comp.isPron of {
+            True => pol.s ++ temp.s ++ -- hack again
+                    cl.subj ++ -- quién/ella
+	                  negation pol.isPos ++ -- no
+                    comp.s ++ -- la
+	                  vf ; -- bebe
+            False => pol.s ++ temp.s ++ -- hack again
+                     cl.subj ++ -- quién/ella
+	                   negation pol.isPos ++ -- no
+	                   vf ++ -- bebe
+	                   comp.s -- cerveza
+        }
       } ;
+
+    UseQCl temp pol qcl = UseCl temp pol qcl ;
 
     QuestCl cl = cl ;
 
@@ -76,52 +79,82 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
         g = np.g 
       in {
         subj = np.s ! Nom ;
-        compl = vp.compl ! (NGAgr n g) ;
+        compl = {
+          s = vp.compl ! (NGAgr n g) ;
+          isPron = vp.isPron
+        } ;
         verb = \\_,isPres => case isPres of {
           True => vp.verb.s ! (VPres np.a) ;
-          False => ((smartVerb "haber").s ! (VPres np.a)) ++ (vp.verb.s !     (VPartPast (NGAgr Sg M)))
+          False => ((smartVerb "haber").s ! (VPres np.a)) ++ (vp.verb.s ! (VPartPast (NGAgr Sg M)))
         } 
       }  ;
 
     QuestVP ip vp = PredVP ip vp ; 
 
     ImpVP vp = {
-      -- agreement is hardcoded (twice) because the only sentences we can form seem to be singular and, I assume, second person; gender is irrelevant here
-      s = \\pol => negation pol ++ (vp.verb.s ! (VImp (NPAgr Sg P2) (polarity pol))) ++ vp.compl ! (NGAgr Sg M)
+      -- NOTE: agreement is hardcoded (twice) because the only sentences we can 
+      -- form seem to be singular and, I assume, second person, while gender is 
+      -- irrelevant here
+      s = \\pol => 
+        negation pol ++ 
+        (vp.verb.s ! (VImp (NPAgr Sg P2) (polarity pol))) 
+        ++ vp.compl ! (NGAgr Sg M)
     } ;
 
     UseV v = {
       verb = v ;
-      compl = \\_ => []
+      compl = \\_ => [] ;
+      isPron = False
     } ;
 
-    ComplV2 v2 np = {
-      verb = v2 ;
-      compl = \\_ => v2.c ++ np.s ! Acc
-    } ;
+    ComplV2 v2 np = 
+      let 
+        p = np.isPron ;
+        acc = np.s ! Acc
+      in {
+        verb = v2 ;
+        compl = \\_ => case p of {
+          True => v2.c ++ acc ;
+          -- NOTE: it was my intention to remove the space but (v2.c + acc) 
+          -- gives "unsupported token gluing". I see why, but I don't see any
+          -- obvious solution
+          False => v2.c ++ acc 
+        } ;
+        isPron = p
+        } ;
 
     ComplVS vs s = {
       verb = vs ;
       compl = \\_ => "que" ++ s.s ;
+      isPron = False ;
     } ;
 
     ComplVV vv vp = {
       verb = vv ;
       compl = \\agr => vp.verb.s ! VInf ++ vp.compl ! agr ;
-      } ;
+      isPron = False  
+    } ;
     
     UseComp comp = {
       verb = ser "s" ;
-      compl = comp.s -- ! (NGAgr Pl F)
+      compl = comp.s ;
+      isPron = False 
     } ;   
 
-    CompAP ap = ap ;
-
-    CompNP np = {
-      s = \\_ => np.s ! Nom
+    CompAP ap = {
+      s = ap.s ;
+      isPron = False
     } ;
 
-    CompAdv adv = { s = \\_ => adv.s } ;
+    CompNP np = {
+      s = \\_ => np.s ! Nom ;
+      isPron = np.isPron
+    } ;
+
+    CompAdv adv = { 
+      s = \\_ => adv.s ;
+      isPron = False
+    } ;
 
     AdvVP vp adv = vp ** {compl = \\agr => vp.compl ! agr ++ adv.s} ;
 
@@ -129,14 +162,16 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
     DetCN det cn = {
       s = table {c => det.s ! cn.g ++ cn.s ! det.n} ;
       a = NPAgr det.n P3 ;
-      g = cn.g
+      g = cn.g ;
+      isPron = False
     } ;
 
     -- proper noun
     UsePN pn = {
       s = \\_ => pn.s ! Sg ;
       a = NPAgr Sg P3 ;
-      g = pn.g
+      g = pn.g ;
+      isPron = False
     } ;
 
     UsePron p = {
@@ -144,13 +179,15 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
         c => (p.s) ! (PForm c (NGAgr Sg M)) -- NGAgr is arbitrary (only important for genitive)
       } ;
       a = p.a ;
-      g = p.g
+      g = p.g ;
+      isPron = True ;
     } ;
    
     MassNP cn = {
       s = \\_ => cn.s ! Sg ;
       a = NPAgr Sg P3 ;
-      g = cn.g
+      g = cn.g ;
+      isPron = False
     } ;
 
     a_Det = {
@@ -334,7 +371,8 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
     whoSg_IP = { 
       s = table { _ => "quién"} ; -- case does not matter
       a = NPAgr Sg P3 ;
-      g = M -- again completely arbitrary
+      g = M ; -- again completely arbitrary
+      isPron = True -- well technically
       } ;
 
     -- no plural, for some reason
