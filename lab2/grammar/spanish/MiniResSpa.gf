@@ -36,29 +36,26 @@ oper
     g : Gender -- inherent
     } ;
 
-  mkNoun : Str -> Str -> Noun = \sg,pl -> {
+  mkNoun : Str -> Str -> Gender -> Noun = \sg,pl,gd -> {
     s = table {Sg => sg ; Pl => pl} ;
-    g = getGender sg
+    g = gd
     } ;
 
   -- noun inflection
   smartNoun : Str -> Noun = \sg -> case sg of {
-    faral + "á" => mkNoun sg (faral + "aes") ;
-    pe + "z" => mkNoun sg (pe + "ces") ;
-    x + ("s" | "x") => mkNoun sg sg ;
-    _ + ("a" | "e" | "i" | "o" | "u" | "é") => mkNoun sg (sg + "s") ;
-    _ => mkNoun sg (sg + "es")
+    faral + "á" => mkNoun sg (faral + "aes") (getGender sg) ;
+    pe + "z" => mkNoun sg (pe + "ces") (getGender sg) ;
+    x + ("s" | "x") => mkNoun sg sg (getGender sg) ;
+    _ + ("a" | "e" | "i" | "o" | "u" | "é") => mkNoun sg (sg + "s") (getGender sg) ;
+    _ => mkNoun sg (sg + "es") (getGender sg)
     -- disregarding irregular plurals because they are virtually nonexistent
     } ;
 
   getGender : Str -> Gender = \sg -> case sg of {
-    -- gender is hardcoded when there is no rule to determine it
-    ("animal" | "bebé" | "pan" | "coche" | "ordenador" | "pez" | "idioma" | "nombre" | "árbol" | "hombre" | "Juan") => M ;
-    ("sangre" | "ciudad" | "nube" | "flor" | "leche" | "mar" | "nave" | "mujer" | "París") => F ; 
     x + ("esa" | "isa" | "ina" | "triz") => F ;
     (barc + "o") => M ;
     manzan + "a" => F ;
-    _ => Predef.error ("gender of " ++ sg ++ " is unknown")
+    _ => Predef.error("gender of " ++ sg ++ " is unknown")
     } ;
 
   -- | ADJECTIVES

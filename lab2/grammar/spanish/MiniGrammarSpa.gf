@@ -9,7 +9,12 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
     S  = {s : Str} ;
     QS = {s : Str} ;
     Cl = { -- word order is set in S and QS
-      subj : Str ; -- NOTE: subject should be optional!
+      {- 
+      NOTE: subject should be optional! One way I can think of to make it so
+      is to add Expl = {s : Str ; isExpl : Bool} to the AS and add use it as 
+      Pol and Temp to know whether the subject is implicit or explicit.  
+      -}
+      subj : Str ; 
       verb : Bool => Bool => Str ; -- depends on Pol and Temp
       compl : { s : Str ; isPron : Bool } ;
       adv : Adv

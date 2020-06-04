@@ -8,15 +8,26 @@ in {
 
 oper
   mkN = overload {
+     -- regular ordinary nouns with predictable gender
     mkN : Str -> Noun
       = \n -> lin N (smartNoun n) ;
-    -- irregular nouns, e.g. gentilhombre/gentileshombres (very rare) 
-    mkN : Str -> Str -> Noun
-      = \sg,pl -> lin N (mkNoun sg pl) ;
+    -- nouns with regular plural but unpredictable gender
+    mkN : Str -> Gender -> Noun
+      = \n,gn -> lin N ((smartNoun n) ** {g = gn}) ;
+    -- nouns with irregular plural e.g. gentilhombre/gentileshombres (EXTREMELY rare) with unpredictable gender
+    mkN : Str -> Str -> Gender -> Noun
+      = \sg,pl,g -> lin N (mkNoun sg pl g) ;
     } ;
 
-  mkPN : Str -> PN
-    = \s -> lin PN (smartNoun s) ;
+  -- | NOTE: proper names have no plural
+  mkPN = overload {
+    -- regular ordinary nouns with predictable gender
+    mkPN : Str -> PN
+      = \n -> lin PN (mkNoun n nonExist (getGender n)) ;
+    -- nouns with but unpredictable gender
+    mkN : Str -> Gender -> Noun
+      = \n,g -> lin PN (mkNoun n nonExist g) ;
+  } ;
 
   mkA = overload {
     mkA : Str -> Adjective
