@@ -313,11 +313,11 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
         PForm Nom _ => "yo" ; 
         PForm Acc _ => "me" ;
         PForm Dat _ => "me" ;
-        PForm Gen (NGAgr Sg M) => "mìo" ;
-        PForm Gen (NGAgr Sg F) => "mìa" ;
-        PForm Gen (NGAgr Pl M) => "mìos" ;
-        PForm Gen (NGAgr Pl F) => "mìas" ;
-        PForm Pre _ => "mì"
+        PForm Gen (NGAgr Sg M) => "mío" ;
+        PForm Gen (NGAgr Sg F) => "mía" ;
+        PForm Gen (NGAgr Pl M) => "míos" ;
+        PForm Gen (NGAgr Pl F) => "mías" ;
+        PForm Pre _ => "mí"
       } ;
       a = NPAgr Sg P1 ;
       g = M  -- not really, but there is no way to know
@@ -325,7 +325,7 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
     
     youSg_Pron = {
       s = table {
-        PForm Nom _ => "tù" ; 
+        PForm Nom _ => "tú" ; 
         PForm Acc _ => "te" ;
         PForm Dat _ => "te" ;
         PForm Gen (NGAgr Sg M) => "tuyo" ;
@@ -424,10 +424,10 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
 
     -- no plural, for some reason
 
-    where_IAdv = {s = "dònde"} ;
+    where_IAdv = {s = "dónde"} ;
     why_IAdv = {s = "por qué"} ;
 
     have_V2 = smartVerb "haber" ** {c = []} ;
 
-    want_VV = mkVerb "querer" "querido" "quiero" "quieres" "quiere" "queremos" "queréis" "quieren" "quiere" "queramos" "quered" "quieras" "queramos" "queràis" ;
+    want_VV = mkVerb "querer" "querido" "quiero" "quieres" "quiere" "queremos" "queréis" "quieren" "quiere" "queramos" "quered" "quieras" "queramos" "queráis" ;
 }

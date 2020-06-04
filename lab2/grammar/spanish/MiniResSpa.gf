@@ -20,7 +20,7 @@ param
   NPAgreement = NPAgr Number Person ; -- used e.g. for verb-subj (pron) agreement
 
   {-
-  VForm = VFImp VImpForm | VFPers VPersForm ; -- a VF is either personal or impersonal
+  VForm = VFImp VImpForm | VFPers VPersForm ; -- either personal or impersonal
   VImpForm = VInf | VPart Tense | VGer ;
   VPersForm = VPers Mood Tense Aspect NPAgreement Polarity ;
   -}
@@ -121,14 +121,14 @@ oper
     -- conjucaciones regulares
     conjugAr : Str -> Verb = \cant -> mkVerb (cant + "ar") (cant + "ado") (cant + "o") (cant + "as") (cant + "a") (cant + "amos") (cant + "áis") (cant + "an") (cant + "a") (cant + "emos") (cant + "ad") (cant + "es") (cant + "emos") (cant + "éis") ;
 
-    conjugEr : Str -> Verb = \aprend -> mkVerb (aprend + "er") (aprend + "ido") (aprend + "o") (aprend + "es") (aprend + "e") (aprend + "emos") (aprend + "éis") (aprend + "en") (aprend + "e") (aprend + "amos") (aprend + "ed") (aprend + "as") (aprend + "amos") (aprend + "àis") ;
+    conjugEr : Str -> Verb = \aprend -> mkVerb (aprend + "er") (aprend + "ido") (aprend + "o") (aprend + "es") (aprend + "e") (aprend + "emos") (aprend + "éis") (aprend + "en") (aprend + "e") (aprend + "amos") (aprend + "ed") (aprend + "as") (aprend + "amos") (aprend + "áis") ;
 
-    conjugIr : Str -> Verb = \sacud -> mkVerb (sacud + "ir") (sacud + "ido") (sacud + "o") (sacud + "es") (sacud + "e") (sacud + "imos") (sacud + "ìs") (sacud + "en") (sacud + "e") (sacud + "amos") (sacud + "id") (sacud + "as") (sacud + "amos") (sacud + "àis") ;
+    conjugIr : Str -> Verb = \sacud -> mkVerb (sacud + "ir") (sacud + "ido") (sacud + "o") (sacud + "es") (sacud + "e") (sacud + "imos") (sacud + "ís") (sacud + "en") (sacud + "e") (sacud + "amos") (sacud + "id") (sacud + "as") (sacud + "amos") (sacud + "áis") ;
 
     -- verbos auxiliares
-    haber : Verb = mkVerb "haber" "habido" "he" "has" "ha" "hemos" "habéis" "han" "he" "hayamos" "habed" "hayas" "hayamos" "hayàis" ;
+    haber : Verb = mkVerb "haber" "habido" "he" "has" "ha" "hemos" "habéis" "han" "he" "hayamos" "habed" "hayas" "hayamos" "hayáis" ;
 
-    ser : Verb = mkVerb "ser" "sido" "soy" "eres" "es" "somos" "sois" "son" "sé" "seamos" "sed" "seas" "seamos" "seàis" ;
+    ser : Verb = mkVerb "ser" "sido" "soy" "eres" "es" "somos" "sois" "son" "sé" "seamos" "sed" "seas" "seamos" "seáis" ;
 
       -- | More or less useful helper functions
       negation : Bool -> Str = \b -> case b of {True => [] ; False => "no"} ;
