@@ -40,7 +40,9 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
     A = Adjective ;
     N = Noun ;
     PN = Noun ; -- proper name
-    Adv = {s : Str ; isFinal : Bool} ;
+    -- NOTE: isFinal is there because different adjectives have different
+    -- positions. In reality, it is even more complicated than in this grammar.
+    Adv = {s : Str ; isFinal : Bool} ; 
     IAdv = {s : Str} ; -- interrogative
 
   lin
