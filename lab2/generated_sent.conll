@@ -1,0 +1,88 @@
+1	Джон	john_PN	PROPN	PN	_	0	root	_	_
+
+
+1	вбий	kill_V2	VERB	V2	_	0	root	_	_
+
+
+1	Париж	paris_PN	PROPN	PN	_	0	root	_	_
+
+
+1	вже	already_Adv	ADV	Adv	_	0	root	_	_
+
+
+1	не	ImpVP	Imp	Imp	_	0	root	_	_
+
+
+1	де	where_IAdv	ADV	IAdv	_	0	root	_	_
+
+
+1	хто	whoSg_IP	IP	IP	_	3	nsubj	_	_
+2	не	UseQCl	PART	QS	_	3	advmod	_	_
+3	читає	read_V2	VERB	V2	_	0	root	_	_
+4	вино	wine_N	NOUN	N	_	3	obj	_	_
+
+
+1	жінки	woman_N	NOUN	N	_	3	nsubj	_	_
+2	не	UseQCl	PART	QS	_	3	advmod	_	_
+3	Париж	paris_PN	PROPN	PN	_	0	root	_	_
+
+
+1	хоч	want_VV	VERB	VV	_	0	root	_	_
+
+
+1	де	where_IAdv	ADV	IAdv	_	0	root	_	_
+
+
+1	ви	youPl_Pron	PRON	Pron	_	2	nsubj	_	_
+2	зараз	now_Adv	ADV	Adv	_	0	root	_	_
+3	чи	or_Conj	CONJ	Conj	_	2	cc	_	_
+4	він	he_Pron	PRON	Pron	_	5	nsubj	_	_
+5	приходить	come_V	VERB	V	_	2	conj	_	_
+6	чи	or_Conj	CONJ	Conj	_	5	cc	_	_
+7	Париж	paris_PN	PROPN	PN	_	8	nsubj	_	_
+8	біжить	run_V	VERB	V	_	5	conj	_	_
+9	та	and_Conj	CONJ	Conj	_	5	cc	_	_
+10	хліб	bread_N	NOUN	N	_	12	nsubj	_	_
+11	не	UseCl	PART	S	_	12	advmod	_	_
+12	зараз	now_Adv	ADV	Adv	_	5	conj	_	_
+
+
+1	чому	why_IAdv	ADV	IAdv	_	0	root	_	_
+
+
+1	знайди	find_V2	VERB	V2	_	0	root	_	_
+
+
+1	вже	already_Adv	ADV	Adv	_	0	root	_	_
+
+
+1	пий	drink_V2	VERB	V2	_	0	root	_	_
+
+
+1	біжи	run_V	VERB	V	_	0	root	_	_
+
+
+1	в	in_Prep	ADP	Prep	_	3	case	_	_
+2	кожному	every_Det	DET	Det	_	3	det	_	_
+3	човенi	boat_N	NOUN	N	_	0	root	_	_
+
+
+1	бач	see_V2	VERB	V2	_	0	root	_	_
+
+
+1	ми	we_Pron	PRON	Pron	_	0	root	_	_
+
+
+1	де	where_IAdv	ADV	IAdv	_	0	root	_	_
+
+
+1	я	i_Pron	PRON	Pron	_	3	nsubj	_	_
+2	не	UseQCl	PART	QS	_	3	advmod	_	_
+3	люблю	love_V2	VERB	V2	_	0	root	_	_
+4	в	in_Prep	ADP	Prep	_	5	case	_	_
+5	ньому	he_Pron	PRON	Pron	_	3	advmod	_	_
+
+
+1	зараз	now_Adv	ADV	Adv	_	0	root	_	_
+
+
