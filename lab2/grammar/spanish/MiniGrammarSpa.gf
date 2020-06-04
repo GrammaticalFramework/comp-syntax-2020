@@ -110,12 +110,18 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
       - gender is irrelevant here 
       -}
       s = \\pol => let 
-        most = negation pol ++
-               -- TODO: remove space between the two tokens whenever vp.isPron
-               -- (problem: unsupported token gluing) 
-               (vp.verb.s ! (VImp (NPAgr Sg P2) (polarity pol))) ++
-               vp.compl ! (NGAgr Sg M) 
-        in case vp.adv.isFinal of {
+        verb = vp.verb.s ! (VImp (NPAgr Sg P2) (polarity pol)) ;
+        compl = vp.compl ! (NGAgr Sg M) ;
+        most = negation pol ++ case pol of {
+          True => 
+            -- TODO: remove space between the two tokens whenever vp.isPron
+            -- (problem: unsupported token gluing) 
+            verb ++ compl ;
+          False => case vp.isPron of {
+            True => compl ++ verb ;
+            False => verb ++ compl
+          }
+        } in case vp.adv.isFinal of {
           True => most ++ vp.adv.s ;
           False => vp.adv.s ++ most
         }
