@@ -69,8 +69,11 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
         }
       } ;
 
-    UseQCl temp pol qcl = UseCl temp pol qcl ;
+    -- added ¿? just to visually distinguish questions
+    UseQCl temp pol qcl = 
+      {s = "¿" ++ (UseCl temp pol qcl).s ++ "?"} ;
 
+    -- NOTE: there is a warning but everything seems to work
     QuestCl cl = cl ;
 
     PredVP np vp = 
