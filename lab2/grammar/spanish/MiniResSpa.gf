@@ -130,16 +130,19 @@ oper
 
     ser : Verb = mkVerb "ser" "sido" "soy" "eres" "es" "somos" "sois" "son" "sé" "seamos" "sed" "seas" "seamos" "seáis" ;
 
-      -- | More or less useful helper functions
-      negation : Bool -> Str = \b -> case b of {True => [] ; False => "no"} ;
+    -- | More or less useful helper functions
+    negation : Bool -> Str = \b -> case b of {True => [] ; False => "no"} ;
 
-      polarity : Bool -> Polarity = \b -> case b of {
-        True => Pos ; 
-        False => Neg
-      };
+    polarity : Bool -> Polarity = \b -> case b of {
+      True => Pos ; 
+      False => Neg
+    };
 
-      -- apparently let (NPAgr n _) = agr is a syntax error and I found no smart way to do this, one day I will read this code and laugh
-      extractNumber : NPAgreement -> Number = \npa -> case npa of {
-        (NPAgr n _) => n
-      } ;
+    {- 
+    NOTE: apparently let (NPAgr n _) = agr is a syntax error and I found no 
+    smart way to do this, one day I will read this code and laugh 
+    -}
+    extractNumber : NPAgreement -> Number = \npa -> case npa of {
+      (NPAgr n _) => n
+    } ;
 }
