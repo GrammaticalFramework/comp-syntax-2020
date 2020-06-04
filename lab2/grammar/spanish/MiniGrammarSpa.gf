@@ -96,9 +96,11 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
       -- form seem to be singular and, I assume, second person, while gender is 
       -- irrelevant here
       s = \\pol => 
-        negation pol ++ 
-        (vp.verb.s ! (VImp (NPAgr Sg P2) (polarity pol))) 
-        ++ vp.compl ! (NGAgr Sg M)
+        negation pol ++
+        -- TODO: remove space between the two tokens whenever vp.isPron
+        -- (problem: unsupported token gluing) 
+        (vp.verb.s ! (VImp (NPAgr Sg P2) (polarity pol))) ++ 
+        vp.compl ! (NGAgr Sg M)
     } ;
 
     UseV v = {
@@ -107,21 +109,11 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
       isPron = False
     } ;
 
-    ComplV2 v2 np = 
-      let 
-        p = np.isPron ;
-        acc = np.s ! Acc
-      in {
-        verb = v2 ;
-        compl = \\_ => case p of {
-          True => v2.c ++ acc ;
-          -- NOTE: it was my intention to remove the space but (v2.c + acc) 
-          -- gives "unsupported token gluing". I see why, but I don't see any
-          -- obvious solution
-          False => v2.c ++ acc 
-        } ;
-        isPron = p
-        } ;
+    ComplV2 v2 np = {
+      verb = v2 ;
+      compl = \\_ => v2.c ++ np.s ! Acc ;
+      isPron = np.isPron
+    } ;
 
     ComplVS vs s = {
       verb = vs ;
@@ -131,6 +123,8 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
 
     ComplVV vv vp = {
       verb = vv ;
+      -- TODO: remove space between the two tokens whenever vp.isPron
+      -- (problem: unsupported token gluing)
       compl = \\agr => vp.verb.s ! VInf ++ vp.compl ! agr ;
       isPron = False  
     } ;
