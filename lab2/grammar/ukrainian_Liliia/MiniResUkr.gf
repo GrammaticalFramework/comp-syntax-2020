@@ -247,37 +247,37 @@ resource MiniResUkr = ParamX ** open Prelude in {
     mk1A : Str -> Adjective = \word ->
     {
       s = table {
-        AF Nom (GSg Masc)    => word; -- гарний -> гарний
+        AF Nom (GSg Masc)    => word;                   -- гарний -> гарний
         AF Nom (GSg Fem)     => Predef.tk 2 word + "а"; -- гарний -> гарнa
         AF Nom (GSg Neut)    => Predef.tk 2 word + "е"; -- гарний -> гарне
         AF Nom GPl           => Predef.tk 2 word + "і"; -- гарний -> гарні
 
         AF Gen (GSg Masc)    => Predef.tk 2 word + "ого"; -- гарний -> гарного
-        AF Gen (GSg Fem)     => Predef.tk 2 word + "ої"; -- гарний -> гарної
+        AF Gen (GSg Fem)     => Predef.tk 2 word + "ої";  -- гарний -> гарної
         AF Gen (GSg Neut)    => Predef.tk 2 word + "ого"; -- гарний -> гарного
-        AF Gen GPl           => Predef.tk 2 word + "их"; -- гарний -> гарних
+        AF Gen GPl           => Predef.tk 2 word + "их";  -- гарний -> гарних
 
         AF Dat (GSg Masc)    => Predef.tk 2 word + "ому"; -- гарний -> гарному
-        AF Dat (GSg Fem)     => Predef.tk 2 word + "ій"; -- гарний -> гарній
+        AF Dat (GSg Fem)     => Predef.tk 2 word + "ій";  -- гарний -> гарній
         AF Dat (GSg Neut)    => Predef.tk 2 word + "ому"; -- гарний -> гарному
-        AF Dat GPl           => Predef.tk 2 word + "им"; -- гарний -> гарним
+        AF Dat GPl           => Predef.tk 2 word + "им";  -- гарний -> гарним
 
         AF Acc (GSg Masc)    => Predef.tk 2 word + "ого"; -- гарний -> гарного
-        AF Acc (GSg Fem)     => Predef.tk 2 word + "у"; -- гарний -> гарну
-        AF Acc (GSg Neut)    => Predef.tk 2 word + "е"; -- гарний -> гарне
-        AF Acc GPl           => Predef.tk 2 word + "их"; -- гарний -> гарних
+        AF Acc (GSg Fem)     => Predef.tk 2 word + "у";   -- гарний -> гарну
+        AF Acc (GSg Neut)    => Predef.tk 2 word + "е";   -- гарний -> гарне
+        AF Acc GPl           => Predef.tk 2 word + "их";  -- гарний -> гарних
 
-        AF Inst (GSg Masc)   => Predef.tk 2 word + "им"; -- гарний -> гарним
-        AF Inst (GSg Fem)    => Predef.tk 2 word + "ою"; -- гарний -> гарною
-        AF Inst (GSg Neut)   => Predef.tk 2 word + "им"; -- гарний -> гарним
+        AF Inst (GSg Masc)   => Predef.tk 2 word + "им";  -- гарний -> гарним
+        AF Inst (GSg Fem)    => Predef.tk 2 word + "ою";  -- гарний -> гарною
+        AF Inst (GSg Neut)   => Predef.tk 2 word + "им";  -- гарний -> гарним
         AF Inst GPl          => Predef.tk 2 word + "ими"; -- гарний -> гарними
 
         AF Prepos (GSg Masc) => Predef.tk 2 word + "ому"; -- гарний -> гарному
-        AF Prepos (GSg Fem)  => Predef.tk 2 word + "ій"; -- гарний -> гарній
+        AF Prepos (GSg Fem)  => Predef.tk 2 word + "ій";  -- гарний -> гарній
         AF Prepos (GSg Neut) => Predef.tk 2 word + "ому"; -- гарний -> гарному
-        AF Prepos GPl        => Predef.tk 2 word + "их"; -- гарний -> гарних
+        AF Prepos GPl        => Predef.tk 2 word + "их";  -- гарний -> гарних
 
-        AF Vocat (GSg Masc)  => word; -- гарний -> гарний
+        AF Vocat (GSg Masc)  => word;                   -- гарний -> гарний
         AF Vocat (GSg Fem)   => Predef.tk 2 word + "а"; -- гарний -> гарнa
         AF Vocat (GSg Neut)  => Predef.tk 2 word + "е"; -- гарний -> гарне
         AF Vocat GPl         => Predef.tk 2 word + "і"  -- гарний -> гарні
@@ -320,7 +320,7 @@ resource MiniResUkr = ParamX ** open Prelude in {
       PNoGen => Masc
     };
 
-  -- Verbs
+  -- Verbs and Sentences
   param Aspect      = Imperfective | Perfective;
   param UkrTense    = UkrPast GenNum | Present GenNum Person | Future GenNum Person;
   param VerbForm    = VIndic UkrTense | VImper Number | VInf;

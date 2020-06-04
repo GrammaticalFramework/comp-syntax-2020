@@ -6,100 +6,100 @@ concrete MiniGrammarUkr of MiniGrammar = open MiniResUkr, Prelude in {
 
     -- Common
     lincat
-        Utt = {s : Str}; -- sentence, question, word...         e.g. "be quiet"
-        Pol = UkrPolarity ;    -- polarity                            e.g. positive, negative
-        Temp = Temporality;   -- temporal features                   e.g. present, anterior
+        Utt = {s : Str};    -- sentence, question, word...         e.g. "be quiet"
+        Pol = UkrPolarity ; -- polarity                            e.g. positive, negative
+        Temp = Temporality; -- temporal features                   e.g. present, anterior
 
     -- Cat
     lincat
-        Imp = Imperative;    -- imperative                          e.g. "walk", "don't walk"
-        S = Sentence;      -- declarative sentence                e.g. "she lives here"
-        QS = QSentence;     -- question sentence                   e.g. "does she live here"
-        Cl = Clause;     -- declarative clause, with all tenses e.g. "she looks at this"
-        QCl = Clause;    -- question clause                     e.g. "does she look at this"
-        VP = VerbPhrase;     -- verb phrase                         e.g. "lives here"
-        Comp = CopCompl;   -- complement of copula                e.g. "in trouble"
-        AP = Adjective;     -- adjectival phrase                   e.g. "very warm"
-        CN = CommonNoun;     -- common noun (without determiner)    e.g. "red house"
-        NP = NounPhrase;     -- noun phrase (subject or object)     e.g. "the red house"
-        IP = InterrogativePhrase;     -- interrogative phrase                e.g. "who"
-        Pron = Pronoun;   -- personal pronoun                    e.g. "she"
-        Det = Determiner;    -- determiner phrase                   e.g. "those"
-        Conj = { s : Str };   -- conjunction                         e.g. "and"
-        Prep = { s : Str };   -- preposition, or just case           e.g. "in", dative
-        V = Verb;      -- one-place verb                      e.g. "sleep"
-        V2 = Verb2;     -- two-place verb                      e.g. "love"
-        VS = Verb;     -- sentence-complement verb            e.g. "know"
-        VV = Verb;     -- verb-phrase-complement verb         e.g. "want"
-        A = Adjective;      -- one-place adjective                 e.g. "warm"
-        N = Noun;      -- common noun                         e.g. "house"
-        PN = PropNoun;     -- proper name                         e.g. "Paris"
-        Adv = Adverb;    -- adverbial phrase                    e.g. "in the house"
-        IAdv = Adverb;   -- interrogative adverbial             e.g. "where"
+        Imp = Imperative;         -- imperative                          e.g. "walk", "don't walk"
+        S = Sentence;             -- declarative sentence                e.g. "she lives here"
+        QS = QSentence;           -- question sentence                   e.g. "does she live here"
+        Cl = Clause;              -- declarative clause, with all tenses e.g. "she looks at this"
+        QCl = Clause;             -- question clause                     e.g. "does she look at this"
+        VP = VerbPhrase;          -- verb phrase                         e.g. "lives here"
+        Comp = CopCompl;          -- complement of copula                e.g. "in trouble"
+        AP = Adjective;           -- adjectival phrase                   e.g. "very warm"
+        CN = CommonNoun;          -- common noun (without determiner)    e.g. "red house"
+        NP = NounPhrase;          -- noun phrase (subject or object)     e.g. "the red house"
+        IP = InterrogativePhrase; -- interrogative phrase                e.g. "who"
+        Pron = Pronoun;           -- personal pronoun                    e.g. "she"
+        Det = Determiner;         -- determiner phrase                   e.g. "those"
+        Conj = { s : Str };       -- conjunction                         e.g. "and"
+        Prep = { s : Str };       -- preposition, or just case           e.g. "in", dative
+        V = Verb;                 -- one-place verb                      e.g. "sleep"
+        V2 = Verb2;               -- two-place verb                      e.g. "love"
+        VS = Verb;                -- sentence-complement verb            e.g. "know"
+        VV = Verb;                -- verb-phrase-complement verb         e.g. "want"
+        A = Adjective;            -- one-place adjective                 e.g. "warm"
+        N = Noun;                 -- common noun                         e.g. "house"
+        PN = PropNoun;            -- proper name                         e.g. "Paris"
+        Adv = Adverb;             -- adverbial phrase                    e.g. "in the house"
+        IAdv = Adverb;            -- interrogative adverbial             e.g. "where"
 
     -- Phrase
     lin
-        UttS s = s; -- John walks
-        UttQS s = s;         -- does John walk
-        UttNP np = {s = np.s ! PF Nom NonPoss}; -- John
-        UttAdv adv = adv;        -- in the house
-        UttIAdv iadv = iadv;       -- why
+        UttS s = s;                                    -- John walks
+        UttQS s = s;                                   -- does John walk
+        UttNP np = {s = np.s ! PF Nom NonPoss};        -- John
+        UttAdv adv = adv;                              -- in the house
+        UttIAdv iadv = iadv;                           -- why
         UttImpSg pol imp = { s = imp.s ! pol.isTrue }; -- (do not) walk
 
     -- Sentence
     lin
-        UseCl = UseClause;  -- John has not walked
-        UseQCl = UseClause; -- has John walked
-        PredVP = UsePredVP;            -- John walks / John does not walk
-        QuestCl cl = cl;                 -- does John (not) walk
-        QuestVP = QuestionVerbPhrase; --  : IP -> VP -> QCl;           -- who does (not) walk
-        ImpVP = ImpVerbPhrase; -- walk / do not walk
+        UseCl = UseClause;            -- John has not walked
+        UseQCl = UseClause;           -- has John walked
+        PredVP = UsePredVP;           -- John walks / John does not walk
+        QuestCl cl = cl;              -- does John (not) walk
+        QuestVP = QuestionVerbPhrase; -- who does (not) walk
+        ImpVP = ImpVerbPhrase;        -- walk / do not walk
 
     -- Verb
     lin
-        UseV = UseVerb;             -- sleep
-        ComplV2 = UseComplV2;       -- love it ---s
-        ComplVS = UseComplVS; --   : VS -> S -> VP;         -- know that it is good
-        ComplVV = UseComplVV; --   : VV -> VP -> VP;        -- want to be good
-        UseComp =  UseComplement; --  : Comp  -> VP;           -- be small
-        CompAP = UseCompAP; --    : AP  -> Comp;           -- small
-        CompNP = UseCompNP; --    : NP  -> Comp;           -- a man
-        CompAdv = UseCompAdv; --   : Adv -> Comp;           -- in the house
-        AdvVP = UseAdvVP; --     : VP -> Adv -> VP;       -- sleep here
+        UseV = UseVerb;           -- sleep
+        ComplV2 = UseComplV2;     -- love it
+        ComplVS = UseComplVS;     -- know that it is good
+        ComplVV = UseComplVV;     -- want to be good
+        UseComp =  UseComplement; -- be small
+        CompAP = UseCompAP;       -- small
+        CompNP = UseCompNP;       -- a man
+        CompAdv = UseCompAdv;     -- in the house
+        AdvVP = UseAdvVP;         -- sleep here
 
     -- Noun
     lin
-        DetCN = DeterminerCN;       -- the man
-        UsePN = UsePropNoun;            -- John
-        UsePron p = p;  --  : Pron -> NP;            -- he
-        MassNP = MassNounPhrase; --     MassNP    : CN -> NP;              -- milk
-        a_Det = a_Determiner;                   -- indefinite singular ---s
-        aPl_Det = aPl_Determiner;                   -- indefinite plural   ---s
-        the_Det = the_Determiner;                   -- definite singular   ---s
-        thePl_Det = thePl_Determiner;                   -- definite plural     ---s
-        UseN = UseNoun;                -- house
+        DetCN = DeterminerCN;         -- the man
+        UsePN = UsePropNoun;          -- John
+        UsePron p = p;                -- he
+        MassNP = MassNounPhrase;      -- milk
+        a_Det = a_Determiner;         -- indefinite singular ---s
+        aPl_Det = aPl_Determiner;     -- indefinite plural   ---s
+        the_Det = the_Determiner;     -- definite singular   ---s
+        thePl_Det = thePl_Determiner; -- definite plural     ---s
+        UseN = UseNoun;               -- house
         AdjCN = AdjCommonNoun;        -- big house
 
     -- Adjective
     lin
-        PositA a = a; --    : A  -> AP;              -- warm
+        PositA a = a; -- warm
 
     -- Adverb
     lin
-        PrepNP prep np = { s = prep.s ++ np.s ! PF Prepos NonPoss };  -- in the house
+        PrepNP prep np = { s = prep.s ++ np.s ! PF Prepos NonPoss }; -- in the house
 
     -- Conjunction
     lin
         CoordS conj s1 s2 = {
             s = s1.s ++ conj.s ++ s2.s
-        };   -- he walks and she runs ---s
+        }; -- he walks and she runs ---s
 
     -- Tense
     lin
-        PPos = { s = [] ; isTrue = True };                   -- I sleep  [positive polarity]
-        PNeg = { s = [] ; isTrue = False };                   -- I do not sleep [negative polarity]
-        TSim = { s = [] ; isPres = True };                  -- simultanous: she sleeps ---s
-        TAnt = { s = [] ; isPres = False };                  -- anterior: she has slept ---s
+        PPos = { s = [] ; isTrue = True };  -- I sleep  [positive polarity]
+        PNeg = { s = [] ; isTrue = False }; -- I do not sleep [negative polarity]
+        TSim = { s = [] ; isPres = True };  -- simultanous: she sleeps ---s
+        TAnt = { s = [] ; isPres = False }; -- anterior: she has slept ---s
 
     -- Structural
     lin
