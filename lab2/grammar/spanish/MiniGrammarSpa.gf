@@ -15,12 +15,12 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
     } ;
     QCl = Cl ;
     Imp = {s : Bool => Str} ; -- imperative (depends on Pol)
-    VP = {verb : Verb ; compl : NGAgreement => Str} ; -- I don't think I need GVerbs
+    VP = {verb : Verb ; compl : NGAgreement => Str} ;
     Comp = {s : NGAgreement => Str} ;  -- copula complement
     AP = Adjective ;
     CN = Noun ; -- common noun
     NP = {s : Case => Str ; a : NPAgreement; g : Gender} ;
-    IP = {s : Case => Str ; a : NPAgreement; g: Gender} ;
+    IP = {s : Case => Str ; a : NPAgreement; g : Gender} ;
     Pron = {
       s : PronForm => Str ; 
       a : NPAgreement ;
@@ -187,6 +187,12 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
 
     UseN n = n ;
 
+    {- 
+    NOTE: adjectives in Spanish are usually, but not always, after the noun 
+    they modify, but their position depends more on the intended meaning
+    than on the type of adjective, cf. "Posición" in
+    https://es.wikipedia.org/wiki/Gram%C3%A1tica_del_espa%C3%B1ol#Adjetivo
+    -}
     AdjCN ap cn = {
       s = \\n => (cn.s ! n) ++ (ap.s ! (NGAgr n (cn.g))) ;
       g = cn.g
