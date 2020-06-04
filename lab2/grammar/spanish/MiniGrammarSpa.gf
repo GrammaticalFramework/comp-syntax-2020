@@ -53,15 +53,16 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
 
     UseCl temp pol cl = 
       let 
-        vf = cl.verb ! pol.isPos ! temp.isPres ;
+        pos = pol.isPos ;
+        vf = cl.verb ! pos ! temp.isPres ;
         comp = cl.compl ;
         adv = cl.adv
       in {
         s = pol.s ++ temp.s ++ cl.subj ++ case <adv.isFinal, comp.isPron> of {
-          <False,False> => adv.s ++ negation pol.isPos ++ vf ++ comp.s ;
-          <False,True> => adv.s ++ negation pol.isPos ++ comp.s ++ vf ;
-          <True,False> => negation pol.isPos ++ vf ++ comp.s ++ adv.s ;
-          <True,True> => negation pol.isPos ++ comp.s ++ vf ++ adv.s
+          <False,False> => adv.s ++ negation pos ++ vf ++ comp.s ;
+          <False,True> => adv.s ++ negation pos ++ comp.s ++ vf ;
+          <True,False> => negation pos ++ vf ++ comp.s ++ adv.s ;
+          <True,True> => negation pos ++ comp.s ++ vf ++ adv.s
         }
       } ;
 
