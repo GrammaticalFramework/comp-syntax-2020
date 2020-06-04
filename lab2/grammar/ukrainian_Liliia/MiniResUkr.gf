@@ -1,7 +1,7 @@
 --# -coding=utf8
 
 resource MiniResUkr = ParamX ** open Prelude in {
-  flags  coding=utf8;
+  flags  coding=utf8; 
 
   param
     Gender = Masc | Fem | Neut;
