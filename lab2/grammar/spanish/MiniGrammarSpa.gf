@@ -112,10 +112,17 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
       isPron = False
     } ;
 
-    ComplV2 v2 np = {
+    ComplV2 v2 np = let pron = np.isPron in {
       verb = v2 ;
-      compl = \\_ => v2.c ++ np.s ! Acc ;
-      isPron = np.isPron
+      compl = \\_ => case pron of {
+        {-
+        NOTE: I think this is valid in general, but at least it is for sure for
+        the only V2 with indirect object we have in the vocabulary, "matar"
+        -}
+        True => np.s ! Acc ;
+        False => v2.c ++ np.s ! Acc 
+      } ;
+      isPron = pron
     } ;
 
     ComplVS vs s = {
