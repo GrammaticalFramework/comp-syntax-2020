@@ -1,8 +1,9 @@
 concrete MiniLexiconSpa of MiniLexicon = MiniGrammarSpa **
   open
-    MiniParadigmsSpa
+    MiniParadigmsSpa,
+    Prelude
   in {
-    lin already_Adv = mkAdv "ya" ;
+    lin already_Adv = mkAdv "ya" False;
     lin animal_N = mkN "animal" ;
     lin apple_N = mkN "manzana" ;
     lin baby_N = mkN "bebé" ;
@@ -60,7 +61,7 @@ concrete MiniLexiconSpa of MiniLexicon = MiniGrammarSpa **
     lin milk_N = mkN "leche" ;
     lin music_N = mkN "música" ;
     lin new_A = mkA "nuevo" ;
-    lin now_Adv = mkAdv "ahora" ;
+    lin now_Adv = mkAdv "ahora" True ;
     lin old_A = mkA "viejo" ;
     lin paris_PN = mkPN "París" ;
     lin play_V = mkV "jugar" ;

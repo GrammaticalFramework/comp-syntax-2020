@@ -12,11 +12,11 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
       subj : Str ; -- subject (should be optional!)
       verb : Bool => Bool => Str ; -- depends on Pol and Temp
       compl : { s : Str ; isPron : Bool } ; -- after verb: complement, adverbs
-      adv : Str
+      adv : Adv
     } ;
     QCl = Cl ;
     Imp = {s : Bool => Str} ; -- imperative (depends on Pol)
-    VP = {verb : Verb ; compl : NGAgreement => Str ; isPron : Bool ; adv : Str } ;
+    VP = {verb : Verb ; compl : NGAgreement => Str ; isPron : Bool ; adv : Adv } ;
     Comp = {s : NGAgreement => Str; isPron : Bool} ;  -- copula complement
     AP = Adjective ;
     CN = Noun ; -- common noun
@@ -40,7 +40,7 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
     A = Adjective ;
     N = Noun ;
     PN = Noun ; -- proper name
-    Adv = {s : Str} ;
+    Adv = {s : Str ; isFinal : Bool} ;
     IAdv = {s : Str} ; -- interrogative
 
   lin
@@ -56,19 +56,11 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
         vf = cl.verb ! pol.isPos ! temp.isPres ;
         comp = cl.compl
       in {
-        s = case comp.isPron of {
-            True => pol.s ++ temp.s ++ -- hack again
-                    cl.subj ++ -- quién/ella
-                    cl.adv ++
-	                  negation pol.isPos ++ -- no
-                    comp.s ++ -- la
-	                  vf ; -- bebe
-            False => pol.s ++ temp.s ++ -- hack again
-                     cl.subj ++ -- quién/ella
-                     cl.adv ++
-	                   negation pol.isPos ++ -- no
-	                   vf ++ -- bebe
-	                   comp.s -- cerveza
+        s = pol.s ++ temp.s ++ cl.subj ++ case <cl.adv.isFinal, comp.isPron> of {
+          <False,False> => cl.adv.s ++ negation pol.isPos ++ vf ++ comp.s ;
+          <False,True> => cl.adv.s ++ negation pol.isPos ++ comp.s ++ vf ;
+          <True,False> => negation pol.isPos ++ vf ++ comp.s ++ cl.adv.s ;
+          <True,True> => negation pol.isPos ++ comp.s ++ vf ++ cl.adv.s
         }
       } ;
 
@@ -114,7 +106,10 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
       verb = v ;
       compl = \\_ => [] ;
       isPron = False ;
-      adv = []
+      adv = lin Adv {
+        s = [] ;
+        isFinal = False
+      }
     } ;
 
     ComplV2 v2 np = let pron = np.isPron in {
@@ -128,14 +123,20 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
         False => v2.c ++ np.s ! Acc 
       } ;
       isPron = pron ;
-      adv = []
+      adv = lin Adv {
+        s = [] ;
+        isFinal = False
+      }
     } ;
 
     ComplVS vs s = {
       verb = vs ;
       compl = \\_ => "que" ++ s.s ;
       isPron = False ;
-      adv = []
+      adv = lin Adv {
+        s = [] ;
+        isFinal = False
+      }
     } ;
 
     ComplVV vv vp = {
@@ -144,14 +145,20 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
       -- (problem: unsupported token gluing)
       compl = \\agr => vp.verb.s ! VInf ++ vp.compl ! agr ;
       isPron = False ;
-      adv = []
+      adv = lin Adv {
+        s = [] ;
+        isFinal = False
+      }
     } ;
     
     UseComp comp = {
       verb = ser "s" ;
       compl = comp.s ;
       isPron = False ;
-      adv = []
+      adv = lin Adv {
+        s = [] ;
+        isFinal = False
+      }
     } ;   
 
     CompAP ap = {
@@ -169,7 +176,12 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
       isPron = False
     } ;
 
-    AdvVP vp adv = vp ** {adv = adv.s} ;
+    AdvVP vp adv = vp ** {
+      adv = lin Adv {
+        s = adv.s ;
+        isFinal = adv.isFinal
+      }} ;
+
     -- common noun with det
     DetCN det cn = {
       s = table {c => det.s ! cn.g ++ cn.s ! det.n} ;
@@ -249,7 +261,9 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
 
     PositA a = a;
 
-    PrepNP prep np = {s = prep.s ++ np.s ! Acc} ;
+    PrepNP prep np = {
+      s = prep.s ++ np.s ! Acc ;
+      isFinal = True } ;
 
     CoordS conj a b = {s = a.s ++ conj.s ++ b.s} ;
 

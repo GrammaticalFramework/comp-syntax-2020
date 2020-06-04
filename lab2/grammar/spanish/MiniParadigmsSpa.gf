@@ -1,7 +1,8 @@
 resource MiniParadigmsSpa = open
 
   MiniGrammarSpa,
-  MiniResSpa
+  MiniResSpa,
+  Prelude
   
 in {
 
@@ -46,8 +47,8 @@ oper
   mkVS : V -> VS
     = \v -> lin VS v ;
 
-  mkAdv : Str -> Adv
-    = \s -> lin Adv {s = s} ;
+  mkAdv : Str -> Bool -> Adv
+    = \s,f -> lin Adv {s = s; isFinal = f} ;
 
   mkPrep : Str -> Prep
     = \s -> lin Prep {s = s} ;
