@@ -20,7 +20,7 @@ param
   VImpForm = VInf | VPart Tense | VGer ;
   VPersForm = VPers Mood Tense Aspect NPAgreement Polarity ;
   -}
-  param VForm = VInf | VPartPast NGAgreement | VPres NPAgreement | VImp NPAgreement Polarity ;
+  param VForm = VInf | VPartPast | VPres NPAgreement | VImp NPAgreement Polarity ;
   
   -- pronouns forms
   PronForm = PForm Case NGAgreement ; 
@@ -84,14 +84,11 @@ oper
   Verb2 : Type = Verb ** {c : Str} ;
 
   mkVerb : (_,_,_,_,_,_,_,_,_,_,_,_,_,_ : Str) -> Verb
-    = \inf, partpastsgm, pressg1, pressg2, pressg3, prespl1, prespl2, prespl3, imprpossg2, imprpospl1, imprpospl2, imprnegsg2, imprnegpl1, imprnegpl2 -> let pps = (smartAdjective partpastsgm).s in {
+    = \inf, partpast, pressg1, pressg2, pressg3, prespl1, prespl2, prespl3, imprpossg2, imprpospl1, imprpospl2, imprnegsg2, imprnegpl1, imprnegpl2 -> {
       s = table {
         -- | Formas impersonales
         VInf => inf ;
-        VPartPast (NGAgr Sg M) => partpastsgm ;
-        VPartPast (NGAgr Sg F) => pps ! (NGAgr Sg F) ;
-        VPartPast (NGAgr Pl M) => pps ! (NGAgr Pl M) ;
-        VPartPast (NGAgr Pl F) => pps ! (NGAgr Pl F) ;
+        VPartPast => partpast ;
         -- | Formas personales
         VPres (NPAgr Sg P1) => pressg1 ;
         VPres (NPAgr Sg P2) => pressg2 ;
@@ -135,7 +132,7 @@ oper
       let orig = conjugEr "romp" 
         in orig ** { 
           s = table { 
-            VPartPast _ => "roto" ;
+            VPartPast => "roto" ;
             x => orig.s ! x
           }
         } ;
@@ -158,7 +155,7 @@ oper
       let orig = conjugEr v 
       in orig ** { 
         s = table {
-          VPartPast _ => "visto" ;
+          VPartPast => "visto" ;
           VPres (NPAgr Sg P1) => "veo" ;
           VPres (NPAgr Pl P2) => "veis" ;
           VImp (NPAgr Pl P1) Pos => "veamos" ;

@@ -9,7 +9,7 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
     S  = {s : Str} ;
     QS = {s : Str} ;
     Cl = {   -- word order is fixed in S and QS
-      subj : Str ; -- subject (should be optional)
+      subj : Str ; -- subject (should be optional!)
       verb : Bool => Bool => Str ; -- depends on Pol and Temp
       compl : { s : Str ; isPron : Bool } -- after verb: complement, adverbs
     } ;
@@ -88,7 +88,7 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
         } ;
         verb = \\_,isPres => case isPres of {
           True => vp.verb.s ! (VPres np.a) ;
-          False => ((smartVerb "haber").s ! (VPres np.a)) ++ (vp.verb.s ! (VPartPast (NGAgr Sg M)))
+          False => ((smartVerb "haber").s ! (VPres np.a)) ++ (vp.verb.s ! VPartPast)
         } 
       }  ;
 
