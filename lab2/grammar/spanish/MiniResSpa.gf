@@ -108,14 +108,10 @@ oper
     
     -- not very smart actually
     smartVerb : Str -> Verb = \inf -> case inf of {
-      -- irregulars (but not enough for me to write all forms in the lexicon)
-      "romper" => romper "romp" ;
-      "encontrar" => encontrar "encontr" ;
-      "ver" => ver "v" ;
-      "entender" => entender "entend" ;
-      -- auxiliares
-      "haber" => haber "hab" ;
-      "ser" => ser "s" ;
+      -- this verb is irregular, but not enough
+      "romper" => let orig = conjugEr "romp" in orig ** { 
+          s = table { VPartPast => "roto" ; x => orig.s ! x }
+        } ;
       -- regulares
       cant + "ar" => conjugAr cant ;
       aprend + "er" => conjugEr aprend ;
@@ -128,96 +124,10 @@ oper
 
     conjugIr : Str -> Verb = \sacud -> mkVerb (sacud + "ir") (sacud + "ido") (sacud + "o") (sacud + "es") (sacud + "e") (sacud + "imos") (sacud + "ìs") (sacud + "en") (sacud + "e") (sacud + "amos") (sacud + "id") (sacud + "as") (sacud + "amos") (sacud + "àis") ;
 
-    -- irregular verbs
-    romper : Str -> Verb = \romp -> 
-      let orig = conjugEr "romp" 
-        in orig ** { 
-          s = table { 
-            VPartPast => "roto" ;
-            x => orig.s ! x
-          }
-        } ;
+    -- verbos auxiliares
+    haber : Verb = mkVerb "haber" "habido" "he" "has" "ha" "hemos" "habéis" "han" "he" "hayamos" "habed" "hayas" "hayamos" "hayàis" ;
 
-    encontrar : Str -> Verb = \encontr -> 
-      let orig = conjugAr encontr 
-      in orig ** { 
-        s = table { 
-          VPres (NPAgr Sg P1) => "encuentro" ;
-          VPres (NPAgr Sg P2) => "encuentras" ;
-          VPres (NPAgr Sg P3) => "encuentra" ;
-          VPres (NPAgr Pl P3) => "encuentran" ;
-          VImp (NPAgr Sg P2) Pos => "encuentra" ;
-          VImp (NPAgr Sg P2) Neg => "encuentres" ;
-          x => orig.s ! x
-        }
-      } ;
-
-    ver : Str -> Verb = \v -> 
-      let orig = conjugEr v 
-      in orig ** { 
-        s = table {
-          VPartPast => "visto" ;
-          VPres (NPAgr Sg P1) => "veo" ;
-          VPres (NPAgr Pl P2) => "veis" ;
-          VImp (NPAgr Pl P1) Pos => "veamos" ;
-          VImp (NPAgr Sg P2) Neg => "veas" ;
-          VImp (NPAgr Pl P1) Neg => "veamos" ;
-          VImp (NPAgr Pl P2) Neg => "veàis" ;
-          x => orig.s ! x
-        }
-      } ;
-
-    entender : Str -> Verb = \entend -> 
-      let orig = conjugEr entend 
-      in orig ** { 
-        s = table {
-          VPres (NPAgr Sg P1) => "entiendo" ;
-          VPres (NPAgr Sg P2) => "entiendes" ;
-          VPres (NPAgr Sg P3) => "entiende" ;
-          VPres (NPAgr Pl P3) => "entienden" ;
-          VImp (NPAgr Sg P2) Pos => "entiende" ;
-          VImp (NPAgr Sg P2) Neg => "entiendas" ;
-          x => orig.s ! x
-        }
-      } ;
-
-    haber : Str -> Verb = \hab -> 
-      let orig = conjugEr hab 
-      in orig ** { 
-        s = table {
-          VPres (NPAgr Sg P1) => "he" ;
-          VPres (NPAgr Sg P2) => "has" ;
-          VPres (NPAgr Sg P3) => "ha" ;
-          VPres (NPAgr Pl P1) => "hemos" ;
-          VPres (NPAgr Pl P3) => "han" ;
-          VImp (NPAgr Sg P2) Pos => "he" ;
-          VImp (NPAgr Pl P1) Pos => "hayamos" ;
-          VImp (NPAgr Sg P2) Neg => "hayas" ;
-          VImp (NPAgr Pl P1) Neg => "hayamos" ;
-          VImp (NPAgr Pl P2) Neg => "hayàis" ;
-          x => orig.s ! x
-        }
-      } ;
-
-    ser : Str -> Verb = \s -> 
-      let orig = conjugEr s 
-      in orig ** { 
-        s = table {
-          -- indicativo presente
-          VPres (NPAgr Sg P1) => "soy" ;
-          VPres (NPAgr Sg P2) => "eres" ;
-          VPres (NPAgr Sg P3) => "es" ;
-          VPres (NPAgr Pl P1) => "somos" ;
-          VPres (NPAgr Pl P2) => "sois" ;
-          VPres (NPAgr Pl P3) => "son" ;
-          VImp (NPAgr Sg P2) Pos => "sé" ;
-          VImp (NPAgr Pl P1) Pos => "seamos" ;
-          VImp (NPAgr Sg P2) Neg => "seas" ;
-          VImp (NPAgr Pl P1) Neg => "seamos" ;
-          VImp (NPAgr Pl P2) Neg => "seàis" ;
-          x => orig.s ! x
-        }
-      } ;
+    ser : Verb = mkVerb "ser" "sido" "soy" "eres" "es" "somos" "sois" "son" "sé" "seamos" "sed" "seas" "seamos" "seàis" ;
 
       -- | More or less useful helper functions
       negation : Bool -> Str = \b -> case b of {True => [] ; False => "no"} ;

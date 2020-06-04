@@ -96,7 +96,7 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
         } ;
         verb = \\_,isPres => case isPres of {
           True => vp.verb.s ! (VPres np.a) ;
-          False => ((smartVerb "haber").s ! (VPres np.a)) ++ (vp.verb.s ! VPartPast)
+          False => (haber.s ! (VPres np.a)) ++ (vp.verb.s ! VPartPast)
         } ;
         adv = vp.adv
       }  ;
@@ -174,7 +174,7 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
     } ;
     
     UseComp comp = {
-      verb = ser "s" ;
+      verb = ser ;
       compl = comp.s ;
       isPron = False ;
       adv = lin Adv {
