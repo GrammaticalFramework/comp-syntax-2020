@@ -74,12 +74,7 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
         }
       } ;
 
-    {- 
-    NOTE: added ¿? just to visually distinguish questions during testing, since
-    word order does not change
-    -}
-    UseQCl temp pol qcl = 
-      {s = "¿" ++ (UseCl temp pol qcl).s ++ "?"} ;
+    UseQCl temp pol qcl = UseCl temp pol qcl ;
 
     -- there is a warning but everything seems to work
     QuestCl cl = cl ;
