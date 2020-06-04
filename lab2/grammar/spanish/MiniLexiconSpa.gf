@@ -4,6 +4,16 @@ concrete MiniLexiconSpa of MiniLexicon = MiniGrammarSpa **
     Prelude, 
     MiniResSpa
   in {
+    {-
+    NOTE: sometimes it is hard to distinguish between V2s with direct and 
+    indirect object because some require a preposition when the object is a
+    person and don't when it's something inanimate, e.g.
+      "encontrar algo" (="to find something") but "encontrar a alguien" (="to
+      find someone").
+    I don't know how systematically this happens, so in such cases (when there
+    is this problem AND the object can be both animate and inanimate), I
+    arbitrarily decided to treat them as verbs that take a direct object.
+    -}
     lin already_Adv = mkAdv "ya" False;
     lin animal_N = mkN "animal" M ;
     lin apple_N = mkN "manzana" ;
