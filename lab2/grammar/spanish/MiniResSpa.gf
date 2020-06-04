@@ -108,7 +108,7 @@ oper
     
     -- not very smart actually
     smartVerb : Str -> Verb = \inf -> case inf of {
-      -- this verb is irregular, but not enough
+      -- irregulares pero poco
       "romper" => let orig = conjugEr "romp" in orig ** { 
           s = table { VPartPast => "roto" ; x => orig.s ! x }
         } ;
@@ -118,6 +118,7 @@ oper
       sacud + "ir" => conjugIr sacud
     } ;
 
+    -- conjucaciones regulares
     conjugAr : Str -> Verb = \cant -> mkVerb (cant + "ar") (cant + "ado") (cant + "o") (cant + "as") (cant + "a") (cant + "amos") (cant + "áis") (cant + "an") (cant + "a") (cant + "emos") (cant + "ad") (cant + "es") (cant + "emos") (cant + "éis") ;
 
     conjugEr : Str -> Verb = \aprend -> mkVerb (aprend + "er") (aprend + "ido") (aprend + "o") (aprend + "es") (aprend + "e") (aprend + "emos") (aprend + "éis") (aprend + "en") (aprend + "e") (aprend + "amos") (aprend + "ed") (aprend + "as") (aprend + "amos") (aprend + "àis") ;
