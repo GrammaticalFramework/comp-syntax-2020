@@ -96,12 +96,16 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
       -- NOTE: agreement is hardcoded (twice) because the only sentences we can 
       -- form seem to be singular and, I assume, second person, while gender is 
       -- irrelevant here
-      s = \\pol => 
-        negation pol ++
-        -- TODO: remove space between the two tokens whenever vp.isPron
-        -- (problem: unsupported token gluing) 
-        (vp.verb.s ! (VImp (NPAgr Sg P2) (polarity pol))) ++ 
-        vp.compl ! (NGAgr Sg M)
+      s = \\pol => let 
+        most = negation pol ++
+               -- TODO: remove space between the two tokens whenever vp.isPron
+               -- (problem: unsupported token gluing) 
+               (vp.verb.s ! (VImp (NPAgr Sg P2) (polarity pol))) ++
+               vp.compl ! (NGAgr Sg M) 
+        in case vp.adv.isFinal of {
+          True => most ++ vp.adv.s ;
+          False => vp.adv.s ++ most
+        }
     } ;
 
     UseV v = {
