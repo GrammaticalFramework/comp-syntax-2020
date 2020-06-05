@@ -1,0 +1,7 @@
+UseCl, UseQCl, ImpVP {"не"} PART advmod head 
+UseComp {"буду", "будеш", "буде", "будемо", "будете", "будуть", "був"} AUX cop head
+PredVP, QuestVP {"has","had","have","do","does"} AUX aux head
+ImpVP {"do"} AUX aux head
+ComplVS {"що"} SCONJ mark ccomp
+ComplVV xcomp
+PrepNP 	case obl
