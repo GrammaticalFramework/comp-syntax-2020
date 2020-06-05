@@ -27,16 +27,8 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
     CN = Noun ; -- common noun
     NP = {s : Case => Str ; a : NPAgreement; g : Gender ; isPron : Bool } ;
     IP = {s : Case => Str ; a : NPAgreement; g : Gender ; isPron : Bool } ;
-    Pron = {
-      s : PronForm => Str ; 
-      a : NPAgreement ;
-      g : Gender
-    } ;
-    Det = { 
-      -- should be NGAgr but there was some reason for it not to be
-      s : Gender => Str ; 
-      n : Number 
-    } ;
+    Pron = Pronoun ;
+    Det = Determiner ;
     Conj = {s : Str} ;
     Prep = {s : Str} ;
     V = Verb ;
@@ -236,37 +228,13 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
       isPron = False
     } ;
 
-    a_Det = {
-      s = table {
-        M => "un" ;
-        F => "una" 
-      } ;
-      n = Sg
-    } ;
+    a_Det = mkDeterminer Sg Ind ;
 
-    aPl_Det = {
-      s = table {
-        M => "unos" ;
-        F => "unas" 
-      } ;
-      n = Pl
-    } ;
+    aPl_Det = mkDeterminer Pl Ind ;
 
-    the_Det = {
-      s = table {
-        M => "el" ;
-        F => "la" -- even though that's another story for "el agua" y "el aguila" (their gender is feminine but their article is masculine)
-      } ;
-      n = Sg
-    } ;
+    the_Det = mkDeterminer Sg Def ;
 
-    thePl_Det = {
-      s = table {
-        M => "los" ;
-        F => "las"
-      } ;
-      n = Pl
-    } ;
+    thePl_Det = mkDeterminer Pl Def ;
 
     {-
     NOTE: one way this grammar is overgenerating is that it accepts/generates
@@ -307,119 +275,22 @@ concrete MiniGrammarSpa of MiniGrammar = open MiniResSpa, Prelude in {
       s = table {
         _ => "cada"
       } ; 
-      n = Sg
+      n = Sg ;
+      d = Def -- TODO: distinguish between articles and other determiners
     } ;
 
     in_Prep = {s = "en"} ;
     on_Prep = {s = "sobre"} ;
     with_Prep = {s = "con"} ;
 
-    i_Pron = {
-      s = table {
-        PForm Nom _ => "yo" ; 
-        PForm Acc _ => "me" ;
-        PForm Dat _ => "me" ;
-        PForm Gen (NGAgr Sg M) => "mío" ;
-        PForm Gen (NGAgr Sg F) => "mía" ;
-        PForm Gen (NGAgr Pl M) => "míos" ;
-        PForm Gen (NGAgr Pl F) => "mías" ;
-        PForm Pre _ => "mí"
-      } ;
-      a = NPAgr Sg P1 ;
-      g = M  -- not really, but there is no way to know
-      } ;
-    
-    youSg_Pron = {
-      s = table {
-        PForm Nom _ => "tú" ; 
-        PForm Acc _ => "te" ;
-        PForm Dat _ => "te" ;
-        PForm Gen (NGAgr Sg M) => "tuyo" ;
-        PForm Gen (NGAgr Sg F) => "tuya" ;
-        PForm Gen (NGAgr Pl M) => "tuyos" ;
-        PForm Gen (NGAgr Pl F) => "tuyas" ;
-        PForm Pre _ => "ti"
-      } ;
-      a = NPAgr Sg P2 ;
-      g = M -- not really, but there is no way to know
-    } ;
-
-    he_Pron = {
-      s = table {
-        PForm Nom _ => "él" ; 
-        PForm Acc _ => "lo" ;
-        PForm Dat _ => "le" ;
-        PForm Gen (NGAgr Sg M) => "suyo" ;
-        PForm Gen (NGAgr Sg F) => "suya" ;
-        PForm Gen (NGAgr Pl M) => "suyos" ;
-        PForm Gen (NGAgr Pl F) => "suyas" ;
-        PForm Pre _ => "se"
-      } ;
-      a = NPAgr Sg P3 ;
-      g = M -- not really, but there is no way to know
-    } ;
-
-    she_Pron = {
-      s = table {
-        PForm Nom _ => "ella" ; 
-        PForm Acc _ => "la" ;
-        PForm Dat _ => "le" ;
-        PForm Gen (NGAgr Sg M) => "suyo" ;
-        PForm Gen (NGAgr Sg F) => "suya" ;
-        PForm Gen (NGAgr Pl M) => "suyos" ;
-        PForm Gen (NGAgr Pl F) => "suyas" ; 
-        PForm Pre _ => "se"
-      } ;
-      a = NPAgr Sg P3 ;
-      g = F -- not really, but there is no way to know
-    } ;
-
+    i_Pron = mkPronoun (NPAgr Sg P1) M ; -- arbitrary gender
+    youSg_Pron = mkPronoun (NPAgr Sg P2) M ; -- arbitrary gender
+    he_Pron = mkPronoun (NPAgr Sg P3) M ;
+    she_Pron = mkPronoun (NPAgr Sg P3) F ;
     -- it_Pron missing in AST :(
-
-    we_Pron = {
-      s = table {
-        PForm Nom _ => "nosotros" ;
-        PForm Acc _ => "nos" ;
-        PForm Dat _ => "nos" ;
-        PForm Gen (NGAgr Sg M) => "nuestro" ;
-        PForm Gen (NGAgr Sg F) => "nuestra" ;
-        PForm Gen (NGAgr Pl M) => "nuestros" ;
-        PForm Gen (NGAgr Pl F) => "nuestras" ;
-        PForm Pre _ => "nosotros"
-      } ;
-      a = NPAgr Pl P1 ;
-      g = M  -- missing "nosotras"
-    } ;
-
-    youPl_Pron = {
-      s = table {
-        PForm Nom _ => "vosotros" ;
-        PForm Acc _ => "os" ;
-        PForm Dat _ => "os" ;
-        PForm Gen (NGAgr Sg M) => "vuestro" ;
-        PForm Gen (NGAgr Sg F) => "vuestra" ;
-        PForm Gen (NGAgr Pl M) => "vuestros" ;
-        PForm Gen (NGAgr Pl F) => "vuestras" ; 
-        PForm Pre _ => "vosotros"
-      } ;
-      a = NPAgr Pl P2 ;
-      g = M  -- missing "vosotras"
-    } ;
-
-    they_Pron = {
-      s = table {
-        PForm Nom _ => "ellos" ;
-        PForm Acc _ => "los" ;
-        PForm Dat _ => "les" ;
-        PForm Gen (NGAgr Sg M) => "suyo" ;
-        PForm Gen (NGAgr Sg F) => "suya" ;
-        PForm Gen (NGAgr Pl M) => "suyos" ;
-        PForm Gen (NGAgr Pl F) => "suyas" ;
-        PForm Pre _ => "se"
-      } ;
-      a = NPAgr Pl P3 ;
-      g = M  -- missing "ellas"
-    } ;
+    we_Pron = mkPronoun (NPAgr Pl P1) M ; -- arbitrary gender
+    youPl_Pron = mkPronoun (NPAgr Pl P2) M ; -- arbitrary gender
+    they_Pron = mkPronoun (NPAgr Pl P3) M ; -- arbitrary gender
 
     whoSg_IP = { 
       s = table { _ => "quién"} ; -- case does not matter
