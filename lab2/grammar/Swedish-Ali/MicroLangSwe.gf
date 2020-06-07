@@ -6,8 +6,8 @@ concrete MicroLangSwe of MicroLang = open MicroResSwe in {
 -----------------------------------------------------
 
   lincat
-    Utt = {s : Str} ;
-    S = {s : Str} ;
+   Utt = {s : Str} ;
+  --  S = {s : Str} ;
   --  VP, -- = {verb : Verb ; compl : Str} ; ---s special case of Mini
   --  Comp, -- = {s : Str} ;
   --  AP, -- = Adjective ;
@@ -21,15 +21,14 @@ concrete MicroLangSwe of MicroLang = open MicroResSwe in {
   --  Adv  -- = {s : Str} ;
     --  = {s : Str} ;
     --  CN,
-    N
-      = Noun ;
+    N = Noun ;
 --  oper
 --  mkN : Str -> {s:Str ; g : Gender };
 --  mkN  str = {s = str} ;
 
   lin
     UttS s = s ;
-
+  --  UseN n = n ;
   --  UttNP np = np ;
 
   --  PredVPS np vp = {
@@ -52,7 +51,7 @@ concrete MicroLangSwe of MicroLang = open MicroResSwe in {
   --  s = vp.s ++ adv.s} ;
 
 
-    UsePron pron = pron ;
+  --  UsePron pron = pron ;
 
   --  en_Det = {s = "en"} ;
 
@@ -84,7 +83,7 @@ concrete MicroLangSwe of MicroLang = open MicroResSwe in {
   --  the_Det = {s = "the" ; n = Sg} ;
   --  thePl_Det = {s = "the" ; n = Pl} ;
 
---    UseN n = n ;
+  --  UseN n = n ;
 
   --  AdjCN ap cn = {
     --  s = table {n => ap.s ++ cn.s ! n}
@@ -120,19 +119,19 @@ concrete MicroLangSwe of MicroLang = open MicroResSwe in {
 --lin bad_A = mkA "dålig" ;
 --lin beer_N = mkN "öl" "öl" Neu;
 --lin big_A = mkA "stor"  ;
-lin bike_N = mkN "cykel" Neu ;
-lin bird_N = mkN "fågel" Neu ;
+lin bike_N = mkN "cykel"  ;
+lin bird_N = mkN "fågel"  ;
 --lin black_A = mkA "svart" ;
 --lin blood_N = mkN "blod" "blod" Ut ;
 --lin blue_A = mkA "blå" ;
-lin boat_N = mkN "båt" Neu ;
+lin boat_N = mkN "båt"  ;
 --lin book_N = mkN "bok" "böcker" Neu ;
-lin boy_N = mkN "pojke" Neu ;
+lin boy_N = mkN "pojke"  ;
 --lin bread_N = mkN "bröd" "bröd" Ut ;
 --lin break_V2 = mkV2 (mkV "break" "broke" "broken") ;
 --lin buy_V2 = mkV2 (mkV "buy" "bought" "bought") ;
-lin car_N = mkN "bil" Neu ;
-lin cat_N = mkN "katt" Neu ;
+lin car_N = mkN "bil"  ;
+lin cat_N = mkN "katt" ;
 --lin child_N = mkN "barn" "barn" Ut ;
 --lin city_N = mkN "stad" "städer" Neu ;
 --lin clean_A = mkA "ren" ;
@@ -140,24 +139,24 @@ lin cat_N = mkN "katt" Neu ;
 --lin cloud_N = mkN "moln" "moln" Ut ;
 --lin cold_A = mkA "kallt" ;
 --lin come_V = mkV "come" "came" "come" ;
-lin computer_N = mkN "dator" Neu ;
+lin computer_N = mkN "dator"  ;
 --lin cow_N = mkN "ko" "kor" ;
 --lin dirty_A = mkA "smutsig" ;
-lin dog_N = mkN "hund" Neu ;
+lin dog_N = mkN "hund"  ;
 --lin drink_V2 = mkV2 (mkV "drink" "drank" "drunk") ;
 --lin eat_V2 = mkV2 (mkV "eat" "ate" "eaten") ;
 --lin find_V2 = mkV2 (mkV "find" "found" "found") ;
 --lin fire_N = mkN "bränd" "bränder" Ut;
-lin fish_N = mkN "fisk" Neu;
-lin flower_N = mkN "blomma" Neu;
-lin friend_N = mkN "vän" Neu;
-lin girl_N = mkN "flicka" Neu;
+lin fish_N = mkN "fisk" ;
+lin flower_N = mkN "blomma" ;
+lin friend_N = mkN "vän" ;
+lin girl_N = mkN "flicka" ;
 --lin good_A = mkA "bra" ;
 --lin go_V = mkV "gå" "went" "gone" ;
-lin grammar_N = mkN "grammatik" Neu;
+lin grammar_N = mkN "grammatik";
 --lin green_A = mkA "grön" ;
 --lin heavy_A = mkA "tung" ;
-lin horse_N = mkN "häst" Neu;
+lin horse_N = mkN "häst" ;
 --lin hot_A = mkA "varm" ;
 --lin house_N = mkN "hus" "hus" Ut;
 -- lin john_PN = mkPN "John" ;
@@ -178,14 +177,14 @@ lin horse_N = mkN "häst" Neu;
 --lin read_V2 = mkV2 (mkV "read" "read" "read") ;
 --lin ready_A = mkA "redo" ;
 --lin red_A = mkA "röd" ;
-lin river_N = mkN "flod" Neu;
+lin river_N = mkN "flod" ;
 --lin run_V = mkV "run" "ran" "run" ;
-lin sea_N = mkN "hav" Ut;
+lin sea_N = mkN "hav" ;
 --lin see_V2 = mkV2 (mkV "see" "saw" "seen") ;
 --lin ship_N = mkN "fartyg" "fartyg" ;
 --lin sleep_V = mkV "sleep" "slept" "slept" ;
 --lin small_A = mkA "små" ;
-lin star_N = mkN "stjärna" Neu;
+lin star_N = mkN "stjärna" ;
 --lin swim_V = mkV "swim" "swam" "swum" ;
 --lin teach_V2 = mkV2 (mkV "teach" "taught" "taught") ;
 --lin train_N = mkN "tåg" "tågen" Ut ;
@@ -195,10 +194,10 @@ lin star_N = mkN "stjärna" Neu;
 --lin wait_V2 = mkV2 "vänta" "på" ;
 --lin walk_V = mkV "gå" ;
 --lin warm_A = mkA "varmt" ;
-lin water_N = mkN "vatten" Ut;
+lin water_N = mkN "vatten" ;
 --lin white_A = mkA "vit" ;
-lin wine_N = mkN "vin" Ut;
-lin woman_N = mkN "kvinna" Neu;
+lin wine_N = mkN "vin" ;
+lin woman_N = mkN "kvinna" ;
 --lin yellow_A = mkA "gul" ;
 --lin young_A = mkA "ung" ;
 
@@ -206,9 +205,15 @@ lin woman_N = mkN "kvinna" Neu;
 -- Paradigms part ---------
 ---------------------------
 oper
---  mkN = overload {
-    mkN : Str -> Gender -> Noun    -- predictable noun, e.g. car-cars, boy-boys, fly-flies, bush-bushes
-      = \n,g -> lin N (smartN n g) ;
+  mkN = overload {
+    mkN : Str ->  Noun
+      = \ n -> lin N (smartN n)} ;
+
+  -- mkN : (sgIndef, sgDefi, plIndef, plDefi: Str ) ->  Noun
+  --    = \ sgIndef, sgDefi, plIndef, plDefi  -> lin N (mkN sgIndef sgDefi plIndef plDefi ) ;
+  --  mkN : (sgIndef, sgDefi, plIndef, plDefi : Str) -> Noun
+  --     = \sgIndef, sgDefi, plIndef, plDefi -> lin N (irregN sgIndef sgDefi plIndef plDefi)
 
 
-}
+
+    }

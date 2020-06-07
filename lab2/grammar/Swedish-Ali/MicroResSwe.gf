@@ -19,16 +19,43 @@ oper
 
   --  mkN :(sgIndef,sgDefi,plindef,plDefi : Str)-> Gender -> Noun = smartN ;
 --  } ;
+ --mkN = overload {
+  --  mkN : Str -> Noun = regN ;
+  --  mkN : Str -> Noun = smartN ;
+  --  mKN : Str -> Str -> Noun = regN ;
+
+--} ;
 
 
- mkN : (sgIndef,sgDefi,plIndef,plDefi : Str) -> Gender -> Noun
-    =\sgIndef, sgDefi, plIndef, plDefi, gender -> {s = table { Sg    => table { Indef => sgIndef ;
+--regN :  Str -> Str -> Str -> Str -> Noun ;
+--  regN sgIndef sgDefi plIndef plDefi = {s = table { Sg    => table { Indef => sgIndef ;
+  --                                                                            Defi  => sgDefi } ;
+--
+  --                                                        Pl    => table { Indef => plIndef ;
+    --                                                                       Defi  => plDefi }
+      --                                  } ;
+        --                                                        g = taGender sgIndef }  ;
+
+
+
+
+ mkN : (sgIndef, sgDefi, plIndef, plDefi : Str ) ->  Noun
+    =\sgIndef, sgDefi, plIndef, plDefi -> {s = table { Sg    => table { Indef => sgIndef ;
                                                                                Defi  => sgDefi } ;
 
                                                            Pl    => table { Indef => plIndef ;
                                                                             Defi  => plDefi }
                                          } ;
-                                                                 g = gender }  ;
+                                                                 g = taGender sgIndef }  ;
+
+
+taGender : Str -> Gender
+ = \sg -> case sg of {
+      x + ("t"|"d") => Ut ;
+      x + "e" => Neu ;
+      _ => Ut
+
+} ;
   --smartN : Str -> Gender -> Noun ;
 --  smartN sgIndef gender sgDefi plIndef plDefi  = {s = table { Sg    => table { Indef => sgIndef ;
   --                                                                            Defi  => sgDefi } ;
@@ -37,19 +64,45 @@ oper
     --                                                                      Defi  => plDefi }
     --                                   } ;
     --                  g = gender }  ;
+--gend : Str -> Noun -> Gender = \
+
+--  smartN : Str -> Noun ;
+--  smartN sgIndef =
+--    let  sgDefi, plIndef, plDefi : Str = case sgIndef of {
+--    x + ("t"|"d") =>  (sgIndef + "en") (sgIndef + "ar") (sgIndef + "arna") ;
+--    x + "e"       =>   (x + "en") (x + "ar") (x + "arna")  ;
+--     x + "m"    =>   (x + "len") (x +"lar") (x + "larna")  ;
+--    _       =>   (sgIndef + "et") sgIndef (sgIndef + "ene")
+  --   _     => mkN sgIndef (sgIndef + "et") sgIndef (sgIndef + "ene")
+--} ;
+ --in regN sgIndef sgDefi plIndef plDefi  ;
+
+smartN : Str -> Noun
+ = \sgIndef -> case sgIndef of {
+  x + ("t"|"d") => mkN sgIndef (sgIndef + "en") (sgIndef + "ar") (sgIndef + "arna") ;
+  x + "e"       => mkN sgIndef (x + "en") (x + "ar") (x + "arna")  ;
+   x + "m"    => mkN sgIndef (x + "len") (x +"lar") (x + "larna")  ;
+  _       => mkN sgIndef (sgIndef + "et") sgIndef (sgIndef + "ene") ;
+   _     => mkN sgIndef (sgIndef + "et") sgIndef (sgIndef + "ene")
+ } ;
 
 
 
-  smartN : Str -> Gender -> Noun ;
-  smartN sgIndef gender  = case <sgIndef, gender> of {
-    <x + ("t"|"d"),Neu> => mkN sgIndef (sgIndef + "en") (sgIndef + "ar") (sgIndef + "arna") Neu ;
-    <x + "e", Neu>       => mkN sgIndef (x + "en") (x + "ar") (x + "arna") Neu ;
-    < x + "m", Neu >   => mkN sgIndef (x + "len") (x +"lar") (x + "larna")  Neu ;
-  <  _ , Ut  >   => mkN sgIndef (sgIndef + "et") sgIndef (sgIndef + "ene")  Ut ;
-  <   _, Neu >   => mkN sgIndef (sgIndef + "et") sgIndef (sgIndef + "ene") Neu
-} ;
 
 
+
+--  irregN : (sgIndef, sgDefi, plIndef, plDefi: Str) -> Noun
+--  = \ sgIndef, sgDefi, plIndef, plDefi ->
+--      let adj = smartN sgIndef
+--      in mkN sgIndef sgDefi plIndef plDefi  ;
+
+
+
+
+--irregAdj : (mascsg,femsg,mascpl,fempl : Str) -> Adj =   --not very frequent
+--  \mascsg, femsg, mascpl, fempl ->
+--    let adj = smartAdj mascsg
+--  in mkAdj mascsg femsg mascpl fempl True;
 --  irregN : Str -> Str -> Gender -> Noun;
 --  irregN sgIndef plIndef gender = case <gender,sgIndef,plIndef> of {
 --  < Neu, x + ("l"|"k"|"d"), _ > => mkN sgIndef (sgIndef + "en") (plIndef) (plIndef + "erna") Neu ;
