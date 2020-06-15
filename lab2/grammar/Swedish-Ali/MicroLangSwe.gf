@@ -8,12 +8,12 @@ concrete MicroLangSwe of MicroLang = open MicroResSwe,  Prelude  in {
   lincat
    Utt = {s : Str} ;
    S = {s : Str} ;
-    VP = {verb : Verb ; compl : Number => Gender => Defenitivness => Str ; adv : Str} ; ---s special case of Mini
-    Comp  = Adjective ;
+    VP = {verb : Verb ; compl : Number => Gender => Defenitivness  => Str } ; ---s special case of Mini
+    Comp  =  Adjective ;
     AP  = Adjective ;
-    NP = {s : Case => Str ; n : Number ; d : Defenitivness ; g : Gender }; -- = {s : Case => Str ; a : Agreement} ;
-    Pron = {s : Case => Str};
-    Det  = {s : Defenitivness => Str ; n : Number ; g : Gender};
+    NP = {s : Case => Str ; n : Number ; g : Gender ; d : Defenitivness }; -- = {s : Case => Str ; a : Agreement} ;
+    Pron =  {s : Case => Str ; n : Number ; g : Gender ; d : Defenitivness };
+    Det  = {s :Gender => Str ; n : Number ; d : Defenitivness};
     Prep = {s : Str} ;
     V =  Verb ;
    V2  = Verb2 ;
@@ -30,67 +30,54 @@ concrete MicroLangSwe of MicroLang = open MicroResSwe,  Prelude  in {
 
     UttNP np = {s = np.s ! Acc } ;
 
-  --  UsePron p = s = p ;
+    UsePron p = {
+    s = p.s ;    --  \\c =>
+    n = p.n ;
+    g = p.g ;
+    d = p.d } ;
 
 
     PredVPS np vp = {
-      s = np.s ! Nom ++ vp.compl ! np.n ! np.g ! np.d ++ vp.verb.s  ++ vp.adv
+      s = np.s ! Nom ++ vp.verb.s ! Pres ++ vp.compl ! np.n ! np.g ! np.d  ---  here
       } ;
-    -- ! np.p ! np.n
 
-
---    ComplV2 v2 np = {
-  --    s = v2.s ++ np.s ! Acc  -- NP object in the accusative, preposition first
+    ComplV2 v2 np = {
+      verb = v2 ;
+      compl = \\n,g,d => v2.c ++ np.s ! Acc} ; -- NP object in the accusative, preposition first --here
   --    AdvVP vp adv =
   AdvVP vp adv =
-    vp ** {compl = vp.compl  ++ vp.adv} ;
+    vp ** {compl =\\n,g,d => vp.compl ! n ! g ! d  ++ adv.s} ;
 
     UseV v = {
-        verb = v ;
+        verb = v  ;
         compl = \\n,g,d => [];
-        adv = []
         } ;
 
-  --  ComplV2 v2 np = {
-    --    verb = v2 ;
-    --    compl = v2.s ++ np.s ! Acc ;
-  --      adv = []  -- NP object in the accusative, preposition first
-    --    } ;
-
-  --  UseComp comp = {
-    --    verb = be_Verb ;     -- the verb is the copula "be"
-      --  compl =\\n,g,d => comp.s ! n ! g n ! cn.g ! c ;
-    --    adv = [] ;
-
-    --    } ;
+    UseComp comp = {
+        verb = be_Verb ;     -- the verb is the copula "be"
+        compl =\\n,g,d => comp.s ! n ! g ! Indef
+    } ;
 
 
     CompAP ap = {s = \\n,g,d => ap.s ! n ! g ! d } ;
 
-  --  AdvVP vp adv = {
-  --  s = vp.s ++ adv.s} ;
-
-
-
     DetCN det cn = {
-    s = \\n,c => det.s ! c ! cn.n ! cn.g ++ cn.s ! n ! c ;
-    } ;
-	 -- g = cn.g ;
-    --n = det.n ;
-    --d =cn.c} ;
+    s = \\c => det.s ! cn.g ++ cn.s ! det.n ! det.d ;
+    n = det.n ;
+    d = det.d ;
+    g = cn.g } ;
 
-    a_Det =  {s = table { Def => "det" ; Indef => "ett" } ; n = Sg ; g = Ut } ;
-    the_Det = {s = table { Def => "den" ; Indef => "en" } ; n = Sg ; g = Neu } ;
-    aPl_Det = {s = table { Def => "de" ; Indef => "" } ; n = Pl ; g = Neu } ;
-    thePl_Det = {s = table { Def => "de" ; Indef => "" } ; n = Pl ; g = Ut } ;
+
+
+    a_Det =  {s = table { Ut => "ett" ; Neu => "en" } ; n = Sg ; d = Indef } ;
+    the_Det = {s = table { Ut => "det" ; Neu => "den" } ; n = Sg ; d = Def } ;
+    aPl_Det = {s = table { Ut => "de" ; Neu => "de" } ; n = Pl ; d = Def } ;
+   thePl_Det = {s = table { Ut => "" ; Neu => "" } ; n = Pl ; d = Indef } ;
 
     AdjCN ap cn = {
-      s = \\n,c => cn.s ! n ! c ++ ap.s ! n ! cn.g ! c ;
+      s = \\n,c =>  ap.s ! n ! cn.g ! c ++ cn.s ! n ! c  ;
       g = cn.g ;
     };
-
-
-
 
     PositA a = a ;
     PrepNP prep np = {s = prep.s ++ np.s ! Acc} ;
@@ -100,13 +87,13 @@ concrete MicroLangSwe of MicroLang = open MicroResSwe,  Prelude  in {
     with_Prep = {s = "med"} ;
 
     he_Pron = {
-    s = table { Nom => "han" ; Acc => "honom" }} ;
+    s = table { Nom => "han" ; Acc => "honom"}; n = Sg ; g = Neu ; d = Indef } ;
 
     she_Pron = {
-    s = table {Nom => "hon" ; Acc => "henne"}}  ;
+    s = table {Nom => "hon" ; Acc => "henne" } ; n = Sg ; g = Neu ;d =  Indef }  ;
 
     they_Pron = {
-    s = table {Nom => "de" ; Acc => "dem"}};
+    s = table {Nom => "de" ; Acc => "dem" }; n = Pl ; g = Neu ; d = Indef};
 
 
 -----------------------------------------------------
@@ -128,7 +115,7 @@ lin book_N = mkN "bok" "böcker"  ;
 lin boy_N = mkN "pojke"  ;
 lin bread_N = mkN "bröd" "bröd" ;
 lin break_V2 = mkV2 (mkV "bryter" "bröt" "brutit") ;
-lin buy_V2 = mkV "köper" ;
+--lin buy_V2 = mkV "köper" ;
 lin car_N = mkN "bil"  ;
 lin cat_N = mkN "katt" ;
 lin child_N = mkN "barn" "barn"  ;
@@ -160,7 +147,7 @@ lin hot_A = mkA "varm" ;
 lin house_N = mkN "hus" "hus" ;
 --lin john_PN = mkPN "John" ;
 lin jump_V = mkV "hoppar" ;
-lin kill_V2 = mkV2 "dödar" "dödade" "dödat" ;
+--lin kill_V2 = mkV2 "dödar" "dödade" "dödat" ;
 --lin know_V2 = mkV2 (mkV "vet" "visste" "känt") ;
 lin language_N = mkN "språk" "språk";
 lin live_V = mkV "lever" ;

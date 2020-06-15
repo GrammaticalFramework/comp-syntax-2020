@@ -34,9 +34,9 @@ oper
                                                                  g = taGender sgIndef }  ;
 taGender : Str -> Gender
  = \sg -> case sg of {
-      x + ("el"|"a"|"d"|"t"|"r"|"än"|"k"|"e") => Neu ;
-      x + ("v"|"in"|"en") => Ut ;
-      _ => Ut
+      x + ("el"|"a"|"t"|"r"|"än"|"d"|"ke") => Neu ;
+      x + ("v"|"in"|"en"|"öd"|"od"|"åk"|"e"|"g"|"ln"|"äd") => Ut ;
+      _ => Neu
 
 } ;
 

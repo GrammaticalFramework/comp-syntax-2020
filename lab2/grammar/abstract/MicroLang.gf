@@ -7,7 +7,7 @@ abstract MicroLang = {
 -----------------------------------------------------
 
   cat
-  
+
 -- Common
     Utt ;    -- sentence, question, word...         e.g. "be quiet"
 
@@ -20,13 +20,13 @@ abstract MicroLang = {
     NP ;     -- noun phrase (subject or object)     e.g. "the red house"
     Det ;    -- determiner phrase                   e.g. "those"
     Prep ;   -- preposition, or just case           e.g. "in", dative
-    V ;      -- one-place verb                      e.g. "sleep" 
+    V ;      -- one-place verb                      e.g. "sleep"
     V2 ;     -- two-place verb                      e.g. "love"
     A ;      -- one-place adjective                 e.g. "warm"
     N ;      -- common noun                         e.g. "house"
     Pron ;   -- personal pronoun                    e.g. "she"
     Adv ;    -- adverbial phrase                    e.g. "in the house"
-    
+
   fun
 -- Phrase
     UttS      : S  -> Utt ;         -- he walks
@@ -76,7 +76,7 @@ fun
   already_Adv : Adv ;
   animal_N : N ;
   apple_N : N ;
-  baby_N : N ;
+--  baby_N : N ;
   bad_A : A ;
   beer_N : N ;
   big_A : A ;
