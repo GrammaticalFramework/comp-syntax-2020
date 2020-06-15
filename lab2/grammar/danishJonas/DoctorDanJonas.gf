@@ -1,4 +1,4 @@
-concrete DoctorRGLDan of Doctor =
+concrete DoctorDanJonas of Doctor =
   open
     SyntaxDan,
     ParadigmsDan,
