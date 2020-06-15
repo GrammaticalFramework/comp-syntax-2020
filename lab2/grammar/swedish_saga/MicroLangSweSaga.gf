@@ -18,9 +18,6 @@ concrete MicroLangSweSaga of MicroLang = open MicroResSwe2, Prelude in {
       = Verb ;
     V2 
       = Verb2 ;
-
---    VP
---      = {s : Gender => Str} ; -- why is gender here
     
     VP 
       = {verb : Verb ; compl : AdjForm => Str} ;
@@ -62,65 +59,40 @@ concrete MicroLangSweSaga of MicroLang = open MicroResSwe2, Prelude in {
 
 
 -- Verbs
-  -- UseV      : V   -> VP ;
---    UseV v = v ;
     UseV s = {
       verb = s ;
       compl = \\_ => [] ;
       } ;
-
-
-  -- ComplV2   : V2  -> NP -> VP ;
---    ComplV2 v2 np = {
---      s = table {
---          Utrum => v2.s ! Utrum ++ np.s ! Acc ;
---          Neutrum => v2.s ! Neutrum ++ np.s ! Acc
---          } ;
---      };
       
     ComplV2 v2 np = {
       verb = v2 ;
       compl = \\_ => v2.c ++ np.s ! Acc 
       } ;
 
-  -- UseComp   : Comp  -> VP ;
-    UseComp comp = { -- TODO fixa denna. genererar nu "han är vita" och "tåget är varma"
+    UseComp comp = { 
       verb = be_Verb ;
       compl = \\a => comp.s ! a 
       } ;
 
---compl = \\a => comp.s ! a
-
---gen => {}
---            Utrum => "är" ++ comp.s ! Utrum ! Sg ! Indef;
---            Neutrum => "är" ++ comp.s ! Neutrum ! Sg ! Indef-- om jag sätter pl här blir "de är vita" rätt men 
-
-  -- CompAP    : AP  -> Comp ;
     CompAP ap = {s = \\a => ap.s ! a} ; -- ??
       
 
-  -- AdvVP     : VP -> Adv -> VP ;
     AdvVP vp adv = -- funkar?????
        vp ** {compl = \\a => vp.compl ! a ++ adv.s} ; 
---      {s = table {
---            Utrum => vp.s ! Utrum ++ adv.s ;
---            Neutrum => vp.s ! Neutrum ++ adv.s
---        } ;
---      } ;
+
       
       
 -- Noun
-  -- DetCN     : Det -> CN -> NP ; 
     DetCN det cn = {
       s = \\c => det.s ! cn.isAdj ! cn.g ++ cn.s ! det.n ! det.d ;
       a = case det.n of {Pl => AdjPl ; Sg => AdjSg cn.g det.d } 
       } ;
 
-  -- UsePron   : Pron -> NP ;
-    UsePron p = p ; -- funkar men genererar fel
+
+    UsePron p = p ; 
 
 
-  -- a_Det     : Det ;
+
 
  
     a_Det = {
@@ -137,11 +109,6 @@ concrete MicroLangSweSaga of MicroLang = open MicroResSwe2, Prelude in {
       s = table {
         isAdj => table { g => ""  } 
                          } ;
---        True => table {Utrum => "" ; 
---                       Neutrum => "" } ;
---        False => table {Utrum => "" ; 
---                        Neutrum => "" } 
---                         } ;
     n = Pl ;
     d = Indef
      } ;
@@ -295,7 +262,7 @@ lin
   see_V2 = mkV2 "ser" ;
   ship_N = mkN "skepp" Neutrum Sixth ;
   sleep_V = mkV "sover" ;
-  small_A = mkA "liten" "små" "litet" "lilla" ; --rm neutpl
+  small_A = mkA "liten" "små" "litet" "lilla" ; 
   star_N = mkN "stjärna" Utrum First ;
   swim_V = mkV "simmar" ;
   teach_V2 = mkV2 "undervisar" ;

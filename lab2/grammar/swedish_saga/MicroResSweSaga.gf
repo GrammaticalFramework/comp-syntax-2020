@@ -77,39 +77,6 @@ oper
     } ;
 
 
----------- NOTE TO SELF: du har precis gjort om adjektivfunktionerna så att de 1. tar fyra argument som är utrSgIndef, pl (för pl är alltid samma), neutSgIndef, sgDef; 2. har typen {s : Gender => Number => Definiteness => Str } istället för {s : Gender => Number => Str }. Dvs du har lagt till definiteness. Nu måste du ändra i AdjCN och i UseComp så att de väljer rätt saker typ. TA DET LUGNT GUMMAN
-
-
---    Adjective : Type = {s : Gender => Number => Definiteness => Str } ;
-
---  mkA = overload {
---    mkA : Str -> Adjective = smartAdjective ;
---    mkA : Str -> Str -> Str -> Str -> Adjective = mkAdjective ;
---    } ;
-
-
---    mkAdjective : (utrSgIndef, pl, neutSgIndef, sgDef : Str) -> Adjective =
---      \utrSgIndef, pl, neutSgIndef, sgDef ->
---      {
---  s = table {
---    Utrum => 
---      table {
---        Sg => table {Indef => utrSgIndef ;
---                     Def => sgDef } ;
---        Pl => table {Indef => pl ; 
---                     Def => pl } 
---      } ;
---    Neutrum =>
---      table {
---        Sg => table {Indef => neutSgIndef ;
---                     Def => sgDef } ;
---        Pl => table {Indef => pl ;
---                     Def => pl }
---      }
---    }
---     } ;
-
-
     Adjective : Type = {s : AdjForm => Str } ;
 
   mkA = overload {
@@ -146,14 +113,6 @@ oper
 
   Verb : Type = {s: Str} ;
 
---  mkV : Str -> Verb ; -- "inflection table from nounclass/gender to string"
---  mkV verb = {
---      s = table {
---            Utrum => verb ;
---            Neutrum => verb 
---          } ;
---    } ;
---    
       mkV : Str -> Verb
     = \s -> lin Verb {s = s} ;
 
@@ -171,10 +130,6 @@ oper
       = \v,p -> lin Verb2 (v ** {c = p}) ;
     } ;
 
--- TODO kolla brittas VERB2
-
---  mkV2 : Str -> Verb2 ;
---  mkV2 = mkV ; 
   
   be_Verb : Verb = mkV "är";
 
@@ -189,14 +144,5 @@ oper
   
   mkPrep : Str -> Preposition
     = \s -> lin Preposition {s = s} ;
-
----s a very simplified verb agreement function for Micro
---  agr2vform : Agreement -> Gender = \a -> case a of {
---    Agr Sg Utrum => Utrum ;
---    Agr Pl Neutrum => Neutrum ;
---    Agr Sg Neutrum => Neutrum ;
---    Agr Pl Utrum => Utrum
---    
---    } ;
 
 }
