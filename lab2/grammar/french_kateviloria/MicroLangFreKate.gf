@@ -1,5 +1,5 @@
 --# -path=.:../abstract
-concrete MicroLangFreKate of MicroLang = open MicroResFre, Prelude in {
+concrete MicroLangFreKate of MicroLang = open MicroResFreKate, Prelude in {
 
 -----------------------------------------------------
 ---------------- Grammar part -----------------------
