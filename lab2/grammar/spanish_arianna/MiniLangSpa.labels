@@ -1,6 +1,0 @@
-UseCl, UseQCl, ImpVP {"no"} PART advmod head
-UseComp {"ser","sido","sida","sidos","sidas","soy","eres","es","somos","soid","son","sé","seamos","seáis"} AUX cop head
-PredVP, QuestVP head
-ImpVP head
-ComplVS {"que"} SCONJ mark ccomp
-ComplVV xcomp
