@@ -1,0 +1,145 @@
+1	кожний	every_Det	DET	Det	_	3	det	_	_
+2	зелений	green_A	ADJ	A	_	3	amod	_	_
+3	дім	house_N	NOUN	N	_	5	nsubj	_	_
+4	не	UseCl	PART	S	_	5	advmod	_	_
+5	хоче	want_VV	VERB	VV	_	0	root	_	_ 
+6	в	in_Prep	ADP	Prep	_	7	case	_	_
+7	машині	car_N	NOUN	N	_	5	advmod	_	_
+
+
+1	Париж	paris_PN	PROPN	PN	_	3	nsubj	_	_
+2	не	UseQCl	PART	QS	_	3	advmod	_	_
+3	грає	play_V	VERB	V	_	0	root	_	_
+4	зараз	now_Adv	ADV	Adv	_	3	advmod	_	_
+
+
+1	кожне	every_Det	DET	Det	_	3	det	_	_
+2	гаряче	hot_A	ADJ	A	_	3	amod	_	_
+3	місто	city_N	NOUN	N	_	4	nsubj	_	_
+4	хоче	want_VV	VERB	VV	_	0	root	_	_
+5	зараз	now_Adv	ADV	Adv	_	4	xcomp	_	_
+6	та	and_Conj	CONJ	Conj	_	4	cc	_	_
+7	Джон	john_PN	PROPN	PN	_	9	nsubj	_	_
+8	не	UseCl	PART	S	_	9	advmod	_	_
+9	пливе	swim_V	VERB	V	_	4	conj	_	_
+10	та	and_Conj	CONJ	Conj	_	9	cc	_	_
+11	вона	she_Pron	PRON	Pron	_	12	nsubj	_	_
+12	ходить	walk_V	VERB	V	_	9	conj	_	_
+13	та	and_Conj	CONJ	Conj	_	9	cc	_	_
+14	Париж	paris_PN	PROPN	PN	_	15	nsubj	_	_
+15	іде	go_V	VERB	V	_	9	conj	_	_
+16	та	and_Conj	CONJ	Conj	_	15	cc	_	_
+17	вони	they_Pron	PRON	Pron	_	19	nsubj	_	_
+18	не	UseCl	PART	S	_	19	advmod	_	_
+19	приходять	come_V	VERB	V	_	15	conj	_	_
+
+
+1	тепла	warm_A	ADJ	A	_	2	amod	_	_
+2	собака	dog_N	NOUN	N	_	3	nsubj	_	_
+3	чекає	wait_V2	VERB	V2	_	0	root	_	_
+4	рибу	fish_N	NOUN	N	_	3	obj	_	_
+
+
+1	хто	whoSg_IP	IP	IP	_	2	nsubj	_	_
+2	приходить	come_V	VERB	V	_	0	root	_	_
+
+
+1	Париж	paris_PN	PROPN	PN	_	2	nsubj	_	_
+2	ходить	walk_V	VERB	V	_	0	root	_	_
+3	та	and_Conj	CONJ	Conj	_	2	cc	_	_
+4	вони	they_Pron	PRON	Pron	_	5	nsubj	_	_
+5	стрибають	jump_V	VERB	V	_	2	conj	_	_
+6	чи	or_Conj	CONJ	Conj	_	2	cc	_	_
+7	тварини	animal_N	NOUN	N	_	8	nsubj	_	_
+8	їдять	eat_V2	VERB	V2	_	2	conj	_	_
+9	Джона	john_PN	PROPN	PN	_	8	obj	_	_
+10	та	and_Conj	CONJ	Conj	_	2	cc	_	_
+11	поїзд	train_N	NOUN	N	_	13	nsubj	_	_
+12	не	UseCl	PART	S	_	13	advmod	_	_
+13	приходить	come_V	VERB	V	_	2	conj	_	_
+
+
+1	Джон	john_PN	PROPN	PN	_	2	nsubj	_	_
+2	пливе	swim_V	VERB	V	_	0	root	_	_
+3	чи	or_Conj	CONJ	Conj	_	2	cc	_	_
+4	дерево	tree_N	NOUN	N	_	6	nsubj	_	_
+5	не	UseCl	PART	S	_	6	advmod	_	_
+6	живе	live_V	VERB	V	_	2	conj	_	_
+7	та	and_Conj	CONJ	Conj	_	6	cc	_	_
+8	кожний	every_Det	DET	Det	_	9	det	_	_
+9	комп'ютер	computer_N	NOUN	N	_	10	nsubj	_	_
+10	біжить	run_V	VERB	V	_	6	conj	_	_
+
+
+1	хто	whoSg_IP	IP	IP	_	2	nsubj	_	_
+2	читає	read_V2	VERB	V2	_	0	root	_	_
+3	Парижа	paris_PN	PROPN	PN	_	2	obj	_	_
+
+
+1	риба	fish_N	NOUN	N	_	2	nsubj	_	_
+2	розуміє	understand_V2	VERB	V2	_	0	root	_	_
+3	вас	youPl_Pron	PRON	Pron	_	2	obj	_	_
+
+
+1	погана	bad_A	ADJ	A	_	5	amod	_	_
+2	сина	blue_A	ADJ	A	_	5	amod	_	_
+3	молода	young_A	ADJ	A	_	5	amod	_	_
+4	зелена	green_A	ADJ	A	_	5	amod	_	_
+5	жінка	woman_N	NOUN	N	_	0	root	_	_
+
+
+1	не	ImpVP	PART	Imp	_	2	advmod	_	_
+2	розумій	understand_V2	VERB	V2	_	0	root	_	_
+
+
+1	зірка	star_N	NOUN	N	_	3	nsubj	_	_
+2	не	UseQCl	PART	QS	_	3	advmod	_	_
+3	зараз	now_Adv	ADV	Adv	_	0	root	_	_
+
+
+1	книга	book_N	NOUN	N	_	2	nsubj	_	_
+2	хоче	want_VV	VERB	VV	_	0	root	_	_
+3	хотіти	want_VV	VERB	VV	_	2	xcomp	_	_
+4	ходити	walk_V	VERB	V	_	3	xcomp	_	_
+
+
+1	вона	she_Pron	PRON	Pron	_	2	nsubj	_	_
+2	подорожує	travel_V	VERB	V	_	0	root	_	_
+3	вже	already_Adv	ADV	Adv	_	2	advmod	_	_
+4	чи	or_Conj	CONJ	Conj	_	2	cc	_	_
+5	Джон	john_PN	PROPN	PN	_	6	nsubj	_	_
+6	малий	small_A	ADJ	A	_	2	conj	_	_
+
+1	великі	big_A	ADJ	A	_	2	amod	_	_
+2	мови	language_N	NOUN	N	_	0	root	_	_
+
+
+1	ви	youPl_Pron	PRON	Pron	_	3	nsubj	_	_
+2	не	UseCl	PART	S	_	3	advmod	_	_
+3	гарячий	hot_A	ADJ	A	_	0	root	_	_
+4	чи	or_Conj	CONJ	Conj	_	3	cc	_	_
+5	вона	she_Pron	PRON	Pron	_	7	nsubj	_	_
+6	не	UseCl	PART	S	_	7	advmod	_	_
+7	бачить	see_V2	VERB	V2	_	3	conj	_	_
+8	мене	i_Pron	PRON	Pron	_	7	obj	_	_
+
+1	молодий	young_A	ADJ	A	_	4	amod	_	_
+2	важкий	heavy_A	ADJ	A	_	4	amod	_	_
+3	готовий	ready_A	ADJ	A	_	4	amod	_	_
+4	кіт	cat_N	NOUN	N	_	0	root	_	_
+
+1	ти	youSg_Pron	PRON	Pron	_	3	nsubj	_	_
+2	не	UseQCl	PART	QS	_	3	advmod	_	_
+3	читаєш	read_V2	VERB	V2	_	0	root	_	_
+4	місто	city_N	NOUN	N	_	3	obj	_	_
+
+1	в	in_Prep	ADP	Prep	_	3	case	_	_
+2	чистому	clean_A	ADJ	A	_	3	amod	_	_
+3	яблукi	apple_N	NOUN	N	_	0	root	_	_
+
+1	хто	whoSg_IP	IP	IP	_	3	nsubj	_	_
+2	не	UseQCl	PART	QS	_	3	advmod	_	_
+3	хоче	want_VV	VERB	VV	_	0	root	_	_
+4	грати	play_V	VERB	V	_	3	xcomp	_	_
+5	в	in_Prep	ADP	Prep	_	6	case	_	_
+6	них	they_Pron	PRON	Pron	_	4	advmod	_	_
