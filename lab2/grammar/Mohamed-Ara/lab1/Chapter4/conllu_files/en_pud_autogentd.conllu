@@ -1,0 +1,374 @@
+
+# text = Who:<PRON> are:<AUX> they:<PRON> ?:<PUNCT>
+# analyses = 3
+# parsetree = (Utt (Utt (S (there Who) (be_V are) (NP (Pron they)))) (Punct '?'))
+1	Who	_	PRON	_	_	2	expl	_	_
+2	are	_	VERB	_	_	0	root	_	_
+3	they	_	PRON	_	_	2	nsubj	_	_
+4	?	_	PUNCT	_	_	2	punct	_	_
+
+
+
+# text = A:<DET> small:<ADJ> town:<NOUN> with:<ADP> two:<NUM> minarets:<NOUN> glides:<NOUN> by:<ADV> .:<PUNCT>
+# analyses = 0
+# parsetree = (Chunks (Comp (Comp (NP (NP (Det A) (CN (AP (A small)) (CN (N town)))) (NP_obl (Prep with) (NP (Num (Card two)) (NP (CN (N (N_one minarets) (N glides)))))))) (Adv by)) (Punct '.'))
+1	A	_	DET	_	_	3	det	_	_
+2	small	_	ADJ	_	_	3	amod	_	_
+3	town	_	NOUN	_	_	9	dep	_	_
+4	with	_	ADP	_	_	7	case	_	_
+5	two	_	NUM	_	_	7	nummod	_	_
+6	minarets	_	NOUN	_	_	7	compound	_	_
+7	glides	_	NOUN	_	_	3	nmod	_	_
+8	by	_	ADV	_	_	3	advmod	_	_
+9	.	_	PUNCT	_	_	0	root	_	_
+
+
+
+# text = I:<PRON> was:<AUX> just:<ADV> a:<DET> boy:<NOUN> with:<ADP> muddy:<ADJ> shoes:<NOUN> .:<PUNCT>
+# analyses = 24
+# parsetree = (Utt (Utt (S (there I) (be_V was) (AdV just) (NP (NP (Det a) (CN (N boy))) (NP_obl (Prep with) (NP (CN (AP (A muddy)) (CN (N shoes)))))))) (Punct '.'))
+1	I	_	PRON	_	_	2	expl	_	_
+2	was	_	VERB	_	_	0	root	_	_
+3	just	_	ADV	_	_	2	advmod	_	_
+4	a	_	DET	_	_	5	det	_	_
+5	boy	_	NOUN	_	_	2	nsubj	_	_
+6	with	_	ADP	_	_	8	case	_	_
+7	muddy	_	ADJ	_	_	8	amod	_	_
+8	shoes	_	NOUN	_	_	5	nmod	_	_
+9	.	_	PUNCT	_	_	2	punct	_	_
+
+
+
+# text = Shenzhen:<PROPN> 's:<PART> traffic:<NOUN> police:<NOUN> have:<AUX> opted:<VERB> for:<ADP> unconventional:<ADJ> penalties:<NOUN> before:<ADV> .:<PUNCT>
+# analyses = 17
+# parsetree = (Utt (Utt (S (NP (NP_poss (NP (PN Shenzhen)) ('s' 's')) (CN (N (N_one traffic) (N police)))) (have have) (VP (VP (V2 opted) (NP_obl (Prep for) (NP (CN (AP (A unconventional)) (CN (N penalties)))))) (Adv before)))) (Punct '.'))
+1	Shenzhen	_	PROPN	_	_	4	nmod:poss	_	_
+2	's	_	PART	_	_	1	case	_	_
+3	traffic	_	NOUN	_	_	4	compound	_	_
+4	police	_	NOUN	_	_	6	nsubj	_	_
+5	have	_	AUX	_	_	6	aux	_	_
+6	opted	_	VERB	_	_	0	root	_	_
+7	for	_	ADP	_	_	9	case	_	_
+8	unconventional	_	ADJ	_	_	9	amod	_	_
+9	penalties	_	NOUN	_	_	6	obl	_	_
+10	before	_	ADV	_	_	6	advmod	_	_
+11	.	_	PUNCT	_	_	6	punct	_	_
+
+
+
+# text = The:<DET> study:<NOUN> of:<ADP> volcanoes:<NOUN> is:<AUX> called:<VERB> volcanology:<NOUN> ,:<PUNCT> sometimes:<ADV> spelled:<VERB> vulcanology:<NOUN> .:<PUNCT>
+# analyses = 10
+# parsetree = (Utt (Utt (S (SC (S_that (S (NP (NP (Det The) (CN (N study))) (NP_obl (Prep of) (NP (CN (N volcanoes))))) (have is) (VP (VP (V2 called) (NP (CN (N volcanology)))) (comma ',') (Adv sometimes))))) (VP (V2 spelled) (NP (CN (N vulcanology)))))) (Punct '.'))
+1	The	_	DET	_	_	2	det	_	_
+2	study	_	NOUN	_	_	6	nsubj	_	_
+3	of	_	ADP	_	_	4	case	_	_
+4	volcanoes	_	NOUN	_	_	2	nmod	_	_
+5	is	_	AUX	_	_	6	aux	_	_
+6	called	_	VERB	_	_	10	csubj	_	_
+7	volcanology	_	NOUN	_	_	6	obj	_	_
+8	,	_	PUNCT	_	_	6	punct	_	_
+9	sometimes	_	ADV	_	_	6	advmod	_	_
+10	spelled	_	VERB	_	_	0	root	_	_
+11	vulcanology	_	NOUN	_	_	10	obj	_	_
+12	.	_	PUNCT	_	_	10	punct	_	_
+
+
+
+# text = It:<PRON> was:<AUX> conducted:<VERB> just:<ADV> off:<ADP> the:<DET> Mexican:<ADJ> coast:<NOUN> from:<ADP> April:<PROPN> to:<ADP> June:<PROPN> .:<PUNCT>
+# analyses = 35
+# parsetree = (Utt (Utt (QS (IP It) (cop was) (VP_pass (VP_pass (VP_pass (V2 conducted)) (Adv just)) (NP_obl (Prep off) (NP (NP (Det the) (CN (AP (A Mexican)) (CN (N coast)))) (NP_obl (Prep from) (NP (NP (PN April)) (NP_obl (Prep to) (NP (PN June)))))))))) (Punct '.'))
+1	It	_	PRON	_	_	3	nsubj:pass	_	_
+2	was	_	AUX	_	_	3	aux:pass	_	_
+3	conducted	_	VERB	_	_	0	root	_	_
+4	just	_	ADV	_	_	3	advmod	_	_
+5	off	_	ADP	_	_	8	case	_	_
+6	the	_	DET	_	_	8	det	_	_
+7	Mexican	_	ADJ	_	_	8	amod	_	_
+8	coast	_	NOUN	_	_	3	nmod	_	_
+9	from	_	ADP	_	_	10	case	_	_
+10	April	_	PROPN	_	_	8	nmod	_	_
+11	to	_	ADP	_	_	12	case	_	_
+12	June	_	PROPN	_	_	10	nmod	_	_
+13	.	_	PUNCT	_	_	3	punct	_	_
+
+
+
+# text = ":<PUNCT> Her:<PRON> voice:<NOUN> literally:<ADV> went:<VERB> around:<ADP> the:<DET> world:<NOUN> ":<PUNCT> ,:<PUNCT> Leive:<PROPN> said:<VERB> .:<PUNCT>
+# analyses = 3
+# parsetree = (Utt (Utt (S (S_front (quote '"') (S (NP (NP_poss (Pron_poss Her)) (CN (N voice))) (VP (AdV literally) (VP (V2 went) (NP_obl (Prep around) (NP (Det the) (CN (N world))))))) (quote '"') (comma ',')) (NP (PN Leive)) (VS said))) (Punct '.'))
+1	"	_	PUNCT	_	_	5	punct	_	_
+2	Her	_	PRON	_	_	3	nmod:poss	_	_
+3	voice	_	NOUN	_	_	5	nsubj	_	_
+4	literally	_	ADV	_	_	5	advmod	_	_
+5	went	_	VERB	_	_	12	parataxis	_	_
+6	around	_	ADP	_	_	8	case	_	_
+7	the	_	DET	_	_	8	det	_	_
+8	world	_	NOUN	_	_	5	obl	_	_
+9	"	_	PUNCT	_	_	5	punct	_	_
+10	,	_	PUNCT	_	_	5	punct	_	_
+11	Leive	_	PROPN	_	_	12	nsubj	_	_
+12	said	_	VERB	_	_	0	root	_	_
+13	.	_	PUNCT	_	_	12	punct	_	_
+
+
+
+# text = A:<DET> witness:<NOUN> told:<VERB> police:<NOUN> that:<SCONJ> the:<DET> victim:<NOUN> had:<AUX> attacked:<VERB> the:<DET> suspect:<NOUN> in:<ADP> April:<NOUN> .:<PUNCT>
+# analyses = 1909
+# parsetree = (Utt (Utt (S (NP (Det A) (CN (N witness))) (VP (V2 told) (NP (NP (NP (CN (N police))) (SC (S_that (that that) (S (NP (Det the) (CN (N victim))) (have had) (VP (V2 attacked) (NP (Det the) (CN (N suspect)))))))) (NP_obl (Prep in) (NP (CN (N April)))))))) (Punct '.'))
+1	A	_	DET	_	_	2	det	_	_
+2	witness	_	NOUN	_	_	3	nsubj	_	_
+3	told	_	VERB	_	_	0	root	_	_
+4	police	_	NOUN	_	_	3	obj	_	_
+5	that	_	SCONJ	_	_	9	mark	_	_
+6	the	_	DET	_	_	7	det	_	_
+7	victim	_	NOUN	_	_	9	nsubj	_	_
+8	had	_	AUX	_	_	9	aux	_	_
+9	attacked	_	VERB	_	_	4	acl	_	_
+10	the	_	DET	_	_	11	det	_	_
+11	suspect	_	NOUN	_	_	9	obj	_	_
+12	in	_	ADP	_	_	13	case	_	_
+13	April	_	NOUN	_	_	4	nmod	_	_
+14	.	_	PUNCT	_	_	3	punct	_	_
+
+
+
+# text = It:<PRON> 's:<AUX> most:<ADV> obvious:<ADJ> when:<ADV> a:<DET> celebrity:<NOUN> 's:<AUX> name:<NOUN> is:<AUX> initially:<ADV> quite:<ADV> rare:<ADJ> .:<PUNCT>
+# analyses = 48
+# parsetree = (Utt (Utt (S (S (it It) (cop 's') (AdV most) (AP (A obvious))) (S_sub (Subj when) (S (NP (NP_poss (NP (Det a) (CN (N celebrity))) ('s' 's')) (CN (N name))) (cop is) (AdV initially) (neg quite) (Comp (AP (A rare))))))) (Punct '.'))
+1	It	_	PRON	_	_	4	expl	_	_
+2	's	_	AUX	_	_	4	cop	_	_
+3	most	_	ADV	_	_	4	advmod	_	_
+4	obvious	_	ADJ	_	_	0	root	_	_
+5	when	_	SCONJ	_	_	13	mark	_	_
+6	a	_	DET	_	_	7	det	_	_
+7	celebrity	_	NOUN	_	_	9	nmod:poss	_	_
+8	's	_	PART	_	_	7	case	_	_
+9	name	_	NOUN	_	_	13	nsubj	_	_
+10	is	_	AUX	_	_	13	cop	_	_
+11	initially	_	ADV	_	_	13	advmod	_	_
+12	quite	_	ADV	_	_	13	advmod	_	_
+13	rare	_	ADJ	_	_	4	advcl	_	_
+14	.	_	PUNCT	_	_	4	punct	_	_
+
+
+
+# text = This:<DET> has:<AUX> not:<PART> stopped:<VERB> investors:<NOUN> flocking:<VERB> to:<PART> put:<VERB> their:<PRON> money:<NOUN> in:<ADP> the:<DET> funds:<NOUN> .:<PUNCT>
+# analyses = 341
+# parsetree = (Utt (Utt (S (NP (Det This)) (do has) (neg not) (VP (V2V stopped) (NP (CN (N investors))) (VP (VV flocking) (VP_to (to to) (VP (V2 put) (NP (NP (NP_poss (Pron_poss their)) (CN (N money))) (NP_obl (Prep in) (NP (Det the) (CN (N funds))))))))))) (Punct '.'))
+1	This	_	DET	_	_	4	nsubj	_	_
+2	has	_	AUX	_	_	4	aux	_	_
+3	not	_	ADV	_	_	4	advmod	_	_
+4	stopped	_	VERB	_	_	0	root	_	_
+5	investors	_	NOUN	_	_	4	obj	_	_
+6	flocking	_	VERB	_	_	4	xcomp	_	_
+7	to	_	PART	_	_	8	mark	_	_
+8	put	_	VERB	_	_	6	xcomp	_	_
+9	their	_	PRON	_	_	10	nmod:poss	_	_
+10	money	_	NOUN	_	_	8	obj	_	_
+11	in	_	ADP	_	_	13	case	_	_
+12	the	_	DET	_	_	13	det	_	_
+13	funds	_	NOUN	_	_	10	nmod	_	_
+14	.	_	PUNCT	_	_	4	punct	_	_
+
+
+
+# text = This:<DET> discordance:<NOUN> between:<ADP> economic:<ADJ> data:<NOUN> and:<CCONJ> political:<ADJ> rhetoric:<NOUN> is:<AUX> familiar:<ADJ> ,:<PUNCT> or:<CCONJ> should:<AUX> be:<AUX> .:<PUNCT>
+# analyses = 0
+# parsetree = (Chunks (S_front (S (NP (NP (Det This) (CN (N discordance))) (NP_obl (Prep between) (NP (ListNP (NP (CN (AP (A economic)) (CN (N data))))) (NP_conj (Conj and) (NP (CN (AP (A political)) (CN (N rhetoric)))))))) (cop is) (Comp (AP (A familiar)))) (comma ',')) (Utt (Utt (Conj or) (Utt (Imp (do should) (VP (aux be))))) (Punct '.')))
+1	This	_	DET	_	_	2	det	_	_
+2	discordance	_	NOUN	_	_	10	nsubj	_	_
+3	between	_	ADP	_	_	5	case	_	_
+4	economic	_	ADJ	_	_	5	amod	_	_
+5	data	_	NOUN	_	_	2	nmod	_	_
+6	and	_	CCONJ	_	_	8	cc	_	_
+7	political	_	ADJ	_	_	8	amod	_	_
+8	rhetoric	_	NOUN	_	_	5	conj	_	_
+9	is	_	AUX	_	_	10	cop	_	_
+10	familiar	_	ADJ	_	_	14	dep	_	_
+11	,	_	PUNCT	_	_	10	punct	_	_
+12	or	_	CCONJ	_	_	14	cc	_	_
+13	should	_	AUX	_	_	14	aux	_	_
+14	be	_	AUX	_	_	0	root	_	_
+15	.	_	PUNCT	_	_	14	punct	_	_
+
+
+
+# text = The:<DET> feasibility:<NOUN> study:<NOUN> estimates:<VERB> that:<SCONJ> it:<PRON> would:<AUX> take:<VERB> passengers:<NOUN> about:<ADV> four:<NUM> minutes:<NOUN> to:<PART> cross:<VERB> the:<DET> Potomac:<PROPN> River:<PROPN> on:<ADP> the:<DET> gondola:<NOUN> .:<PUNCT>
+# analyses = 30376
+# parsetree = (Utt (Utt (S (NP (Det The) (CN (N (N_one feasibility) (N study)))) (VP (VS estimates) (S_that (that that) (S (NP (Pron it)) (have would) (VP (V3 take) (NP (CN (N passengers))) (NP (NP (Predet about) (NP (Num (Card four)) (NP (NP (CN (N minutes))) (SC (VP_to (to to) (VP (V3 cross) (NP (Det the)) (NP (PN (PN_one Potomac) (PN River))))))))) (NP_obl (Prep on) (NP (Det the) (CN (N gondola))))))))))) (Punct '.'))
+1	The	_	DET	_	_	3	det	_	_
+2	feasibility	_	NOUN	_	_	3	compound	_	_
+3	study	_	NOUN	_	_	4	nsubj	_	_
+4	estimates	_	VERB	_	_	0	root	_	_
+5	that	_	SCONJ	_	_	8	mark	_	_
+6	it	_	PRON	_	_	8	nsubj	_	_
+7	would	_	AUX	_	_	8	aux	_	_
+8	take	_	VERB	_	_	4	ccomp	_	_
+9	passengers	_	NOUN	_	_	8	iobj	_	_
+10	about	_	ADV	_	_	12	det:predet	_	_
+11	four	_	NUM	_	_	12	nummod	_	_
+12	minutes	_	NOUN	_	_	8	obj	_	_
+13	to	_	PART	_	_	14	mark	_	_
+14	cross	_	VERB	_	_	12	acl	_	_
+15	the	_	DET	_	_	14	iobj	_	_
+16	Potomac	_	PROPN	_	_	14	obj	_	_
+17	River	_	PROPN	_	_	16	flat	_	_
+18	on	_	ADP	_	_	20	case	_	_
+19	the	_	DET	_	_	20	det	_	_
+20	gondola	_	NOUN	_	_	12	nmod	_	_
+21	.	_	PUNCT	_	_	4	punct	_	_
+
+
+
+# text = He:<PRON> collected:<VERB> cards:<NOUN> and:<CCONJ> traded:<VERB> them:<PRON> with:<ADP> the:<DET> other:<ADJ> boys:<NOUN>
+# analyses = 10
+# parsetree = (Utt (QS (IP He) (VP (ListVP (VP (V2 collected) (NP (CN (N cards))))) (VP_conj (Conj and) (VP (V2 traded) (NP (NP (Pron them)) (NP_obl (Prep with) (NP (Det the) (CN (AP (A other)) (CN (N boys)))))))))))
+1	He	_	PRON	_	_	2	nsubj	_	_
+2	collected	_	VERB	_	_	0	root	_	_
+3	cards	_	NOUN	_	_	2	obj	_	_
+4	and	_	CCONJ	_	_	5	cc	_	_
+5	traded	_	VERB	_	_	2	conj	_	_
+6	them	_	PRON	_	_	5	obj	_	_
+7	with	_	ADP	_	_	10	case	_	_
+8	the	_	DET	_	_	10	det	_	_
+9	other	_	ADJ	_	_	10	amod	_	_
+10	boys	_	NOUN	_	_	6	nmod	_	_
+
+
+
+# text = this:<DET> crime:<NOUN> carries:<VERB> a:<DET> penalty:<NOUN> of:<ADP> five:<NUM> years:<NOUN> in:<ADP> prison:<NOUN>
+# analyses = 184
+# parsetree = (Utt (S (NP (Det this) (CN (N crime))) (VP (V2 carries) (NP (NP (Det a) (CN (N penalty))) (NP_obl (Prep of) (NP (NP (Num (Card five)) (NP (CN (N years)))) (NP_obl (Prep in) (NP (CN (N prison))))))))))
+1	this	_	DET	_	_	2	det	_	_
+2	crime	_	NOUN	_	_	3	nsubj	_	_
+3	carries	_	VERB	_	_	0	root	_	_
+4	a	_	DET	_	_	5	det	_	_
+5	penalty	_	NOUN	_	_	3	obj	_	_
+6	of	_	ADP	_	_	8	case	_	_
+7	five	_	NUM	_	_	8	nummod	_	_
+8	years	_	NOUN	_	_	5	nmod	_	_
+9	in	_	ADP	_	_	10	case	_	_
+10	prison	_	NOUN	_	_	8	nmod	_	_
+
+
+
+# text = the:<DET> news:<NOUN> was:<AUX> carried:<VERB> to:<ADP> every:<DET> village:<NOUN> in:<ADP> the:<DET> province:<NOUN>
+# analyses = 62
+# parsetree = (Utt (S (NP (Det the) (CN (N news))) (have was) (VP (V2 carried) (NP_obl (Prep to) (NP (NP (Det every) (CN (N village))) (NP_obl (Prep in) (NP (Det the) (CN (N province)))))))))
+1	the	_	DET	_	_	2	det	_	_
+2	news	_	NOUN	_	_	4	nsubj	_	_
+3	was	_	AUX	_	_	4	aux	_	_
+4	carried	_	VERB	_	_	0	root	_	_
+5	to	_	ADP	_	_	7	case	_	_
+6	every	_	DET	_	_	7	det	_	_
+7	village	_	NOUN	_	_	4	obl	_	_
+8	in	_	ADP	_	_	10	case	_	_
+9	the	_	DET	_	_	10	det	_	_
+10	province	_	NOUN	_	_	7	nmod	_	_
+
+
+
+# text = I:<PRON> carry:<VERB> these:<DET> thoughts:<NOUN> in:<ADP> the:<DET> back:<NOUN> of:<ADP> my:<PRON> head:<NOUN>
+# analyses = 48
+# parsetree = (Utt (S (there I) (be_V carry) (NP (NP (Det these) (CN (N thoughts))) (NP_obl (Prep in) (NP (NP (Det the) (CN (N back))) (NP_obl (Prep of) (NP (NP_poss (Pron_poss my)) (CN (N head)))))))))
+1	I	_	PRON	_	_	2	expl	_	_
+2	carry	_	VERB	_	_	0	root	_	_
+3	these	_	DET	_	_	4	det	_	_
+4	thoughts	_	NOUN	_	_	2	nsubj	_	_
+5	in	_	ADP	_	_	7	case	_	_
+6	the	_	DET	_	_	7	det	_	_
+7	back	_	NOUN	_	_	4	nmod	_	_
+8	of	_	ADP	_	_	10	case	_	_
+9	my	_	PRON	_	_	10	nmod:poss	_	_
+10	head	_	NOUN	_	_	7	nmod	_	_
+
+
+
+# text = Adam:<PROPN> would:<AUX> have:<AUX> been:<AUX> carried:<VERB> over:<ADV> into:<ADP> the:<DET> life:<NOUN> eternal:<ADJ>
+# analyses = 9
+# parsetree = (Utt (S (NP (PN Adam)) (aux would) (have have) (cop been) (VP_pass (VP_pass (VP_pass (V2 carried)) (Adv over)) (NP_obl (Prep into) (NP (Det the) (CN (CN (N life)) (AP (A eternal))))))))
+1	Adam	_	PROPN	_	_	5	nsubj:pass	_	_
+2	would	_	AUX	_	_	5	aux	_	_
+3	have	_	AUX	_	_	5	aux	_	_
+4	been	_	AUX	_	_	5	aux:pass	_	_
+5	carried	_	VERB	_	_	0	root	_	_
+6	over	_	ADV	_	_	5	advmod	_	_
+7	into	_	ADP	_	_	9	case	_	_
+8	the	_	DET	_	_	9	det	_	_
+9	life	_	NOUN	_	_	5	nmod	_	_
+10	eternal	_	ADJ	_	_	9	amod	_	_
+
+
+
+# text = the:<DET> casings:<NOUN> had:<AUX> rotted:<VERB> away:<ADV> and:<CCONJ> had:<AUX> to:<PART> be:<AUX> replaced:<VERB>
+# analyses = 9
+# parsetree = (Utt (S (NP (NP (NP (Det the)) (SC (S_that (S (NP (CN (N casings))) (have had) (VP (ListVP (VP (VP (V rotted)) (Adv away))) (VP_conj (Conj and) (VP (aux had)))))))) (SC (VP_to (to to) (VP (aux be))))) (VP (V replaced))))
+1	the	_	DET	_	_	10	nsubj	_	_
+2	casings	_	NOUN	_	_	4	nsubj	_	_
+3	had	_	AUX	_	_	4	aux	_	_
+4	rotted	_	VERB	_	_	1	acl	_	_
+5	away	_	ADV	_	_	4	advmod	_	_
+6	and	_	CCONJ	_	_	7	cc	_	_
+7	had	_	AUX	_	_	4	conj	_	_
+8	to	_	PART	_	_	9	mark	_	_
+9	be	_	AUX	_	_	1	acl	_	_
+10	replaced	_	VERB	_	_	0	root	_	_
+
+
+
+# text = she:<PRON> was:<AUX> incensed:<ADJ> that:<SCONJ> this:<DET> chit:<NOUN> of:<ADP> a:<DET> girl:<NOUN> should:<AUX> dare:<VERB> to:<PART> make:<VERB> a:<DET> fool:<NOUN> of:<ADP> her:<PRON> in:<ADP> front:<NOUN> of:<ADP> the:<DET> class:<NOUN>
+# analyses = 2440
+# parsetree = (Utt (S (SC (S_that (S (S (NP (Pron she)) (cop was) (Comp (AP (A incensed)))) (S_sub (Subj that) (S (NP (NP (Det this) (CN (N chit))) (NP_obl (Prep of) (NP (Det a) (CN (N girl))))) (VP (aux should))))))) (VP (VV dare) (VP_to (to to) (VP (V2 make) (NP (NP (Det a) (CN (N fool))) (NP_obl (Prep of) (NP (NP (Pron her)) (NP_obl (Prep in) (NP (NP (CN (N front))) (NP_obl (Prep of) (NP (Det the) (CN (N class))))))))))))))
+1	she	_	PRON	_	_	3	nsubj	_	_
+2	was	_	AUX	_	_	3	cop	_	_
+3	incensed	_	ADJ	_	_	11	csubj	_	_
+4	that	_	SCONJ	_	_	10	mark	_	_
+5	this	_	DET	_	_	6	det	_	_
+6	chit	_	NOUN	_	_	10	nsubj	_	_
+7	of	_	ADP	_	_	9	case	_	_
+8	a	_	DET	_	_	9	det	_	_
+9	girl	_	NOUN	_	_	6	nmod	_	_
+10	should	_	AUX	_	_	3	advcl	_	_
+11	dare	_	VERB	_	_	0	root	_	_
+12	to	_	PART	_	_	13	mark	_	_
+13	make	_	VERB	_	_	11	xcomp	_	_
+14	a	_	DET	_	_	15	det	_	_
+15	fool	_	NOUN	_	_	13	obj	_	_
+16	of	_	ADP	_	_	17	case	_	_
+17	her	_	PRON	_	_	15	nmod	_	_
+18	in	_	ADP	_	_	19	case	_	_
+19	front	_	NOUN	_	_	17	nmod	_	_
+20	of	_	ADP	_	_	22	case	_	_
+21	the	_	DET	_	_	22	det	_	_
+22	class	_	NOUN	_	_	19	nmod	_	_
+
+
+
+# text = the:<DET> landslide:<NOUN> he:<PRON> had:<AUX> in:<ADP> the:<DET> electoral:<ADJ> college:<NOUN> obscured:<VERB> the:<DET> narrowness:<NOUN> of:<ADP> a:<DET> victory:<NOUN> based:<VERB> on:<ADP> just:<ADV> 43%:<NUM> of:<ADP> the:<DET> popular:<ADJ> vote:<NOUN>
+# analyses = 190836
+# parsetree = (Utt (S (NP (NP (NP (Det the) (CN (N landslide))) (SC (S_that (S (NP (Pron he)) (VP (aux had)))))) (NP_obl (Prep in) (NP (Det the) (CN (AP (A electoral)) (CN (N college)))))) (VP (V2 obscured) (NP (NP (Det the) (CN (N narrowness))) (NP_obl (Prep of) (NP (NP (NP (Det a)) (SC (S_that (S (NP (CN (N victory))) (VP (V based)))))) (NP_obl (Prep on) (NP (NP (Predet just) (NP (Num (Card '43%')))) (NP_obl (Prep of) (NP (Det the) (CN (AP (A popular)) (CN (N vote)))))))))))))
+1	the	_	DET	_	_	2	det	_	_
+2	landslide	_	NOUN	_	_	9	nsubj	_	_
+3	he	_	PRON	_	_	4	nsubj	_	_
+4	had	_	AUX	_	_	2	acl	_	_
+5	in	_	ADP	_	_	8	case	_	_
+6	the	_	DET	_	_	8	det	_	_
+7	electoral	_	ADJ	_	_	8	amod	_	_
+8	college	_	NOUN	_	_	2	nmod	_	_
+9	obscured	_	VERB	_	_	0	root	_	_
+10	the	_	DET	_	_	11	det	_	_
+11	narrowness	_	NOUN	_	_	9	obj	_	_
+12	of	_	ADP	_	_	13	case	_	_
+13	a	_	DET	_	_	11	nmod	_	_
+14	victory	_	NOUN	_	_	15	nsubj	_	_
+15	based	_	VERB	_	_	13	acl	_	_
+16	on	_	ADP	_	_	18	case	_	_
+17	just	_	ADV	_	_	18	det:predet	_	_
+18	43%	_	NUM	_	_	13	nmod	_	_
+19	of	_	ADP	_	_	22	case	_	_
+20	the	_	DET	_	_	22	det	_	_
+21	popular	_	ADJ	_	_	22	amod	_	_
+22	vote	_	NOUN	_	_	18	nmod	_	_
+
+
+

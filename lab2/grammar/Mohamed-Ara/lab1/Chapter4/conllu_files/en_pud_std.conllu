@@ -1,0 +1,313 @@
+# text = sent_id = 1
+# text = text_en = Who are they?
+1	Who	_	PRON	_	_	0	root	_	_
+2	are	_	AUX	_	_	1	cop	_	_
+3	they	_	PRON	_	_	1	nsubj	_	_
+4	?	_	PUNCT	_	_	1	punct	_	_
+
+# text = sent_id = 2
+# text = text_en = A small town with two minarets glides by.
+1	A	_	DET	_	_	3	det	_	_
+2	small	_	ADJ	_	_	7	nsubj	_	_
+3	town	_	NOUN	_	_	2	amod	_	_
+4	with	_	ADP	_	_	6	case	_	_
+5	two	_	NUM	_	_	6	nummod	_	_
+6	minarets	_	NOUN	_	_	3	nmod	_	_
+7	glides	_	NOUN	_	_	0	root	_	_
+8	by	_	ADV	_	_	7	compound	_	_
+9	.	_	PUNCT	_	_	3	punct	_	_
+
+# text = sent_id = 3
+# text = text_en = I was just a boy with muddy shoes.
+1	I	_	PRON	_	_	5	nsubj	_	_
+2	was	_	AUX	_	_	5	cop	_	_
+3	just	_	ADV	_	_	5	advmod	_	_
+4	a	_	DET	_	_	5	det	_	_
+5	boy	_	NOUN	_	_	0	root	_	_
+6	with	_	ADP	_	_	8	case	_	_
+7	muddy	_	ADJ	_	_	8	amod	_	_
+8	shoes	_	NOUN	_	_	5	nmod	_	_
+9	.	_	PUNCT	_	_	5	punct	_	_
+
+# text = sent_id = 4
+# text = text_en = Shenzhen's traffic police have opted for unconventional penalties before.
+1	Shenzhen	_	PROPN	_	_	4	nmod:poss	_	_
+2	's	_	PART	_	_	1	case	_	_
+3	traffic	_	NOUN	_	_	4	compound	_	_
+4	police	_	NOUN	_	_	6	nsubj	_	_
+5	have	_	AUX	_	_	6	aux	_	_
+6	opted	_	VERB	_	_	0	root	_	_
+7	for	_	ADP	_	_	8	case	_	_
+8	unconventional	_	ADJ	_	_	9	amod	_	_
+9	penalties	_	NOUN	_	_	6	obj	_	_
+10	before	_	ADV	_	_	6	advmod	_	_
+11	.	_	PUNCT	_	_	6	punct	_	_
+
+# text = sent_id = 5
+# text = text_en = The study of volcanoes is called volcanology, sometimes spelled vulcanology.
+1	The	_	DET	_	_	2	det	_	_
+2	study	_	NOUN	_	_	6	nsubj	_	_
+3	of	_	ADP	_	_	4	case	_	_
+4	volcanoes	_	NOUN	_	_	2	nmod	_	_
+5	is	_	AUX	_	_	6	aux:pass	_	_
+6	called	_	VERB	_	_	0	root	_	_
+7	volcanology	_	NOUN	_	_	6	xcomp	_	_
+8	,	_	PUNCT	_	_	7	punct	_	_
+9	sometimes	_	ADV	_	_	10	advmod	_	_
+10	spelled	_	VERB	_	_	7	acl	_	_
+11	vulcanology	_	NOUN	_	_	10	xcomp	_	_
+12	.	_	PUNCT	_	_	6	punct	_	_
+
+# text = sent_id = 6
+# text = text_en = It was conducted just off the Mexican coast from April to June.
+1	It	_	PRON	_	_	3	nsubj:pass	_	_
+2	was	_	AUX	_	_	3	aux:pass	_	_
+3	conducted	_	VERB	_	_	0	root	_	_
+4	just	_	ADV	_	_	8	advmod	_	_
+5	off	_	ADP	_	_	8	case	_	_
+6	the	_	DET	_	_	8	det	_	_
+7	Mexican	_	ADJ	_	_	8	amod	_	_
+8	coast	_	NOUN	_	_	3	obl	_	_
+9	from	_	ADP	_	_	10	case	_	_
+10	April	_	PROPN	_	_	3	obl	_	_
+11	to	_	ADP	_	_	12	case	_	_
+12	June	_	PROPN	_	_	10	nmod	_	_
+13	.	_	PUNCT	_	_	3	punct	_	_
+
+# text = sent_id = 7
+# text = text_en = "Her voice literally went around the world", Leive said.
+1	"	_	PUNCT	_	_	5	punct	_	_
+2	Her	_	PRON	_	_	3	nmod:poss	_	_
+3	voice	_	NOUN	_	_	5	nsubj	_	_
+4	literally	_	ADV	_	_	5	advmod	_	_
+5	went	_	VERB	_	_	0	root	_	_
+6	around	_	ADP	_	_	8	case	_	_
+7	the	_	DET	_	_	8	det	_	_
+8	world	_	NOUN	_	_	5	obl	_	_
+9	"	_	PUNCT	_	_	5	punct	_	_
+10	,	_	PUNCT	_	_	5	punct	_	_
+11	Leive	_	PROPN	_	_	12	nsubj	_	_
+12	said	_	VERB	_	_	5	parataxis	_	_
+13	.	_	PUNCT	_	_	5	punct	_	_
+
+# text = sent_id = 8
+# text = text_en = A witness told police that the victim had attacked the suspect in April.
+1	A	_	DET	_	_	2	det	_	_
+2	witness	_	NOUN	_	_	3	nsubj	_	_
+3	told	_	VERB	_	_	0	root	_	_
+4	police	_	NOUN	_	_	3	obj	_	_
+5	that	_	SCONJ	_	_	9	mark	_	_
+6	the	_	DET	_	_	7	det	_	_
+7	victim	_	NOUN	_	_	9	nsubj	_	_
+8	had	_	AUX	_	_	9	aux	_	_
+9	attacked	_	VERB	_	_	3	ccomp	_	_
+10	the	_	DET	_	_	11	det	_	_
+11	suspect	_	NOUN	_	_	9	obj	_	_
+12	in	_	ADP	_	_	13	case	_	_
+13	April	_	NOUN	_	_	9	obl	_	_
+14	.	_	PUNCT	_	_	3	punct	_	_
+
+# text = sent_id = 9
+# text = text_en = It's most obvious when a celebrity's name is initially quite rare.
+1	It	_	PRON	_	_	4	nsubj	_	_
+2	's	_	AUX	_	_	4	cop	_	_
+3	most	_	ADV	_	_	4	advmod	_	_
+4	obvious	_	ADJ	_	_	0	root	_	_
+5	when	_	ADV	_	_	13	advmod	_	_
+6	a	_	DET	_	_	7	det	_	_
+7	celebrity	_	NOUN	_	_	9	nmod:poss	_	_
+8	's	_	AUX	_	_	7	case	_	_
+9	name	_	NOUN	_	_	13	nsubj	_	_
+10	is	_	AUX	_	_	13	cop	_	_
+11	initially	_	ADV	_	_	13	advmod	_	_
+12	quite	_	ADV	_	_	13	advmod	_	_
+13	rare	_	ADJ	_	_	4	advcl	_	_
+14	.	_	PUNCT	_	_	4	punct	_	_
+
+# text = sent_id = 10
+# text = text_en = This has not stopped investors flocking to put their money in the funds.
+1	This	_	DET	_	_	4	news	_	_
+2	has	_	AUX	_	_	4	cop	_	_
+3	not	_	PART	_	_	4	advmod	_	_
+4	stopped	_	VERB	_	_	0	root	_	_
+5	investors	_	NOUN	_	_	4	obj	_	_
+6	flocking	_	VERB	_	_	4	xcomp	_	_
+7	to	_	PART	_	_	8	mark	_	_
+8	put	_	VERB	_	_	6	advcl	_	_
+9	their	_	PRON	_	_	10	nmod:poss	_	_
+10	money	_	NOUN	_	_	8	obj	_	_
+11	in	_	ADP	_	_	13	case	_	_
+12	the	_	DET	_	_	13	det	_	_
+13	funds	_	NOUN	_	_	8	obl	_	_
+14	.	_	PUNCT	_	_	4	punct	_	_
+
+# text = sent_id = 11
+# text = text_en = This discordance between economic data and political rhetoric is familiar, or should be.
+1	This	_	DET	_	_	2	det	_	_
+2	discordance	_	NOUN	_	_	10	nsubj	_	_
+3	between	_	ADP	_	_	5	case	_	_
+4	economic	_	ADJ	_	_	5	amod	_	_
+5	data	_	NOUN	_	_	2	nmod	_	_
+6	and	_	CCONJ	_	_	8	cc	_	_
+7	political	_	ADJ	_	_	8	amod	_	_
+8	rhetoric	_	NOUN	_	_	5	conj	_	_
+9	is	_	AUX	_	_	10	cop	_	_
+10	familiar	_	ADJ	_	_	0	root	_	_
+11	,	_	PUNCT	_	_	14	punct	_	_
+12	or	_	CCONJ	_	_	14	cc	_	_
+13	should	_	AUX	_	_	14	aux	_	_
+14	be	_	AUX	_	_	10	conj	_	_
+15	.	_	PUNCT	_	_	10	punct	_	_
+
+# text = sent_id = 12
+# text = text_en = The feasibility study estimates that it would take passengers about four minutes to cross the Potomac River on the gondola.
+1	The	_	DET	_	_	2	det	_	_
+2	feasibility	_	NOUN	_	_	3	compo	_	_
+3	study	_	NOUN	_	_	4	nsubj	_	_
+4	estimates	_	VERB	_	_	0	root	_	_
+5	that	_	SCONJ	_	_	8	make	_	_
+6	it	_	PRON	_	_	8	expl	_	_
+7	would	_	AUX	_	_	8	aux	_	_
+8	take	_	VERB	_	_	4	ccomp	_	_
+9	passengers	_	NOUN	_	_	8	obj	_	_
+10	about	_	ADV	_	_	11	advmod	_	_
+11	four	_	NUM	_	_	12	nummod	_	_
+12	minutes	_	NOUN	_	_	8	obj	_	_
+13	to	_	PART	_	_	14	mark	_	_
+14	cross	_	VERB	_	_	8	csubj	_	_
+15	the	_	DET	_	_	16	det	_	_
+16	Potomac	_	PROPN	_	_	17	compound	_	_
+17	River	_	PROPN	_	_	14	obj	_	_
+18	on	_	ADP	_	_	19	case	_	_
+19	the	_	DET	_	_	20	det	_	_
+20	gondola	_	NOUN	_	_	14	obl	_	_
+21	.	_	PUNCT	_	_	4	punct	_	_
+
+# text = sent_id = 13
+# text = text_en = he collected cards and traded them with the other boys
+1	He	_	PRON	_	_	2	news	_	_
+2	collected	_	VERB	_	_	0	root	_	_
+3	cards	_	NOUN	_	_	2	obj	_	_
+4	and	_	CCONJ	_	_	5	cc	_	_
+5	traded	_	VERB	_	_	2	conj	_	_
+6	them	_	PRON	_	_	5	obj	_	_
+7	with	_	ADP	_	_	10	case	_	_
+8	the	_	DET	_	_	10	det	_	_
+9	other	_	ADJ	_	_	10	amod	_	_
+10	boys	_	NOUN	_	_	5	obl	_	_
+
+# text = sent_id = 14
+# text = text_en = this crime carries a penalty of five years in prison
+1	this	_	DET	_	_	2	det	_	_
+2	crime	_	NOUN	_	_	3	nsubj	_	_
+3	carries	_	VERB	_	_	0	root	_	_
+4	a	_	DET	_	_	5	det	_	_
+5	penalty	_	NOUN	_	_	3	obj	_	_
+6	of	_	ADP	_	_	8	case	_	_
+7	five	_	NUM	_	_	8	nummod	_	_
+8	years	_	NOUN	_	_	5	nmod	_	_
+9	in	_	ADP	_	_	10	ADP	_	_
+10	prison	_	NOUN	_	_	3	obl	_	_
+
+# text = sent_id = 15
+# text = text_en = the news was carried to every village in the province
+1	the	_	DET	_	_	2	det	_	_
+2	news	_	NOUN	_	_	4	nsubj:pass	_	_
+3	was	_	AUX	_	_	4	aux:pass	_	_
+4	carried	_	VERB	_	_	0	root	_	_
+5	to	_	ADP	_	_	7	case	_	_
+6	every	_	DET	_	_	7	det	_	_
+7	village	_	NOUN	_	_	4	obl	_	_
+8	in	_	ADP	_	_	10	case	_	_
+9	the	_	DET	_	_	10	det	_	_
+10	province	_	NOUN	_	_	7	nmod	_	_
+
+# text = sent_id = 16
+# text = text_en = I carry these thoughts in the back of my head
+# text = I carry these thoughts in the back of my head
+1	I	_	PRON	_	_	2	nsubj	_	_
+2	carry	_	VERB	_	_	0	root	_	_
+3	these	_	DET	_	_	4	det	_	_
+4	thoughts	_	NOUN	_	_	2	obj	_	_
+5	in	_	ADP	_	_	7	case	_	_
+6	the	_	DET	_	_	7	DET	_	_
+7	back	_	NOUN	_	_	2	obl	_	_
+8	of	_	ADP	_	_	10	case	_	_
+9	my	_	PRON	_	_	10	nmod:poss	_	_
+10	head	_	NOUN	_	_	7	nmod	_	_
+
+# text = sent_id = 17
+# text = text_en = Adam would have been carried over into the life eternal
+1	Adam	_	PROPN	_	_	4	nsubj:pass	_	_
+2	would	_	AUX	_	_	5	aux	_	_
+3	have	_	AUX	_	_	5	aux	_	_
+4	been	_	AUX	_	_	5	aux:pass	_	_
+5	carried	_	VERB	_	_	0	root	_	_
+6	over	_	ADV	_	_	5	compound	_	_
+7	into	_	ADP	_	_	9	case	_	_
+8	the	_	DET	_	_	9	det	_	_
+9	life	_	NOUN	_	_	5	obl	_	_
+10	eternal	_	ADJ	_	_	9	amod	_	_
+
+# text = sent_id = 18
+# text = text_en = the casings had rotted away and had to be replaced
+1	the	_	DET	_	_	2	det	_	_
+2	casings	_	NOUN	_	_	4	nsubj:pass	_	_
+3	had	_	AUX	_	_	4	aux:pass	_	_
+4	rotted	_	VERB	_	_	0	root	_	_
+5	away	_	ADV	_	_	4	compound	_	_
+6	and	_	CCONJ	_	_	10	cc	_	_
+7	had	_	AUX	_	_	10	aux	_	_
+8	to	_	PART	_	_	9	mark	_	_
+9	be	_	AUX	_	_	10	aux:pass	_	_
+10	replaced	_	VERB	_	_	4	conj	_	_
+
+# text = sent_id = 19
+# text = text_en = she was incensed that this chit of a girl should dare to make a fool of her in front of the class
+1	she	_	PRON	_	_	3	nsubj	_	_
+2	was	_	AUX	_	_	2	cop	_	_
+3	incensed	_	ADJ	_	_	0	root	_	_
+4	that	_	SCONJ	_	_	11	mark	_	_
+5	this	_	DET	_	_	6	det	_	_
+6	chit	_	NOUN	_	_	11	nsubj	_	_
+7	of	_	ADP	_	_	9	case	_	_
+8	a	_	DET	_	_	9	det	_	_
+9	girl	_	NOUN	_	_	6	nmod	_	_
+10	should	_	AUX	_	_	10	aux	_	_
+11	dare	_	VERB	_	_	3	ccomp	_	_
+12	to	_	PART	_	_	12	mark	_	_
+13	make	_	VERB	_	_	11	xcomp	_	_
+14	a	_	DET	_	_	15	det	_	_
+15	fool	_	NOUN	_	_	13	obj	_	_
+16	of	_	ADP	_	_	17	case	_	_
+17	her	_	PRON	_	_	15	nmod	_	_
+18	in	_	ADP	_	_	19	case	_	_
+19	front	_	NOUN	_	_	13	obl	_	_
+20	of	_	ADP	_	_	22	case	_	_
+21	the	_	DET	_	_	22	det	_	_
+22	class	_	NOUN	_	_	19	nmod	_	_
+
+# text = sent_id = 20
+# text = text_en = the landslide he had in the electoral college obscured the narrowness of a victory based on just 43% of the popular vote
+1	the	_	DET	_	_	2	det	_	_
+2	landslide	_	NOUN	_	_	9	nsubj	_	_
+3	he	_	PRON	_	_	9	nsubj	_	_
+4	had	_	AUX	_	_	2	acl	_	_
+5	in	_	ADP	_	_	8	case	_	_
+6	the	_	DET	_	_	8	det	_	_
+7	electoral	_	ADJ	_	_	8	amod	_	_
+8	college	_	NOUN	_	_	9	obl	_	_
+9	obscured	_	VERB	_	_	0	root	_	_
+10	the	_	DET	_	_	11	det	_	_
+11	narrowness	_	NOUN	_	_	9	obj	_	_
+12	of	_	ADP	_	_	14	case	_	_
+13	a	_	DET	_	_	14	det	_	_
+14	victory	_	NOUN	_	_	11	nmod	_	_
+15	based	_	VERB	_	_	14	acl	_	_
+16	on	_	ADP	_	_	15	compo	_	_
+17	just	_	ADV	_	_	18	advmod	_	_
+18	43%	_	NUM	_	_	15	obl	_	_
+19	of	_	ADP	_	_	22	case	_	_
+20	the	_	DET	_	_	22	det	_	_
+21	popular	_	ADJ	_	_	22	amod	_	_
+22	vote	_	NOUN	_	_	18	nmod	_	_

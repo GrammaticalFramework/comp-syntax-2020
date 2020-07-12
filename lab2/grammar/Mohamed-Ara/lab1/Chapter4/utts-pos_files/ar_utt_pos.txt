@@ -1,0 +1,21 @@
+من:<PRON> هم:<PRON> ؟:<PUNCT>
+مدينة:<NOUN> صغيرة:<ADJ> ب:<ADP> مئذنتين:<NOUN> ترتفعان:<VERB> من:<ADP> ها:<PRON> .:<PUNCT>
+كنت:<AUX> مجرد:<NOUN> صبي:<NOUN> ذي:<ADJ> حذاء:<NOUN> موحل:<ADJ> .:<PNCT>
+قد:<AUX> تبنت:<VERB> شرطة:<NOUN> مرور:<NOUN> شينجن:<PROPN> عقوبات:<NOUN> غير:<ADV> تقليدية:<ADJ> من:<ADP> قبل:<ADV> .:<PUNCT>
+يسمى:<VERB> العلم:<NOUN> الذي:<PRON> يدرس:<VERB> البراكين:<VERB> علم:<NOUN> البراكين:<NOUN> أو:<CCONJ> البركانيات:<NOUN> .:<PUNCT>
+أجريت:<VERB> قبالة:<ADV> الساحل:<NOUN> المكسيكي:<ADJ> من:<ADP> أبريل:<PRON> إلى:<ADP> يونيو:<PRON> .:<PUNCT>
+قالت:<VERB> ليف:<PRON> ":<PUNCT> جال:<VERB> صوت:<NOUN> ها:<PRON> حرفيا:<ADV> حول:<ADP> العالم:<NOUN> ":<PUNCT> .:<PUNCT>
+أخبر:<VERB> شاهد:<NOUN> الشرطة:<NOUN> أن:<SCONJ> الضحية:<NOUN> كان:<AUX> قد:<AUX> هاجم:<VERB> المشتبه:<NOUN> ب:<ADP> ه:<PRON> في:<ADP> أبريل:<PROPN> .:<PUNCT>
+يكون:<VERB> الأمر:<NOUN> أكثر:<ADJ> وضوحًا:<ADV> عندما:<ADV> يكون:<VERB> اسم:<NOUN> أحد:<DET> المشاهير:<NOUN> نادرًا:<ADJ> جدًا:<ADV> في:<ADP> البداية:<NOUN> .:<PUNCT>
+هذا:<PRON> لم:<PART> يمنع:<VERB> المستثمرين:<NOUN> أن:<PART> يندفعوا:<VERB> ل:<ADP> وضع:<NOUN> أموال:<NOUN> هم:<PRON> في:<ADP> الصناديق:<NOUN> .:<PART>
+هذا:<DET> التعارض:<NOUN> بين:<ADP> البيانات:<NOUN> الاقتصادية:<ADJ> و:<CCONJ> الخطاب:<NOUN> السياسي:<ADJ> مألوف:<ADJ> ،:<PUNCT> أو:<CCONJ> يجب:<VERB> أن:<PART> يكون:<VERB> كذلك:<ADV> .:<PNCT>
+تقدر:<VERB> دراسة:<NOUN> الجدوى:<NOUN> أن:<SCONJ> الركاب:<NOUN> س:<PART> يستغرقون:<VERB> حوالي:<ADV> أربع:<NUM> دقائق:<NOUN> ل:<ADP> عبور:<NOUN> نهر:<PROPN> بوتوماك:<PROPN> على:<ADP> متن:<NOUN> الجندول:<NOUN> .:<PUNCT>
+قام:<VERB> ب:<ADP> جمع:<NOUN> البطاقات:<NOUN> و:<CCONJ> تداول:<NOUN> ها:<PRON> مع:<ADP> الأولاد:<NOUN> الآخرين:<ADJ>
+هذه:<DET> الجريمة:<NOUN> يعاقب:<VERB> علي:<ADP> ها:<PRON> ب:<ADP> السجن:<NOUN> ل:<ADP> مدة:<NOUN> خمس:<NUM> سنوات:<NOUN>
+نقلت:<VERB> الأخبار:<NOUN> إلى:<ADP> كل:<DET> قرية:<NOUN> في:<ADP> المحافظة:<NOUN>
+أحمل:<VERB> هذه:<DET> الأفكار:<NOUN> في:<ADP> مؤخرة:<NOUN> رأس:<NOUN> ي:<PRON>
+آدم:<PROPN> كان:<VERB> س:<PART> يُنْقَل:<VERB> إلى:<ADP> الحياة:<NOUN> الأبدية:<ADJ>
+كانت:<VERB> العبوات:<NOUN> قد:<AUX> فسدت:<VERB> و:<CCONJ> كان:<AUX> يجب:<VERB> أن:<ADP> تستبدل:<VERB>
+كانت:<VERB> غاضبة:<ADJ> من:<ADP> جراءة:<NOUN> تلك:<DET> الفتاة:<NOUN> الوقحة:<ADJ> على:<ADP> السخرية:<NOUN> من:<ADP> ها:<PRON> أمام:<ADP> الفصل:<NOUN>
+إن:<ADP> الأغلبية:<NOUN> التي:<PRON> حصل:<VERB> علي:<ADP> ها:<PRON> في:<ADP> المجمع:<NOUN> الانتخابي:<ADJ> أخفت:<VERB> حقيقة:<NOUN> الانتصار:<NOUN> الضعيف:<ADJ> ذي:<ADJ> 43٪:<NUM> من:<ADP> الأصوات:<NOUN> الشعبية:<ADJ>
+
