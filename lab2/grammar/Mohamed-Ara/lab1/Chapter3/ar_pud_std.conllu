@@ -1,0 +1,292 @@
+1	من	_	PRON	_	_	0	root	_	_
+2	هم	_	PRON	_	_	1	nsubj	_	_
+3	؟	_	PUNCT	_	_	1	punct	_	_
+
+# text = sent_id = 2
+# text = text_en = A small town with two minarets glides by.
+# text = text_ar = مدينة صغيرة بمئذنتين ترتفعان منها.
+1	مدينة	_	NOUN	_	_	0	root	_	_
+2	صغيرة	_	ADJ	_	_	1	amod	_	_
+3	ب	_	ADP	_	_	4	case	_	_
+4	مئذنتين	_	NOUN	_	_	1	nsubj	_	_
+5	ترتفعان	_	VERB	_	_	1	acl	_	_
+6	من	_	ADP	_	_	7	case	_	_
+7	ها	_	PRON	_	_	4	obl	_	_
+8	.	_	PUNCT	_	_	5	punct	_	_
+
+# text = sent_id = 3
+# text = text_en = I was just a boy with muddy shoes.
+# text = text_ar = كنت مجرد صبي ذي حذاء موحل.
+1	كنت	_	AUX	_	_	3	cop	_	_
+2	مجرد	_	NOUN	_	_	3	nsubj	_	_
+3	صبي	_	NOUN	_	_	0	root	_	_
+4	ذي	_	ADJ	_	_	3	amod	_	_
+5	حذاء	_	NOUN	_	_	4	obl	_	_
+6	موحل	_	ADJ	_	_	5	amod	_	_
+7	.	_	PNCT	_	_	3	punct	_	_
+
+# text = sent_id = 4
+# text = text_en = Shenzhen's traffic police have opted for unconventional penalties before.
+# text = text_ar = قد تبنت شرطة مرور شينجن عقوبات غير تقليدية من قبل.
+1	قد	_	AUX	_	_	2	aux	_	_
+2	تبنت	_	VERB	_	_	0	root	_	_
+3	شرطة	_	NOUN	_	_	2	nsubj	_	_
+4	مرور	_	NOUN	_	_	3	nmod	_	_
+5	شينجن	_	PROPN	_	_	3	nmod	_	_
+6	عقوبات	_	NOUN	_	_	2	obj	_	_
+7	غير	_	ADV	_	_	8	advmod	_	_
+8	تقليدية	_	ADJ	_	_	6	amod	_	_
+9	من	_	ADP	_	_	10	case	_	_
+10	قبل	_	ADV	_	_	2	advmod	_	_
+11	.	_	PUNCT	_	_	2	punct	_	_
+
+# text = sent_id = 5
+# text = text_en = The study of volcanoes is called volcanology, sometimes spelled vulcanology.
+# text = text_ar = يسمى العلم الذي يدرس البراكين علم البراكين أو البركانيات.
+1	يسمى	_	VERB	_	_	0	root	_	_
+2	العلم	_	NOUN	_	_	1	nsubj:pass	_	_
+3	الذي	_	PRON	_	_	4	nsubj	_	_
+4	يدرس	_	VERB	_	_	2	acl	_	_
+5	البراكين	_	VERB	_	_	4	obj	_	_
+6	علم	_	NOUN	_	_	1	advmod	_	_
+7	البراكين	_	NOUN	_	_	6	nmod	_	_
+8	أو	_	CCONJ	_	_	9	cc	_	_
+9	البركانيات	_	NOUN	_	_	7	conj	_	_
+10	.	_	PUNCT	_	_	1	punct	_	_
+
+# text = sent_id = 6
+# text = text_en = It was conducted just off the Mexican coast from April to June.
+# text = text_ar = أجريت قبالة الساحل المكسيكي من أبريل إلى يونيو.
+1	أجريت	_	VERB	_	_	0	root	_	_
+2	قبالة	_	ADV	_	_	3	advmod	_	_
+3	الساحل	_	NOUN	_	_	1	nsubj:pass	_	_
+4	المكسيكي	_	ADJ	_	_	3	amod	_	_
+5	من	_	ADP	_	_	6	case	_	_
+6	أبريل	_	PRON	_	_	1	obl	_	_
+7	إلى	_	ADP	_	_	8	case	_	_
+8	يونيو	_	PRON	_	_	6	nmod	_	_
+9	.	_	PUNCT	_	_	1	punct	_	_
+
+# text = sent_id = 7
+# text = text_en = "Her voice literally went around the world," Leive said.
+# text = text_ar = قالت ليف "جال صوتها حرفيا حول العالم".
+1	قالت	_	VERB	_	_	0	root	_	_
+2	ليف	_	PRON	_	_	1	nsubj	_	_
+3	"	_	PUNCT	_	_	4	punct	_	_
+4	جال	_	VERB	_	_	1	ccomp	_	_
+5	صوت	_	NOUN	_	_	4	nsubj	_	_
+6	ها	_	PRON	_	_	5	nmod	_	_
+7	حرفيا	_	ADV	_	_	4	advmod	_	_
+8	حول	_	ADP	_	_	9	case	_	_
+9	العالم	_	NOUN	_	_	4	obl	_	_
+10	"	_	PUNCT	_	_	4	punct	_	_
+11	.	_	PUNCT	_	_	4	punct	_	_
+
+# text = sent_id = 8
+# text = text_en = A witness told police that the victim had attacked the suspect in April.
+# text = text_ar = أخبر شاهد الشرطة أن الضحية كان قد هاجم المشتبه به في أبريل.
+1	أخبر	_	VERB	_	_	0	root	_	_
+2	شاهد	_	NOUN	_	_	1	nsubj	_	_
+3	الشرطة	_	NOUN	_	_	1	obj	_	_
+4	أن	_	SCONJ	_	_	8	mark	_	_
+5	الضحية	_	NOUN	_	_	8	nsubj	_	_
+6	كان	_	AUX	_	_	7	aux	_	_
+7	قد	_	AUX	_	_	8	aux	_	_
+8	هاجم	_	VERB	_	_	1	ccomp	_	_
+9	المشتبه	_	NOUN	_	_	8	obj	_	_
+10	ب	_	ADP	_	_	11	case	_	_
+11	ه	_	PRON	_	_	9	nmod	_	_
+12	في	_	ADP	_	_	13	case	_	_
+13	أبريل	_	PROPN	_	_	8	obl	_	_
+14	.	_	PUNCT	_	_	1	punct	_	_
+
+# text = sent_id = 9
+# text = text_en = It's most obvious when a celebrity's name is initially quite rare.
+# text = text_ar = يكون الأمر أكثر وضوحًا عندما يكون اسم أحد المشاهير نادرًا جدًا في البداية.
+1	يكون	_	VERB	_	_	2	cop	_	_
+2	الأمر	_	NOUN	_	_	3	nsubj	_	_
+3	أكثر	_	ADJ	_	_	0	root	_	_
+4	وضوحًا	_	ADV	_	_	3	advmod	_	_
+5	عندما	_	ADV	_	_	10	advmod	_	_
+6	يكون	_	VERB	_	_	7	cop	_	_
+7	اسم	_	NOUN	_	_	10	nsubj	_	_
+8	أحد	_	DET	_	_	9	det	_	_
+9	المشاهير	_	NOUN	_	_	7	nmod	_	_
+10	نادرًا	_	ADJ	_	_	3	advcl	_	_
+11	جدًا	_	ADV	_	_	10	advmod	_	_
+12	في	_	ADP	_	_	13	case	_	_
+13	البداية	_	NOUN	_	_	3	obl	_	_
+14	.	_	PUNCT	_	_	3	punct	_	_
+
+# text = sent_id = 10
+# text = text_en = This has not stopped investors flocking to put their money in the funds.
+# text = text_ar = هذا لم يمنع المستثمرين أن يندفعوا لوضع أموالهم في الصناديق.
+1	هذا	_	PRON	_	_	3	nsubj	_	_
+2	لم	_	PART	_	_	3	advmod	_	_
+3	يمنع	_	VERB	_	_	0	root	_	_
+4	المستثمرين	_	NOUN	_	_	3	obj	_	_
+5	أن	_	PART	_	_	6	mark	_	_
+6	يندفعوا	_	VERB	_	_	3	csubj	_	_
+7	ل	_	ADP	_	_	8	case	_	_
+8	وضع	_	NOUN	_	_	6	obl	_	_
+9	أموال	_	NOUN	_	_	8	nmod	_	_
+10	هم	_	PRON	_	_	9	nmod:poss	_	_
+11	في	_	ADP	_	_	12	case	_	_
+12	الصناديق	_	NOUN	_	_	6	obl	_	_
+13	.	_	PART	_	_	3	punct	_	_
+
+# text = sent_id = 11
+# text = text_en = This discordance between economic data and political rhetoric is familiar, or should be.
+# text = text_ar = هذا التعارض بين البيانات الاقتصادية والخطاب السياسي مألوف ، أو يجب أن يكون كذلك.
+1	هذا	_	DET	_	_	2	det	_	_
+2	التعارض	_	NOUN	_	_	9	nsubj	_	_
+3	بين	_	ADP	_	_	4	case	_	_
+4	البيانات	_	NOUN	_	_	2	nmod	_	_
+5	الاقتصادية	_	ADJ	_	_	4	amod	_	_
+6	و	_	CCONJ	_	_	7	cc	_	_
+7	الخطاب	_	NOUN	_	_	4	conj	_	_
+8	السياسي	_	ADJ	_	_	7	amod	_	_
+9	مألوف	_	ADJ	_	_	0	root	_	_
+10	،	_	PUNCT	_	_	9	punct	_	_
+11	أو	_	CCONJ	_	_	12	cc	_	_
+12	يجب	_	VERB	_	_	9	conj	_	_
+13	أن	_	PART	_	_	14	mark	_	_
+14	يكون	_	VERB	_	_	12	csubj	_	_
+15	كذلك	_	ADV	_	_	14	advmod	_	_
+16	.	_	PNCT	_	_	9	punct	_	_
+
+# text = sent_id = 12
+# text = text_en = The feasibility study estimates that it would take passengers about four minutes to cross the Potomac River on the gondola.
+# text = text_ar = تقدر دراسة الجدوى أن الركاب سيستغرقون حوالي أربع دقائق لعبور نهر بوتوماك على متن الجندول.
+1	تقدر	_	VERB	_	_	0	root	_	_
+2	دراسة	_	NOUN	_	_	1	nsubj:pass	_	_
+3	الجدوى	_	NOUN	_	_	2	nmod	_	_
+4	أن	_	SCONJ	_	_	7	mark	_	_
+5	الركاب	_	NOUN	_	_	7	nsubj	_	_
+6	س	_	PART	_	_	7	compound	_	_
+7	يستغرقون	_	VERB	_	_	1	xcomp	_	_
+8	حوالي	_	ADV	_	_	9	advmod	_	_
+9	أربع	_	NUM	_	_	10	nummod	_	_
+10	دقائق	_	NOUN	_	_	7	obj	_	_
+11	ل	_	ADP	_	_	12	case	_	_
+12	عبور	_	NOUN	_	_	7	obl	_	_
+13	نهر	_	PROPN	_	_	12	nmod	_	_
+14	بوتوماك	_	PROPN	_	_	13	nmod	_	_
+15	على	_	ADP	_	_	17	case	_	_
+16	متن	_	NOUN	_	_	12	obl	_	_
+17	الجندول	_	NOUN	_	_	16	nmod	_	_
+18	.	_	PUNCT	_	_	0	punct	_	_
+
+# text = sent_id = 13
+# text = text_en = he collected cards and traded them with the other boys
+# text = text_ar = قام بجمع البطاقات وتداولها مع الأولاد الآخرين
+1	قام	_	VERB	_	_	0	root	_	_
+2	ب	_	ADP	_	_	3	case	_	_
+3	جمع	_	NOUN	_	_	1	obl	_	_
+4	البطاقات	_	NOUN	_	_	1	obj	_	_
+5	و	_	CCONJ	_	_	6	cc	_	_
+6	تداول	_	NOUN	_	_	3	conj	_	_
+7	ها	_	PRON	_	_	6	nmod	_	_
+8	مع	_	ADP	_	_	9	case	_	_
+9	الأولاد	_	NOUN	_	_	6	obl	_	_
+10	الآخرين	_	ADJ	_	_	9	amod	_	_
+
+# text = sent_id = 14
+# text = text_en = this crime carries a penalty of five years in prison
+# text = text_ar = هذه الجريمة يعاقب عليها بالسجن لمدة خمس سنوات
+1	هذه	_	DET	_	_	2	DET	_	_
+2	الجريمة	_	NOUN	_	_	3	nsubj:pass	_	_
+3	يعاقب	_	VERB	_	_	0	root	_	_
+4	علي	_	ADP	_	_	5	case	_	_
+5	ها	_	PRON	_	_	3	obl	_	_
+6	ب	_	ADP	_	_	7	case	_	_
+7	السجن	_	NOUN	_	_	3	obl	_	_
+8	ل	_	ADP	_	_	9	case	_	_
+9	مدة	_	NOUN	_	_	7	nmod	_	_
+10	خمس	_	NUM	_	_	11	nummod	_	_
+11	سنوات	_	NOUN	_	_	9	nmod	_	_
+
+# text = sent_id = 15
+# text = text_en = the news was carried to every village in the province
+# text = text_ar = نقلت الأخبار إلى كل قرية في المحافظة
+1	نقلت	_	VERB	_	_	0	root	_	_
+2	الأخبار	_	NOUN	_	_	1	nsubj:pass	_	_
+3	إلى	_	ADP	_	_	5	case	_	_
+4	كل	_	DET	_	_	5	det	_	_
+5	قرية	_	NOUN	_	_	1	obl	_	_
+6	في	_	ADP	_	_	7	case	_	_
+7	المحافظة	_	NOUN	_	_	5	nmod	_	_
+
+# text = sent_id = 16
+# text = text_en = I carry these thoughts in the back of my head
+# text = text_ar = أحمل هذه الأفكار في مؤخرة رأسي
+1	أحمل	_	VERB	_	_	0	root	_	_
+2	هذه	_	DET	_	_	3	det	_	_
+3	الأفكار	_	NOUN	_	_	1	obj	_	_
+4	في	_	ADP	_	_	5	case	_	_
+5	مؤخرة	_	NOUN	_	_	1	obl	_	_
+6	رأس	_	NOUN	_	_	5	nmod	_	_
+7	ي	_	PRON	_	_	6	nmod:poss	_	_
+
+# text = sent_id = 17
+# text = text_en = Adam would have been carried over into the life eternal
+# text = text_ar = آدم كان سيُنْقَل إلى الحياة الأبدية
+1	آدم	_	PROPN	_	_	4	nsubj:pass	_	_
+2	كان	_	VERB	_	_	0	root	_	_
+3	س	_	PART	_	_	4	compound	_	_
+4	يُنْقَل	_	VERB	_	_	2	ccomp	_	_
+5	إلى	_	ADP	_	_	6	case	_	_
+6	الحياة	_	NOUN	_	_	4	obl	_	_
+7	الأبدية	_	ADJ	_	_	6	amod	_	_
+
+# text = sent_id = 18
+# text = text_en = the casings had rotted away and had to be replaced
+# text = text_ar = كانت العبوات قد فسدت وكان يجب أن تستبدل
+1	كانت	_	VERB	_	_	0	root	_	_
+2	العبوات	_	NOUN	_	_	4	nsubj	_	_
+3	قد	_	AUX	_	_	4	aux	_	_
+4	فسدت	_	VERB	_	_	1	ccomp	_	_
+5	و	_	CCONJ	_	_	9	cc	_	_
+6	كان	_	AUX	_	_	7	aux	_	_
+7	يجب	_	VERB	_	_	1	csubj	_	_
+8	أن	_	ADP	_	_	9	mark	_	_
+9	تستبدل	_	VERB	_	_	4	conj	_	_
+
+# text = sent_id = 19
+# text = text_en = she was incensed that this chit of a girl should dare to make a fool of her in front of the class
+# text = text_ar = كانت غاضبة من جراءة تلك الفتاة الوقحة على السخرية منها أمام الفصل
+1	كانت	_	VERB	_	_	0	root	_	_
+2	غاضبة	_	ADJ	_	_	1	nsubj	_	_
+3	من	_	ADP	_	_	4	case	_	_
+4	جراءة	_	NOUN	_	_	2	obl	_	_
+5	تلك	_	DET	_	_	6	det	_	_
+6	الفتاة	_	NOUN	_	_	4	nmod	_	_
+7	الوقحة	_	ADJ	_	_	6	amod	_	_
+8	على	_	ADP	_	_	9	case	_	_
+9	السخرية	_	NOUN	_	_	2	obl	_	_
+10	من	_	ADP	_	_	11	case	_	_
+11	ها	_	PRON	_	_	9	nmod	_	_
+12	أمام	_	ADP	_	_	13	case	_	_
+13	الفصل	_	NOUN	_	_	9	nmod	_	_
+
+# text = sent_id = 20
+# text = text_en = the landslide he had in the electoral college obscured the narrowness of a victory based on just 43% of the popular vote
+# text = text_ar = إن الأغلبية التي حصل عليها في المجمع الانتخابي أخفت حقيقة الانتصار الضعيف ذي 43٪ من الأصوات الشعبية
+1	إن	_	ADP	_	_	4	compound	_	_
+2	الأغلبية	_	NOUN	_	_	4	nsubj	_	_
+3	التي	_	PRON	_	_	4	nsubj	_	_
+4	حصل	_	VERB	_	_	2	acl	_	_
+5	علي	_	ADP	_	_	6	case	_	_
+6	ها	_	PRON	_	_	4	obl	_	_
+7	في	_	ADP	_	_	8	case	_	_
+8	المجمع	_	NOUN	_	_	4	obl	_	_
+9	الانتخابي	_	ADJ	_	_	8	amod	_	_
+10	أخفت	_	VERB	_	_	0	root	_	_
+11	حقيقة	_	NOUN	_	_	10	obj	_	_
+12	الانتصار	_	NOUN	_	_	11	nmod	_	_
+13	الضعيف	_	ADJ	_	_	12	amod	_	_
+14	ذي	_	ADJ	_	_	12	amod	_	_
+15	43٪	_	NUM	_	_	17	nummod	_	_
+16	من	_	ADP	_	_	17	case	_	_
+17	الأصوات	_	NOUN	_	_	15	nmod	_	_
+18	الشعبية	_	ADJ	_	_	17	amod	_	_

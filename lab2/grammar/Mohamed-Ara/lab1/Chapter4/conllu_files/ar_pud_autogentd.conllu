@@ -1,0 +1,337 @@
+
+# text = من:<PRON> هم:<PRON> ؟:<PUNCT>
+# analyses = 1
+# parsetree = (Utt (Utt (QS (IP من) (Pron هم))) (Punct '؟'))
+1	من	_	PRON	_	_	0	root	_	_
+2	هم	_	PRON	_	_	1	nsubject	_	_
+3	؟	_	PUNCT	_	_	1	punct	_	_
+
+
+
+# text = مدينة:<NOUN> صغيرة:<ADJ> ب:<ADP> مئذنتين:<NOUN> ترتفعان:<VERB> من:<ADP> ها:<PRON> .:<PUNCT>
+# analyses = 30
+# parsetree = (Utt (Utt (S (NP (CN (CN (N مدينة)) (AP (AP (A صغيرة)) (NP_obl (Prep ب) (NP (CN (N مئذنتين))))))) (VP (V2 ترتفعان) (NP_obl (Prep من) (NP (Pron ها)))))) (Punct '.'))
+1	مدينة	_	NOUN	_	_	7	nsubj	_	_
+2	صغيرة	_	ADJ	_	_	1	amod	_	_
+3	ب	_	ADP	_	_	4	case	_	_
+4	مئذنتين	_	NOUN	_	_	2	nmod	_	_
+5	ترتفعان	_	VERB	_	_	7	aux	_	_
+6	من	_	ADP	_	_	7	case	_	_
+7	ها	_	PRON	_	_	0	root	_	_
+8	.	_	PUNCT	_	_	7	punct	_	_
+
+
+
+# text = كنت:<AUX> مجرد:<NOUN> صبي:<NOUN> ذي:<ADJ> حذاء:<NOUN> موحل:<ADJ> .:<PNCT>
+# analyses = 4
+# parsetree = (Utt (Utt (QS (cop كنت) (NP (CN (CN (N (N_one مجرد) (N صبي))) (AP (A ذي)))) (Comp (NP (CN (CN (N حذاء)) (AP (A موحل))))))) (Punct '.'))
+1	كنت	_	AUX	_	_	5	cop	_	_
+2	مجرد	_	NOUN	_	_	3	compound	_	_
+3	صبي	_	NOUN	_	_	5	nsubj	_	_
+4	ذي	_	ADJ	_	_	3	amod	_	_
+5	حذاء	_	NOUN	_	_	0	root	_	_
+6	موحل	_	ADJ	_	_	5	amod	_	_
+7	.	_	PUNCT	_	_	5	punct	_	_
+
+
+
+# text = قد:<AUX> تبنت:<VERB> شرطة:<NOUN> مرور:<NOUN> شينجن:<PROPN> عقوبات:<NOUN> غير:<ADV> تقليدية:<ADJ> من:<ADP> قبل:<ADV> .:<PUNCT>
+# analyses = 53
+# parsetree = (Utt (Utt (Imp (do قد) (VP (VP (V2 تبنت) (NP (N شرطة) (N_one مرور) (PN_one شينجن)) (NP (CN (CN (N عقوبات)) (AP (AdA غير) (AP (A تقليدية)))))) (AdV (Prep من) (Adv قبل))))) (Punct '.'))
+1	قد	_	AUX	_	_	2	aux	_	_
+2	تبنت	_	VERB	_	_	0	root	_	_
+3	شرطة	_	NOUN	_	_	2	nsubj	_	_
+4	مرور	_	NOUN	_	_	3	nmod	_	_
+5	شينجن	_	PROPN	_	_	3	nmod	_	_
+6	عقوبات	_	NOUN	_	_	2	obj	_	_
+7	غير	_	ADV	_	_	8	advmod	_	_
+8	تقليدية	_	ADJ	_	_	6	amod	_	_
+9	من	_	ADP	_	_	10	case	_	_
+10	قبل	_	ADV	_	_	2	advmod	_	_
+11	.	_	PUNCT	_	_	2	punct	_	_
+
+
+
+# text = يسمى:<VERB> العلم:<NOUN> الذي:<PRON> يدرس:<VERB> البراكين:<VERB> علم:<NOUN> البراكين:<NOUN> أو:<CCONJ> البركانيات:<NOUN> .:<PUNCT>
+# analyses = 367
+# parsetree = (Utt (Utt (S (VP (V2V يسمى) (NP (NP (CN (N العلم))) (RS (RP الذي) (VP (V يدرس)))) (VP (V البراكين))) (NP (ListNP (NP (N علم) (N_one البراكين))) (NP_conj (Conj أو) (NP (CN (N البركانيات))))))) (Punct '.'))
+1	يسمى	_	VERB	_	_	0	root	_	_
+2	العلم	_	NOUN	_	_	1	obj	_	_
+3	الذي	_	PRON	_	_	4	nsubj	_	_
+4	يدرس	_	VERB	_	_	2	acl:relcl	_	_
+5	البراكين	_	VERB	_	_	1	xcomp	_	_
+6	علم	_	NOUN	_	_	1	nsubj	_	_
+7	البراكين	_	NOUN	_	_	6	nmod	_	_
+8	أو	_	CCONJ	_	_	9	cc	_	_
+9	البركانيات	_	NOUN	_	_	6	conj	_	_
+10	.	_	PUNCT	_	_	1	punct	_	_
+
+
+
+# text = أجريت:<VERB> قبالة:<ADV> الساحل:<NOUN> المكسيكي:<ADJ> من:<ADP> أبريل:<PRON> إلى:<ADP> يونيو:<PRON> .:<PUNCT>
+# analyses = 71
+# parsetree = (Utt (Utt (Imp (VP (V2C أجريت) (NP (Predet قبالة) (NP (CN (N الساحل)))) (AP (AP (A المكسيكي)) (NP_obl (Prep من) (NP (NP (Pron أبريل)) (NP_obl (Prep إلى) (NP (Pron يونيو))))))))) (Punct '.'))
+1	أجريت	_	VERB	_	_	0	root	_	_
+2	قبالة	_	ADV	_	_	3	det:predet	_	_
+3	الساحل	_	NOUN	_	_	1	obj	_	_
+4	المكسيكي	_	ADJ	_	_	1	xcomp	_	_
+5	من	_	ADP	_	_	6	case	_	_
+6	أبريل	_	PRON	_	_	4	nmod	_	_
+7	إلى	_	ADP	_	_	8	case	_	_
+8	يونيو	_	PRON	_	_	6	nmod	_	_
+9	.	_	PUNCT	_	_	1	punct	_	_
+
+
+
+# text = قالت:<VERB> ليف:<PRON> ":<PUNCT> جال:<VERB> صوت:<NOUN> ها:<PRON> حرفيا:<ADV> حول:<ADP> العالم:<NOUN> ":<PUNCT> .:<PUNCT>
+# analyses = 0
+# parsetree = (Chunks (ListVP (ListVP (VP (V2 قالت) (NP (Pron ليف)))) (VP_comma (comma '"') (VP (VP (VP (V2 جال) (NP (CN (N صوت))) (NP (Pron ها))) (Adv حرفيا)) (NP_obl (Prep حول) (NP (CN (N العالم))))))) (Punct '"') (Punct '.'))
+1	قالت	_	VERB	_	_	11	dep	_	_
+2	ليف	_	PRON	_	_	1	obj	_	_
+3	"	_	PUNCT	_	_	4	punct	_	_
+4	جال	_	VERB	_	_	1	conj	_	_
+5	صوت	_	NOUN	_	_	4	nsubj	_	_
+6	ها	_	PRON	_	_	4	obj	_	_
+7	حرفيا	_	ADV	_	_	4	advmod	_	_
+8	حول	_	ADP	_	_	9	case	_	_
+9	العالم	_	NOUN	_	_	4	obl	_	_
+10	"	_	PUNCT	_	_	11	dep	_	_
+11	.	_	PUNCT	_	_	0	root	_	_
+
+
+
+# text = أخبر:<VERB> شاهد:<NOUN> الشرطة:<NOUN> أن:<SCONJ> الضحية:<NOUN> كان:<AUX> قد:<AUX> هاجم:<VERB> المشتبه:<NOUN> ب:<ADP> ه:<PRON> في:<ADP> أبريل:<PROPN> .:<PUNCT>
+# analyses = 6674
+# parsetree = (Utt (Utt (S (VP (V أخبر)) (NP (NP (NP (N شاهد) (N_one الشرطة)) (S_sub (Subj أن) (S (NP (CN (N الضحية))) (aux كان) (have قد) (VP (V2 هاجم) (NP (CN (N المشتبه))))))) (NP_obl (Prep ب) (NP (NP (Pron ه)) (NP_obl (Prep في) (NP (PN أبريل)))))))) (Punct '.'))
+1	أخبر	_	VERB	_	_	0	root	_	_
+2	شاهد	_	NOUN	_	_	1	nsubj	_	_
+3	الشرطة	_	NOUN	_	_	2	nmod	_	_
+4	أن	_	SCONJ	_	_	8	mark	_	_
+5	الضحية	_	NOUN	_	_	8	nsubj	_	_
+6	كان	_	AUX	_	_	8	aux	_	_
+7	قد	_	AUX	_	_	8	aux	_	_
+8	هاجم	_	VERB	_	_	2	acl	_	_
+9	المشتبه	_	NOUN	_	_	8	obj	_	_
+10	ب	_	ADP	_	_	11	case	_	_
+11	ه	_	PRON	_	_	2	nmod	_	_
+12	في	_	ADP	_	_	13	case	_	_
+13	أبريل	_	PROPN	_	_	11	nmod	_	_
+14	.	_	PUNCT	_	_	1	punct	_	_
+
+
+
+# text = يكون:<VERB> الأمر:<NOUN> أكثر:<ADJ> وضوحًا:<ADV> عندما:<ADV> يكون:<VERB> اسم:<NOUN> أحد:<DET> المشاهير:<NOUN> نادرًا:<ADJ> جدًا:<ADV> في:<ADP> البداية:<NOUN> .:<PUNCT>
+# analyses = 912
+# parsetree = (Utt (Utt (S (SC (S_that (S (VP (V يكون)) (NP (CN (CN (N الأمر)) (AP (A أكثر))))))) (VP (AdV وضوحًا) (VP (AdV عندما) (VP (VP (VP (V2 يكون) (NP (CN (N اسم))) (NP (Det أحد) (CN (CN (N المشاهير)) (AP (A نادرًا))))) (Adv جدًا)) (NP_obl (Prep في) (NP (CN (N البداية))))))))) (Punct '.'))
+1	يكون	_	VERB	_	_	6	csubj	_	_
+2	الأمر	_	NOUN	_	_	1	nsubj	_	_
+3	أكثر	_	ADJ	_	_	2	amod	_	_
+4	وضوحًا	_	ADV	_	_	6	advmod	_	_
+5	عندما	_	ADV	_	_	6	advmod	_	_
+6	يكون	_	VERB	_	_	0	root	_	_
+7	اسم	_	NOUN	_	_	6	nsubj	_	_
+8	أحد	_	DET	_	_	9	det	_	_
+9	المشاهير	_	NOUN	_	_	6	obj	_	_
+10	نادرًا	_	ADJ	_	_	9	amod	_	_
+11	جدًا	_	ADV	_	_	6	advmod	_	_
+12	في	_	ADP	_	_	13	case	_	_
+13	البداية	_	NOUN	_	_	6	obl	_	_
+14	.	_	PUNCT	_	_	6	punct	_	_
+
+
+
+# text = هذا:<PRON> لم:<PART> يمنع:<VERB> المستثمرين:<NOUN> أن:<PART> يندفعوا:<VERB> ل:<ADP> وضع:<NOUN> أموال:<NOUN> هم:<PRON> في:<ADP> الصناديق:<NOUN> .:<PART>
+# analyses = 54
+# parsetree = (Utt (Utt (NP (NP (NP (Pron هذا)) (SC (VP_to (to لم) (VP (V2 يمنع) (NP (NP (CN (N المستثمرين))) (SC (VP_to (to أن) (VP (V2 يندفعوا) (NP_obl (Prep ل) (NP (N وضع) (N_one أموال))))))) (NP (Pron هم)))))) (NP_obl (Prep في) (NP (CN (N الصناديق)))))) (Punct '.'))
+1	هذا	_	PRON	_	_	0	root	_	_
+2	لم	_	PART	_	_	3	mark	_	_
+3	يمنع	_	VERB	_	_	1	acl	_	_
+4	المستثمرين	_	NOUN	_	_	3	nsubj	_	_
+5	أن	_	PART	_	_	8	mark	_	_
+6	يندفعوا	_	VERB	_	_	8	aux	_	_
+7	ل	_	ADP	_	_	8	case	_	_
+8	وضع	_	NOUN	_	_	4	acl	_	_
+9	أموال	_	NOUN	_	_	8	nmod	_	_
+10	هم	_	PRON	_	_	3	obj	_	_
+11	في	_	ADP	_	_	12	case	_	_
+12	الصناديق	_	NOUN	_	_	1	nmod	_	_
+13	.	_	PUNCT	_	_	1	punct	_	_
+
+
+
+# text = هذا:<DET> التعارض:<NOUN> بين:<ADP> البيانات:<NOUN> الاقتصادية:<ADJ> و:<CCONJ> الخطاب:<NOUN> السياسي:<ADJ> مألوف:<ADJ> ،:<PUNCT> أو:<CCONJ> يجب:<VERB> أن:<PART> يكون:<VERB> كذلك:<ADV> .:<PNCT>
+# analyses = 0
+# parsetree = (Chunks (Utt (Utt (NP (NP (Det هذا) (CN (N التعارض))) (NP_obl (Prep بين) (NP (ListNP (NP (CN (CN (N البيانات)) (AP (A الاقتصادية))))) (NP_conj (Conj و) (NP (CN (CN (CN (N الخطاب)) (AP (A السياسي))) (AP (A مألوف))))))))) (Punct '،')) (Utt (Utt (Conj أو) (Utt (Imp (VP (VV يجب) (VP_to (to أن) (VP (VP (V يكون)) (Adv كذلك))))))) (Punct '.')))
+1	هذا	_	DET	_	_	2	det	_	_
+2	التعارض	_	NOUN	_	_	12	dep	_	_
+3	بين	_	ADP	_	_	4	case	_	_
+4	البيانات	_	NOUN	_	_	2	nmod	_	_
+5	الاقتصادية	_	ADJ	_	_	4	amod	_	_
+6	و	_	CCONJ	_	_	7	cc	_	_
+7	الخطاب	_	NOUN	_	_	4	conj	_	_
+8	السياسي	_	ADJ	_	_	7	amod	_	_
+9	مألوف	_	ADJ	_	_	7	amod	_	_
+10	،	_	PUNCT	_	_	2	punct	_	_
+11	أو	_	CCONJ	_	_	12	cc	_	_
+12	يجب	_	VERB	_	_	0	root	_	_
+13	أن	_	PART	_	_	14	mark	_	_
+14	يكون	_	VERB	_	_	12	xcomp	_	_
+15	كذلك	_	ADV	_	_	14	advmod	_	_
+16	.	_	PUNCT	_	_	12	punct	_	_
+
+
+
+# text = تقدر:<VERB> دراسة:<NOUN> الجدوى:<NOUN> أن:<SCONJ> الركاب:<NOUN> س:<PART> يستغرقون:<VERB> حوالي:<ADV> أربع:<NUM> دقائق:<NOUN> ل:<ADP> عبور:<NOUN> نهر:<PROPN> بوتوماك:<PROPN> على:<ADP> متن:<NOUN> الجندول:<NOUN> .:<PUNCT>
+# analyses = 0
+# parsetree = (Chunks (Imp (VP (V2 تقدر) (NP (CN (N (N_one دراسة) (N الجدوى)))))) (Subj أن) (Utt (Utt (NP (NP (NP (CN (N الركاب))) (SC (VP_to (to س) (VP (V2 يستغرقون) (NP (Predet حوالي) (NP (Num (Card أربع)) (NP (CN (N دقائق))))))))) (NP_obl (Prep ل) (NP (NP (N عبور) (PN (PN_one نهر) (PN بوتوماك))) (NP_obl (Prep على) (NP (CN (N (N_one متن) (N الجندول))))))))) (Punct '.')))
+1	تقدر	_	VERB	_	_	5	dep	_	_
+2	دراسة	_	NOUN	_	_	3	compound	_	_
+3	الجدوى	_	NOUN	_	_	1	obj	_	_
+4	أن	_	SCONJ	_	_	5	dep	_	_
+5	الركاب	_	NOUN	_	_	0	root	_	_
+6	س	_	PART	_	_	7	mark	_	_
+7	يستغرقون	_	VERB	_	_	5	acl	_	_
+8	حوالي	_	ADV	_	_	10	det:predet	_	_
+9	أربع	_	NUM	_	_	10	nummod	_	_
+10	دقائق	_	NOUN	_	_	7	obj	_	_
+11	ل	_	ADP	_	_	12	case	_	_
+12	عبور	_	NOUN	_	_	5	nmod	_	_
+13	نهر	_	PROPN	_	_	12	flat	_	_
+14	بوتوماك	_	PROPN	_	_	13	flat	_	_
+15	على	_	ADP	_	_	17	case	_	_
+16	متن	_	NOUN	_	_	17	compound	_	_
+17	الجندول	_	NOUN	_	_	12	nmod	_	_
+18	.	_	PUNCT	_	_	5	punct	_	_
+
+
+
+# text = قام:<VERB> ب:<ADP> جمع:<NOUN> البطاقات:<NOUN> و:<CCONJ> تداول:<NOUN> ها:<PRON> مع:<ADP> الأولاد:<NOUN> الآخرين:<ADJ>
+# analyses = 8
+# parsetree = (Utt (S (VP (V2 قام) (NP_obl (Prep ب) (NP (ListNP (NP (N جمع) (N_one البطاقات))) (NP_conj (Conj و) (NP (CN (N تداول))))))) (NP (NP (Pron ها)) (NP_obl (Prep مع) (NP (CN (CN (N الأولاد)) (AP (A الآخرين))))))))
+1	قام	_	VERB	_	_	3	aux	_	_
+2	ب	_	ADP	_	_	3	case	_	_
+3	جمع	_	NOUN	_	_	0	root	_	_
+4	البطاقات	_	NOUN	_	_	3	nmod	_	_
+5	و	_	CCONJ	_	_	6	cc	_	_
+6	تداول	_	NOUN	_	_	3	conj	_	_
+7	ها	_	PRON	_	_	3	nsubj	_	_
+8	مع	_	ADP	_	_	9	case	_	_
+9	الأولاد	_	NOUN	_	_	7	nmod	_	_
+10	الآخرين	_	ADJ	_	_	9	amod	_	_
+
+
+
+# text = هذه:<DET> الجريمة:<NOUN> يعاقب:<VERB> علي:<ADP> ها:<PRON> ب:<ADP> السجن:<NOUN> ل:<ADP> مدة:<NOUN> خمس:<NUM> سنوات:<NOUN>
+# analyses = 20
+# parsetree = (Utt (NP (NP (Det هذه) (CN (N الجريمة))) (SC (S_that (S (VP (V2 يعاقب) (NP_obl (Prep علي) (NP (NP (Pron ها)) (NP_obl (Prep ب) (NP (NP (CN (N السجن))) (NP_obl (Prep ل) (NP (CN (N مدة))))))))) (NP (Num (Card خمس)) (NP (CN (N سنوات)))))))))
+1	هذه	_	DET	_	_	2	det	_	_
+2	الجريمة	_	NOUN	_	_	0	root	_	_
+3	يعاقب	_	VERB	_	_	5	aux	_	_
+4	علي	_	ADP	_	_	5	case	_	_
+5	ها	_	PRON	_	_	2	acl	_	_
+6	ب	_	ADP	_	_	7	case	_	_
+7	السجن	_	NOUN	_	_	5	nmod	_	_
+8	ل	_	ADP	_	_	9	case	_	_
+9	مدة	_	NOUN	_	_	7	nmod	_	_
+10	خمس	_	NUM	_	_	11	nummod	_	_
+11	سنوات	_	NOUN	_	_	5	nsubj	_	_
+
+
+
+# text = نقلت:<VERB> الأخبار:<NOUN> إلى:<ADP> كل:<DET> قرية:<NOUN> في:<ADP> المحافظة:<NOUN>
+# analyses = 15
+# parsetree = (Utt (S (VP (V نقلت)) (NP (NP (CN (N الأخبار))) (NP_obl (Prep إلى) (NP (NP (Det كل) (CN (N قرية))) (NP_obl (Prep في) (NP (CN (N المحافظة)))))))))
+1	نقلت	_	VERB	_	_	0	root	_	_
+2	الأخبار	_	NOUN	_	_	1	nsubj	_	_
+3	إلى	_	ADP	_	_	5	case	_	_
+4	كل	_	DET	_	_	5	det	_	_
+5	قرية	_	NOUN	_	_	2	nmod	_	_
+6	في	_	ADP	_	_	7	case	_	_
+7	المحافظة	_	NOUN	_	_	5	nmod	_	_
+
+
+
+# text = أحمل:<VERB> هذه:<DET> الأفكار:<NOUN> في:<ADP> مؤخرة:<NOUN> رأس:<NOUN> ي:<PRON>
+# analyses = 25
+# parsetree = (Utt (S (VP (V2 أحمل) (NP (NP (Det هذه) (CN (N الأفكار))) (NP_obl (Prep في) (NP (N مؤخرة) (N_one رأس))))) (NP (Pron ي))))
+1	أحمل	_	VERB	_	_	0	root	_	_
+2	هذه	_	DET	_	_	3	det	_	_
+3	الأفكار	_	NOUN	_	_	1	obj	_	_
+4	في	_	ADP	_	_	5	case	_	_
+5	مؤخرة	_	NOUN	_	_	3	nmod	_	_
+6	رأس	_	NOUN	_	_	5	nmod	_	_
+7	ي	_	PRON	_	_	1	nsubj	_	_
+
+
+
+# text = آدم:<PROPN> كان:<VERB> س:<PART> يُنْقَل:<VERB> إلى:<ADP> الحياة:<NOUN> الأبدية:<ADJ>
+# analyses = 16
+# parsetree = (Utt (S (NP (PN آدم)) (VP (VV كان) (VP_to (to س) (VP (V2 يُنْقَل) (NP_obl (Prep إلى) (NP (CN (CN (N الحياة)) (AP (A الأبدية))))))))))
+1	آدم	_	PROPN	_	_	2	nsubj	_	_
+2	كان	_	VERB	_	_	0	root	_	_
+3	س	_	PART	_	_	6	mark	_	_
+4	يُنْقَل	_	VERB	_	_	6	aux	_	_
+5	إلى	_	ADP	_	_	6	case	_	_
+6	الحياة	_	NOUN	_	_	2	xcomp	_	_
+7	الأبدية	_	ADJ	_	_	6	amod	_	_
+
+
+
+# text = كانت:<VERB> العبوات:<NOUN> قد:<AUX> فسدت:<VERB> و:<CCONJ> كان:<AUX> يجب:<VERB> أن:<ADP> تستبدل:<VERB>
+# analyses = 0
+# parsetree = (Chunks (VPSlash (VP (VS كانت) (S_that (S (SC (S_that (S (NP (CN (N العبوات))) (have قد) (VP (ListVP (VP (V فسدت))) (VP_conj (Conj و) (VP (aux كان))))))) (VP (V يجب))))) (Prep أن)) (Imp (VP (V تستبدل))))
+1	كانت	_	VERB	_	_	9	dep	_	_
+2	العبوات	_	NOUN	_	_	4	nsubj	_	_
+3	قد	_	AUX	_	_	4	aux	_	_
+4	فسدت	_	VERB	_	_	7	csubj	_	_
+5	و	_	CCONJ	_	_	6	cc	_	_
+6	كان	_	AUX	_	_	4	conj	_	_
+7	يجب	_	VERB	_	_	1	ccomp	_	_
+8	أن	_	ADP	_	_	1	case	_	_
+9	تستبدل	_	VERB	_	_	0	root	_	_
+
+
+
+# text = كانت:<VERB> غاضبة:<ADJ> من:<ADP> جراءة:<NOUN> تلك:<DET> الفتاة:<NOUN> الوقحة:<ADJ> على:<ADP> السخرية:<NOUN> من:<ADP> ها:<PRON> أمام:<ADP> الفصل:<NOUN>
+# analyses = 0
+# parsetree = (Chunks (Imp (VP (V كانت))) (AP (AP (A غاضبة)) (NP_obl (Prep من) (NP (CN (N جراءة))))) (Comp (NP (Det تلك) (CN (CN (N الفتاة)) (AP (AP (A الوقحة)) (NP_obl (Prep على) (NP (NP (CN (N السخرية))) (NP_obl (Prep من) (NP (NP (Pron ها)) (NP_obl (Prep أمام) (NP (CN (N الفصل)))))))))))))
+1	كانت	_	VERB	_	_	6	dep	_	_
+2	غاضبة	_	ADJ	_	_	6	dep	_	_
+3	من	_	ADP	_	_	4	case	_	_
+4	جراءة	_	NOUN	_	_	2	nmod	_	_
+5	تلك	_	DET	_	_	6	det	_	_
+6	الفتاة	_	NOUN	_	_	0	root	_	_
+7	الوقحة	_	ADJ	_	_	6	amod	_	_
+8	على	_	ADP	_	_	9	case	_	_
+9	السخرية	_	NOUN	_	_	7	nmod	_	_
+10	من	_	ADP	_	_	11	case	_	_
+11	ها	_	PRON	_	_	9	nmod	_	_
+12	أمام	_	ADP	_	_	13	case	_	_
+13	الفصل	_	NOUN	_	_	11	nmod	_	_
+
+
+
+# text = إن:<ADP> الأغلبية:<NOUN> التي:<PRON> حصل:<VERB> علي:<ADP> ها:<PRON> في:<ADP> المجمع:<NOUN> الانتخابي:<ADJ> أخفت:<VERB> حقيقة:<NOUN> الانتصار:<NOUN> الضعيف:<ADJ> ذي:<ADJ> 43٪:<NUM> من:<ADP> الأصوات:<NOUN> الشعبية:<ADJ>
+# analyses = 14064
+# parsetree = (Utt (S (SC (S_that (S (NP_oblcomma (NP_obl (Prep إن) (NP (CN (N الأغلبية))))) (S (NP (Pron التي)) (VP (V2 حصل) (NP_obl (Prep علي) (NP (NP (Pron ها)) (NP_obl (Prep في) (NP (CN (CN (N المجمع)) (AP (A الانتخابي)))))))))))) (VP (V2 أخفت) (NP (CN (CN (CN (N (N_one حقيقة) (N الانتصار))) (AP (A الضعيف))) (AP (A ذي)))) (NP (NP (Num (Card '43٪'))) (NP_obl (Prep من) (NP (CN (CN (N الأصوات)) (AP (A الشعبية)))))))))
+1	إن	_	ADP	_	_	2	case	_	_
+2	الأغلبية	_	NOUN	_	_	6	nmod	_	_
+3	التي	_	PRON	_	_	6	nsubj	_	_
+4	حصل	_	VERB	_	_	6	aux	_	_
+5	علي	_	ADP	_	_	6	case	_	_
+6	ها	_	PRON	_	_	10	csubj	_	_
+7	في	_	ADP	_	_	8	case	_	_
+8	المجمع	_	NOUN	_	_	6	nmod	_	_
+9	الانتخابي	_	ADJ	_	_	8	amod	_	_
+10	أخفت	_	VERB	_	_	0	root	_	_
+11	حقيقة	_	NOUN	_	_	12	compound	_	_
+12	الانتصار	_	NOUN	_	_	10	nsubj	_	_
+13	الضعيف	_	ADJ	_	_	12	amod	_	_
+14	ذي	_	ADJ	_	_	12	amod	_	_
+15	43٪	_	NUM	_	_	10	obj	_	_
+16	من	_	ADP	_	_	17	case	_	_
+17	الأصوات	_	NOUN	_	_	15	nmod	_	_
+18	الشعبية	_	ADJ	_	_	17	amod	_	_
+
+
+

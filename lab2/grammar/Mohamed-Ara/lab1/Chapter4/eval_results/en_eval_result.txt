@@ -1,0 +1,2 @@
+evaluating macro LAS conllu_files/en_pud_std.conllu conllu_files/en_pud_autogentd.conllu
+UDScore {udScore = 0.5931640581640581, udMatching = 20, udTotalLength = 253, udSamesLength = 157, udPerfectMatch = 0}
